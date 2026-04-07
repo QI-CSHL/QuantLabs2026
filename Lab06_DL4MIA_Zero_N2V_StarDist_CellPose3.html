@@ -1,0 +1,1064 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Deep Learning for Microscopy Image Analysis &#8212; QI 2025 Analysis Lab Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Lab06_DL4MIA_Zero_N2V_StarDist_CellPose3';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Image Time Series Analysis" href="Lab07_Image_Time_Series_Analysis.html" />
+    <link rel="prev" title="3D Image Analysis" href="Lab05_3D_Image_Analysis.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/image001.png" class="logo__image only-light" alt="QI 2025 Analysis Lab Manual - Home"/>
+    <img src="_static/image001.png" class="logo__image only-dark pst-js-only" alt="QI 2025 Analysis Lab Manual - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to QI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantitative analysis labs</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Lab01_Estimating_SNR_and_Resolution_and_basic_image_processing.html">Estimating SNR &amp; Resolution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Lab02_Image_Processing_and_Basic_Detection.html">Image Processing and Basic Segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Lab03_Image_Correction_and_Intensity_Measurements.html">Image Correction and Intensity Measurements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Lab04_ML-based_Segmentation_and_Classification.html">Segmentation and Pixel Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Lab05_3D_Image_Analysis.html">3D Image Analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Deep Learning for Microscopy Image Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Lab07_Image_Time_Series_Analysis.html">Image Time Series Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="links.html">Helpful links for now and the future</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/QI-CSHL/QuantLabs2025" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/QI-CSHL/QuantLabs2025/edit/main/qi_2025_analysis_lab_manual/Lab06_DL4MIA_Zero_N2V_StarDist_CellPose3.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/QI-CSHL/QuantLabs2025/issues/new?title=Issue%20on%20page%20%2FLab06_DL4MIA_Zero_N2V_StarDist_CellPose3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Lab06_DL4MIA_Zero_N2V_StarDist_CellPose3.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Deep Learning for Microscopy Image Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview"><strong>Overview</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-remind-yourself-about-what-weve-heard-in-the-lecture"><strong>Exercise 1: Remind yourself about what we’ve heard in the lecture</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-play-with-cellpose"><strong>Exercise 2: Play with Cellpose</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#human-in-the-loop-retraining">Human-in-the-loop retraining</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-image-restoration-functions">Using the image restoration functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-denoising-with-careamics"><strong>Exercise 3: Denoising with CAREamics</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-careamics">Installing CAREamics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-careamics-in-a-jupyter-notebook">Using CAREamics in a Jupyter Notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-classifying-images-in-the-browser-with-piximi"><strong>Bonus Exercise: Classifying images in the browser with Piximi</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-a-10-class-classification-model-using-mnist">Train a 10-class classification model using MNIST</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#train-a-classifier">Train a classifier</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-your-classifier">Evaluate your classifier</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-some-mistakes">Fix (some?) mistakes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#save-things-for-later">Save things for later</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-a-3-class-classification-model-on-u2os-cells">Train a 3-class classification model on U2OS cells</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-use-fijis-noise2void-plugin"><strong>Bonus Exercise: Use Fiji’s Noise2Void Plugin</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-image-segmentation-with-stardist-in-zero"><strong>Bonus Exercise: Image Segmentation with StarDist (in “Zero”)</strong></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="deep-learning-for-microscopy-image-analysis">
+<h1>Deep Learning for Microscopy Image Analysis<a class="headerlink" href="#deep-learning-for-microscopy-image-analysis" title="Link to this heading">#</a></h1>
+<p><em>Lab authors: Damian Dalle Nogare, Florian Jug, and Beth Cimini</em> .</p>
+<p><small>This file last updated 2025-04-03.</small></p>
+<hr class="docutils" />
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Appreciate how Neural Networks are trained</p></li>
+<li><p>Segmentation with Cellpose<span id="id1"><sup><a class="reference internal" href="bibliography.html#id25" title="Carsen Stringer and Marius Pachitariu. Cellpose3: one-click image restoration for improved cellular segmentation. bioRxiv, pages 2024.02.10.579780, February 2024.">9</a></sup></span></p></li>
+<li><p>Learn how to make your own <code class="docutils literal notranslate"><span class="pre">conda</span></code> environment and install packages from <code class="docutils literal notranslate"><span class="pre">pip</span></code></p></li>
+<li><p>Denoising with CAREamics in python</p></li>
+<li><p>Bonus: Try in-browser classification with Piximi</p></li>
+<li><p>Bonus: Use Noise2Void in Fiji</p></li>
+<li><p>Bonus: Segmentation with StarDist in “Zero”</p></li>
+</ul>
+<p><strong>Lab Data</strong> in <a class="reference external" href="https://tinyurl.com/QI2025AnalysisLabData">this folder</a> (DL4MIA)</p>
+<p>Remember to <strong>unzip</strong> the data folder after downloading.</p>
+</section>
+<section id="overview">
+<h2><strong>Overview</strong><a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>Neural networks can do useful things. Their deployment within
+user-friendly tools is, unfortunately, lagging behind. Hence, methods we
+would like to apply to our data are not always available in Fiji or ilastik<span id="id2"><sup><a class="reference internal" href="bibliography.html#id8" title="Stuart Berg, Dominik Kutra, Thorben Kroeger, Christoph N Straehle, Bernhard X Kausler, Carsten Haubold, Martin Schiegg, Janez Ales, Thorsten Beier, Markus Rudy, Kemal Eren, Jaime I Cervantes, Buote Xu, Fynn Beuttenmueller, Adrian Wolny, Chong Zhang, Ullrich Koethe, Fred A Hamprecht, and Anna Kreshuk. Ilastik: interactive machine learning for (bio)image analysis. Nat. Methods, 16(12):1226–1232, December 2019.">8</a></sup></span>
+quite yet (or only with a fair amount of command line work and difficulty). The latest methods can only be used by the ones “brave”
+enough to expose themselves to some amount of computer source code…</p>
+<p>Today we will all be brave! 😊</p>
+<p>We’re very much looking forward to hearing about your successes and
+struggles tomorrow during the Q&amp;A session. Now, please take a seat, open
+a browser, and buckle up!</p>
+</section>
+<section id="exercise-1-remind-yourself-about-what-weve-heard-in-the-lecture">
+<h2><strong>Exercise 1: Remind yourself about what we’ve heard in the lecture</strong><a class="headerlink" href="#exercise-1-remind-yourself-about-what-weve-heard-in-the-lecture" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Visit
+<a class="reference external" href="https://playground.tensorflow.org">this neural network playground</a>
+and look around. What terms did you hear before, what is new, and
+what is confusing?</p></li>
+<li><p>Please try to:</p>
+<p>a.  On the classification example that looks like a tiny
+checkerboard, try to get a test loss of 0.001 or less.<br />
+<img alt="_images/image11.png" src="_images/image11.png" /><img alt="_images/image4.png" src="_images/image4.png" /></p>
+<p>b.  For the spiral-shaped classification example, try to find a
+network architecture with the smallest amount of nodes (neurons)
+that will drop below 0.01 (1%) test error.<br />
+<img alt="_images/image13.png" src="_images/image13.png" />
+<img alt="_images/image8.png" src="_images/image8.png" /></p>
+<p>c.  Now switch from ‘Classification’ to ‘Regression’. What is going
+on here? Can you figure out how regression is different from
+classification?<br />
+<img alt="_images/image6.png" src="_images/image6.png" /></p>
+<p>d.  Some other things to try if you feel it…</p>
+<ul>
+<li><p>Add some noise to your data. What changes? Why?</p></li>
+<li><p>Try to find a setup that overfits. How do you identify overfitting?</p>
+<img alt="_images/image14.png" src="_images/image14.png" />
+</li>
+</ul>
+<p>e.  All the important terms and concepts wrt. to training and
+validation are somewhere on this one page. Check if there is
+anything that makes no sense to you and ask us</p>
+</li>
+</ol>
+</section>
+<section id="exercise-2-play-with-cellpose">
+<h2><strong>Exercise 2: Play with Cellpose</strong><a class="headerlink" href="#exercise-2-play-with-cellpose" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Once back home, you will need <a class="reference external" href="https://cellpose.readthedocs.io/en/latest/installation.html">this installation instructions</a> to get started with Cellpose.</p>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title">Want to learn more about working with Cellpose?</p>
+<p>Check out the <a class="reference external" href="https://cellpose.readthedocs.io/en/latest/">documentation</a>, or check them out on <a class="reference external" href="https://forum.image.sc/tag/Cellpose">the image.sc forum!</a></p>
+</aside>
+<p>Here, at QI, we have taken this annoying step for you already. Hence,
+you will find Cellpose pre-installed on the lab computers. To start it,
+go to the Windows search next to the start menu, and type <code class="docutils literal notranslate"><span class="pre">miniforge</span></code>.
+Pick and start the option <code class="docutils literal notranslate"><span class="pre">miniforge</span> <span class="pre">prompt</span></code>.</p>
+<p>Once this is opened, type in those two lines:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Only copy the stuff after “<strong>&gt;</strong>”</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="o">&gt;</span> <span class="n">conda</span> <span class="n">activate</span> <span class="n">cellpose</span>  
+<span class="p">(</span><span class="n">cellpose</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">cellpose</span>
+</pre></div>
+</div>
+<p>You should now see something like
+this:<img alt="_images/cellpose_gui.png" src="_images/cellpose_gui.png" /></p>
+<p>Open the file <code class="docutils literal notranslate"><span class="pre">001_img.tif</span></code> by dragging it onto the open window.
+You can find this file in the <code class="docutils literal notranslate"><span class="pre">DL4MIA/easy</span></code> folder in the <a class="reference external" href="https://tinyurl.com/QI2025AnalysisLabData">Lab Data share</a>.</p>
+<p>Like we did in the 3D lab yesterday, we need to tell cellpose (roughly) how large our objects are (you can do
+so via the <code class="docutils literal notranslate"><span class="pre">cell</span> <span class="pre">diameter</span></code>) field.</p>
+<p>How might we estimate this? Keep in
+mind that this diameter must be reported in pixels.</p>
+<p>You can now segment this image by selecting one of the pre-trained
+models from within the <code class="docutils literal notranslate"><span class="pre">dataset-specific</span> <span class="pre">models</span></code> box. Try segmenting this image using the <code class="docutils literal notranslate"><span class="pre">cyto2</span></code> model. How good are the results?</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can toggle the visibility of segmentation masks on and off
+by hitting ‘<strong>x</strong>’ on your keyboard. Similarly, you can toggle cell
+outlines with the keyboard shortcut ‘<strong>z</strong>’. Alternatively you can do so
+in the <code class="docutils literal notranslate"><span class="pre">Drawing</span></code> box on the menu to the left.</p>
+</div>
+<p>How well did Cellpose segment your image? Where (if anywhere) did it
+fail? Try some of the different dataset-specific models. Do any of these
+work better? Worse? Why might that be?</p>
+<p>Let’s now try some more challenging data. From
+the <code class="docutils literal notranslate"><span class="pre">DL4MIA</span></code> folder in the <a class="reference external" href="https://tinyurl.com/QI2025AnalysisLabData">lab data share</a>, download the entire folder
+named <code class="docutils literal notranslate"><span class="pre">hard</span></code>, and place it somewhere convenient (like the Desktop).</p>
+<p>From within this folder, open the <code class="docutils literal notranslate"><span class="pre">test</span></code> folder and drag the file
+<code class="docutils literal notranslate"><span class="pre">test_img.tif</span></code> to Cellpose to open it. Try segmenting it as well as
+possible. Can you find setting and a model that work perfectly?</p>
+<p>Spoiler, none of the models are perfectly suited to this data, but we
+can iteratively retrain a custom model that will work better on this specific kind of data from within the Cellpose GUI…</p>
+<p>Interested? Ok, let’s do it! 🙂</p>
+<section id="human-in-the-loop-retraining">
+<h3>Human-in-the-loop retraining<a class="headerlink" href="#human-in-the-loop-retraining" title="Link to this heading">#</a></h3>
+<p>In the <code class="docutils literal notranslate"><span class="pre">hard</span></code> folder you downloaded earlier you will find a folder called
+<code class="docutils literal notranslate"><span class="pre">train</span></code>. In this folder you will find a number of images. Open the image
+<code class="docutils literal notranslate"><span class="pre">104_img.tif</span></code> in Cellpose.</p>
+<p>Note that we are <strong>not</strong> going to train a model
+from scratch, instead we are going to finetune one of the existing
+models (ideally starting from one that does a pretty good job already).</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Human-in-the-loop training scheme in the Cellpose GUI:</p>
+<ul class="simple">
+<li><p>Segment an image using a model of your choice</p></li>
+<li><p>Correct segmentation errors manually</p></li>
+<li><p>Use the corrected image to retrain the original model</p></li>
+<li><p>Apply the retrained model on another (similar) image</p></li>
+<li><p>Correct segmentation erros (hopefully there are fewer this time!)</p></li>
+<li><p>Further retrain your model</p></li>
+<li><p>Repeat this steps until the results are <a class="reference external" href="https://carpenter-singh-lab.broadinstitute.org/blog/when-to-say-good-enough">‘good enough’</a> for your analysis needs.</p></li>
+<li><p>Test your model on unseen data to evaluate generalizability!</p></li>
+</ul>
+</aside>
+<p>Choose the model that you think gave you the best segmentations in the
+previous part of this exercise and apply it to this image.
+Because we want to re-train our own model, we need to provide it with <code class="docutils literal notranslate"><span class="pre">ground</span> <span class="pre">truth</span> <span class="pre">data</span></code>. In this case, this means showing it what kind of segmentation we would like to see, given the current image.
+So, we need to manually curate the automatic segmentation provided by the model.</p>
+<p>You can see now how starting from an already kind-of-good model will make the manual correction easier and faster.</p>
+<p>You can correct the segmentation errors by
+removing, adding or redrawing some of the segmentation masks. The corrected image can then
+be used to further finetune (retrain) the model.</p>
+<p>To correct errors in the segmentation:</p>
+<ol class="arabic simple">
+<li><p>Delete a mask by holding down the ‘control’ key and clicking on it.</p></li>
+</ol>
+<p>and/or</p>
+<ol class="arabic simple" start="2">
+<li><p>Draw a new mask by right-clicking anywhere in the image and tracing
+an outline, ending where you began to draw.</p></li>
+</ol>
+<p>Try correcting some of the segmentations. It might be easier if you
+switch between masks and outlines (use the ‘z’ and ‘x’ keys as explained before).</p>
+<p>Once you are happy with your corrected masks, take a look in the folder
+containing all of the training images. You will notice there is a new
+file there, called ‘hard\train\104_img_seg.npy’. This contains your
+corrected segmentation and will become a new bit of ground truth used
+during finetuning the model. But… how do you start this finetuning step?</p>
+<p>In the Cellpose menu bar, go to <code class="docutils literal notranslate"><span class="pre">models</span> <span class="pre">→</span>&#160;&#160; <span class="pre">train</span> <span class="pre">new</span> <span class="pre">model</span> <span class="pre">with</span> <span class="pre">images</span> <span class="pre">and</span> <span class="pre">masks</span> <span class="pre">in</span> <span class="pre">folder</span></code>.</p>
+<p>You should see a window like this one:</p>
+<img alt="_images/cellpose_training_gui.png" src="_images/cellpose_training_gui.png" />
+<p>First, we need to select which initial model to use. In the screenshot
+above, we are retraining the <code class="docutils literal notranslate"><span class="pre">cyto</span></code> model (but of course you may choose
+to retrain any available model). You can, and should, give your new
+model a name. You can also see which (corrected) images you are going to
+retrain the model on under ‘filenames’, and the number of masks that
+will be used for retraining in that image. Click OK whenever you are
+ready to retrain and finetune the selected model!</p>
+<p>During training you should see something like the following if you check the
+console (where you started Cellpose from). What is going on here? Remember
+back the lecture when we discussed training steps and epochs.
+<img alt="_images/cellpose_training_output.png" src="_images/cellpose_training_output.png" /></p>
+<p>Once done, Cellpose will automatically open the next image in the folder and use the freshly finetuned model to segment it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In Cellpose 3 there seems to be a bug where the new model is not being used to segment
+the newly loaded image. If you notice the segmentation isn’t very good, manually
+select your newly trained model under the “other models” dropdown and run it.</p>
+</div>
+<p>You can now repeat this process as often as needed. Cellpose will in each iteration
+finetune the same original model, but will do so with an ever increasing
+number of user labeled masks (the ones you have created). Eventually you
+will either loose hope or find that Cellpose’s prediction become good
+enough for you to be 😻!</p>
+<p>Once you are happy with the results you are getting, apply your final
+model to the test data we have segmented at the start of the exercise
+(importantly: your model has not previously seen this image during
+finetuning! Why is this important again?). Is the result better than
+with the initial model you started with?</p>
+</section>
+<section id="using-the-image-restoration-functions">
+<h3>Using the image restoration functions<a class="headerlink" href="#using-the-image-restoration-functions" title="Link to this heading">#</a></h3>
+<p>The version of Cellpose that we are using (Cellpose 3) also has some ability to restore images by denoising and deblurring.
+This is used to aid the segmentation of noisy data. Let’s  test it!</p>
+<p>From the folder you downloaded earlier, open the “noisy” folder and open “convollaria.tif”
+in Cellpose.</p>
+<p>Try using the Cyto3 model to segment this image (you can leave the diameter at 30 pixels).</p>
+<p>Not a very satisfying result is it?</p>
+<p>This is partially because the data is very noisy. Let’s try to add some denoising befre we segment.</p>
+<p>Under <code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">restoration</span></code> box in the lower part of the menu to the left, press the <code class="docutils literal notranslate"><span class="pre">Denoise</span></code> button. What do you notice about the image?</p>
+<p>Try using the same parameters and mode to segment this image. Did it improve?</p>
+<p>Try some other restoration modes. Try using some custom filters and see if you can improve the
+segmentation. What might be useful for denoising this image?</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Want to use Cellpose when you get home, but having trouble with the <code class="docutils literal notranslate"><span class="pre">conda</span></code> installation? You have (at least) a couple of potential options!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As of April of 2024, both of these are still using Cellpose 2, which does have human-in-the-loop retraining but not denoising or image restoration</p>
+</div>
+<ul class="simple">
+<li><p>EMBL has the Bioimage ANalysis Desktop (BAND) program, which allows you to check out virtual machines in the cloud. You simply visit a website, tell them the resources you need, and get a machine with <a class="reference external" href="https://bandv1.denbi.uni-tuebingen.de/#/eosc-landingpage">&gt;20 helpful image analysis tools pre-installed</a>.</p>
+<ul>
+<li><p><strong>Upsides</strong>: No installation, everything is correctly configured and ready to go, simulataneous access to lots of tools at once, you can ask for machines with GPUs</p></li>
+<li><p><strong>Downsides</strong>: They have limited capacity and sometimes machines aren’t available due to EMBL courses. You have to upload your data to their servers, and download your results from them.</p></li>
+</ul>
+</li>
+<li><p>Cellpose can be used with CellProfiler, both in Python if you have both programs <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code> installed, but <a class="reference external" href="https://plugins.cellprofiler.org/using_plugins.html?installing-plugins-with-dependencies-using-cellprofiler-from-source#using-docker-to-bypass-installation-requirements">CellProfiler also offers a way to use a pre-built version using Docker</a> <span id="id3"><sup><a class="reference internal" href="bibliography.html#id24" title="Erin Weisbart, Callum Tromans-Coia, Barbara Diaz-Rohrer, David R Stirling, Fernanda Garcia-Fossa, Rebecca A Senft, Mark C Hiner, Marcelo B de Jesus, Kevin W Eliceiri, and Beth A Cimini. CellProfiler plugins - an easy image analysis platform integration for containers and python tools. J. Microsc., September 2023.">10</a></sup></span></p>
+<ul>
+<li><p><strong>Upsides</strong>: You can use Cellpose models without ever touching your terminal, and while keeping your data local - you only need to install CellProfiler and Docker <code class="docutils literal notranslate"><span class="pre">.app</span></code> or <code class="docutils literal notranslate"><span class="pre">.exe</span></code> files from their respective websites, download <a class="reference external" href="https://github.com/CellProfiler/CellProfiler-plugins/blob/master/active_plugins/runcellpose.py">the plugin</a>, and then point CellProfiler at the location of the downloaded file.</p></li>
+<li><p><strong>Downsides</strong>: this only lets you run pre-trained Cellpose models, not train your own. Running Cellpose in CellProfiler via Docker is also MUCH slower than running it when installed via Python (though it will mostly be compute time, rather than human time, once you’re in analysis mode and running all your images unsupervised). You’re limited to the hardware you have locally.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="exercise-3-denoising-with-careamics">
+<h2><strong>Exercise 3: Denoising with CAREamics</strong><a class="headerlink" href="#exercise-3-denoising-with-careamics" title="Link to this heading">#</a></h2>
+</section>
+<section id="installing-careamics">
+<h2>Installing CAREamics<a class="headerlink" href="#installing-careamics" title="Link to this heading">#</a></h2>
+<p>In previous exercises, we’ve given you a pre-made environment with the appropriate software packages (<em>i.e.</em> Cellpose) already installed. When you go to use a new tool once you leave QI, however, you won’t have this option. So, let’s install CAREamics from scratch!</p>
+<p>The documentation for CAREamics can be found <a class="reference external" href="https://careamics.github.io/0.1/">here</a>.</p>
+<p>If you are familiar with <code class="docutils literal notranslate"><span class="pre">conda</span></code> and <code class="docutils literal notranslate"><span class="pre">pip</span></code>, the installation instructions can be found <a class="reference external" href="https://careamics.github.io/0.1/installation/">here</a>. If you are comfortable with what is there, go ahead and follow the instructions. Otherwise we will go through each step here. Keep in mind that the CAREamics instructions use <code class="docutils literal notranslate"><span class="pre">mamba</span></code>, whereas we will use <code class="docutils literal notranslate"><span class="pre">conda</span></code>. If that doesn’t make sense to you, then read on to the next section!</p>
+<p>The first step in installing a python-based software package is to make what is called an <code class="docutils literal notranslate"><span class="pre">environment</span></code>. You can think of a <code class="docutils literal notranslate"><span class="pre">package</span></code> as a particular software tool (<em>i.e.</em>, CAREamics is a python <code class="docutils literal notranslate"><span class="pre">package</span></code>). An <code class="docutils literal notranslate"><span class="pre">environment</span></code> is a particular (separate) place on your computer where we can install <code class="docutils literal notranslate"><span class="pre">packages</span></code> and have them be isolated from the other environments we might also need for other purposes. We do this because different python packages require different ‘dependencies’ (<em>i.e.</em> other pieces of software that the package requires in order to run). So a certain package might ‘depend’ on a specific version of another package, for example:</p>
+<p>Package A –&gt; requires Package B, version 1.0</p>
+<p>Package C –&gt; requires Package B, version 2.0</p>
+<p>In this case we cannot install package A and C in the same environment, because they will interfere with each other by each requiring a different vesion of package B. Unfortunatley, solving issues like this (commonly referred to as <code class="docutils literal notranslate"><span class="pre">dependency</span> <span class="pre">hell</span></code>) is an unavoidable part of working with bleeding-edge python software packages.</p>
+<p>However, we will not (hopefully!) run into dependency hell today. Let’s start by creating an environment.</p>
+<p>Open a new terminal by opening <code class="docutils literal notranslate"><span class="pre">miniforge</span> <span class="pre">prompt</span></code>. If you’re using an existing terminal, make sure you deactivate any current environments that are open by typing <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code>.</p>
+<p>Make a new environment by typing:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">careamics</span> <span class="pre">python=3.10</span></code></p>
+</div></blockquote>
+<p>You will be prompted to approve of all the software packages that need to be installed:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">Proceed</span> <span class="pre">([y]/n)?</span></code></p>
+</div></blockquote>
+<p>Enter <code class="docutils literal notranslate"><span class="pre">y</span></code> (yes) to proceed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>What are we doing here?</strong>
+Well we are asking a particular piece of software called a package manager (in this case, <code class="docutils literal notranslate"><span class="pre">conda</span></code>, although in the CAREamics installation instructions, they use a related but slightly different package manager called <code class="docutils literal notranslate"><span class="pre">mamba</span></code>) to <code class="docutils literal notranslate"><span class="pre">create</span></code> a new enviroment with the name ‘careamics’ (specified by the part <code class="docutils literal notranslate"><span class="pre">-n</span> <span class="pre">careamics</span></code>) and telling it to pre-install python version 3.10 into that environment.</p>
+</div>
+<p>Activate the environment by typing:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">careamics</span></code></p>
+</div></blockquote>
+<p>As we saw yesterday and earier today, the prompt should change from <code class="docutils literal notranslate"><span class="pre">(base)</span></code> to <code class="docutils literal notranslate"><span class="pre">(careamics)</span></code>. We are now ‘inside’ this environment. Anything we will install will be restricted to this environment (and, thus not accesible to software outside of that environment).</p>
+<p>Now, we need to install some packages that will allow us to use the GPU for the computations we will conduct. Remember that in deep learning, it is advantageous to run computation on the GPU as they contain specialized hardware to do very fast matrix multiplications – exacty the kind of thing that deep learning needs a lot of!</p>
+<p>CAREamics is a deep learning package built around <a class="reference external" href="https://pytorch.org">PyTorch</a>, an open-source deep learning framework made by Meta and openly shared with all of us (thank you Meta!). Installation instructions can be found <a class="reference external" href="https://pytorch.org/get-started/locally/">here</a> – be careful here to match the particular version to our computer specifications (specifically, the version of our GPU drivers). Spoiler: we need to install pytorch using the following command:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">torch</span> <span class="pre">torchvision</span> <span class="pre">torchaudio</span> <span class="pre">--index-url</span> <span class="pre">https://download.pytorch.org/whl/cu124</span></code></p>
+</div></blockquote>
+<p>We can confirm that this step worked and we can see the GPU, by typing the following command:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-c</span> <span class="pre">&quot;import</span> <span class="pre">torch;</span> <span class="pre">print([torch.cuda.get_device_properties(i)</span> <span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(torch.cuda.device_count())])&quot;</span></code></p>
+</div></blockquote>
+<p>After running this, you should see an output that lists the type of GPU we have (in this case an Nvidia Geforce 1080 Ti).</p>
+<p>Finally, we are ready to install CAREamics! We can do this by typing:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;careamics[examples]&quot;</span></code></p>
+</div></blockquote>
+<p>This will use <code class="docutils literal notranslate"><span class="pre">pip</span></code>, a package installer, to install the CAREamics library.</p>
+</section>
+<section id="using-careamics-in-a-jupyter-notebook">
+<h2>Using CAREamics in a Jupyter Notebook<a class="headerlink" href="#using-careamics-in-a-jupyter-notebook" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>We will use CAREamics via a Jupter Notebook. Jupyter notebooks are interactive python notebook where we can mix text and code, and they can be run in a browser window. We have provided a notebook in the data folder which we will use. First, we need to place this notebook somewhere where we can/want to use it. Note your terminal window should say something like <code class="docutils literal notranslate"><span class="pre">(careamics)</span> <span class="pre">C:\Users\Admin</span></code>. This means that our prompt is currently ‘active’ in the folder <code class="docutils literal notranslate"><span class="pre">C:\Users\Admin</span></code>. From the place you downloaded the sample data to, copy the file <code class="docutils literal notranslate"><span class="pre">careamics.ipynb</span></code> into this folder (or any other folder you feel good about). Now go back to the terminal, move to that folder using the <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">&lt;folder&gt;</span></code> command (if you choose something other than <code class="docutils literal notranslate"><span class="pre">C:\Users\Admin</span></code> to copy the notebook to) and start jupyter by typing <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span></code> and pressing enter.</p></li>
+</ul>
+<p>You should see a window with a list of all the files in the folder you started Jupyter Notebook in. Find the file you just copied into this folder (<code class="docutils literal notranslate"><span class="pre">careamics.ipynb</span></code>) and click on it. The notebook will open in a tab in your browser. Instructions on how to run CAREamics are contained within this notebook. Follow along with the notebook, but try to understand what is going on at each step! If you are confused, ask! If some problem arises, ask! If all works and you are done – brag a little! 😸</p>
+</section>
+<section id="bonus-exercise-classifying-images-in-the-browser-with-piximi">
+<h2><strong>Bonus Exercise: Classifying images in the browser with Piximi</strong><a class="headerlink" href="#bonus-exercise-classifying-images-in-the-browser-with-piximi" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="#piximi.app"><span class="xref myst">Piximi</span></a> <span id="id4"><sup><a class="reference internal" href="bibliography.html#id27" title="Levin M Moser, Nodar Gogoberidze, Andréa Papaleo, Alice Lucas, David Dao, Christoph A Friedrich, Lassi Paavolainen, Csaba Molnar, David R Stirling, Jane Hung, Rex Wang, Callum Tromans-Coia, Bin Li, Edward L Evans, Kevin W Eliceiri, Peter Horvath, Anne E Carpenter, and Beth A Cimini. Piximi - an images to discovery web tool for bioimages and beyond. bioRxiv, pages 2024.06.03.597232, June 2024.">11</a></sup></span> is a web app currently in development for training and running deep learning models in your web browser. Under most circumstances (with Cellpose as the major exception), all compute happens locally - you load your images into your web browser, but they are NOT sent to the internet, they stay locally on your machine. While this has some disadvantages (namely, that you’re limited to the resources on your own machine), this means you get the benefit of web applications (namely, no need to install anything) but don’t have to worry about upload times or where in the cloud your data is stored.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title">Want to learn more about working with Piximi?</p>
+<p>Check out the <a class="reference external" href="https://documentation.piximi.app/intro.html">documentation</a>, or check them out on <a class="reference external" href="https://forum.image.sc/tag/Piximi">the image.sc forum!</a></p>
+</aside>
+<p>Piximi includes 4 major functionalities. Three major ones you’re used to thinking about are:</p>
+<ul class="simple">
+<li><p><strong>Segmentation and Object Detection</strong></p></li>
+<li><p><strong>Classification</strong>, and</p></li>
+<li><p><strong>Measurement</strong></p></li>
+</ul>
+<p>In order to train deep learning models for object detection and segmentation, it also includes a 4th major component - an <strong>Annotation</strong> tool.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>We hope to provide <em>trainable</em> segmentation options by the end of 2025. You can keep visiting <a class="reference external" href="https://piximi.app/">piximi.app</a> to see what’s available!</p>
+</aside>
+<section id="train-a-10-class-classification-model-using-mnist">
+<h3>Train a 10-class classification model using MNIST<a class="headerlink" href="#train-a-10-class-classification-model-using-mnist" title="Link to this heading">#</a></h3>
+<p>Piximi is designed for biologists but can be used on non-biological images as well. Here, we’ll use 1,000 handwritten digits from the classic <a class="reference external" href="https://en.wikipedia.org/wiki/MNIST_database">MNIST dataset</a> <span id="id5"><sup><a class="reference internal" href="bibliography.html#id28" title="Y. Lecun, L. Bottou, Y. Bengio, and P. Haffner. Gradient-based learning applied to document recognition. Proceedings of the IEEE, 86(11):2278-2324, 1998. doi:10.1109/5.726791.">12</a></sup></span> , which consists of cropped images of digits from old census data and high school students.</p>
+<section id="train-a-classifier">
+<h4>Train a classifier<a class="headerlink" href="#train-a-classifier" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Tell Piximi you want to open an example project</p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/piximi_open.png"><img alt="_images/piximi_open.png" src="_images/piximi_open.png" style="height: 180px;" />
+</a>
+<ul class="simple">
+<li><p>Select MNIST
+<a class="reference internal" href="_images/piximi_mnist.png"><img alt="_images/piximi_mnist.png" src="_images/piximi_mnist.png" style="height: 180px;" /></a></p></li>
+<li><p>Scroll through the images - you’ll see that most are categorized as a particular digit, but about 60 have been intentionally left un-categorized for testing purposes.</p>
+<ul>
+<li><p>Are there any categorizations you aren’t sure about or disagree with?</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can try to use the filter tool <a class="reference internal" href="_images/filter.png"><img alt="_images/filter.png" src="_images/filter.png" style="height: 25px;" /></a>
+on the right to inspect only one or certain categories at a time.</p>
+</div>
+<ul class="simple">
+<li><p>Tell Piximi you want to fit a classifier for these images</p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/piximi_fit.png"><img alt="_images/piximi_fit.png" src="_images/piximi_fit.png" style="height: 180px;" />
+</a>
+<ul class="simple">
+<li><p>You will now see Piximi’s training dialog; you can choose to tune some of the hyperparameters before training (though we’ve chosen here reasonable defaults that should work well). Otherwise, hit <a class="reference internal" href="_images/piximi_fit_classifer.png"><img alt="_images/piximi_fit_classifer.png" src="_images/piximi_fit_classifer.png" style="height: 40px;" /></a> to train.</p></li>
+<li><p>After an initialization step, you will see a performance chart that looks like the below, as well as a loss graph. You can keep hitting <code class="docutils literal notranslate"><span class="pre">Fit</span> <span class="pre">Classifier</span></code> to keep adding more epochs of training.
+<a class="reference internal" href="_images/piximi_training_performance.png"><img alt="_images/piximi_training_performance.png" src="_images/piximi_training_performance.png" style="height: 180px;" /></a></p>
+<ul>
+<li><p>Are you overfitting? How can you tell?</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="evaluate-your-classifier">
+<h4>Evaluate your classifier<a class="headerlink" href="#evaluate-your-classifier" title="Link to this heading">#</a></h4>
+<p>Once you’re satisfied with your training (either because it’s great or because you’re satisfied that it has plateaued), close the training dialog. Hit the <code class="docutils literal notranslate"><span class="pre">Evaluate</span> <span class="pre">Model</span></code> button to check your confusion matrix.</p>
+<a class="reference internal image-reference" href="_images/piximi_evaluate.png"><img alt="_images/piximi_evaluate.png" src="_images/piximi_evaluate.png" style="height: 90px;" />
+</a>
+<a class="reference internal image-reference" href="_images/piximi_confusion.png"><img alt="_images/piximi_confusion.png" src="_images/piximi_confusion.png" style="height: 180px;" />
+</a>
+<div class="admonition-questions-for-you admonition">
+<p class="admonition-title">Questions for you</p>
+<p>What patterns of mistakes do you notice? Are they the kinds of mistakes you would expect?</p>
+</div>
+<p>A confusion matrix helps you figure out patterns of mistakes, but it can only tell you about the performance of your model on data for which you’ve already provided the answer - it can’t tell you about performance in your unlabeled data. It is <em>critical</em> then to always apply your classifier to new, unseen data to see how it performs.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>It is quadruple-extra critical when only a small fraction of your data is labeled, which is NOT true here but is often true in biological situations and you may hope will be true in your future work (after all, if you have to hand label almost all of your data, then what’s the point of training a model?)</p>
+</div>
+<ul class="simple">
+<li><p>Hit the <code class="docutils literal notranslate"><span class="pre">Predict</span> <span class="pre">Model</span></code> button to apply the model to the unlabeled data</p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/piximi_predict.png"><img alt="_images/piximi_predict.png" src="_images/piximi_predict.png" style="height: 180px;" />
+</a>
+<ul class="simple">
+<li><p>Evaluate the performance of the predictions - you may find that hitting one or both of these buttons helps you do that</p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/piximi_hide_labeled.png"><img alt="_images/piximi_hide_labeled.png" src="_images/piximi_hide_labeled.png" style="height: 40px;" />
+</a>
+<a class="reference internal image-reference" href="_images/piximi_hide_other.png"><img alt="_images/piximi_hide_other.png" src="_images/piximi_hide_other.png" style="height: 90px;" />
+</a>
+</section>
+<section id="fix-some-mistakes">
+<h4>Fix (some?) mistakes<a class="headerlink" href="#fix-some-mistakes" title="Link to this heading">#</a></h4>
+<p>If and when (when), you find some errors in the predictions, you can fix them by assigning them a new category.</p>
+<a class="reference internal image-reference" href="_images/piximi_recategorize_errors.png"><img alt="_images/piximi_recategorize_errors.png" src="_images/piximi_recategorize_errors.png" style="height: 180px;" />
+</a>
+<p>Depending on why you’re using machine learning, you might choose to fix all the wrong images at this stage, or only some:</p>
+<ul>
+<li><p>Is your goal to just get the classifications right and then use them for something else, and most of them have already been correctly classified?</p>
+<ul class="simple">
+<li><p>In that case, there’s no harm in just fixing the few mistakes and then moving on to other downstream quantification steps (coming soon!).</p></li>
+<li><p>If this is your goal but there are a lot of mistakes, you might not choose to fix all of them at this stage, but just fix a subset and then try to train again so you can get to a point where the errors are at a small enough level that you CAN do final data cleaning by hand</p></li>
+</ul>
+</li>
+<li><p>Is your goal to create a robust, reusable classifier to use on other sets or in other contexts?</p>
+<ul class="simple">
+<li><p>In that case, you might want to fix only a subset of the mistakes before retraining, so you can get a sense of if your model performance is improving.</p></li>
+<li><p>If retraining, once you’ve done your chosen recategorizations, clear predictions (<a class="reference internal" href="_images/piximi_clear_predictions.png"><img alt="_images/piximi_clear_predictions.png" src="_images/piximi_clear_predictions.png" style="height: 40px;" /></a>) and then hit fit again.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If this is indeed your goal, you need to have some unseen <strong>test</strong> data somewhere else that you are not tuning on here! Once you’ve run any version of your model, at any stage, on unseen data, that data is now “seen data”, and can’t be used as a test set anymore. How you plan your data splits (and how much, and which, data you keep locked away as test set(s)) is critical to any kind of machine learning research</p>
+</div>
+</li>
+</ul>
+</section>
+<section id="save-things-for-later">
+<h4>Save things for later<a class="headerlink" href="#save-things-for-later" title="Link to this heading">#</a></h4>
+<p>Reproducible science matters!</p>
+<p>You can therefore save your Piximi project file for later, as well as save your model for later use. You might find the former handy if you want to add more data later, and/or you just want to confer with someone else (including a paper reviewer, or future you) about how difficult data points were handled.</p>
+<a class="reference internal image-reference" href="_images/piximi_save_project.png"><img alt="_images/piximi_save_project.png" src="_images/piximi_save_project.png" style="height: 180px;" />
+</a>
+<a class="reference internal image-reference" href="_images/piximi_save_model.png"><img alt="_images/piximi_save_model.png" src="_images/piximi_save_model.png" style="height: 180px;" />
+</a>
+</section>
+</section>
+<section id="train-a-3-class-classification-model-on-u2os-cells">
+<h3>Train a 3-class classification model on U2OS cells<a class="headerlink" href="#train-a-3-class-classification-model-on-u2os-cells" title="Link to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sometimes this data set takes a long time to load, sometimes it doesn’t! We’re not sure why. Feel free to skip it if it’s taking a long time and being annoying.</p>
+</div>
+<p>This data set is in some ways more challenging, but also shows a more biologically relevant classification scenario, alongside the ability to do more human-in-the-loop retraining since, unlike MNIST, the majority of the data is NOT already categorized for you.</p>
+<ul class="simple">
+<li><p>Refresh Piximi, and then load the U2OS-cells cytoplasm crops example dataset (Open &gt; Project &gt; Example Project &gt; Human U2OS-cells cytoplasm crops)</p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/piximi_bbbc013.png"><img alt="_images/piximi_bbbc013.png" src="_images/piximi_bbbc013.png" style="height: 180px;" />
+</a>
+<div class="admonition-optional-fix-how-the-images-look admonition">
+<p class="admonition-title">Optional: fix how the images look</p>
+<p>You need not do this, since it can be a bit slow, but it is necessary if you want to assess the performance of the no-GFP class (and will make things much easier if you are red-green colorblind).</p>
+<p>Piximi’s current defaults are to load two-channel images as red and green, and to rescale each image min-max individually. While we work to fix those bugs, here’s how you can manually set the colors to something better (and more uniform)</p>
+<ul class="simple">
+<li><p>Hit Ctrl+A to select all cells</p></li>
+<li><p>Hit “Annotate” to open the annotation viewer
+<a class="reference internal" href="_images/piximi_annotate.png"><img alt="_images/piximi_annotate.png" src="_images/piximi_annotate.png" style="height: 180px;" /></a></p></li>
+<li><p>Open the channel adjustment bar on the right (<a class="reference internal" href="_images/Piximi_channel_tool.png"><img alt="_images/Piximi_channel_tool.png" src="_images/Piximi_channel_tool.png" style="height: 25px;" /></a>), and change color mapping to better lookup tables and values. Hit “Apply to all images open in the annotator” when you’re done (and then wait a couple of minutes)
+<a class="reference internal" href="_images/piximi_channels.png"><img alt="_images/piximi_channels.png" src="_images/piximi_channels.png" style="height: 180px;" /></a></p></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>Some of the cells have already been labeled, what color represents the eGFP signal?</p></li>
+<li><p>Use human-in-the-loop classification (same procedure as in the previous exercise) to train a high-performing 3 class classifier.
+How high can you get the evaluation metrics? How many rounds and how many corrected classifications does it take you to get there?</p></li>
+</ul>
+</section>
+</section>
+<section id="bonus-exercise-use-fijis-noise2void-plugin">
+<h2><strong>Bonus Exercise: Use Fiji’s Noise2Void Plugin</strong><a class="headerlink" href="#bonus-exercise-use-fijis-noise2void-plugin" title="Link to this heading">#</a></h2>
+<p>In this exercise you will use a Noise2Void plugin in Fiji. You will have
+to install it first.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title">Want to learn more about working with Noise2Void?</p>
+<p>Check out the <a class="reference external" href="https://csbdeep.bioimagecomputing.com/tools/n2v/">documentation</a>, or check them out on <a class="reference external" href="https://forum.image.sc/tag/Noise2Void">the image.sc forum!</a></p>
+</aside>
+<ol class="arabic">
+<li><p>Open Fiji.</p></li>
+<li><p>Go to Help - Update… - Manage update sites, then check the CSBDeep
+update site and say Close - Apply changes.</p></li>
+<li><p>Restart Fiji.</p></li>
+<li><p>Download the DL4MIA/noisy/drosophila_noisy_2d.tif 2d+t image from the
+<a class="reference external" href="https://tinyurl.com/QI2025AnalysisLabData">Lab Data Share</a> and open it in Fiji.</p></li>
+<li><p>Start the “N2V train + predict” plugin.</p></li>
+<li><p>Figure it out… 😉</p>
+<p>a.  <em><strong>Please ask question at ANY time</strong>!</em></p>
+</li>
+<li><p>If all works out ok, you will see something like…<br />
+<img alt="_images/image7.png" src="_images/image7.png" /></p></li>
+<li><p>The training will likely be VERY slow, but to sweeten up the wait,
+we show you a nice preview.</p></li>
+<li><p>Together with the result you also get the trained model for later
+reuse.<img alt="_images/image12.png" src="_images/image12.png" /></p></li>
+<li><p>Try to use the trained model to denoise the same stack or any other image of your choosing.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Be sure to set the axes correctly. On the same stack, this will require you to add a third dimension which contains multiple time points. What should we use as the third axis and why is it ‘B’ when you use the same stack you used for training?</p>
+</div>
+</li>
+</ol>
+</section>
+<section id="bonus-exercise-image-segmentation-with-stardist-in-zero">
+<h2><strong>Bonus Exercise: Image Segmentation with StarDist (in “Zero”)</strong><a class="headerlink" href="#bonus-exercise-image-segmentation-with-stardist-in-zero" title="Link to this heading">#</a></h2>
+<p>As you heard in the lecture, <a class="reference external" href="https://github.com/HenriquesLab/ZeroCostDL4Mic/wiki">ZeroCostDL4Mic Collab
+notebooks</a> is a collection of jupyter notebooks for various image analysis tools using deep learning that run in Google Colab, taking advantage of its ‘free’ (albeit limited) GPU resources.</p>
+<p>Let’s try some instance segmentation notebooks!</p>
+<p>We suggest the
+<code class="docutils literal notranslate"><span class="pre">StarDist</span></code> notebook, but if you feel adventurous, choose something else
+you find most interesting in the context of your own research.</p>
+<img alt="_images/image15.png" src="_images/image15.png" />
+<p>Go through the notebook you chose. And again:</p>
+<p><strong>Ask questions, discuss, help each other</strong>!</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Reduce the number of <em>epochs</em> to some small number to save yourself long waiting times!</p>
+</div>
+<p>Later today, when you are done with the exercises, you might want to re-run your favorite notebook with the suggested number of epochs.
+Colab will work while you have fun on your free evening… 🙂</p>
+<div class="admonition-super-excited-about-deep-learning-now-and-want-to-know-where-to-find-the-latest-models admonition">
+<p class="admonition-title">Super excited about deep learning now and want to know where to find the latest models?</p>
+<p>The <a class="reference external" href="https://bioimage.io/">Bioimage Model Zoo</a> <span id="id6"><sup><a class="reference internal" href="bibliography.html#id26" title="Wei Ouyang, Fynn Beuttenmueller, Estibaliz Gómez-de-Mariscal, Constantin Pape, Tom Burke, Carlos Garcia-López-de-Haro, Craig Russell, Lucía Moya-Sans, Cristina de-la-Torre-Gutiérrez, Deborah Schmidt, Dominik Kutra, Maksim Novikov, Martin Weigert, Uwe Schmidt, Peter Bankhead, Guillaume Jacquemet, Daniel Sage, Ricardo Henriques, Arrate Muñoz-Barrutia, Emma Lundberg, Florian Jug, and Anna Kreshuk. BioImage model zoo: a Community-Driven resource for accessible deep learning in BioImage analysis. bioRxiv, pages 2022.06.07.495102, June 2022.">13</a></sup></span> contains a number of deep learning models, applications, and example data sets you can use on your own data or to train your own network.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Lab05_3D_Image_Analysis.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">3D Image Analysis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Lab07_Image_Time_Series_Analysis.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Image Time Series Analysis</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview"><strong>Overview</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-remind-yourself-about-what-weve-heard-in-the-lecture"><strong>Exercise 1: Remind yourself about what we’ve heard in the lecture</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-play-with-cellpose"><strong>Exercise 2: Play with Cellpose</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#human-in-the-loop-retraining">Human-in-the-loop retraining</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-image-restoration-functions">Using the image restoration functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-denoising-with-careamics"><strong>Exercise 3: Denoising with CAREamics</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-careamics">Installing CAREamics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-careamics-in-a-jupyter-notebook">Using CAREamics in a Jupyter Notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-classifying-images-in-the-browser-with-piximi"><strong>Bonus Exercise: Classifying images in the browser with Piximi</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-a-10-class-classification-model-using-mnist">Train a 10-class classification model using MNIST</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#train-a-classifier">Train a classifier</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-your-classifier">Evaluate your classifier</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-some-mistakes">Fix (some?) mistakes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#save-things-for-later">Save things for later</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-a-3-class-classification-model-on-u2os-cells">Train a 3-class classification model on U2OS cells</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-use-fijis-noise2void-plugin"><strong>Bonus Exercise: Use Fiji’s Noise2Void Plugin</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-image-segmentation-with-stardist-in-zero"><strong>Bonus Exercise: Image Segmentation with StarDist (in “Zero”)</strong></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By QI 2025
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
