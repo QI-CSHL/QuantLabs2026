@@ -195,7 +195,12 @@ Two of the steps are combined in a single setting!
 
 ### Bonus Exercise: Using seeded watershed to build Cells from Nuclei
 
-- After you've enabled `IdentifyPrimaryObjects`, you can also enable `IdentifySecondaryObjects`, which is designed to take an initial, smaller, internal object (nearly always a nucleus) and build a larger object around it (nearly always a cell). Enable <img src="images/processing_detection/Check.png" height="25px" />and run this module.
+- After you've enabled `IdentifyPrimaryObjects`, you can also enable `IdentifySecondaryObjects`, which is designed to take an initial, smaller, internal object (most often a nucleus) and build a larger object around it (most often a cell). Enable <img src="images/processing_detection/Check.png" height="25px" />and run this module.
+
+```{margin} What happens when there's more than 1 nucleus per cell?
+Check out this [Ask Erin/Dear Beth episode](https://www.youtube.com/watch?v=NIuECUW_OeI&list=PLCucasmZ3XNn-tvZDSUBoOtMLoFxopdiy&index=5) for some tricks on how to deal with this situation.
+```
+
 - What settings correspond to our {term}`segmentation` steps, as in IdentifyPrimary?
 - Are there any settings that are new? Click the help button (<img src="images/processing_detection/Info.png" height="25px" />) to learn about what these do and how they work.
 
