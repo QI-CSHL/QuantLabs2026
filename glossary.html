@@ -396,24 +396,49 @@
 <p>You can also check out the glossary for the <a class="reference external" href="https://www.bioimagingguide.org/Glossary.html">Bioimaging Guide</a>!</p>
 </aside>
 <dl class="simple glossary">
+<dt id="term-Anaconda">Anaconda<a class="headerlink" href="#term-Anaconda" title="Link to this term">#</a></dt><dd><p>Is a popular, open-source distribution of Python and R programming languages, providing a pre-configured environment with lots of tools and packages for data science, machine learning, and scientific computing (600+ packages, ~10GB).</p>
+</dd>
+<dt id="term-Conda">Conda<a class="headerlink" href="#term-Conda" title="Link to this term">#</a></dt><dd><p>Is an open-source package and environment manager. It installs software packages and manages isolated environments on your machine, preventing dependency conflicts between projects.</p>
+</dd>
+<dt id="term-Convolution">Convolution<a class="headerlink" href="#term-Convolution" title="Link to this term">#</a></dt><dd><p>A mathematical operation on two functions that produces a third function, representing the amount of overlap as one function is shifted over another. The term refers to both the resulting function and the process of computiong it.
+In microscopy, it usually refers to the process by which the shape of an object observed through a microscope is distorted by the PSF to generate the observed image.</p>
+</dd>
+<dt id="term-Environment">Environment<a class="headerlink" href="#term-Environment" title="Link to this term">#</a></dt><dd><p>(Particularly, a <em>software environment</em>) Is the context in which your code runs, including the configuration settings, system resources, variables, and tools that shape how the program behaves. Because different softwares may have different (and many times mutually incompatible) context requirements, having distinct, independent environments allows you to run these different programs on the same computer.</p>
+</dd>
+<dt id="term-Mask">Mask<a class="headerlink" href="#term-Mask" title="Link to this term">#</a></dt><dd><p>A binary image in which background pixels are black (pixel value is 0 in an 8-bit scale) and the foreground pixels are white (pixel value is 255 in an 8-bit scale).</p>
+</dd>
+<dt id="term-Mamba">Mamba<a class="headerlink" href="#term-Mamba" title="Link to this term">#</a></dt><dd><p>Is a fast, robust, and open-source cross-platform package manager designed to solve dependency issues and install Python packages fast. It serves as a drop-in replacement for <a class="reference internal" href="#term-Conda"><span class="xref std std-term">conda</span></a>, meaning that most <code class="docutils literal notranslate"><span class="pre">conda</span></code> commands work, by just replacing <code class="docutils literal notranslate"><span class="pre">conda</span></code> with <code class="docutils literal notranslate"><span class="pre">mamba</span></code> (i.e. using <code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">install</span> <span class="pre">numpy</span></code> instead of <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">numpy</span></code>).</p>
+</dd>
+<dt id="term-Miniconda">Miniconda<a class="headerlink" href="#term-Miniconda" title="Link to this term">#</a></dt><dd><p>Is a lightweight version of <a class="reference internal" href="#term-Anaconda"><span class="xref std std-term">Anaconda</span></a> that includes only <a class="reference internal" href="#term-Conda"><span class="xref std std-term">conda</span></a>, Python, and their dependencies (130+ packages, ~1GB).</p>
+</dd>
+<dt id="term-Pixi">Pixi<a class="headerlink" href="#term-Pixi" title="Link to this term">#</a></dt><dd><p>Is a fast, cross-platform and reproducible package management tool built on top of the <a class="reference internal" href="#term-Conda"><span class="xref std std-term">conda</span></a> ecosystem. It uses a <code class="docutils literal notranslate"><span class="pre">pixi.lock</span></code> file to lock dependency versions, ensuring a reproducible environment across machines.</p>
+</dd>
+<dt id="term-Rotation">Rotation<a class="headerlink" href="#term-Rotation" title="Link to this term">#</a></dt><dd><p>Shifting of the image pixels’ positions <em>around</em> a specific vector in the X,Y,Z space.</p>
+</dd>
 <dt id="term-Segmentation">Segmentation<a class="headerlink" href="#term-Segmentation" title="Link to this term">#</a></dt><dd><p>Method of dividing an image into multiple parts or regions. There are three different types of segmentation.</p>
 <ul class="simple">
-<li><p>Semantic segmentation, where all parts of an image are part of a class, common in cell biology will be detecting cells and background on an image.</p></li>
-<li><p>Instance segmentation, the segmentation is object based, not just detecting were the cells are but diving each cell as a separate object.</p></li>
-<li><p>Panoptic Segmentation, it can be defined as a combination of the prior two, because it identifies the object but also classifies them. An example in biology might be detecting all the cells on an image and classifying them as dividing vs not.</p></li>
+<li><p><strong>Semantic segmentation</strong>, where all parts of an image are part of a class, common in cell biology will be detecting cells and background on an image.</p></li>
+<li><p><strong>Instance segmentation</strong>, the segmentation is object based, not just detecting were the cells are but diving each cell as a separate object.</p></li>
+<li><p><strong>Panoptic Segmentation</strong>, it can be defined as a combination of the prior two, because it identifies the object but also classifies them. An example in biology might be detecting all the cells on an image and classifying them as dividing vs not.</p></li>
 </ul>
+</dd>
+<dt id="term-Threshold">Threshold<a class="headerlink" href="#term-Threshold" title="Link to this term">#</a></dt><dd><p>A number that divides a distribution of values of a into distinct categories. In image analysis it is usually referred to a <em>intensity threshold</em>, which divides all pixel intensity values into <em>foreground</em>  and <em>background</em>.
+In a typical fluorescence microscopy image, where background is dark and the structures of interest ar bright, the foreground pixels will be those with intensity values <strong>above</strong> the threshold, while the background pixels will be those with intensity values <strong>below</strong> it.
+You can choose the value of the threshold manually but there are many automatic ways of calculating it based on the pixel intensity distribution of the image (e.g. the intensity histogram). Unlike manual thresholding, given the same image, all of these authomatic methods will always produce the same threshold value, which makes them reproducible. Some examples of automatic thresholdings include Otsu, Median, MinimumCrossEntropy, but there are MANY others.
+The advantage of using an automatic algorithm to define the threshold is that it can somehow adapt to changes between images so that the foreground/background sepparation is similar despite subtle variations in the intensity levels.</p>
+</dd>
+<dt id="term-Translation">Translation<a class="headerlink" href="#term-Translation" title="Link to this term">#</a></dt><dd><p>Shifting of the image pixels’ positions <em>along</em> a specific vector in the X,Y,Z space.</p>
+</dd>
+<dt id="term-UV">UV<a class="headerlink" href="#term-UV" title="Link to this term">#</a></dt><dd><p>Is a Python package manager, similar to Anaconda, although generally considered to be much faster. It allows to create and manage environment, and install tools and dependencies.</p>
+</dd>
+<dt id="term-Watershed">Watershed<a class="headerlink" href="#term-Watershed" title="Link to this term">#</a></dt><dd><p>Image processing transformation applied to a grayscale image. The name refers metaphorically to a geological watershed, which separates adjacent drainage basins. The watershed transformation treats the image it operates upon like a topographic map, with the brightness of each point representing its elevation. It is primarily used to separate different objects in an image by finding the lines that run along the ridges or valeys.
+This method can be applied directly on the grascale image intensities or on a distance transform based on the thresholded mask and local intensity maxima/minima.</p>
 </dd>
 </dl>
 <!-- 
 Terms that aren't in the book yet but we know we want to add (anything you type here won't show up in the built book)
 
-Convolution
-Threshold
-Watershed
-Mask - a binary image (background is black, foreground is white)
-Translation/Rotation
-Environment
-Conda/miniconda/mamba, package managers
+Should we always use voxel instead of pixel? for the definitions whenever they can be applied to both?
 
 
 --->
