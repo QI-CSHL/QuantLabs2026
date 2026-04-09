@@ -16,7 +16,7 @@
 - Bonus: Use Noise2Void in Fiji
 - Bonus: Segmentation with StarDist in “Zero”
 
-**Lab Data** in [this folder](https://www.dropbox.com/scl/fo/2ghw75c1wqd9vjtmmmrul/AIhAxurpHtetwjk6GKkvvGg?rlkey=gyexsceyy1f226kitwf54hoq7&e=1&st=7tby3xuz&dl=0) (DL4MIA)
+**Lab Data** in [this folder](https://tinyurl.com/QIAnalysisLabData) (DL4MIA)
 
 Remember to **unzip** the data folder after downloading.
 
@@ -99,7 +99,7 @@ You should now see something like
 this:<img src="images/dl/cellpose_gui.png" style="width:6in" />
 
 Open the file `001_img.tif` by dragging it onto the open window.
-You can find this file in the `DL4MIA/easy` folder in the [Lab Data share](https://www.dropbox.com/scl/fo/2ghw75c1wqd9vjtmmmrul/AIhAxurpHtetwjk6GKkvvGg?rlkey=gyexsceyy1f226kitwf54hoq7&e=1&st=7tby3xuz&dl=0).
+You can find this file in the `DL4MIA/easy` folder in the [Lab Data share](https://tinyurl.com/QIAnalysisLabData).
 
 Like we did in the 3D lab yesterday, we need to tell cellpose (roughly) how large our objects are (you can do
 so via the `cell diameter`) field. 
@@ -122,7 +122,7 @@ fail? Try some of the different dataset-specific models. Do any of these
 work better? Worse? Why might that be?
 
 Let’s now try some more challenging data. From
-the `DL4MIA` folder in the [lab data share](https://www.dropbox.com/scl/fo/2ghw75c1wqd9vjtmmmrul/AIhAxurpHtetwjk6GKkvvGg?rlkey=gyexsceyy1f226kitwf54hoq7&e=1&st=7tby3xuz&dl=0), download the entire folder
+the `DL4MIA` folder in the [lab data share](https://tinyurl.com/QIAnalysisLabData), download the entire folder
 named `hard`, and place it somewhere convenient (like the Desktop).
 
 From within this folder, open the `test` folder and drag the file
@@ -479,7 +479,7 @@ Check out the [documentation](https://csbdeep.bioimagecomputing.com/tools/n2v/),
 3.  Restart Fiji.
 
 4.  Download the DL4MIA/noisy/drosophila_noisy_2d.tif 2d+t image from the
-[Lab Data Share](https://www.dropbox.com/scl/fo/2ghw75c1wqd9vjtmmmrul/AIhAxurpHtetwjk6GKkvvGg?rlkey=gyexsceyy1f226kitwf54hoq7&e=1&st=7tby3xuz&dl=0) and open it in Fiji.
+[Lab Data Share](https://tinyurl.com/QIAnalysisLabData) and open it in Fiji.
 
 5.  Start the “N2V train + predict” plugin.
 
