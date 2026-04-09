@@ -15,7 +15,7 @@
 - Subtract background
 - Detect point sources via LoG
 
-**Lab Data** in [this folder](https://www.dropbox.com/scl/fo/2ghw75c1wqd9vjtmmmrul/AIhAxurpHtetwjk6GKkvvGg?rlkey=gyexsceyy1f226kitwf54hoq7&e=1&st=7tby3xuz&dl=0) (Estimating_SNR_&_Resolution)
+**Lab Data** in [this folder](https://www.dropbox.com/scl/fo/2ghw75c1wqd9vjtmmmrul/AIhAxurpHtetwjk6GKkvvGg?rlkey=gyexsceyy1f226kitwf54hoq7&st=c08s25w2&dl=0) (Estimating_SNR_&_Resolution)
 
 Remember to **unzip** the data folder after downloading.
 
