@@ -77,7 +77,7 @@ Check out these [User Guides](https://imagej.net/learn/user-guides), or check th
     was found).
 
   - See how far into the stack you can get accurate detection by trying
-    different noise tolerances. Hint: You can also change the output to
+    different prominences. Hint: You can also change the output to
     “Count” to make it easier to see on what frame things go wrong. Make
     a note of your personal best (highest frame number with only 1
     detection).
