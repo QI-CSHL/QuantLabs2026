@@ -68,8 +68,8 @@ Check out these [User Guides](https://imagej.net/learn/user-guides), or check th
     not the Bioformats shortcut window) to open the macro
     (alternatively, use File \> Open ...).
 
-  - Click “Run” and when the box pops up, type in the noise tolerance
-    ("Prominence") you selected in step above, then click OK.
+  - Click “Run” and when the box pops up, type in the
+    Prominence you selected in step above, then click OK.
 
   - Scroll through the resulting stack - it will have a single white
     pixel at each location where a point was detected. What is the last
