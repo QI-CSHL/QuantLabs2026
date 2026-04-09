@@ -17,11 +17,6 @@
 
 **Lab Data** in [this folder](https://tinyurl.com/QIAnalysisLabData) (Estimating_SNR_&_Resolution)
 
-{% comment %}
-URL links using some puntuation signs and amperstand (&) get messed up by markdown, that's why we use tiny URL
-The original link to the dropbox is: https://www.dropbox.com/scl/fo/2ghw75c1wqd9vjtmmmrul/AIhAxurpHtetwjk6GKkvvGg?rlkey=gyexsceyy1f226kitwf54hoq7&st=c08s25w2&dl=0
-{% endcomment %}
-
 Remember to **unzip** the data folder after downloading.
 
 ---
