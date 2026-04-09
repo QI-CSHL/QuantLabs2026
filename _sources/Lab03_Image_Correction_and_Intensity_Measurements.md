@@ -12,7 +12,7 @@
 - Apply corrections to image data
 - Measure intensities with and without corrections
 
-**Lab Data** in [this folder](https://www.dropbox.com/scl/fo/2ghw75c1wqd9vjtmmmrul/AIhAxurpHtetwjk6GKkvvGg?rlkey=gyexsceyy1f226kitwf54hoq7&e=1&st=7tby3xuz&dl=0) (Image_Corrections_&_Intensity_Measurements)
+**Lab Data** in [this folder](https://tinyurl.com/QIAnalysisLabData) (Image_Corrections_&_Intensity_Measurements)
 
 Remember to **unzip** the data folder after downloading.
 
