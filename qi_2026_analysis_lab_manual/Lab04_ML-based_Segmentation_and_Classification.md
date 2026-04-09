@@ -14,7 +14,7 @@
 - Learn to use ilastik {cite}`Berg2019-no`
 - Experiment with how features and data affect performance
 
-**Lab Data** in [this folder](https://www.dropbox.com/home/QI%20Image%20Analysis/QI%20Analysis%20Lab%20Data) (Machine_Learning)
+**Lab Data** in [this folder](https://www.dropbox.com/scl/fo/2ghw75c1wqd9vjtmmmrul/AIhAxurpHtetwjk6GKkvvGg?rlkey=gyexsceyy1f226kitwf54hoq7&e=1&st=7tby3xuz&dl=0) (Machine_Learning)
 
 Remember to **unzip** the data folder after downloading.
 
@@ -104,7 +104,7 @@ If you want to submit your classification model for the competition, save your p
 - Extract features from cells
 - Feature-based cell classification
 
-**Lab Data** in [this folder](https://www.dropbox.com/home/QI%20Image%20Analysis/QI%20Analysis%20Lab%20Data) (under Machine_Learning/Cell_Classifier)
+**Lab Data** in [this folder](https://www.dropbox.com/scl/fo/2ghw75c1wqd9vjtmmmrul/AIhAxurpHtetwjk6GKkvvGg?rlkey=gyexsceyy1f226kitwf54hoq7&e=1&st=7tby3xuz&dl=0) (under Machine_Learning/Cell_Classifier)
 
 ### Segment Nuclei for Feature Extraction
 
