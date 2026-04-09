@@ -15,7 +15,7 @@
 - Apply and scrutinize photobleach correction
 - Double-normalized FRAP analysis
 
-**Lab Data** in [this folder](https://www.dropbox.com/home/QI%20Image%20Analysis/QI%20Analysis%20Lab%20Data) (Time_Series)
+**Lab Data** in [this folder](https://www.dropbox.com/scl/fo/2ghw75c1wqd9vjtmmmrul/AIhAxurpHtetwjk6GKkvvGg?rlkey=gyexsceyy1f226kitwf54hoq7&e=1&st=7tby3xuz&dl=0) (Time_Series)
 
 Remember to **unzip** the data folder after downloading.
 
@@ -159,7 +159,7 @@ features.
 
 ### Get the data we need
 
-Please start to download the `Time_Series/Tracking` folder from the [Data Lab Share](https://www.dropbox.com/home/QI%20Image%20Analysis/QI%20Analysis%20Lab%20Data). It might take some time so better start early :\)
+Please start to download the `Time_Series/Tracking` folder from the [Data Lab Share](https://www.dropbox.com/scl/fo/2ghw75c1wqd9vjtmmmrul/AIhAxurpHtetwjk6GKkvvGg?rlkey=gyexsceyy1f226kitwf54hoq7&e=1&st=7tby3xuz&dl=0). It might take some time so better start early :\)
 
 ### (Semi-)automated Tracking in Mastodon
 
@@ -304,7 +304,7 @@ Check out the [documentation and tutorials list](https://www.ilastik.org/documen
 
 You can download plenty of [example datasets](https://ilastik.github.io/download.html) from the ilastik website, although it can be a bit slow. 
 
-If so, you can find the same examples in the [Lab Data Share](https://www.dropbox.com/home/QI%20Image%20Analysis/QI%20Analysis%20Lab%20Data) under `Time_Series/Tracking/ilastik_tracking_projects` (note that each one is a folder containing several files):
+If so, you can find the same examples in the [Lab Data Share](https://www.dropbox.com/scl/fo/2ghw75c1wqd9vjtmmmrul/AIhAxurpHtetwjk6GKkvvGg?rlkey=gyexsceyy1f226kitwf54hoq7&e=1&st=7tby3xuz&dl=0) under `Time_Series/Tracking/ilastik_tracking_projects` (note that each one is a folder containing several files):
 
 1.  2D+t tracking example for ilastik
 
@@ -378,7 +378,7 @@ Check out the [documentation](https://btrack.readthedocs.io/en/latest/user_guide
 - Next, we need a dataset to track. Actually, we need not only a dataset, we need
   data that is segmented. Since we learned about segmentation before, here we will
   simply use one of the btrack example datasets. 
-  You can find a file called `segmented_nuclei.tif` it in the folder `btrack_masks` in the [Lab Data share](https://www.dropbox.com/home/QI%20Image%20Analysis/QI%20Analysis%20Lab%20Data).
+  You can find a file called `segmented_nuclei.tif` it in the folder `btrack_masks` in the [Lab Data share](https://www.dropbox.com/scl/fo/2ghw75c1wqd9vjtmmmrul/AIhAxurpHtetwjk6GKkvvGg?rlkey=gyexsceyy1f226kitwf54hoq7&e=1&st=7tby3xuz&dl=0).
 - Start btrack by starting napari (execute `napari` from within the *btrack* conda 
   environment we installed above).
 - Start btrack via `Plugins > Track (btrack)`.
