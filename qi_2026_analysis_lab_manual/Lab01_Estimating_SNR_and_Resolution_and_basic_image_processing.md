@@ -1,8 +1,8 @@
 # Estimating SNR & Resolution
 
-*Lab authors: Hunter Elliott & Marcelo Cicconet*
+*Lab authors: Hunter Elliott, Marcelo Cicconet, Damian Dalle Nogare, and Beth Cimini*
 
-<small>This file last updated 2025-03-28.</small>
+<small>This file last updated 2026-04-09.</small>
 
 ---
 
@@ -15,7 +15,7 @@
 - Subtract background
 - Detect point sources via LoG
 
-**Lab Data** in [this folder](https://tinyurl.com/QIAnalysisLabData) (Estimating_SNR_&_Resolution)
+**Lab Data** in [this folder](https://drive.google.com/drive/folders/1CD-OPeXaFnX6YADCInGG9vlGUjlIPczX) (Estimating_SNR_&_Resolution)
 
 Remember to **unzip** the data folder after downloading.
 
@@ -263,31 +263,15 @@ using what you've learned about derivative filters.*
 
 ### Edge detection in Fiji
 
-```{note} 
-You will need to have the FeatureJ plugin installed for these exercises. If it's not, check the first analysis lab handout for instructions on how to do it. |
-```
-
 ```{margin} Want to learn more about working with Fiji?
 Check out these [User Guides](https://imagej.net/learn/user-guides), or check them out on [the image.sc forum!](https://forum.image.sc/tag/fiji)
 ```
 
-- Open the `Image_Processing/Neurons/4_9_13_AVG_Aligned_Stack`.tif image
+- Open the provided [DIC image](https://drive.google.com/drive/folders/1z_gQ1bIAJgYEe11QD4zY7q7i1Zr3v5ZW) (`cho_cells_BBBC030.tif`)
 
-  - Why will thresholding not work on this image?
-
-- Experiment with first partial derivatives:
-
-  - Go to Plugins-\>FeatureJ-\>FeatureJ derivatives
-
-  - Which order derivative will detect edges? Select this order
-    derivative in the X direction and look at the result - why does this
-    make sense?
-
-  - Do the same in the Y direction, and compare which features in the
-    image are highlighted.
-
-  - Adjust the “smoothing scale” parameter and see how the result
-    changes. What is this setting doing to the filter kernel?
+```{margin} Where did this image come from?
+As the file name indicates, it is from the Broad Bioimage Benchmark Collection {cite}`Ljosa2012-bf` - specifically, BBBC030, contributed from [this paper](https://www.nature.com/articles/srep30420) {cite}`Koos2016-xo`. It is provided under a [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/).
+```
 
 - Experiment with edge filtering
 
@@ -332,8 +316,8 @@ Check out the [manual](https://cellprofiler.org/manuals) and the [tutorials](htt
 ```
 
 #### LoG filtering
-- Open CellProfiler and load the same image (`Image_Processing/Neurons/4_9_13_AVG_Aligned_Stack`) in the Images panel (where it says **Drop files and folders here**)
-- Load the `edge_detection_neurons.cppipe` pipeline file onto the left side pipeline panel (where it says **Drop a pipeline file here**)
+- Open CellProfiler and load the same image (`cho_cells_BBBC030.tif`) in the Images panel (where it says **Drop files and folders here**)
+- Load the `edge_detection_cells.cppipe` pipeline file onto the left side pipeline panel (where it says **Drop a pipeline file here**)
 - Enter test mode by hitting the `Start Test Mode` button  <img src="images/processing_detection/StartTestMode.png" height="30px" />
 - Execute the `EnhanceEdges` module by hitting the `Step` button  <img src="images/processing_detection/Step.png" height="30px" />
 - How does the LoG filter look? What happens when you change the Gaussian diameter size? (hit `Step` again after changing the diamater size to see the new result).
@@ -342,10 +326,11 @@ Check out the [manual](https://cellprofiler.org/manuals) and the [tutorials](htt
 - Change to performing Canny edge finding by changing the selected method in `Select an edge finding method`
 - Execute the module by pressing `Step` - what happens? 
 - Play with manually setting your own thresholds by setting the automatic thresholding settings to `No` - are you able to find good values?
+<!--
 ```{note}
   You may find your values are approximately a factor of ~250 off from the values you were using in Fiji - can you hypothesize what might be happening here?
 ```
-
+-->
 ---
 
 ## **Bonus**
