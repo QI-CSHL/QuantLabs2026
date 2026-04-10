@@ -391,6 +391,15 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#snr"><strong>SNR</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution"><strong>Resolution</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering"><strong>Filtering</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-filtering-edge-detection"><strong>Edge Filtering &amp; Edge Detection</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-detection-in-fiji">Edge detection in Fiji</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-detection-in-cellprofiler">Edge detection in CellProfiler</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#log-filtering">LoG filtering</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#canny-edge-detection">Canny edge detection</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus"><strong>Bonus</strong></a></li>
 </ul>
             </nav>
@@ -637,6 +646,105 @@ well.</p></li>
 </ul>
 </section>
 <hr class="docutils" />
+<section id="edge-filtering-edge-detection">
+<h2><strong>Edge Filtering &amp; Edge Detection</strong><a class="headerlink" href="#edge-filtering-edge-detection" title="Link to this heading">#</a></h2>
+<p><em>The goal here is to detect at least some of the edges between the cells
+using what you’ve learned about derivative filters.</em></p>
+<section id="edge-detection-in-fiji">
+<h3>Edge detection in Fiji<a class="headerlink" href="#edge-detection-in-fiji" title="Link to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You will need to have the FeatureJ plugin installed for these exercises. If it’s not, check the first analysis lab handout for instructions on how to do it. |</p>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title">Want to learn more about working with Fiji?</p>
+<p>Check out these <a class="reference external" href="https://imagej.net/learn/user-guides">User Guides</a>, or check them out on <a class="reference external" href="https://forum.image.sc/tag/fiji">the image.sc forum!</a></p>
+</aside>
+<ul class="simple">
+<li><p>Open the <code class="docutils literal notranslate"><span class="pre">Image_Processing/Neurons/4_9_13_AVG_Aligned_Stack</span></code>.tif image</p>
+<ul>
+<li><p>Why will thresholding not work on this image?</p></li>
+</ul>
+</li>
+<li><p>Experiment with first partial derivatives:</p>
+<ul>
+<li><p>Go to Plugins-&gt;FeatureJ-&gt;FeatureJ derivatives</p></li>
+<li><p>Which order derivative will detect edges? Select this order
+derivative in the X direction and look at the result - why does this
+make sense?</p></li>
+<li><p>Do the same in the Y direction, and compare which features in the
+image are highlighted.</p></li>
+<li><p>Adjust the “smoothing scale” parameter and see how the result
+changes. What is this setting doing to the filter kernel?</p></li>
+</ul>
+</li>
+<li><p>Experiment with edge filtering</p>
+<ul>
+<li><p>Go to Plugins-&gt;FeatureJ-&gt;FeatureJ Edges</p></li>
+<li><p>Make sure only the “compute gradient magnitude image” box is
+checked, select a “smoothing scale” and then click OK. Look at the
+resulting image and compare to the original image and the partial
+derivatives you calculated before.</p></li>
+<li><p>Try different smoothing scales - which features produce the
+strongest response at larger scales? At smaller scales?</p></li>
+</ul>
+</li>
+<li><p>Experiment with edge detection</p>
+<ul>
+<li><p>Go to Plugins-&gt;FeatureJ-&gt;FeatureJ Edges</p></li>
+<li><p>Check the “suppress non-maximum gradients” box and click OK. Look at
+the resulting image, and compare it to the previous edge filter
+image - how is it different?</p></li>
+<li><p>Experiment with thresholding the non-maximum suppressed edge
+filtered image (Ctrl+Shift+T). Examine the values in the non-maximum
+suppressed edge image, and then decide on a good high and low
+threshold for edge detection. Then re-run the FeatureJ edges plugin,
+typing these thresholds into the lower and higher threshold boxes to
+perform Canny edge detection.</p></li>
+</ul>
+</li>
+</ul>
+<aside class="margin sidebar">
+<p class="sidebar-title">Having a hard time figuring out what these settings mean?</p>
+<p>Ask the TAs or check the <a class="reference external" href="https://imagescience.org/meijering/software/featurej/">manual</a>!</p>
+</aside>
+<ul class="simple">
+<li><p>Look at your result. Overlay it on the original image. Where did
+your edge detector succeed? Where did it fail?</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="edge-detection-in-cellprofiler">
+<h3>Edge detection in CellProfiler<a class="headerlink" href="#edge-detection-in-cellprofiler" title="Link to this heading">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title">Want to learn more about working with CellProfiler?</p>
+<p>Check out the <a class="reference external" href="https://cellprofiler.org/manuals">manual</a> and the <a class="reference external" href="https://tutorials.cellprofiler.org/">tutorials</a>, or check them out on <a class="reference external" href="https://forum.image.sc/tag/cellprofiler">the image.sc forum!</a></p>
+</aside>
+<section id="log-filtering">
+<h4>LoG filtering<a class="headerlink" href="#log-filtering" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Open CellProfiler and load the same image (<code class="docutils literal notranslate"><span class="pre">Image_Processing/Neurons/4_9_13_AVG_Aligned_Stack</span></code>) in the Images panel (where it says <strong>Drop files and folders here</strong>)</p></li>
+<li><p>Load the <code class="docutils literal notranslate"><span class="pre">edge_detection_neurons.cppipe</span></code> pipeline file onto the left side pipeline panel (where it says <strong>Drop a pipeline file here</strong>)</p></li>
+<li><p>Enter test mode by hitting the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">Test</span> <span class="pre">Mode</span></code> button  <a class="reference internal" href="_images/StartTestMode.png"><img alt="_images/StartTestMode.png" src="_images/StartTestMode.png" style="height: 30px;" /></a></p></li>
+<li><p>Execute the <code class="docutils literal notranslate"><span class="pre">EnhanceEdges</span></code> module by hitting the <code class="docutils literal notranslate"><span class="pre">Step</span></code> button  <a class="reference internal" href="_images/Step.png"><img alt="_images/Step.png" src="_images/Step.png" style="height: 30px;" /></a></p></li>
+<li><p>How does the LoG filter look? What happens when you change the Gaussian diameter size? (hit <code class="docutils literal notranslate"><span class="pre">Step</span></code> again after changing the diamater size to see the new result).</p></li>
+</ul>
+</section>
+<section id="canny-edge-detection">
+<h4>Canny edge detection<a class="headerlink" href="#canny-edge-detection" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Change to performing Canny edge finding by changing the selected method in <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">an</span> <span class="pre">edge</span> <span class="pre">finding</span> <span class="pre">method</span></code></p></li>
+<li><p>Execute the module by pressing <code class="docutils literal notranslate"><span class="pre">Step</span></code> - what happens?</p></li>
+<li><p>Play with manually setting your own thresholds by setting the automatic thresholding settings to <code class="docutils literal notranslate"><span class="pre">No</span></code> - are you able to find good values?</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may find your values are approximately a factor of ~250 off from the values you were using in Fiji - can you hypothesize what might be happening here?</p>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
 <section id="bonus">
 <h2><strong>Bonus</strong><a class="headerlink" href="#bonus" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -645,11 +753,8 @@ your own bead data to estimate the SNR and resolution. What was your
 best resolution? Your worst SNR?</p></li>
 <li><p>Come up with your own way to visualize detection accuracy vs. SNR in
 one of the example variable SNR stacks from above. Save your plot for
-discussion tomorrow morning.</p>
-<ul>
+discussion tomorrow morning.</p></li>
 <li><p>Compare this plot with different filtering approaches.</p></li>
-</ul>
-</li>
 </ul>
 </section>
 </section>
@@ -724,6 +829,15 @@ discussion tomorrow morning.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#snr"><strong>SNR</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution"><strong>Resolution</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering"><strong>Filtering</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-filtering-edge-detection"><strong>Edge Filtering &amp; Edge Detection</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-detection-in-fiji">Edge detection in Fiji</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-detection-in-cellprofiler">Edge detection in CellProfiler</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#log-filtering">LoG filtering</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#canny-edge-detection">Canny edge detection</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus"><strong>Bonus</strong></a></li>
 </ul>
   </nav></div>

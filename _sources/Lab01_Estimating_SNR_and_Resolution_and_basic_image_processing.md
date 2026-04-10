@@ -255,6 +255,99 @@ This uses the FeatureJ plugin. If this plugin is not installed, go to Help \> Up
 
 ---
 
+
+## **Edge Filtering & Edge Detection**
+
+*The goal here is to detect at least some of the edges between the cells
+using what you've learned about derivative filters.*
+
+### Edge detection in Fiji
+
+```{note} 
+You will need to have the FeatureJ plugin installed for these exercises. If it's not, check the first analysis lab handout for instructions on how to do it. |
+```
+
+```{margin} Want to learn more about working with Fiji?
+Check out these [User Guides](https://imagej.net/learn/user-guides), or check them out on [the image.sc forum!](https://forum.image.sc/tag/fiji)
+```
+
+- Open the `Image_Processing/Neurons/4_9_13_AVG_Aligned_Stack`.tif image
+
+  - Why will thresholding not work on this image?
+
+- Experiment with first partial derivatives:
+
+  - Go to Plugins-\>FeatureJ-\>FeatureJ derivatives
+
+  - Which order derivative will detect edges? Select this order
+    derivative in the X direction and look at the result - why does this
+    make sense?
+
+  - Do the same in the Y direction, and compare which features in the
+    image are highlighted.
+
+  - Adjust the “smoothing scale” parameter and see how the result
+    changes. What is this setting doing to the filter kernel?
+
+- Experiment with edge filtering
+
+  - Go to Plugins-\>FeatureJ-\>FeatureJ Edges
+
+  - Make sure only the “compute gradient magnitude image” box is
+    checked, select a “smoothing scale” and then click OK. Look at the
+    resulting image and compare to the original image and the partial
+    derivatives you calculated before.
+
+  - Try different smoothing scales - which features produce the
+    strongest response at larger scales? At smaller scales?
+
+- Experiment with edge detection
+
+  - Go to Plugins-\>FeatureJ-\>FeatureJ Edges
+
+  - Check the “suppress non-maximum gradients” box and click OK. Look at
+    the resulting image, and compare it to the previous edge filter
+    image - how is it different?
+
+  - Experiment with thresholding the non-maximum suppressed edge
+    filtered image (Ctrl+Shift+T). Examine the values in the non-maximum
+    suppressed edge image, and then decide on a good high and low
+    threshold for edge detection. Then re-run the FeatureJ edges plugin,
+    typing these thresholds into the lower and higher threshold boxes to
+    perform Canny edge detection.
+
+```{margin} Having a hard time figuring out what these settings mean?
+Ask the TAs or check the [manual](https://imagescience.org/meijering/software/featurej/)!
+```
+
+  - Look at your result. Overlay it on the original image. Where did
+    your edge detector succeed? Where did it fail?
+
+---
+
+### Edge detection in CellProfiler
+
+```{margin} Want to learn more about working with CellProfiler?
+Check out the [manual](https://cellprofiler.org/manuals) and the [tutorials](https://tutorials.cellprofiler.org/), or check them out on [the image.sc forum!](https://forum.image.sc/tag/cellprofiler)
+```
+
+#### LoG filtering
+- Open CellProfiler and load the same image (`Image_Processing/Neurons/4_9_13_AVG_Aligned_Stack`) in the Images panel (where it says **Drop files and folders here**)
+- Load the `edge_detection_neurons.cppipe` pipeline file onto the left side pipeline panel (where it says **Drop a pipeline file here**)
+- Enter test mode by hitting the `Start Test Mode` button  <img src="images/processing_detection/StartTestMode.png" height="30px" />
+- Execute the `EnhanceEdges` module by hitting the `Step` button  <img src="images/processing_detection/Step.png" height="30px" />
+- How does the LoG filter look? What happens when you change the Gaussian diameter size? (hit `Step` again after changing the diamater size to see the new result).
+
+#### Canny edge detection
+- Change to performing Canny edge finding by changing the selected method in `Select an edge finding method`
+- Execute the module by pressing `Step` - what happens? 
+- Play with manually setting your own thresholds by setting the automatic thresholding settings to `No` - are you able to find good values?
+```{note}
+  You may find your values are approximately a factor of ~250 off from the values you were using in Fiji - can you hypothesize what might be happening here?
+```
+
+---
+
 ## **Bonus**
 
 - If you have the data, try the techniques you learned today on some of
@@ -265,4 +358,4 @@ This uses the FeatureJ plugin. If this plugin is not installed, go to Help \> Up
   one of the example variable SNR stacks from above. Save your plot for
   discussion tomorrow morning.
 
-  - Compare this plot with different filtering approaches.
+- Compare this plot with different filtering approaches.
