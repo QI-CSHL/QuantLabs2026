@@ -6,7 +6,7 @@ Please note - while we know many excellent commercial software options exist, we
 
 
 ```{margin} Does posting on a public forum sound scary?
-The [image.sc forum](https://forum.image.sc) LOVES beginners; in fact, it was designed to be helpful for beginners! If you aren't ready to post, there are tens of thousands of posts available for you to read; real names aren't required, nor are real descriptions of your biology (if you just say "I want to see the nuclei are positive for marker X", no one will mind if you don't tell us what marker X is!). As long as you're excited to learn, we're excited to help you!
+The [image.sc forum](https://forum.image.sc) LOVES beginners; in fact, it was designed to be helpful for beginners! If you aren't ready to post, there are tens of thousands of posts available for you to read; real names aren't required, nor are real descriptions of your biology (if you just say "I want to see the nuclei are positive for marker X", no one will mind if you don't tell us what marker X is!). As long as you're excited to learn, we're excited to help you! The Ask Erin/Dear Beth podcast even has an [episode](https://youtu.be/jLBaZHO-iXw) designed to help you make your forum post be sure to be answered.
 ```
 
 If you find the possible number of tools to start from overwhelming, you aren't alone! We have [curated some recommendations in the Bioimaging Guide](https://www.bioimagingguide.org/03_Image_analysis/Software.html) that we think you may find helpful. Certainly also reading the manual for a given tool is a great way to learn more!
