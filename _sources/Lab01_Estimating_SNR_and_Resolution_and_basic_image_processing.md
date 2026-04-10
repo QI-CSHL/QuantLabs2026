@@ -1,6 +1,6 @@
 # Estimating SNR & Resolution
 
-*Lab authors: Hunter Elliott & Marcelo Cicconet*
+*Lab authors: Hunter Elliott, Marcelo Cicconet, Damian Dalle Nogare, and Beth Cimini*
 
 <small>This file last updated 2026-04-09.</small>
 
@@ -272,20 +272,6 @@ Check out these [User Guides](https://imagej.net/learn/user-guides), or check th
 ```{margin} Where did this image come from?
 As the file name indicates, it is from the Broad Bioimage Benchmark Collection {cite}`Ljosa2012-bf` - specifically, BBBC030, contributed from [this paper](https://www.nature.com/articles/srep30420) {cite}`Koos2016-xo`. It is provided under a [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/).
 ```
-
-- Experiment with first partial derivatives:
-
-  - Go to Plugins-\>FeatureJ-\>FeatureJ derivatives
-
-  - Which order derivative will detect edges? Select this order
-    derivative in the X direction and look at the result - why does this
-    make sense?
-
-  - Do the same in the Y direction, and compare which features in the
-    image are highlighted.
-
-  - Adjust the “smoothing scale” parameter and see how the result
-    changes. What is this setting doing to the filter kernel?
 
 - Experiment with edge filtering
 
