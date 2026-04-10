@@ -158,13 +158,17 @@ Check out the [documentation](https://imagej.net/plugins/labkit/), or check them
   trouble installing it. Try it with the same training data and see how it performs!
   (We will also be using this software in lab 6!)
 
+- Take the cho_cells_BBC030 image we used in the first lab. Try to train a classifier to segment just the round cells. Then, try to train a classifier that also segments the large flat cell. Can you get it to segment both in the same class? Why or why not? Try adding a third class for this cell and see if that helps.
+
+
+
 ---
 
 ## **Bonus Exercises - Challenging Segmentations**
 
 - Pick the hardest image you’ve seen in the course (maybe the neuron images from Lab 2?) and try to segment it
-  using the ilastik RF pixel classifier. Can you crack it? Can you
-  understand why or why not?
+  using ilastik or labkit pixel classifier. Can you crack it? Can you
+  understand why or why not? A good example to try is the Hela Cells (48-bit RGB) image you can find in Fiji under "File -> Open Samples -> Hela Cells (48 bit RGB)
 
 ---
 
