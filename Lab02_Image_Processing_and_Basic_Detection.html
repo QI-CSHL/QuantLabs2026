@@ -396,21 +396,11 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-your-performance-across-multiple-images">Evaluate your performance across multiple images</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercises-segmentation"><strong>Bonus Exercises - Segmentation</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-encapsulating-all-of-segmentation-into-one-module">Bonus Exercise: Encapsulating all of <span class="xref std std-term">segmentation</span> into one module</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-using-seeded-watershed-to-build-cells-from-nuclei">Bonus Exercise: Using seeded watershed to build Cells from Nuclei</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-how-we-d-do-it-in-the-real-world"><strong>Segmentation - How we’d do it in the “real world”</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encapsulating-all-of-segmentation-into-one-module">Encapsulating all of <span class="xref std std-term">segmentation</span> into one module</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-seeded-watershed-to-build-cells-from-nuclei">Using seeded watershed to build Cells from Nuclei</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#even-harder-segmentation">Even harder <span class="xref std std-term">segmentation</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-throw-some-measurements-in-the-mix">Bonus: throw some measurements in the mix</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercises-filtering"><strong>Bonus Exercises - Filtering</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-steerable-filtering-and-ridge-detection">Bonus Exercise: Steerable Filtering and Ridge Detection</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-thresholding">Basic thresholding</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#steerable-filtering">Steerable Filtering</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#references"><em>References:</em></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-image-filtering-in-harder-data">Bonus Exercise: Image filtering in harder data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finally-throw-some-measurements-in-the-mix">Finally, throw some measurements in the mix</a></li>
 </ul>
 </li>
 </ul>
@@ -427,17 +417,15 @@
   <section class="tex2jax_ignore mathjax_ignore" id="image-processing-and-basic-segmentation">
 <h1>Image Processing and Basic Segmentation<a class="headerlink" href="#image-processing-and-basic-segmentation" title="Link to this heading">#</a></h1>
 <p><em>Lab authors: Hunter Elliott, Marcelo Cicconet, Beth Cimini, &amp; Esteban Miglietta</em> .</p>
-<p><small>This file last updated 2025-03-29.</small></p>
+<p><small>This file last updated 2026-04-09.</small></p>
 <hr class="docutils" />
 <section id="learning-objectives">
 <h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Experimenting with filtering</p></li>
+<li><p>Experimenting with segmentation</p></li>
 <li><p>Get experience with CellProfiler<span id="id1"><sup><a class="reference internal" href="bibliography.html#id5" title="David R Stirling, Madison J Swain-Bowden, Alice M Lucas, Anne E Carpenter, Beth A Cimini, and Allen Goodman. CellProfiler 4: improvements in speed, utility and usability. BMC Bioinformatics, 22(1):433, September 2021.">13</a></sup></span></p></li>
-<li><p>Bonus: Detecting edges and ridges</p></li>
-<li><p>Bonus: Using encapsulated <a class="reference internal" href="glossary.html#term-Segmentation"><span class="xref std std-term">segmentation</span></a> modules in CellProfiler</p></li>
 </ul>
-<p><strong>Lab Data</strong> in <a class="reference external" href="https://tinyurl.com/QIAnalysisLabData">this folder</a> (Image_Processing_&amp;_Basic_Segmentation)</p>
+<p><strong>Lab Data</strong> in <a class="reference external" href="https://drive.google.com/drive/folders/1HiMWVJTLfL9-8K9djSDkw-nwFE1gVVeG">this folder</a> (Image_Processing_&amp;_Basic_Segmentation)</p>
 <p>Remember to <strong>unzip</strong> the data folder after downloading.</p>
 </section>
 <hr class="docutils" />
@@ -465,7 +453,7 @@
 <h3>Load files<a class="headerlink" href="#load-files" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Open a new CellProfiler window, or open a clean starting version by going to File -&gt; New Project</p></li>
-<li><p>Load the <code class="docutils literal notranslate"><span class="pre">Basic_Segmentation</span></code> folder into the Images module as above</p>
+<li><p>Load the <code class="docutils literal notranslate"><span class="pre">Watershed_CellProfiler</span></code> folder into the Images module as above</p>
 <ul>
 <li><p>This will load 3 sets of images, each with a DAPI image and and actin image</p></li>
 </ul>
@@ -544,10 +532,10 @@
 </div>
 </section>
 </section>
-<section id="bonus-exercises-segmentation">
-<h2><strong>Bonus Exercises - Segmentation</strong><a class="headerlink" href="#bonus-exercises-segmentation" title="Link to this heading">#</a></h2>
-<section id="bonus-exercise-encapsulating-all-of-segmentation-into-one-module">
-<h3>Bonus Exercise: Encapsulating all of <a class="reference internal" href="glossary.html#term-Segmentation"><span class="xref std std-term">segmentation</span></a> into one module<a class="headerlink" href="#bonus-exercise-encapsulating-all-of-segmentation-into-one-module" title="Link to this heading">#</a></h3>
+<section id="segmentation-how-we-d-do-it-in-the-real-world">
+<h2><strong>Segmentation - How we’d do it in the “real world”</strong><a class="headerlink" href="#segmentation-how-we-d-do-it-in-the-real-world" title="Link to this heading">#</a></h2>
+<section id="encapsulating-all-of-segmentation-into-one-module">
+<h3>Encapsulating all of <a class="reference internal" href="glossary.html#term-Segmentation"><span class="xref std std-term">segmentation</span></a> into one module<a class="headerlink" href="#encapsulating-all-of-segmentation-into-one-module" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>At the end of your <a class="reference internal" href="glossary.html#term-Segmentation"><span class="xref std std-term">segmentation</span></a> piepeline, you’ll see two modules that are there but inactive - they have an empty checkbox <a class="reference internal" href="_images/InactivatedModule.png"><img alt="_images/InactivatedModule.png" src="_images/InactivatedModule.png" style="height: 20px;" /></a> . Click this box to enable the <code class="docutils literal notranslate"><span class="pre">IdentifyPrimaryObjects</span></code> module - it should now look like this: <a class="reference internal" href="_images/Check.png"><img alt="_images/Check.png" src="_images/Check.png" style="height: 20px;" /></a></p></li>
 <li><p>Run the <code class="docutils literal notranslate"><span class="pre">IdentifyPrimaryObjects</span></code> module - how does it do at identifying your nuclei directly from the DNA image?</p></li>
@@ -558,8 +546,8 @@
 <p>Two of the steps are combined in a single setting!</p>
 </div>
 </section>
-<section id="bonus-exercise-using-seeded-watershed-to-build-cells-from-nuclei">
-<h3>Bonus Exercise: Using seeded watershed to build Cells from Nuclei<a class="headerlink" href="#bonus-exercise-using-seeded-watershed-to-build-cells-from-nuclei" title="Link to this heading">#</a></h3>
+<section id="using-seeded-watershed-to-build-cells-from-nuclei">
+<h3>Using seeded watershed to build Cells from Nuclei<a class="headerlink" href="#using-seeded-watershed-to-build-cells-from-nuclei" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>After you’ve enabled <code class="docutils literal notranslate"><span class="pre">IdentifyPrimaryObjects</span></code>, you can also enable <code class="docutils literal notranslate"><span class="pre">IdentifySecondaryObjects</span></code>, which is designed to take an initial, smaller, internal object (most often a nucleus) and build a larger object around it (most often a cell). Enable <a class="reference internal" href="_images/Check.png"><img alt="_images/Check.png" src="_images/Check.png" style="height: 25px;" /></a>and run this module.</p></li>
 </ul>
@@ -577,7 +565,7 @@
 <p>Nuclei are relatively easy to segment relative to cells - they are bright, fairly uniform, and often reasonably well spaced.
 How well can conventional <a class="reference internal" href="glossary.html#term-Segmentation"><span class="xref std std-term">segmentation</span></a> work on cells, and how easily can it be done?</p>
 <ul class="simple">
-<li><p>Download the <code class="docutils literal notranslate"><span class="pre">DL4MIA/hard/train</span></code> from <a class="reference external" href="https://tinyurl.com/DL4MIAhard">this link</a></p></li>
+<li><p>Download the <code class="docutils literal notranslate"><span class="pre">DL4MIA/hard/train</span></code> from <a class="reference external" href="https://drive.google.com/drive/folders/1vkVes-FApU1WdeXKWLJlC-8P_rAyy0CD">this link</a></p></li>
 <li><p>Start a new CellProfiler project (or open a new CellProfiler window) and drag and drop that folder of images into the Images panel</p></li>
 <li><p>Drag and drop the <code class="docutils literal notranslate"><span class="pre">advanced_untuned.cppipe</span></code> file into the CellProfiler pipeline panel. Other than the input module settings, no <a class="reference internal" href="glossary.html#term-Segmentation"><span class="xref std std-term">segmentation</span></a> settings have been tuned at all in this pipeline.</p></li>
 <li><p>Try to create an accurate <a class="reference internal" href="glossary.html#term-Segmentation"><span class="xref std std-term">segmentation</span></a> of these cells - you will want to turn the advanced settings on. How well can you do? What settings seem to make the most difference?</p></li>
@@ -588,8 +576,8 @@ How well can conventional <a class="reference internal" href="glossary.html#term
 <img alt="_images/CellProfiler_AdvancedIDP.png" src="_images/CellProfiler_AdvancedIDP.png" /></p>
 </div>
 </section>
-<section id="bonus-throw-some-measurements-in-the-mix">
-<h3>Bonus: throw some measurements in the mix<a class="headerlink" href="#bonus-throw-some-measurements-in-the-mix" title="Link to this heading">#</a></h3>
+<section id="finally-throw-some-measurements-in-the-mix">
+<h3>Finally, throw some measurements in the mix<a class="headerlink" href="#finally-throw-some-measurements-in-the-mix" title="Link to this heading">#</a></h3>
 <p>Now that you have segmented your cells, you can measure lots of things in each one individually!</p>
 <ul class="simple">
 <li><p>Use the (<a class="reference internal" href="_images/AddModule.png"><img alt="_images/AddModule.png" src="_images/AddModule.png" style="height: 25px;" /></a>) button to open the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">modules</span></code> window.</p></li>
@@ -605,92 +593,6 @@ How well can conventional <a class="reference internal" href="glossary.html#term
 </div>
 <ul class="simple">
 <li><p>How can you interpret the results shown? Check the  (<a class="reference internal" href="_images/Info.png"><img alt="_images/Info.png" src="_images/Info.png" style="height: 25px;" /></a>) button for the module or for each parameter to understand the output better.</p></li>
-</ul>
-</section>
-</section>
-<hr class="docutils" />
-<section id="bonus-exercises-filtering">
-<h2><strong>Bonus Exercises - Filtering</strong><a class="headerlink" href="#bonus-exercises-filtering" title="Link to this heading">#</a></h2>
-<section id="bonus-exercise-steerable-filtering-and-ridge-detection">
-<h3>Bonus Exercise: Steerable Filtering and Ridge Detection<a class="headerlink" href="#bonus-exercise-steerable-filtering-and-ridge-detection" title="Link to this heading">#</a></h3>
-<p><em>In this section, you will segment microtubules by using filters to
-accentuate “ridge-like” structures in the image.</em></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For this exercise, you’ll need a plug-in (SteerableJ) that runs on an older version of ImageJ. Please launch <code class="docutils literal notranslate"><span class="pre">ImageJ_SteerableJ_Win/ImageJ.exe</span></code> (or <code class="docutils literal notranslate"><span class="pre">ImageJ_SteerableJ_Mac/ImageJ.app</span></code> if you’re on a Mac), available with the data for this lab. Or you can follow <a class="reference external" href="http://bigwww.epfl.ch/demo/steerable/download.html">these instructions</a></p>
-</div>
-<section id="basic-thresholding">
-<h4>Basic thresholding<a class="headerlink" href="#basic-thresholding" title="Link to this heading">#</a></h4>
-<p><em>First, try segmenting the microtubules with simple thresholding (for
-comparison to steerable filters)</em></p>
-<ul class="simple">
-<li><p>Load one of the images from <code class="docutils literal notranslate"><span class="pre">Image_Processing/Microtubules/easy</span></code> into ImageJ</p></li>
-<li><p>Subtract the background (Process &gt; Subtract Background…). To view the
-background image, select “Create background (don’t subtract)”, and
-“Preview”. What is a good choice for the length scale (radius)?
-Deselect these and press OK. Why is background subtraction important
-for basic thresholding?</p></li>
-<li><p>Threshold the image. You can test this out manually (Image &gt; Adjust
-&gt; Threshold…). Is there a threshold that will accurately segment the
-microtubules?</p></li>
-</ul>
-</section>
-<hr class="docutils" />
-<section id="steerable-filtering">
-<h4>Steerable Filtering<a class="headerlink" href="#steerable-filtering" title="Link to this heading">#</a></h4>
-<ul class="simple">
-<li><p>Re-load the image in ImageJ</p></li>
-<li><p>Launch SteerableJ (Plugins &gt; SteerableJ). There are multiple
-parameters that can be tuned:</p>
-<ul>
-<li><p><em>order:</em> Do you want to use an even or an odd order? Hint: look at
-the image of the filter kernel in the top left panel. Note: Higher
-order filters are more selective for orientation.</p></li>
-<li><p><em>mu:</em> This parameter controls the sensitivity of the filter. A
-higher value makes the filter less prone to false positives, but
-also reduces localization precision.</p></li>
-<li><p><em>sigma:</em> This is the scale of your structure. Match this to the size
-(width) of the ridges in your image.</p></li>
-</ul>
-</li>
-<li><p>After tuning your parameters, press ‘Run’.</p></li>
-<li><p>Now try thresholding the filtered image. Is it easier to find a good
-threshold?</p></li>
-<li><p>The SteerableJ plug-in has a button to “Refine Features” which will
-further clean up the image by applying non-maximum suppression. Press
-‘Refine features’ to view this output.</p></li>
-<li><p>Steerable filters are designed to be sensitive to the orientation of
-detected features. The initial output is a projection, which displays
-only the magnitude of the filter response, not its orientation. Press
-‘Show Orientation’ to view the orientation of maximal response of the
-filter. To view the raw data associated with this image, press
-‘Display rotation’. Every slice in this z-stack is the response at a
-particular orientation. How could you use this to filter lines of a
-given orientation?</p></li>
-</ul>
-</section>
-<section id="references">
-<h4><em>References:</em><a class="headerlink" href="#references" title="Link to this heading">#</a></h4>
-<ul class="simple">
-<li><p><span id="id2">Freeman and Adelson<sup><a class="reference internal" href="bibliography.html#id3" title="W.T. Freeman and E.H. Adelson. The design and use of steerable filters. IEEE Transactions on Pattern Analysis and Machine Intelligence, 13(9):891-906, 1991. doi:10.1109/34.93808.">14</a></sup></span></p></li>
-<li><p><span id="id3">Jacob and Unser<sup><a class="reference internal" href="bibliography.html#id4" title="M. Jacob and M. Unser. Design of steerable filters for feature detection using canny-like criteria. IEEE Transactions on Pattern Analysis and Machine Intelligence, 26(8):1007-1019, 2004. doi:10.1109/TPAMI.2004.44.">15</a></sup></span></p></li>
-</ul>
-</section>
-</section>
-<section id="bonus-exercise-image-filtering-in-harder-data">
-<h3>Bonus Exercise: Image filtering in harder data<a class="headerlink" href="#bonus-exercise-image-filtering-in-harder-data" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Use what you’ve learned to attempt to outline the cell <em>and</em> its
-nucleus in the image <code class="docutils literal notranslate"><span class="pre">Image_Processing/Cells/Nadia</span> <span class="pre">20131122_RhoAMEFs_18kPa_001_w477_t01.tif</span></code></p>
-<ul>
-<li><p>What filter is appropriate here - an edge or a ridge filter?</p></li>
-</ul>
-</li>
-<li><p>Use what you’ve learned to detect some of the red and green isolated
-axons in the image <code class="docutils literal notranslate"><span class="pre">Image_Processing/Neurons/arpy01_Chat_082_B_i_cropped.tif</span></code> while
-avoiding both the large mass of continuous red fluorescence near the
-injection site, and the autofluorescence of the cell bodies in green.
-(You will not need the blue DNA channel)</p></li>
 </ul>
 </section>
 </section>
@@ -753,21 +655,11 @@ injection site, and the autofluorescence of the cell bodies in green.
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-your-performance-across-multiple-images">Evaluate your performance across multiple images</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercises-segmentation"><strong>Bonus Exercises - Segmentation</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-encapsulating-all-of-segmentation-into-one-module">Bonus Exercise: Encapsulating all of <span class="xref std std-term">segmentation</span> into one module</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-using-seeded-watershed-to-build-cells-from-nuclei">Bonus Exercise: Using seeded watershed to build Cells from Nuclei</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-how-we-d-do-it-in-the-real-world"><strong>Segmentation - How we’d do it in the “real world”</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encapsulating-all-of-segmentation-into-one-module">Encapsulating all of <span class="xref std std-term">segmentation</span> into one module</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-seeded-watershed-to-build-cells-from-nuclei">Using seeded watershed to build Cells from Nuclei</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#even-harder-segmentation">Even harder <span class="xref std std-term">segmentation</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-throw-some-measurements-in-the-mix">Bonus: throw some measurements in the mix</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercises-filtering"><strong>Bonus Exercises - Filtering</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-steerable-filtering-and-ridge-detection">Bonus Exercise: Steerable Filtering and Ridge Detection</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-thresholding">Basic thresholding</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#steerable-filtering">Steerable Filtering</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#references"><em>References:</em></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-image-filtering-in-harder-data">Bonus Exercise: Image filtering in harder data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finally-throw-some-measurements-in-the-mix">Finally, throw some measurements in the mix</a></li>
 </ul>
 </li>
 </ul>
