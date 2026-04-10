@@ -560,9 +560,9 @@ gaussian fitting we will have significant error at low SNR!!</p></li>
 <hr class="docutils" />
 <section id="filtering">
 <h2><strong>Filtering</strong><a class="headerlink" href="#filtering" title="Link to this heading">#</a></h2>
-<ul>
-<li><p>Filtering to handle noise</p>
 <ul class="simple">
+<li><p>Filtering to handle noise</p>
+<ul>
 <li><p>First, duplicate the stack so we can later compare the filtered and
 un-filtered images. Press Ctrl+SHIFT+D or go to Image-&gt;Duplicate,
 be sure the “duplicate stack” box is checked.</p></li>
@@ -572,6 +572,15 @@ Remember the gaussian fitting we did before!)</p></li>
 <li><p>Scroll through the resulting stack - how far into the stack can you
 visually identify the point now? How does this compare to the
 unfiltered stack?</p></li>
+</ul>
+</li>
+</ul>
+<aside class="margin sidebar">
+<p class="sidebar-title"><strong>Tip</strong></p>
+<p>You can <em>sync</em> the raw and filtered images so that you can scroll through both at the same time.
+Got to Analyze &gt; Tools &gt; Synchronize Windows and select Synchronize all (or manually select the windows you want to sync by holdin Ctrl/Cmd and clicking on their names).</p>
+</aside>
+<ul>
 <li><p>Note that both the peak brightness in the point AND the background
 standard deviation have decreased. Which decreased more? What is the
 resulting SNR in the filtered stack? How does this compare to the
@@ -584,8 +593,6 @@ filtering)</p></li>
 PSF-matched. Try detecting points in the resulting filtered stack.
 What are the pros &amp; cons of different filter sizes? Why is
 PSF-matched a good choice?</p></li>
-</ul>
-</li>
 <li><p>Spatial Sampling and variable point intensities</p>
 <ul class="simple">
 <li><p>You are demo-ing two cameras. One is a highly sensitive EMCCD with
@@ -639,7 +646,7 @@ pixels to see their values. Why does FeatureJ convert the image to
 <li><p>The resulting image has bright spots as negative values. Why is
 this? Invert the image by going to Edit-&gt;Invert</p></li>
 <li><p>Now find maxima in this image. How accurate is the count? Is there
-now a larger range of noise tolerances which give an accurate
+now a larger range of noise tolerances (a.k.a. prominence) which give an accurate
 result?</p></li>
 <li><p>If you feel like it, try LoG filtering on the “noisier” image as
 well.</p></li>
@@ -648,8 +655,7 @@ well.</p></li>
 <hr class="docutils" />
 <section id="edge-filtering-edge-detection">
 <h2><strong>Edge Filtering &amp; Edge Detection</strong><a class="headerlink" href="#edge-filtering-edge-detection" title="Link to this heading">#</a></h2>
-<p><em>The goal here is to detect at least some of the edges between the cells
-using what you’ve learned about derivative filters.</em></p>
+<p><em>The goal here is to detect at least some of the edges between the cells.</em></p>
 <section id="edge-detection-in-fiji">
 <h3>Edge detection in Fiji<a class="headerlink" href="#edge-detection-in-fiji" title="Link to this heading">#</a></h3>
 <aside class="margin sidebar">
@@ -668,9 +674,7 @@ using what you’ve learned about derivative filters.</em></p>
 <ul>
 <li><p>Go to Plugins-&gt;FeatureJ-&gt;FeatureJ Edges</p></li>
 <li><p>Make sure only the “compute gradient magnitude image” box is
-checked, select a “smoothing scale” and then click OK. Look at the
-resulting image and compare to the original image and the partial
-derivatives you calculated before.</p></li>
+checked, select a “smoothing scale” and then click OK.</p></li>
 <li><p>Try different smoothing scales - which features produce the
 strongest response at larger scales? At smaller scales?</p></li>
 </ul>
