@@ -2,18 +2,16 @@
 
 *Lab authors: Hunter Elliott, Marcelo Cicconet, Beth Cimini, & Esteban Miglietta* . 
 
-<small>This file last updated 2025-03-29.</small>
+<small>This file last updated 2026-04-09.</small>
 
 ---
 
 ## Learning Objectives
 
-- Experimenting with filtering
+- Experimenting with segmentation
 - Get experience with CellProfiler{cite}`Stirling2021-sg`
-- Bonus: Detecting edges and ridges
-- Bonus: Using encapsulated {term}`segmentation` modules in CellProfiler
 
-**Lab Data** in [this folder](https://tinyurl.com/QIAnalysisLabData) (Image_Processing_&_Basic_Segmentation)
+**Lab Data** in [this folder](https://drive.google.com/drive/folders/1HiMWVJTLfL9-8K9djSDkw-nwFE1gVVeG) (Image_Processing_&_Basic_Segmentation)
 
 Remember to **unzip** the data folder after downloading.
 
@@ -40,7 +38,7 @@ There are two main ways to move around in CellProfiler once in test mode - keep
 
 ### Load files
 - Open a new CellProfiler window, or open a clean starting version by going to File -> New Project  
-- Load the `Basic_Segmentation` folder into the Images module as above
+- Load the `Watershed_CellProfiler` folder into the Images module as above
   - This will load 3 sets of images, each with a DAPI image and and actin image
 - Load the `basic_segmentation.cppipe` pipeline file into the pipeline panel as above
 
@@ -91,9 +89,9 @@ To move between image sets in CellProfiler, use the `NextImageSet` button  <img 
 How do you know when your {term}`segmentation` is "good enough"? It's a SUPER common but a very complicated question! You can check out [this blog post](https://carpenter-singh-lab.broadinstitute.org/blog/when-to-say-good-enough) for one attempte at helping come up with a set of rules for making that decision.
 ```
 
-## **Bonus Exercises - Segmentation**
+## **Segmentation - How we'd do it in the "real world"**
 
-### Bonus Exercise: Encapsulating all of {term}`segmentation` into one module
+### Encapsulating all of {term}`segmentation` into one module
 
 - At the end of your {term}`segmentation` piepeline, you'll see two modules that are there but inactive - they have an empty checkbox <img src="images/processing_detection/InactivatedModule.png" height="20px" /> . Click this box to enable the `IdentifyPrimaryObjects` module - it should now look like this: <img src="images/processing_detection/Check.png" height="20px" />
 - Run the `IdentifyPrimaryObjects` module - how does it do at identifying your nuclei directly from the DNA image?
@@ -102,7 +100,7 @@ How do you know when your {term}`segmentation` is "good enough"? It's a SUPER co
 Two of the steps are combined in a single setting!
 ```
 
-### Bonus Exercise: Using seeded watershed to build Cells from Nuclei
+### Using seeded watershed to build Cells from Nuclei
 
 - After you've enabled `IdentifyPrimaryObjects`, you can also enable `IdentifySecondaryObjects`, which is designed to take an initial, smaller, internal object (most often a nucleus) and build a larger object around it (most often a cell). Enable <img src="images/processing_detection/Check.png" height="25px" />and run this module.
 
@@ -118,7 +116,7 @@ Check out this [Ask Erin/Dear Beth episode](https://www.youtube.com/watch?v=NIuE
 Nuclei are relatively easy to segment relative to cells - they are bright, fairly uniform, and often reasonably well spaced.
 How well can conventional {term}`segmentation` work on cells, and how easily can it be done?
 
-- Download the `DL4MIA/hard/train` from [this link](https://tinyurl.com/DL4MIAhard) 
+- Download the `DL4MIA/hard/train` from [this link](https://drive.google.com/drive/folders/1vkVes-FApU1WdeXKWLJlC-8P_rAyy0CD) 
 - Start a new CellProfiler project (or open a new CellProfiler window) and drag and drop that folder of images into the Images panel
 - Drag and drop the `advanced_untuned.cppipe` file into the CellProfiler pipeline panel. Other than the input module settings, no {term}`segmentation` settings have been tuned at all in this pipeline.
 - Try to create an accurate {term}`segmentation` of these cells - you will want to turn the advanced settings on. How well can you do? What settings seem to make the most difference?
@@ -128,7 +126,7 @@ Here is what an experienced image analyst came up with - so at least this level 
 <img src="images/processing_detection/CellProfiler_AdvancedIDP.png"/>
 ```
 
-### Bonus: throw some measurements in the mix
+### Finally, throw some measurements in the mix
 
 Now that you have segmented your cells, you can measure lots of things in each one individually!
 
@@ -142,89 +140,3 @@ These are the results obtained from the example segmentation. How do your result
 <img src="images/processing_detection/CellProfiler_MeasureObjIntDist.png"/>
 ```
 - How can you interpret the results shown? Check the  (<img src="images/processing_detection/Info.png" height="25px" />) button for the module or for each parameter to understand the output better.
-
----
-## **Bonus Exercises - Filtering**
-
-### Bonus Exercise: Steerable Filtering and Ridge Detection
-
-*In this section, you will segment microtubules by using filters to
-accentuate “ridge-like” structures in the image.*
-
-```{note}
-For this exercise, you'll need a plug-in (SteerableJ) that runs on an older version of ImageJ. Please launch `ImageJ_SteerableJ_Win/ImageJ.exe` (or `ImageJ_SteerableJ_Mac/ImageJ.app` if you're on a Mac), available with the data for this lab. Or you can follow [these instructions](http://bigwww.epfl.ch/demo/steerable/download.html) 
-```
-
-#### Basic thresholding
-
-*First, try segmenting the microtubules with simple thresholding (for
-comparison to steerable filters)*
-
-- Load one of the images from `Image_Processing/Microtubules/easy` into ImageJ
-
-- Subtract the background (Process \> Subtract Background…). To view the
-  background image, select “Create background (don’t subtract)”, and
-  “Preview”. What is a good choice for the length scale (radius)?
-  Deselect these and press OK. Why is background subtraction important
-  for basic thresholding?
-
-- Threshold the image. You can test this out manually (Image \> Adjust
-  \> Threshold…). Is there a threshold that will accurately segment the
-  microtubules?
-
----
-
-#### Steerable Filtering
-
-- Re-load the image in ImageJ
-
-- Launch SteerableJ (Plugins \> SteerableJ). There are multiple
-  parameters that can be tuned:
-
-  - *order:* Do you want to use an even or an odd order? Hint: look at
-    the image of the filter kernel in the top left panel. Note: Higher
-    order filters are more selective for orientation.
-
-  - *mu:* This parameter controls the sensitivity of the filter. A
-    higher value makes the filter less prone to false positives, but
-    also reduces localization precision.
-
-  - *sigma:* This is the scale of your structure. Match this to the size
-    (width) of the ridges in your image.
-
-- After tuning your parameters, press ‘Run’.
-
-- Now try thresholding the filtered image. Is it easier to find a good
-  threshold?
-
-- The SteerableJ plug-in has a button to “Refine Features” which will
-  further clean up the image by applying non-maximum suppression. Press
-  ‘Refine features’ to view this output.
-
-- Steerable filters are designed to be sensitive to the orientation of
-  detected features. The initial output is a projection, which displays
-  only the magnitude of the filter response, not its orientation. Press
-  ‘Show Orientation’ to view the orientation of maximal response of the
-  filter. To view the raw data associated with this image, press
-  ‘Display rotation’. Every slice in this z-stack is the response at a
-  particular orientation. How could you use this to filter lines of a
-  given orientation?
-
-#### *References:*
-
-- {cite:t}`93808`
-
-- {cite:t}`1307008`
-
-### Bonus Exercise: Image filtering in harder data
-
-- Use what you’ve learned to attempt to outline the cell *and* its
-  nucleus in the image `Image_Processing/Cells/Nadia 20131122_RhoAMEFs_18kPa_001_w477_t01.tif`
-
-  - What filter is appropriate here - an edge or a ridge filter?
-
-- Use what you’ve learned to detect some of the red and green isolated
-  axons in the image `Image_Processing/Neurons/arpy01_Chat_082_B_i_cropped.tif` while
-  avoiding both the large mass of continuous red fluorescence near the
-  injection site, and the autofluorescence of the cell bodies in green.
-  (You will not need the blue DNA channel)
