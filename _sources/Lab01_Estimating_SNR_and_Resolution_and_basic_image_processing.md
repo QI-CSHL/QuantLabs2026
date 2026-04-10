@@ -269,7 +269,7 @@ Check out these [User Guides](https://imagej.net/learn/user-guides), or check th
 
 - Open the provided [DIC image](https://drive.google.com/drive/folders/1z_gQ1bIAJgYEe11QD4zY7q7i1Zr3v5ZW) (`cho_cells_BBBC030.tif`)
 
-```{margin}Where did this image come from?
+```{margin} Where did this image come from?
 As the file name indicates, it is from the Broad Bioimage Benchmark Collection {cite}`Ljosa2012-bf` - specifically, BBBC030, contributed from [this paper](https://www.nature.com/articles/srep30420) {cite}`Koos2016-xo`. It is provided under a [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/).
 ```
 
