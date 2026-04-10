@@ -15,6 +15,7 @@ Conda
 
 Convolution
    A mathematical operation on two functions that produces a third function, representing the amount of overlap as one function is shifted over another. The term refers to both the resulting function and the process of computiong it. 
+   In image analysis, convolution is the process by which a digital image is modified using a kernel to obtain a filtered image.
    In microscopy, it usually refers to the process by which the shape of an object observed through a microscope is distorted by the PSF to generate the observed image.
 
 Environment
