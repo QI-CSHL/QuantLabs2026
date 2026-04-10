@@ -179,6 +179,11 @@ Check out these [User Guides](https://imagej.net/learn/user-guides), or check th
     visually identify the point now? How does this compare to the
     unfiltered stack?
 
+```{margin} **Tip**
+You can *sync* the raw and filtered images so that you can scroll through both at the same time.
+Got to Analyze > Tools > Synchronize Windows and select Synchronize all (or manually select the windows you want to sync by holdin Ctrl/Cmd and clicking on their names).
+```
+
   - Note that both the peak brightness in the point AND the background
     standard deviation have decreased. Which decreased more? What is the
     resulting SNR in the filtered stack? How does this compare to the
@@ -247,7 +252,7 @@ This uses the FeatureJ plugin. If this plugin is not installed, go to Help \> Up
     this? Invert the image by going to Edit-\>Invert
 
   - Now find maxima in this image. How accurate is the count? Is there
-    now a larger range of noise tolerances which give an accurate
+    now a larger range of noise tolerances (a.k.a. prominence) which give an accurate
     result?
 
   - If you feel like it, try LoG filtering on the “noisier” image as
@@ -258,8 +263,7 @@ This uses the FeatureJ plugin. If this plugin is not installed, go to Help \> Up
 
 ## **Edge Filtering & Edge Detection**
 
-*The goal here is to detect at least some of the edges between the cells
-using what you've learned about derivative filters.*
+*The goal here is to detect at least some of the edges between the cells.*
 
 ### Edge detection in Fiji
 
@@ -278,9 +282,7 @@ As the file name indicates, it is from the Broad Bioimage Benchmark Collection {
   - Go to Plugins-\>FeatureJ-\>FeatureJ Edges
 
   - Make sure only the “compute gradient magnitude image” box is
-    checked, select a “smoothing scale” and then click OK. Look at the
-    resulting image and compare to the original image and the partial
-    derivatives you calculated before.
+    checked, select a “smoothing scale” and then click OK.
 
   - Try different smoothing scales - which features produce the
     strongest response at larger scales? At smaller scales?
