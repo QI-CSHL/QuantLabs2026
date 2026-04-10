@@ -175,6 +175,10 @@ Check out these [User Guides](https://imagej.net/learn/user-guides), or check th
     Process-\>Filters-\>Gaussian Blur. What sigma should we use? (Hint:
     Remember the gaussian fitting we did before!)
 
+```{margin} **Microns or pixels?**
+Be careful when entering the value for the Gaussian filtering to use the correct scale. All the measurements you have been getting from the image are likely *scaled* to micron units. If you don't check the *"Scaled Units"* box, FIJI will assume the value entered is in pixel units!
+```
+
   - Scroll through the resulting stack - how far into the stack can you
     visually identify the point now? How does this compare to the
     unfiltered stack?
