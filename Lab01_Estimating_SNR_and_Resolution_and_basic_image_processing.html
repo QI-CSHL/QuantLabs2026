@@ -415,7 +415,7 @@
   <section class="tex2jax_ignore mathjax_ignore" id="estimating-snr-resolution">
 <h1>Estimating SNR &amp; Resolution<a class="headerlink" href="#estimating-snr-resolution" title="Link to this heading">#</a></h1>
 <p><em>Lab authors: Hunter Elliott &amp; Marcelo Cicconet</em></p>
-<p><small>This file last updated 2025-03-28.</small></p>
+<p><small>This file last updated 2026-04-09.</small></p>
 <hr class="docutils" />
 <section id="learning-objectives">
 <h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
@@ -427,7 +427,7 @@
 <li><p>Subtract background</p></li>
 <li><p>Detect point sources via LoG</p></li>
 </ul>
-<p><strong>Lab Data</strong> in <a class="reference external" href="https://tinyurl.com/QIAnalysisLabData">this folder</a> (Estimating_SNR_&amp;_Resolution)</p>
+<p><strong>Lab Data</strong> in <a class="reference external" href="https://drive.google.com/drive/folders/1CD-OPeXaFnX6YADCInGG9vlGUjlIPczX">this folder</a> (Estimating_SNR_&amp;_Resolution)</p>
 <p>Remember to <strong>unzip</strong> the data folder after downloading.</p>
 </section>
 <hr class="docutils" />
@@ -652,20 +652,17 @@ well.</p></li>
 using what you’ve learned about derivative filters.</em></p>
 <section id="edge-detection-in-fiji">
 <h3>Edge detection in Fiji<a class="headerlink" href="#edge-detection-in-fiji" title="Link to this heading">#</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You will need to have the FeatureJ plugin installed for these exercises. If it’s not, check the first analysis lab handout for instructions on how to do it. |</p>
-</div>
 <aside class="margin sidebar">
 <p class="sidebar-title">Want to learn more about working with Fiji?</p>
 <p>Check out these <a class="reference external" href="https://imagej.net/learn/user-guides">User Guides</a>, or check them out on <a class="reference external" href="https://forum.image.sc/tag/fiji">the image.sc forum!</a></p>
 </aside>
 <ul class="simple">
-<li><p>Open the <code class="docutils literal notranslate"><span class="pre">Image_Processing/Neurons/4_9_13_AVG_Aligned_Stack</span></code>.tif image</p>
-<ul>
-<li><p>Why will thresholding not work on this image?</p></li>
+<li><p>Open the provided <a class="reference external" href="https://drive.google.com/drive/folders/1z_gQ1bIAJgYEe11QD4zY7q7i1Zr3v5ZW">DIC image</a> (<code class="docutils literal notranslate"><span class="pre">cho_cells_BBBC030.tif</span></code>)</p></li>
 </ul>
-</li>
+<div class="highlight-{margin}Where notranslate"><div class="highlight"><pre><span></span>As the file name indicates, it is from the Broad Bioimage Benchmark Collection {cite}`Ljosa2012-bf` - specifically, BBBC030, contributed from [this paper](https://www.nature.com/articles/srep30420) {cite}`Koos2016-xo`. It is provided under a [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/).
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>Experiment with first partial derivatives:</p>
 <ul>
 <li><p>Go to Plugins-&gt;FeatureJ-&gt;FeatureJ derivatives</p></li>
@@ -723,8 +720,8 @@ your edge detector succeed? Where did it fail?</p></li>
 <section id="log-filtering">
 <h4>LoG filtering<a class="headerlink" href="#log-filtering" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p>Open CellProfiler and load the same image (<code class="docutils literal notranslate"><span class="pre">Image_Processing/Neurons/4_9_13_AVG_Aligned_Stack</span></code>) in the Images panel (where it says <strong>Drop files and folders here</strong>)</p></li>
-<li><p>Load the <code class="docutils literal notranslate"><span class="pre">edge_detection_neurons.cppipe</span></code> pipeline file onto the left side pipeline panel (where it says <strong>Drop a pipeline file here</strong>)</p></li>
+<li><p>Open CellProfiler and load the same image (<code class="docutils literal notranslate"><span class="pre">cho_cells_BBBC030.tif</span></code>) in the Images panel (where it says <strong>Drop files and folders here</strong>)</p></li>
+<li><p>Load the <code class="docutils literal notranslate"><span class="pre">edge_detection_cells.cppipe</span></code> pipeline file onto the left side pipeline panel (where it says <strong>Drop a pipeline file here</strong>)</p></li>
 <li><p>Enter test mode by hitting the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">Test</span> <span class="pre">Mode</span></code> button  <a class="reference internal" href="_images/StartTestMode.png"><img alt="_images/StartTestMode.png" src="_images/StartTestMode.png" style="height: 30px;" /></a></p></li>
 <li><p>Execute the <code class="docutils literal notranslate"><span class="pre">EnhanceEdges</span></code> module by hitting the <code class="docutils literal notranslate"><span class="pre">Step</span></code> button  <a class="reference internal" href="_images/Step.png"><img alt="_images/Step.png" src="_images/Step.png" style="height: 30px;" /></a></p></li>
 <li><p>How does the LoG filter look? What happens when you change the Gaussian diameter size? (hit <code class="docutils literal notranslate"><span class="pre">Step</span></code> again after changing the diamater size to see the new result).</p></li>
@@ -737,10 +734,11 @@ your edge detector succeed? Where did it fail?</p></li>
 <li><p>Execute the module by pressing <code class="docutils literal notranslate"><span class="pre">Step</span></code> - what happens?</p></li>
 <li><p>Play with manually setting your own thresholds by setting the automatic thresholding settings to <code class="docutils literal notranslate"><span class="pre">No</span></code> - are you able to find good values?</p></li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You may find your values are approximately a factor of ~250 off from the values you were using in Fiji - can you hypothesize what might be happening here?</p>
-</div>
+<!--
+```{note}
+  You may find your values are approximately a factor of ~250 off from the values you were using in Fiji - can you hypothesize what might be happening here?
+```
+-->
 </section>
 </section>
 </section>
