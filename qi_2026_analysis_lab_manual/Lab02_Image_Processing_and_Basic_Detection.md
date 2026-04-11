@@ -1,6 +1,6 @@
 # Image Processing and Basic Segmentation
 
-*Lab authors: Hunter Elliott, Marcelo Cicconet, Beth Cimini, & Esteban Miglietta* . 
+*Lab authors: Beth Cimini & Esteban Miglietta* . 
 
 <small>This file last updated 2026-04-09.</small>
 
