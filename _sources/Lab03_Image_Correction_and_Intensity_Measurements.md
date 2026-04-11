@@ -2,7 +2,7 @@
 
 *Lab authors: Hunter Elliott, Marcelo Cicconet, & Beth Cimini* . 
 
-<small>This file last updated 2025-03-30.</small>
+<small>This file last updated 2026-04-09.</small>
 
 ---
 
@@ -12,7 +12,7 @@
 - Apply corrections to image data
 - Measure intensities with and without corrections
 
-**Lab Data** in [this folder](https://tinyurl.com/QIAnalysisLabData) (Image_Corrections_&_Intensity_Measurements)
+**Lab Data** in [this folder](https://drive.google.com/drive/folders/1RKVXPwTvwiIDKQd569LJdWhbZ6ho02LS) (Lab 3)
 
 Remember to **unzip** the data folder after downloading.
 
