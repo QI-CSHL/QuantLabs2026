@@ -218,8 +218,8 @@ a similar introductory exercise.
   ‘Analysis modules’ box. 7 modules should pop up, and almost all of
   them will show errors. **This is the expected behavior.**
 * Drag and drop the ‘BBBC022_20585_AE’ folder into the ‘File list’ box.
-  It should automatically populate. Notice that illumination correction
-  images (with a file extension of ‘.npy’) are included in this data
+  It should automatically populate.
+* Also drag in the 5 illumination correction images (with a file extension of ‘.npy’) that are included in this data
   set.
 
 #### 2. Import metadata from the CSV
