@@ -391,12 +391,12 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-segmentation"><strong>Basic Segmentation</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-files">Load files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smooth-the-images-and-find-local-maxima">Smooth the images and find local maxima</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-and-fill-holes-in-the-threshold-masks">Threshold and fill holes in the threshold masks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-and-fill-holes-in-the-threshold-masks"><span class="xref std std-term">Threshold</span> and fill holes in the threshold masks</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#watershed-into-objects-and-fill-holes-in-the-object-masks">Watershed into objects, and fill holes in the object masks</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-your-performance-across-multiple-images">Evaluate your performance across multiple images</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-how-we-d-do-it-in-the-real-world"><strong>Segmentation - How we’d do it in the “real world”</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-how-we-d-do-it-in-the-real-world"><strong><span class="xref std std-term">Segmentation</span> - How we’d do it in the “real world”</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encapsulating-all-of-segmentation-into-one-module">Encapsulating all of <span class="xref std std-term">segmentation</span> into one module</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-seeded-watershed-to-build-cells-from-nuclei">Using seeded watershed to build Cells from Nuclei</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#even-harder-segmentation">Even harder <span class="xref std std-term">segmentation</span></a></li>
@@ -426,7 +426,10 @@
 <li><p>Get experience with CellProfiler<span id="id1"><sup><a class="reference internal" href="bibliography.html#id5" title="David R Stirling, Madison J Swain-Bowden, Alice M Lucas, Anne E Carpenter, Beth A Cimini, and Allen Goodman. CellProfiler 4: improvements in speed, utility and usability. BMC Bioinformatics, 22(1):433, September 2021.">13</a></sup></span></p></li>
 </ul>
 <p><strong>Lab Data</strong> in <a class="reference external" href="https://drive.google.com/drive/folders/1HiMWVJTLfL9-8K9djSDkw-nwFE1gVVeG">this folder</a> (Image_Processing_&amp;_Basic_Segmentation)</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
 <p>Remember to <strong>unzip</strong> the data folder after downloading.</p>
+</div>
 </section>
 <hr class="docutils" />
 <section id="basic-segmentation">
@@ -434,38 +437,38 @@
 <p>As discussed in lecture, classical <a class="reference internal" href="glossary.html#term-Segmentation"><span class="xref std std-term">segmentation</span></a> typically consists of a stereotyped set of steps</p>
 <ol class="arabic simple">
 <li><p>Smoothing</p></li>
-<li><p>Thresholding</p></li>
-<li><p>Filling holes in threshold masks</p></li>
+<li><p><a class="reference internal" href="glossary.html#term-Threshold"><span class="xref std std-term">Thresholding</span></a></p></li>
+<li><p>Filling holes in threshold <a class="reference internal" href="glossary.html#term-Mask"><span class="xref std std-term">masks</span></a></p></li>
 <li><p>Local maxima detection in smoothed image</p></li>
-<li><p>Watershed</p></li>
+<li><p><a class="reference internal" href="glossary.html#term-Watershed"><span class="xref std std-term">Watershed</span></a></p></li>
 <li><p>Filling holes in detected objects</p></li>
 </ol>
 <p>Here, we will demonstrate all these steps in CellProfiler, and let you play with how the parameters you choose to see how they affect the <a class="reference internal" href="glossary.html#term-Segmentation"><span class="xref std std-term">segmentation</span></a> you get.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>There are two main ways to move around in CellProfiler once in test mode - keep</p>
+<p>There are two main ways to move around in CellProfiler once in test mode:</p>
 <ul class="simple">
-<li><p>If you hit the <code class="docutils literal notranslate"><span class="pre">Step</span></code> button  <a class="reference internal" href="_images/Step.png"><img alt="_images/Step.png" src="_images/Step.png" style="height: 30px;" /></a>, the next module (but only the next module) will run</p></li>
-<li><p>If you hit the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button  <a class="reference internal" href="_images/Run.png"><img alt="_images/Run.png" src="_images/Run.png" style="height: 30px;" /></a>, all the remaining modules will run (unless you’ve added a <code class="docutils literal notranslate"><span class="pre">Pause</span></code> <a class="reference internal" href="_images/Pause.png"><img alt="_images/Pause.png" src="_images/Pause.png" style="height: 30px;" /></a> button somewhere)</p></li>
+<li><p>If you click the <code class="docutils literal notranslate"><span class="pre">Step</span></code> button  <a class="reference internal" href="_images/Step.png"><img alt="_images/Step.png" src="_images/Step.png" style="height: 30px;" /></a>, you will execute the <em>just</em> next (active) module.</p></li>
+<li><p>If you click the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button  <a class="reference internal" href="_images/Run.png"><img alt="_images/Run.png" src="_images/Run.png" style="height: 30px;" /></a>, all the remaining (active) modules will be executed, until the next active module marked with <code class="docutils literal notranslate"><span class="pre">Pause</span></code> <a class="reference internal" href="_images/Pause.png"><img alt="_images/Pause.png" src="_images/Pause.png" style="height: 30px;" /></a>.</p></li>
 </ul>
 </div>
 <section id="load-files">
 <h3>Load files<a class="headerlink" href="#load-files" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Open a new CellProfiler window, or open a clean starting version by going to File -&gt; New Project</p></li>
-<li><p>Load the <code class="docutils literal notranslate"><span class="pre">Watershed_CellProfiler</span></code> folder into the Images module as above</p>
+<li><p>Load the <code class="docutils literal notranslate"><span class="pre">Watershed_CellProfiler</span></code> folder into top-right space in the <strong>Images</strong> module.</p>
 <ul>
 <li><p>This will load 3 sets of images, each with a DAPI image and and actin image</p></li>
 </ul>
 </li>
-<li><p>Load the <code class="docutils literal notranslate"><span class="pre">basic_segmentation.cppipe</span></code> pipeline file into the pipeline panel as above</p></li>
+<li><p>Load the <code class="docutils literal notranslate"><span class="pre">basic_segmentation.cppipe</span></code> pipeline file into the pipeline panel (left panel in the CellProfiler window)</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>CellProfiler <code class="docutils literal notranslate"><span class="pre">.cppipe</span></code> files are just text files. You can open them in a basic text editor such as Notepad to see what’s inside. It also makes them easily shareable with your labmates or even to attach as supplemental information on a paper.</p>
+<p>CellProfiler <code class="docutils literal notranslate"><span class="pre">.cppipe</span></code> files are just text files. You can open them in a basic text editor such as Notepad to see what’s inside. It also makes them easily shareable with your labmates or as supplemental information on a paper.</p>
 </div>
 <ul class="simple">
-<li><p>Enter test mode by hitting the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">Test</span> <span class="pre">Mode</span></code> button  <a class="reference internal" href="_images/StartTestMode.png"><img alt="_images/StartTestMode.png" src="_images/StartTestMode.png" style="height: 30px;" /></a></p></li>
+<li><p>Enter <em>Test mode</em> by hitting the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">Test</span> <span class="pre">Mode</span></code> button  <a class="reference internal" href="_images/StartTestMode.png"><img alt="_images/StartTestMode.png" src="_images/StartTestMode.png" style="height: 30px;" /></a></p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -476,7 +479,7 @@
 <h3>Smooth the images and find local maxima<a class="headerlink" href="#smooth-the-images-and-find-local-maxima" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Run the <code class="docutils literal notranslate"><span class="pre">Smooth</span></code> module - without going nuts, how does your result change if you change the method? What about the smoothing diameter?</p></li>
-<li><p>Run the <code class="docutils literal notranslate"><span class="pre">FindMaxima</span></code> module to find local maxima in the smoothed image created above</p>
+<li><p>Run the <code class="docutils literal notranslate"><span class="pre">FindMaxima</span></code> module to find local maxima in the smoothed image created above.</p>
 <ul>
 <li><p>You may find it helpful to increase the maxima preview size and/or color.</p></li>
 <li><p>Is it clear how all of the settings control where maxima are found?</p></li>
@@ -485,15 +488,15 @@
 </ul>
 </section>
 <section id="threshold-and-fill-holes-in-the-threshold-masks">
-<h3>Threshold and fill holes in the threshold masks<a class="headerlink" href="#threshold-and-fill-holes-in-the-threshold-masks" title="Link to this heading">#</a></h3>
+<h3><a class="reference internal" href="glossary.html#term-Threshold"><span class="xref std std-term">Threshold</span></a> and fill holes in the threshold masks<a class="headerlink" href="#threshold-and-fill-holes-in-the-threshold-masks" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Run the <code class="docutils literal notranslate"><span class="pre">Threshold</span></code> module on the smoothed image</p></li>
-<li><p>Run the <code class="docutils literal notranslate"><span class="pre">RemoveHoles</span></code> module on the thresholded image to remove any holes in the masks</p>
+<li><p>Run the <code class="docutils literal notranslate"><span class="pre">RemoveHoles</span></code> module on the thresholded image to remove any holes in the <a class="reference internal" href="glossary.html#term-Mask"><span class="xref std std-term">masks</span></a>.</p>
 <ul>
-<li><p>If there aren’t any holes, try setting the <code class="docutils literal notranslate"><span class="pre">Threshold</span> <span class="pre">Correction</span> <span class="pre">Factor</span></code> in the <code class="docutils literal notranslate"><span class="pre">Threshold</span></code> module to something like 1.1 or 1.2 (from 1.0) to create some</p>
+<li><p>If there aren’t any holes, try setting the <code class="docutils literal notranslate"><span class="pre">Threshold</span> <span class="pre">Correction</span> <span class="pre">Factor</span></code> in the <code class="docutils literal notranslate"><span class="pre">Threshold</span></code> module to something like 1.1 or 1.2 (from 1.0) to create some.</p>
 <ul>
 <li><p>What do you think that setting may do, mathematically?</p></li>
-<li><p>Click the help button (<a class="reference internal" href="_images/Info.png"><img alt="_images/Info.png" src="_images/Info.png" style="height: 25px;" /></a>) to learn if you were right.</p></li>
+<li><p>Click the <strong>Help</strong> button (<a class="reference internal" href="_images/Info.png"><img alt="_images/Info.png" src="_images/Info.png" style="height: 25px;" /></a>) to learn if you were right.</p></li>
 </ul>
 </li>
 </ul>
@@ -503,8 +506,8 @@
 <section id="watershed-into-objects-and-fill-holes-in-the-object-masks">
 <h3>Watershed into objects, and fill holes in the object masks<a class="headerlink" href="#watershed-into-objects-and-fill-holes-in-the-object-masks" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Run the <code class="docutils literal notranslate"><span class="pre">Watershed</span></code> module to turn your masks into actual CellProfiler objects</p></li>
-<li><p>Run the <code class="docutils literal notranslate"><span class="pre">FillObjects</span></code> module to remove any holes that may remain in the objects themselves</p></li>
+<li><p>Run the <code class="docutils literal notranslate"><span class="pre">Watershed</span></code> module to turn your <a class="reference internal" href="glossary.html#term-Mask"><span class="xref std std-term">masks</span></a> into actual CellProfiler objects.</p></li>
+<li><p>Run the <code class="docutils literal notranslate"><span class="pre">FillObjects</span></code> module to remove any holes that may remain in the objects themselves.</p></li>
 </ul>
 </section>
 <section id="evaluate-your-performance-across-multiple-images">
@@ -528,12 +531,12 @@
 </ul>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>How do you know when your <a class="reference internal" href="glossary.html#term-Segmentation"><span class="xref std std-term">segmentation</span></a> is “good enough”? It’s a SUPER common but a very complicated question! You can check out <a class="reference external" href="https://carpenter-singh-lab.broadinstitute.org/blog/when-to-say-good-enough">this blog post</a> for one attempte at helping come up with a set of rules for making that decision.</p>
+<p>How do you know when your <a class="reference internal" href="glossary.html#term-Segmentation"><span class="xref std std-term">segmentation</span></a> is “good enough”? It’s a <em>SUPER</em> common but a very complicated question! You can check out <a class="reference external" href="https://carpenter-singh-lab.broadinstitute.org/blog/when-to-say-good-enough">this blog post</a> for an attempt at helping come up with a set of rules for making that decision.</p>
 </div>
 </section>
 </section>
 <section id="segmentation-how-we-d-do-it-in-the-real-world">
-<h2><strong>Segmentation - How we’d do it in the “real world”</strong><a class="headerlink" href="#segmentation-how-we-d-do-it-in-the-real-world" title="Link to this heading">#</a></h2>
+<h2><strong><a class="reference internal" href="glossary.html#term-Segmentation"><span class="xref std std-term">Segmentation</span></a> - How we’d do it in the “real world”</strong><a class="headerlink" href="#segmentation-how-we-d-do-it-in-the-real-world" title="Link to this heading">#</a></h2>
 <section id="encapsulating-all-of-segmentation-into-one-module">
 <h3>Encapsulating all of <a class="reference internal" href="glossary.html#term-Segmentation"><span class="xref std std-term">segmentation</span></a> into one module<a class="headerlink" href="#encapsulating-all-of-segmentation-into-one-module" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -556,8 +559,8 @@
 <p>Check out this <a class="reference external" href="https://www.youtube.com/watch?v=NIuECUW_OeI&amp;amp;list=PLCucasmZ3XNn-tvZDSUBoOtMLoFxopdiy&amp;amp;index=5">Ask Erin/Dear Beth episode</a> for some tricks on how to deal with this situation.</p>
 </aside>
 <ul class="simple">
-<li><p>What settings correspond to our <a class="reference internal" href="glossary.html#term-Segmentation"><span class="xref std std-term">segmentation</span></a> steps, as in IdentifyPrimary?</p></li>
-<li><p>Are there any settings that are new? Click the help button (<a class="reference internal" href="_images/Info.png"><img alt="_images/Info.png" src="_images/Info.png" style="height: 25px;" /></a>) to learn about what these do and how they work.</p></li>
+<li><p>What settings correspond to our <a class="reference internal" href="glossary.html#term-Segmentation"><span class="xref std std-term">segmentation</span></a> steps, as in <code class="docutils literal notranslate"><span class="pre">IdentifyPrimaryObjects</span></code>?</p></li>
+<li><p>Are there any settings that are new? Click the <strong>Help</strong> button (<a class="reference internal" href="_images/Info.png"><img alt="_images/Info.png" src="_images/Info.png" style="height: 25px;" /></a>) to learn about what these do and how they work.</p></li>
 </ul>
 </section>
 <section id="even-harder-segmentation">
@@ -565,8 +568,8 @@
 <p>Nuclei are relatively easy to segment relative to cells - they are bright, fairly uniform, and often reasonably well spaced.
 How well can conventional <a class="reference internal" href="glossary.html#term-Segmentation"><span class="xref std std-term">segmentation</span></a> work on cells, and how easily can it be done?</p>
 <ul class="simple">
-<li><p>Download the <code class="docutils literal notranslate"><span class="pre">DL4MIA/hard/train</span></code> from <a class="reference external" href="https://drive.google.com/drive/folders/1vkVes-FApU1WdeXKWLJlC-8P_rAyy0CD">this link</a></p></li>
-<li><p>Start a new CellProfiler project (or open a new CellProfiler window) and drag and drop that folder of images into the Images panel</p></li>
+<li><p>Download the <code class="docutils literal notranslate"><span class="pre">DL4MIA/hard/train</span></code> dataset from <a class="reference external" href="https://drive.google.com/drive/folders/1vkVes-FApU1WdeXKWLJlC-8P_rAyy0CD">this link</a>.</p></li>
+<li><p>Start a new CellProfiler project (or open a new CellProfiler window) and drag and drop that folder of images into the <code class="docutils literal notranslate"><span class="pre">Images</span></code> panel.</p></li>
 <li><p>Drag and drop the <code class="docutils literal notranslate"><span class="pre">advanced_untuned.cppipe</span></code> file into the CellProfiler pipeline panel. Other than the input module settings, no <a class="reference internal" href="glossary.html#term-Segmentation"><span class="xref std std-term">segmentation</span></a> settings have been tuned at all in this pipeline.</p></li>
 <li><p>Try to create an accurate <a class="reference internal" href="glossary.html#term-Segmentation"><span class="xref std std-term">segmentation</span></a> of these cells - you will want to turn the advanced settings on. How well can you do? What settings seem to make the most difference?</p></li>
 </ul>
@@ -580,8 +583,8 @@ How well can conventional <a class="reference internal" href="glossary.html#term
 <h3>Finally, throw some measurements in the mix<a class="headerlink" href="#finally-throw-some-measurements-in-the-mix" title="Link to this heading">#</a></h3>
 <p>Now that you have segmented your cells, you can measure lots of things in each one individually!</p>
 <ul class="simple">
-<li><p>Use the (<a class="reference internal" href="_images/AddModule.png"><img alt="_images/AddModule.png" src="_images/AddModule.png" style="height: 25px;" /></a>) button to open the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">modules</span></code> window.</p></li>
-<li><p>Use the search bar and look for <code class="docutils literal notranslate"><span class="pre">MeasureObjectIntensityDistribution</span></code> (or find it under the Category “Measurement” on the list on the left panel). Double click the module or press the (<a class="reference internal" href="_images/AddToPipeline.png"><img alt="_images/AddToPipeline.png" src="_images/AddToPipeline.png" style="height: 25px;" /></a>) button.</p></li>
+<li><p>Use the <a class="reference internal" href="_images/AddModule.png"><img alt="_images/AddModule.png" src="_images/AddModule.png" style="height: 25px;" /></a> to open the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">modules</span></code> window.</p></li>
+<li><p>Use the search bar and look for <code class="docutils literal notranslate"><span class="pre">MeasureObjectIntensityDistribution</span></code> (or find it under the Category “Measurement” on the list on the left panel). Double click the module or press the <a class="reference internal" href="_images/AddToPipeline.png"><img alt="_images/AddToPipeline.png" src="_images/AddToPipeline.png" style="height: 25px;" /></a> button.</p></li>
 <li><p>Select what image to measure on and what objects to measure in.</p></li>
 <li><p>Press “Add another heatmap display”</p></li>
 <li><p>Execute the module by pressing <a class="reference internal" href="_images/Step.png"><img alt="_images/Step.png" src="_images/Step.png" style="height: 30px;" /></a></p></li>
@@ -650,12 +653,12 @@ How well can conventional <a class="reference internal" href="glossary.html#term
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-segmentation"><strong>Basic Segmentation</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-files">Load files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smooth-the-images-and-find-local-maxima">Smooth the images and find local maxima</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-and-fill-holes-in-the-threshold-masks">Threshold and fill holes in the threshold masks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-and-fill-holes-in-the-threshold-masks"><span class="xref std std-term">Threshold</span> and fill holes in the threshold masks</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#watershed-into-objects-and-fill-holes-in-the-object-masks">Watershed into objects, and fill holes in the object masks</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-your-performance-across-multiple-images">Evaluate your performance across multiple images</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-how-we-d-do-it-in-the-real-world"><strong>Segmentation - How we’d do it in the “real world”</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-how-we-d-do-it-in-the-real-world"><strong><span class="xref std std-term">Segmentation</span> - How we’d do it in the “real world”</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encapsulating-all-of-segmentation-into-one-module">Encapsulating all of <span class="xref std std-term">segmentation</span> into one module</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-seeded-watershed-to-build-cells-from-nuclei">Using seeded watershed to build Cells from Nuclei</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#even-harder-segmentation">Even harder <span class="xref std std-term">segmentation</span></a></li>
