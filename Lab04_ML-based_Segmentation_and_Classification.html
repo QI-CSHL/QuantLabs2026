@@ -417,7 +417,7 @@
   <section class="tex2jax_ignore mathjax_ignore" id="segmentation-and-pixel-classification">
 <h1>Segmentation and Pixel Classification<a class="headerlink" href="#segmentation-and-pixel-classification" title="Link to this heading">#</a></h1>
 <p><em>Lab authors: Damian Dalle Nogare and Florian Jug</em> .</p>
-<p><small>This file last updated 2025-03-31.</small></p>
+<p><small>This file last updated 2026-04-12.</small></p>
 <hr class="docutils" />
 <section id="segmentation">
 <h2><strong>Segmentation</strong><a class="headerlink" href="#segmentation" title="Link to this heading">#</a></h2>
@@ -428,7 +428,7 @@
 <li><p>Learn to use ilastik <span id="id1"><sup><a class="reference internal" href="bibliography.html#id8" title="Stuart Berg, Dominik Kutra, Thorben Kroeger, Christoph N Straehle, Bernhard X Kausler, Carsten Haubold, Martin Schiegg, Janez Ales, Thorsten Beier, Markus Rudy, Kemal Eren, Jaime I Cervantes, Buote Xu, Fynn Beuttenmueller, Adrian Wolny, Chong Zhang, Ullrich Koethe, Fred A Hamprecht, and Anna Kreshuk. Ilastik: interactive machine learning for (bio)image analysis. Nat. Methods, 16(12):1226–1232, December 2019.">16</a></sup></span></p></li>
 <li><p>Experiment with how features and data affect performance</p></li>
 </ul>
-<p><strong>Lab Data</strong> in <a class="reference external" href="https://tinyurl.com/QIAnalysisLabData">this folder</a> (Machine_Learning)</p>
+<p><strong>Lab Data</strong> in <a class="reference external" href="https://drive.google.com/drive/folders/1y0M6TnRLssm3FlDnOVP0dna7jO3ZFwJ-">this folder</a> (Lab4)</p>
 <p>Remember to <strong>unzip</strong> the data folder after downloading.</p>
 </section>
 <hr class="docutils" />
@@ -441,7 +441,7 @@
 <ul class="simple">
 <li><p>Today we will be following along with the excellent <a class="reference external" href="https://bit.ly/3x11EZf">ilastik pixel classifier tutorial</a>.<br />
 Let us know if you hit a snag!</p></li>
-<li><p>You can use the data in Machine_Learning/Pixel_Classifier/ (link to
+<li><p>You can use the data in Pixel_Classifier/ (link to
 Lab Data can be found on top of this page!). Load both the ‘Train’ and the ‘Test’ files. Note that you’ll need to
 change the axes of the ‘Train’ file to “tyx” because these images are not a z-stack (right click on your image and go to Edit Properties).</p></li>
 </ul>
@@ -498,7 +498,7 @@ find? Why?</p></li>
 <div class="important admonition">
 <p class="admonition-title"><strong>Class Challenge</strong> (Optional)</p>
 <p>Let’s make this (even more) interesting! Try to come up with a ‘good enough’ classifier with as few total annotations as possible. What strategy/reasoning did you use to get there? Compare your results with your labmates and see who manages to win the coveted <strong>“Least pixels for good classification” Crown</strong> :crown: this year!</p>
-<p>If you want to submit your classification model for the competition, save your project as <code class="docutils literal notranslate"><span class="pre">YOUR_NAME_2025.ilp</span></code> and upload it together with an example of your classification to this <a class="reference external" href="https://drive.google.com/drive/folders/12V2UAylQlCgq39ScCftEHK-3CxCFQd8I?usp=drive_link">Google Drive folder</a>.</p>
+<p>If you want to submit your classification model for the competition, save your project as <code class="docutils literal notranslate"><span class="pre">YOUR_NAME_2026.ilp</span></code> and upload it together with an example of your classification to this <a class="reference external" href="https://drive.google.com/drive/folders/1ERFTRXPUwtSnGxRkaNB_3efcC6_YmhQJ?usp=sharing">Google Drive folder</a>.</p>
 </div>
 </section>
 </section>
@@ -512,14 +512,14 @@ find? Why?</p></li>
 <li><p>Extract features from cells</p></li>
 <li><p>Feature-based cell classification</p></li>
 </ul>
-<p><strong>Lab Data</strong> in <a class="reference external" href="https://tinyurl.com/QIAnalysisLabData">this folder</a> (under Machine_Learning/Cell_Classifier)</p>
+<p><strong>Lab Data</strong> in <a class="reference external" href="https://drive.google.com/drive/folders/1y0M6TnRLssm3FlDnOVP0dna7jO3ZFwJ-">this folder</a> (under Cell_Classifier)</p>
 </section>
 <section id="segment-nuclei-for-feature-extraction">
 <h3>Segment Nuclei for Feature Extraction<a class="headerlink" href="#segment-nuclei-for-feature-extraction" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Start a new project in ilastik using the workflow “Pixel
 Classification + Object Classification”</p></li>
-<li><p>Use the file in Machine_Learning/Cell_Classifier/. The first step will
+<li><p>Use the file in Cell_Classifier/. The first step will
 be to train a pixel classifier to segment the nuclei, just like you
 did in the previous exercise.</p></li>
 <li><p>Why do we need to segment the cells before we classify them? Are there
@@ -563,7 +563,7 @@ performance on new data?</p></li>
 <li><p>You find Labkit on an update site called “Labkit”. Ask us if you have
 trouble installing it. Try it with the same training data and see how it performs!
 (We will also be using this software in lab 6!)</p></li>
-<li><p>Take the cho_cells_BBC030 image we used in the first lab. Try to train a classifier to segment just the round cells. Then, try to train a classifier that also segments the large flat cell. Can you get it to segment both in the same class? Why or why not? Try adding a third class for this cell and see if that helps.</p></li>
+<li><p>Take the <a class="reference external" href="https://drive.google.com/drive/folders/1z_gQ1bIAJgYEe11QD4zY7q7i1Zr3v5ZW">cho_cells_BBC030 image</a> we used in the first lab. Try to train a classifier to segment just the round cells. Then, try to train a classifier that also segments the large flat cell. Can you get it to segment both in the same class? Why or why not? Try adding a third class for this cell and see if that helps.</p></li>
 </ul>
 </section>
 <hr class="docutils" />

@@ -2,7 +2,7 @@
 
 *Lab authors: Damian Dalle Nogare and Florian Jug* . 
 
-<small>This file last updated 2025-03-31.</small>
+<small>This file last updated 2026-04-12.</small>
 
 ---
 
@@ -14,7 +14,7 @@
 - Learn to use ilastik {cite}`Berg2019-no`
 - Experiment with how features and data affect performance
 
-**Lab Data** in [this folder](https://tinyurl.com/QIAnalysisLabData) (Machine_Learning)
+**Lab Data** in [this folder](https://drive.google.com/drive/folders/1y0M6TnRLssm3FlDnOVP0dna7jO3ZFwJ-) (Lab4)
 
 Remember to **unzip** the data folder after downloading.
 
@@ -29,7 +29,7 @@ Check out the [documentation and tutorials list](https://www.ilastik.org/documen
 - Today we will be following along with the excellent [ilastik pixel classifier tutorial](https://bit.ly/3x11EZf).  
   Let us know if you hit a snag!
 
-- You can use the data in Machine_Learning/Pixel_Classifier/ (link to
+- You can use the data in Pixel_Classifier/ (link to
   Lab Data can be found on top of this page!). Load both the 'Train' and the 'Test' files. Note that you’ll need to
   change the axes of the 'Train' file to “tyx” because these images are not a z-stack (right click on your image and go to Edit Properties).
 
@@ -92,7 +92,7 @@ You can change the  contrast of your reference image by right clicking 'raw inpu
 
 Let's make this (even more) interesting! Try to come up with a 'good enough' classifier with as few total annotations as possible. What strategy/reasoning did you use to get there? Compare your results with your labmates and see who manages to win the coveted **"Least pixels for good classification" Crown** :crown: this year!
 
-If you want to submit your classification model for the competition, save your project as `YOUR_NAME_2025.ilp` and upload it together with an example of your classification to this [Google Drive folder](https://drive.google.com/drive/folders/12V2UAylQlCgq39ScCftEHK-3CxCFQd8I?usp=drive_link). 
+If you want to submit your classification model for the competition, save your project as `YOUR_NAME_2026.ilp` and upload it together with an example of your classification to this [Google Drive folder](https://drive.google.com/drive/folders/1ERFTRXPUwtSnGxRkaNB_3efcC6_YmhQJ?usp=sharing). 
 ```
 ---
 
@@ -104,14 +104,14 @@ If you want to submit your classification model for the competition, save your p
 - Extract features from cells
 - Feature-based cell classification
 
-**Lab Data** in [this folder](https://tinyurl.com/QIAnalysisLabData) (under Machine_Learning/Cell_Classifier)
+**Lab Data** in [this folder](https://drive.google.com/drive/folders/1y0M6TnRLssm3FlDnOVP0dna7jO3ZFwJ-) (under Cell_Classifier)
 
 ### Segment Nuclei for Feature Extraction
 
 - Start a new project in ilastik using the workflow “Pixel
   Classification + Object Classification”
 
-- Use the file in Machine_Learning/Cell_Classifier/. The first step will
+- Use the file in Cell_Classifier/. The first step will
   be to train a pixel classifier to segment the nuclei, just like you
   did in the previous exercise.
 
@@ -158,7 +158,7 @@ Check out the [documentation](https://imagej.net/plugins/labkit/), or check them
   trouble installing it. Try it with the same training data and see how it performs!
   (We will also be using this software in lab 6!)
 
-- Take the cho_cells_BBC030 image we used in the first lab. Try to train a classifier to segment just the round cells. Then, try to train a classifier that also segments the large flat cell. Can you get it to segment both in the same class? Why or why not? Try adding a third class for this cell and see if that helps.
+- Take the [cho_cells_BBC030 image](https://drive.google.com/drive/folders/1z_gQ1bIAJgYEe11QD4zY7q7i1Zr3v5ZW) we used in the first lab. Try to train a classifier to segment just the round cells. Then, try to train a classifier that also segments the large flat cell. Can you get it to segment both in the same class? Why or why not? Try adding a third class for this cell and see if that helps.
 
 
 
