@@ -20,7 +20,7 @@ Remember to **unzip** the data folder after downloading.
 ```
 
 ---
-```{tip}
+````{tip}
 <details>
 
 <summary> Here's a little help to remember why we make the corrections in the order that we do, as well as which are additive and which are multiplicative? </summary>
@@ -39,8 +39,10 @@ Remember to **unzip** the data folder after downloading.
 :width: 700
 :align: center
 ```
+
 </details>
-```
+
+````
 
 ---
 ## **Preparing your Image Corrections**
