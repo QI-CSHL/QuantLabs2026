@@ -399,13 +399,13 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-a-registration-transform-between-two-image-channels"><strong>Calculate a registration transform between two image channels</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-the-registration-transform-to-align-two-image-channels"><strong>Apply the registration transform to align two image channels</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-bleedthrough-coefficient"><strong>Calculate bleedthrough coefficient</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercises-imagej-macros"><strong>Bonus Exercises - ImageJ Macros</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercises-cellprofiler-background-subtraction-and-flatfield-correction-computationally-rescuing-old-data"><strong>Bonus Exercises - CellProfiler Background Subtraction and Flatfield Correction (computationally rescuing old data)</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-1-create-a-flatfield-correction-image-for-each-channel-wait-time-of-about-5-10-minutes-during-run">Pipeline 1 - Create a flatfield correction image for each channel (wait time of about 5-10 minutes during run)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-2-create-a-background-subtraction-image-for-each-channel-wait-time-after-of-about-5-10-minutes-during-run">Pipeline 2 - Create a background subtraction image for each channel (wait time after of about 5-10 minutes during run)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-3-apply-your-corrections-and-then-perform-some-segmentations-and-measurements">Pipeline 3 - Apply your corrections and then perform some <span class="xref std std-term">segmentation</span>s and measurements</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercises-imagej-macros"><strong>Bonus Exercises - ImageJ Macros</strong></a></li>
 </ul>
             </nav>
         </div>
@@ -430,20 +430,23 @@
 <li><p>Measure intensities with and without corrections</p></li>
 </ul>
 <p><strong>Lab Data</strong> in <a class="reference external" href="https://drive.google.com/drive/folders/1RKVXPwTvwiIDKQd569LJdWhbZ6ho02LS">this folder</a> (Lab 3)</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
 <p>Remember to <strong>unzip</strong> the data folder after downloading.</p>
+</div>
 </section>
 <hr class="docutils" />
 <section id="preparing-your-image-corrections">
 <h2><strong>Preparing your Image Corrections</strong><a class="headerlink" href="#preparing-your-image-corrections" title="Link to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You’re encouraged to try these corrections on your own data. However, we also have some canned data available if you prefer (see link above)</p>
+<p>You’re encouraged to try these corrections on your own data from yesterday’s acquisition lab. However, we also have some canned data available if you prefer (see link above).</p>
 </div>
 <section id="create-averaged-dark-images">
 <h3>Create Averaged dark images<a class="headerlink" href="#create-averaged-dark-images" title="Link to this heading">#</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you are using the canned data you can skip this part as we have provided averaged images</p>
+<p>If you are using the canned data you can skip this part as we have provided averaged images.</p>
 </div>
 <ol class="arabic simple">
 <li><p>Load your dark correction images in Fiji</p></li>
@@ -453,7 +456,7 @@
 <p>Check out these <a class="reference external" href="https://imagej.net/learn/user-guides">User Guides</a>, or check them out on <a class="reference external" href="https://forum.image.sc/tag/fiji">the image.sc forum!</a></p>
 </aside>
 <ol class="arabic simple" start="2">
-<li><p>Average them together by going to Image -&gt;stack-&gt;Z-Project and selecting
+<li><p>Average them together by going to Image -&gt;Stack-&gt;Z-Project and selecting
 “Average intensity” and clicking OK.</p></li>
 <li><p>Calculate the mean and STD of the entire dark current image. How
 much variability is there? Is it in a specific spatial pattern? You
@@ -598,8 +601,7 @@ quantitative intensity measurements of biological samples?</p></li>
 <ol class="arabic simple">
 <li><p>Load one of your tetraspeck bead image sets (two channels from one
 stage position). If you are using the canned dataset this will be
-“tspeck_1024_1518_003_z27.ome.tif” (drag it into BioFormats plugin
-shortcut window).</p></li>
+“tspeck_1024_1518_003_z27.ome.tif” (drag it into the main Fiji window).</p></li>
 <li><p>If your images are in a single composite (2-channel) image, split
 the channels by going to Image-&gt;Color-&gt;Split Channels</p></li>
 <li><p>Open the registration plugin by going to
@@ -666,7 +668,7 @@ the FRET illumination and filter set
 <p>These images have already had offset, background and flat-field corrections applied to them, so you don’t need to do that now. If you were using your own images you would need to apply these corrections first.</p>
 </div>
 <ol class="arabic" start="2">
-<li><p>We can sneakily use the colocalization tool to calculate the
+<li><p>We can sneakily use a colocalization tool to calculate the
 bleedthrough coefficient. Go to Analyze-&gt;Colocalization-&gt;Coloc 2.</p></li>
 <li><p>Make sure that Channel 1 is CFP-Only-CFP and Channel 2 is
 CFP-Only-FRET. Set the “Threshold regression” to “Bisection” - this
@@ -695,21 +697,6 @@ completely due to bleedthrough / crosstalk. There may be some
 residual intensity - can you think of why this might be?</p>
 </li>
 </ol>
-</section>
-<section id="bonus-exercises-imagej-macros">
-<h2><strong>Bonus Exercises - ImageJ Macros</strong><a class="headerlink" href="#bonus-exercises-imagej-macros" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Pick the most painful or annoying analysis task from the labs so far,
-or a new one you want to try. Go to Plugins &gt; Macros &gt; Record</p></li>
-<li><p>Start performing your task. Notice what happens in the macro recorder.</p></li>
-<li><p>When you’re done, click “create” in the macro recorder.</p></li>
-<li><p>Close your processed images, re-open your original image(s), and try
-running the macro.</p></li>
-<li><p>Look at the text of the macro - try to understand some of the
-commands. How could you adjust your analysis by editing this?</p></li>
-<li><p>Save your macro for future use. You can re-open it by simply dragging
-it onto the Fiji toolbar.</p></li>
-</ul>
 </section>
 <section id="bonus-exercises-cellprofiler-background-subtraction-and-flatfield-correction-computationally-rescuing-old-data">
 <h2><strong>Bonus Exercises - CellProfiler Background Subtraction and Flatfield Correction (computationally rescuing old data)</strong><a class="headerlink" href="#bonus-exercises-cellprofiler-background-subtraction-and-flatfield-correction-computationally-rescuing-old-data" title="Link to this heading">#</a></h2>
@@ -799,6 +786,21 @@ it onto the Fiji toolbar.</p></li>
 </div>
 </section>
 </section>
+<section id="bonus-exercises-imagej-macros">
+<h2><strong>Bonus Exercises - ImageJ Macros</strong><a class="headerlink" href="#bonus-exercises-imagej-macros" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Pick the most painful or annoying analysis task from the labs so far,
+or a new one you want to try. Go to Plugins &gt; Macros &gt; Record</p></li>
+<li><p>Start performing your task. Notice what happens in the macro recorder.</p></li>
+<li><p>When you’re done, click “create” in the macro recorder.</p></li>
+<li><p>Close your processed images, re-open your original image(s), and try
+running the macro.</p></li>
+<li><p>Look at the text of the macro - try to understand some of the
+commands. How could you adjust your analysis by editing this?</p></li>
+<li><p>Save your macro for future use. You can re-open it by simply dragging
+it onto the Fiji toolbar.</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -860,13 +862,13 @@ it onto the Fiji toolbar.</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-a-registration-transform-between-two-image-channels"><strong>Calculate a registration transform between two image channels</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-the-registration-transform-to-align-two-image-channels"><strong>Apply the registration transform to align two image channels</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-bleedthrough-coefficient"><strong>Calculate bleedthrough coefficient</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercises-imagej-macros"><strong>Bonus Exercises - ImageJ Macros</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercises-cellprofiler-background-subtraction-and-flatfield-correction-computationally-rescuing-old-data"><strong>Bonus Exercises - CellProfiler Background Subtraction and Flatfield Correction (computationally rescuing old data)</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-1-create-a-flatfield-correction-image-for-each-channel-wait-time-of-about-5-10-minutes-during-run">Pipeline 1 - Create a flatfield correction image for each channel (wait time of about 5-10 minutes during run)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-2-create-a-background-subtraction-image-for-each-channel-wait-time-after-of-about-5-10-minutes-during-run">Pipeline 2 - Create a background subtraction image for each channel (wait time after of about 5-10 minutes during run)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-3-apply-your-corrections-and-then-perform-some-segmentations-and-measurements">Pipeline 3 - Apply your corrections and then perform some <span class="xref std std-term">segmentation</span>s and measurements</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercises-imagej-macros"><strong>Bonus Exercises - ImageJ Macros</strong></a></li>
 </ul>
   </nav></div>
 

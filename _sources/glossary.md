@@ -18,6 +18,9 @@ Convolution
    In image analysis, convolution is the process by which a digital image is modified using a kernel to obtain a filtered image.
    In microscopy, it usually refers to the process by which the shape of an object observed through a microscope is distorted by the PSF to generate the observed image.
 
+Cell Painting
+  The Cell Painting assay is a high-throughput, image-based profiling technique that uses fluorescent dyes to stain common cellular components (typically nucleus, ER, mitochondria, Golgi, actin, plasma membrane, RNA). By extracting LOTS of morphological features (several hundreds to a few thousands) using a software like CellProfiler, it creates a "morphological profile" to identify how cells phenotipically respond to chemical or genetic perturbations.
+
 Environment
   (Particularly, a *software environment*) Is the context in which your code runs, including the configuration settings, system resources, variables, and tools that shape how the program behaves. Because different softwares may have different (and many times mutually incompatible) context requirements, having distinct, independent environments allows you to run these different programs on the same computer.
 
