@@ -132,7 +132,7 @@ If you are using images from a CMOS camera, it will have variable gain from pixe
     this variability tell you about when/why these correction images are
     necessary?
 
-## **Measure intensity with and without dark and flat-field correction**
+## *Perform the Flat Field Correction (FFC)**
 
 1.  Open the bead images you acquired for flat field correction. If you
     are using canned data this will be “MAX_s1to50_10x SF red beads
@@ -157,31 +157,21 @@ If you are using images from a CMOS camera, it will have variable gain from pixe
 7.  Measure the mean intensity in the background of this corrected image
     (away from any beads). What is the value now? Why is this?
 
-8.  Use the “find maxima” feature you learned about before to detect all
-    the beads, then measure them by pressing m.
-
-9.  Use Excel to calculate the mean and standard deviation of your bead
-    intensities. Also calculate the “coefficient of variation” which is
-    the standard deviation divided by mean.
-
-10. Now, open the averaged flat-field correction image you prepared
+8. Now, open the averaged flat-field correction image you prepared
     earlier ('FlatField-10x SF-bin1-Filter TRITC.tif' if you're using
     canned data).
 
-11. Illumination has a multiplicative effect on intensity, so the
+9. Illumination has a multiplicative effect on intensity, so the
     correction is division. Apply the flat-field correction by dividing
     the dark-current-&-offset-corrected image by the flat-field
     correction image, again via Process-\>Image Calculator.
 
-12. Play around with the brightness and contrast now - do the bead
+10. Play around with the brightness and contrast now - do the bead
     intensities appear more uniform? (They should).
 
-13. Again detect the beads in the flat-field corrected image using the
-    find maxima tool and measure their intensities.
-
-14. Again use Excel to calculate the mean, standard deviation and
-    coefficient of variation (CV) of the bead intensities. How has the
-    CV changed? Why is that?
+11. To visualize the difference between the two images, you can overlay them in green and magenta. Do
+    this by going to "image" -> "color" -> "merge channels" and selecting your original (dark current subtracted)
+    image as magenta and your flat field corrected image as the green channel. What do you see? Why?
 
 ## **Measure intensity with and without local background subtraction**
 
@@ -206,26 +196,13 @@ offset and flat field correction to these images.
     and use the plot profile function to visualize and measure the
     variability in background.
 
-3.  Use the find maxima feature to detect the beads and measure their
-    intensity.
-
-4.  Again use Excel to calculate the mean, standard deviation and
-    coefficient of variation of the bead intensities. Save this
-    spreadsheet for later reference.
-
 5.  Now, apply a local background subtraction (`Process` -> `Subtract Background`)
 
 6.  Again draw a line scan across the field of view and use plot profile
     to visualize and measure the background variation. How does it
     compare to before?
 
-7.  Detect the beads and measure their intensity.
-
-8.  Again use Excel to calculate the mean, standard deviation and
-    coefficient of variation. Compare these values to those you measured
-    in the raw image, before background subtraction. How do they
-    compare? Would a background subtraction be important for making
-    quantitative intensity measurements of biological samples?
+7. Try this again with different values for the background subtraction. What changes? Why?
 
 ## **Calculate a registration transform between two image channels**
 
