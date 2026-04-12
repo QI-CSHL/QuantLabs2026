@@ -14,20 +14,22 @@
 
 **Lab Data** in [this folder](https://drive.google.com/drive/folders/1RKVXPwTvwiIDKQd569LJdWhbZ6ho02LS) (Lab 3)
 
+```{important}
 Remember to **unzip** the data folder after downloading.
+```
 
 ---
 
 ## **Preparing your Image Corrections**
 
 ```{note} 
-You’re encouraged to try these corrections on your own data. However, we also have some canned data available if you prefer (see link above) 
+You’re encouraged to try these corrections on your own data from yesterday's acquisition lab. However, we also have some canned data available if you prefer (see link above). 
 ```
 
 ### Create Averaged dark images
 
 ```{note} 
-If you are using the canned data you can skip this part as we have provided averaged images
+If you are using the canned data you can skip this part as we have provided averaged images.
 ```
 
 1.  Load your dark correction images in Fiji
@@ -36,7 +38,7 @@ If you are using the canned data you can skip this part as we have provided aver
 Check out these [User Guides](https://imagej.net/learn/user-guides), or check them out on [the image.sc forum!](https://forum.image.sc/tag/fiji)
 ```
 
-2.  Average them together by going to Image -\>stack-\>Z-Project and selecting
+2.  Average them together by going to Image -\>Stack-\>Z-Project and selecting
     “Average intensity” and clicking OK.
 
 3.  Calculate the mean and STD of the entire dark current image. How
@@ -198,8 +200,7 @@ offset and flat field correction to these images.
 
 1.  Load one of your tetraspeck bead image sets (two channels from one
     stage position). If you are using the canned dataset this will be
-    “tspeck_1024_1518_003_z27.ome.tif” (drag it into BioFormats plugin
-    shortcut window).
+    “tspeck_1024_1518_003_z27.ome.tif” (drag it into the main Fiji window).
 
 2.  If your images are in a single composite (2-channel) image, split
     the channels by going to Image-\>Color-\>Split Channels
@@ -272,7 +273,7 @@ For this section we will use canned data from a FRET probe, where bleedthrough /
 These images have already had offset, background and flat-field corrections applied to them, so you don’t need to do that now. If you were using your own images you would need to apply these corrections first.
 ```
 
-2.  We can sneakily use the colocalization tool to calculate the
+2.  We can sneakily use a colocalization tool to calculate the
     bleedthrough coefficient. Go to Analyze-\>Colocalization-\>Coloc 2.
 
 3.  Make sure that Channel 1 is CFP-Only-CFP and Channel 2 is
@@ -306,24 +307,6 @@ These images have already had offset, background and flat-field corrections appl
         CFP-Only-FRET image, because in this experiment this image is
         completely due to bleedthrough / crosstalk. There may be some
         residual intensity - can you think of why this might be?
-
-## **Bonus Exercises - ImageJ Macros**
-
-- Pick the most painful or annoying analysis task from the labs so far,
-  or a new one you want to try. Go to Plugins \> Macros \> Record
-
-- Start performing your task. Notice what happens in the macro recorder.
-
-- When you’re done, click “create” in the macro recorder.
-
-- Close your processed images, re-open your original image(s), and try
-  running the macro.
-
-- Look at the text of the macro - try to understand some of the
-  commands. How could you adjust your analysis by editing this?
-
-- Save your macro for future use. You can re-open it by simply dragging
-  it onto the Fiji toolbar.
 
 ## **Bonus Exercises - CellProfiler Background Subtraction and Flatfield Correction (computationally rescuing old data)**
 
@@ -401,3 +384,21 @@ You can also assess how the correction affects smaller objects such as the mitoc
 ```{tip}
 Want to learn more about segmenting these images? Visit [CellProfiler's Tutorials page](tutorials.cellprofiler.org) and check out the Beginner Segmentation and Advanced Segmentation modules, both of which use this image set!
 ```
+
+## **Bonus Exercises - ImageJ Macros**
+
+- Pick the most painful or annoying analysis task from the labs so far,
+  or a new one you want to try. Go to Plugins \> Macros \> Record
+
+- Start performing your task. Notice what happens in the macro recorder.
+
+- When you’re done, click “create” in the macro recorder.
+
+- Close your processed images, re-open your original image(s), and try
+  running the macro.
+
+- Look at the text of the macro - try to understand some of the
+  commands. How could you adjust your analysis by editing this?
+
+- Save your macro for future use. You can re-open it by simply dragging
+  it onto the Fiji toolbar.
