@@ -1,8 +1,8 @@
 # Image Correction and Intensity Measurements
 
-*Lab authors: Hunter Elliott, Marcelo Cicconet, & Beth Cimini* . 
+*Lab authors: Hunter Elliott, Marcelo Cicconet, Esteban Miglietta, and Beth Cimini* . 
 
-<small>This file last updated 2026-04-09.</small>
+<small>This file last updated 2026-04-12.</small>
 
 ---
 
