@@ -12,6 +12,15 @@
 - Apply corrections to image data
 - Measure intensities with and without corrections
 
+
+**Lab Data** in [this folder](https://drive.google.com/drive/folders/1RKVXPwTvwiIDKQd569LJdWhbZ6ho02LS) (Lab 3)
+
+```{important}
+Remember to **unzip** the data folder after downloading.
+```
+
+---
+```{tip}
 <details>
 
 <summary> Here's a little help to remember why we make the corrections in the order that we do, as well as which are additive and which are multiplicative? </summary>
@@ -26,21 +35,14 @@
 :align: center
 ```
 
-```{figure} ./images/correction_intensity/ImageCorrection2.png
+```{figure} ./images/correction_intensity/ImageCorrection3.png
 :width: 700
 :align: center
 ```
-
 </details>
-
-**Lab Data** in [this folder](https://drive.google.com/drive/folders/1RKVXPwTvwiIDKQd569LJdWhbZ6ho02LS) (Lab 3)
-
-```{important}
-Remember to **unzip** the data folder after downloading.
 ```
 
 ---
-
 ## **Preparing your Image Corrections**
 
 ```{note} 
