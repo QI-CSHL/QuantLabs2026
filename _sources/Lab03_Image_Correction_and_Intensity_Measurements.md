@@ -12,6 +12,27 @@
 - Apply corrections to image data
 - Measure intensities with and without corrections
 
+<details>
+
+<summary> Here's a little help to remember why we make the corrections in the order that we do, as well as which are additive and which are multiplicative? </summary>
+
+```{figure} ./images/correction_intensity/ImageCorrection1.png
+:width: 700
+:align: center
+```
+
+```{figure} ./images/correction_intensity/ImageCorrection2.png
+:width: 700
+:align: center
+```
+
+```{figure} ./images/correction_intensity/ImageCorrection2.png
+:width: 700
+:align: center
+```
+
+</details>
+
 **Lab Data** in [this folder](https://drive.google.com/drive/folders/1RKVXPwTvwiIDKQd569LJdWhbZ6ho02LS) (Lab 3)
 
 ```{important}
@@ -40,6 +61,12 @@ Check out these [User Guides](https://imagej.net/learn/user-guides), or check th
 
 2.  Average them together by going to Image -\>Stack-\>Z-Project and selecting
     “Average intensity” and clicking OK.
+
+```{note} 
+If you saved your images as individual files, here's how you can make the into an image stack in Fiji:
+    - Open all of you images in Fiji. Make sure there are no other images open
+    - In the `Images` menu, go to `Stacks` > `Images to stack` and click OK
+```
 
 3.  Calculate the mean and STD of the entire dark current image. How
     much variability is there? Is it in a specific spatial pattern? You
@@ -316,7 +343,7 @@ This exercise contains several "do this and then wait for 5-10 minutes" steps, s
 
 As you may have intuited after using it, CellProfiler was originally designed for high-content, high-throughput screens (though it certainly can work on single images). Proper image correction is harder and in practice sometimes somewhat different in this context, but still important! {cite}`Singh2014-yh`
 
-We've provided you some images {cite}`Gustafsdottir2013-ng` from the Broad Bioimage Benchmark Collection {cite}`Ljosa2012-bf` that have been treated with a set of organelle dyes collectively called Cell Painting. This assay will be discussed later in the course during Beth's seminar. 
+We've provided you some images {cite}`Gustafsdottir2013-ng` from the Broad Bioimage Benchmark Collection {cite}`Ljosa2012-bf` that have been treated with a set of organelle dyes collectively called {term}`Cell Painting`. This assay will be discussed later in the course during Beth's seminar. 
 
 Unfortunately, since these images are 10-15 years old, if measured offsets and images to help us calibrate the microscope were made at the time, they're long since lost. But we can still do _some_ background corrections to help us be more confident interpreting _some_ measurements. 
 
@@ -331,7 +358,7 @@ There are a lot of potentially correct answers here, but cell area should probab
 CellProfiler has no ability to "loop" over the same set of images multiple times (to first create a flatfield correction, and then a local background image, and then analysis), so we will need to run 3 separate pipelines, one for each step.
 
 ```{margin} Want to learn more about working with CellProfiler?
-Check out the [manual](https://cellprofiler.org/manuals) and the [tutorials](https://tutorials.cellprofiler.org/), or check them out on [the image.sc forum!](https://forum.image.sc/tag/cellprofiler)
+Check out the [manual](https://cellprofiler.org/manuals) and the [tutorials](https://tutorials.cellprofiler.org/), or check them out on [the image.sc forum!](https://forum.image.sc/tag/cellprofiler).
 ```
 
 ### Pipeline 1 - Create a flatfield correction image for each channel (wait time of about 5-10 minutes during run)
@@ -370,11 +397,11 @@ What kinds of things will this kind of background subtraction help correct for? 
 - Return to the Images module, and drag in your newly calculated `.npy` flatfield images. If you don't have the raw images loaded in still, drag them in as well.
   - Optional - double click on one or more of the `.npy` files to open them up in CellProfiler's image viewer. What do you notice? (You can also do this after you hit analyze)
 - Hit `Analyze Images` <img src="images/correction_intensity/AnalyzeImages.png" height="30px" /> to have CellProfiler create background correction images for each of the 5 channels on 240 images of each.
-- Optional - once the pipeline is done, load the tiff images produced into ImageJ/Fiji. What do you notice? What are their histograms? What happens if you use Fiji's "Set" function to set all images to have a histogram of ie 100-300?
+- **Optional** - once the pipeline is done, load the tiff images produced into ImageJ/Fiji. What do you notice? What are their histograms? What happens if you use Fiji's "Set" function to set all images to have a histogram of ie 100-300?
 
 ### Pipeline 3 - Apply your corrections and then perform some {term}`segmentation`s and measurements
 
-- Optional-optional - load your new round of correction images into CellProfiler (along with the first round and the raw images), load the `03_analysis_time.cppipe` pipeline, and start analyzing! 
+- **_Optional-optional_** - load your new round of correction images into CellProfiler (along with the first round and the raw images), load the `03_analysis_time.cppipe` pipeline, and start analyzing! 
 
 - What do you notice about the {term}`segmentation` if you switch back and forth between the corrected images (`Hoechst` for nuclei, and `Ph_golgi` for cells, and the uncorrected images `OrigHoechst` and `Orig_Ph_golgi`)?
   - Especially, do you notice anything in the top right of the image?
@@ -382,7 +409,7 @@ What kinds of things will this kind of background subtraction help correct for? 
 You can also assess how the correction affects smaller objects such as the mitochondria and nucleoli by changing whether corrected or uncorrected images are used on these.
 
 ```{tip}
-Want to learn more about segmenting these images? Visit [CellProfiler's Tutorials page](tutorials.cellprofiler.org) and check out the Beginner Segmentation and Advanced Segmentation modules, both of which use this image set!
+Want to learn more about segmenting these images? Visit [CellProfiler's Tutorials page](tutorials.cellprofiler.org) and check out the *Beginner Segmentation* and *Advanced Segmentation* modules, both of which use this image set!
 ```
 
 ## **Bonus Exercises - ImageJ Macros**
