@@ -108,7 +108,7 @@ If you want to submit your classification model for the competition, save your p
 ```
 ---
 
-## **Cell Classification** 
+## **Object Classification: Cell classification** 
 
 ### Learning Objectives
 
@@ -156,9 +156,11 @@ If you want to submit your classification model for the competition, save your p
 
 ```{tip}
 Did you know that there are ilastik image reading and model running plugins for both [Fiji](https://www.ilastik.org/documentation/fiji_export/plugin) and [CellProfiler](https://plugins.cellprofiler.org/supported_plugins.html)? They can be helpful for complex workflows.
+```
 
 Once you've trained an ilastik classifier, you can also export the images in ilastik's  [batch processor](https://www.ilastik.org/documentation/basics/batch) for your records and/or to interface with downstream programs. See [this tutorial](https://tutorials.cellprofiler.org/#pixel-based-classification) for an example of an ilastik-to-CellProfiler workflow.
-```
+
+**NOTE:** if you want to save the predictions for a stack of images (e.g. a time lapse), you'll need to save them as a 'sequence' (e.g. 'tiff sequence'). You can set this in the Export settings tab.
 
 ---
 
