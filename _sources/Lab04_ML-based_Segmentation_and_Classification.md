@@ -121,11 +121,13 @@ If you want to submit your classification model for the competition, save your p
 ### Segment Nuclei for Feature Extraction
 
 - Start a new project in ilastik using the workflow “Pixel
-  Classification + Object Classification”
+  Classification + Object Classification” (you may find it under "Other workflows")
 
 - Use the file in the **Cell_Classifier/** folder. The first step will
   be to train a pixel classifier to segment the nuclei, just like you
   did in the previous exercise.
+
+- These training images are arranged as a stack rather than sepparate files. You can use the slider in the bottom right to move through the images.
 
 - Why do we need to segment the cells before we classify them? Are there
   other approaches that might let us classify cells without segmenting
@@ -178,7 +180,7 @@ Check out the [documentation](https://imagej.net/plugins/labkit/), or check them
 
 ## **Bonus Exercises - Challenging Segmentations**
 
-- Pick the hardest image you’ve seen in the course (maybe the neuron images from Lab 2?) and try to segment it
+- Pick the hardest image you’ve seen in the course (maybe the [harder images from Lab 2](https://drive.google.com/drive/folders/1vkVes-FApU1WdeXKWLJlC-8P_rAyy0CD)?) and try to segment it
   using ilastik or labkit pixel classifier. Can you crack it? Can you
   understand why or why not? A good example to try is the Hela Cells (48-bit RGB) image you can find in Fiji under "File -> Open Samples -> Hela Cells (48 bit RGB)
 

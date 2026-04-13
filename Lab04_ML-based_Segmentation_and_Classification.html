@@ -64,6 +64,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Lab04_ML-based_Segmentation_and_Classification';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Helpful links for now and the future" href="links.html" />
+    <link rel="prev" title="Image Correction and Intensity Measurements" href="Lab03_Image_Correction_and_Intensity_Measurements.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -114,8 +116,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -170,10 +170,11 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantitative analysis labs</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Lab01_Estimating_SNR_and_Resolution_and_basic_image_processing.html">Estimating SNR &amp; Resolution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Lab02_Image_Processing_and_Basic_Detection.html">Image Processing and Basic Segmentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Lab03_Image_Correction_and_Intensity_Measurements.html">Image Correction and Intensity Measurements</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Segmentation and Pixel Classification</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
 <ul class="nav bd-sidenav">
@@ -425,7 +426,7 @@
 <h3>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Train a pixel classifier to <a class="reference internal" href="glossary.html#term-Segmentation"><span class="xref std std-term">segment</span></a> images</p></li>
-<li><p>Learn to use ilastik <span id="id1"><sup><a class="reference internal" href="bibliography.html#id8" title="Stuart Berg, Dominik Kutra, Thorben Kroeger, Christoph N Straehle, Bernhard X Kausler, Carsten Haubold, Martin Schiegg, Janez Ales, Thorsten Beier, Markus Rudy, Kemal Eren, Jaime I Cervantes, Buote Xu, Fynn Beuttenmueller, Adrian Wolny, Chong Zhang, Ullrich Koethe, Fred A Hamprecht, and Anna Kreshuk. Ilastik: interactive machine learning for (bio)image analysis. Nat. Methods, 16(12):1226–1232, December 2019.">16</a></sup></span></p></li>
+<li><p>Learn to use ilastik <span id="id1"><sup><a class="reference internal" href="bibliography.html#id8" title="Stuart Berg, Dominik Kutra, Thorben Kroeger, Christoph N Straehle, Bernhard X Kausler, Carsten Haubold, Martin Schiegg, Janez Ales, Thorsten Beier, Markus Rudy, Kemal Eren, Jaime I Cervantes, Buote Xu, Fynn Beuttenmueller, Adrian Wolny, Chong Zhang, Ullrich Koethe, Fred A Hamprecht, and Anna Kreshuk. Ilastik: interactive machine learning for (bio)image analysis. Nat. Methods, 16(12):1226–1232, December 2019.">7</a></sup></span></p></li>
 <li><p>Experiment with how features and data affect performance</p></li>
 </ul>
 <p><strong>Lab Data</strong> in <a class="reference external" href="https://drive.google.com/drive/folders/1y0M6TnRLssm3FlDnOVP0dna7jO3ZFwJ-">this folder</a> (Lab4)</p>
@@ -536,10 +537,11 @@ find? Why?</p></li>
 <h3>Segment Nuclei for Feature Extraction<a class="headerlink" href="#segment-nuclei-for-feature-extraction" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Start a new project in ilastik using the workflow “Pixel
-Classification + Object Classification”</p></li>
+Classification + Object Classification” (you may find it under “Other workflows”)</p></li>
 <li><p>Use the file in the <strong>Cell_Classifier/</strong> folder. The first step will
 be to train a pixel classifier to segment the nuclei, just like you
 did in the previous exercise.</p></li>
+<li><p>These training images are arranged as a stack rather than sepparate files. You can use the slider in the bottom right to move through the images.</p></li>
 <li><p>Why do we need to segment the cells before we classify them? Are there
 other approaches that might let us classify cells without segmenting
 them? What are the pros and cons (ask us to discuss if it’s not
@@ -588,7 +590,7 @@ trouble installing it. Try it with the same training data and see how it perform
 <section id="bonus-exercises-challenging-segmentations">
 <h2><strong>Bonus Exercises - Challenging Segmentations</strong><a class="headerlink" href="#bonus-exercises-challenging-segmentations" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Pick the hardest image you’ve seen in the course (maybe the neuron images from Lab 2?) and try to segment it
+<li><p>Pick the hardest image you’ve seen in the course (maybe the <a class="reference external" href="https://drive.google.com/drive/folders/1vkVes-FApU1WdeXKWLJlC-8P_rAyy0CD">harder images from Lab 2</a>?) and try to segment it
 using ilastik or labkit pixel classifier. Can you crack it? Can you
 understand why or why not? A good example to try is the Hela Cells (48-bit RGB) image you can find in Fiji under “File -&gt; Open Samples -&gt; Hela Cells (48 bit RGB)</p></li>
 </ul>
@@ -635,6 +637,24 @@ unsolvable by any pixel classification approach?</p></li>
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Lab03_Image_Correction_and_Intensity_Measurements.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Image Correction and Intensity Measurements</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="links.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Helpful links for now and the future</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
