@@ -6,12 +6,12 @@
 
 ---
 
-## **Segmentation** 
+## **Semantic Segmentation (Pixel classification)** 
 
 ### Learning Objectives
 
-- Train a pixel classifier to {term}`segment<Segmentation>` images
-- Learn to use ilastik {cite}`Berg2019-no`
+- Train a pixel classifier to for performing semantic {term}`segmention<segmentat>` images
+- Learn to use labkit {cite}`Berg2019-no`
 - Experiment with how features and data affect performance
 
 **Lab Data** in [this folder](https://drive.google.com/drive/folders/1y0M6TnRLssm3FlDnOVP0dna7jO3ZFwJ-) (Lab4)
@@ -19,16 +19,18 @@
 ```{important}
 Remember to **unzip** the data folder after downloading.
 ```
-
 ---
 
-### Training a Random Forest Pixel Classifier in ilastik
+### Training a Random Forest Pixel Classifier in Labkit
 
-```{margin} Want to learn more about working with ilastik?
-Check out the [documentation and tutorials list](https://www.ilastik.org/documentation/), or check them out on [the image.sc forum!](https://forum.image.sc/tag/ilastik)
+```{margin} Want to learn more about Labkit?
+Check out the [documentation](https://imagej.net/plugins/labkit/), or check them out on [the image.sc forum!](https://forum.image.sc/tag/Labkit)
 ```
 
-- Today we will be following along with the excellent [ilastik pixel classifier tutorial](https://bit.ly/3x11EZf). Read the guide and use the data provided to test the tool. There are some extra tips down below in this lab book so read ahead. Let us know if you hit a snag!
+- You find Labkit on an update site called “Labkit”. Ask us if you have
+  trouble installing it (we will also be using this software in lab 6!).
+
+- Read and follow the [labkit pixel classifier tutorial](https://imagej.net/plugins/labkit/pixel-classification-tutorial). Read the guide and use the data provided to test the tool. There are some extra tips down below in this lab book so read ahead. Let us know if you hit a snag!
 
 - You can use the data in the [Pixel_Classifier/](https://drive.google.com/drive/folders/12djKga6K6WezSpaxHYEjkq3obZzZ-JNX) folder in the lab data. Load both the 'Train' images (8 in total) and the 'Test' image.
 
@@ -39,11 +41,6 @@ There are both *train* and a *test* images. Why is that?
 ```
 
 - Start training the pixel classifier using *ONLY* the **Train** images. Why don't we use the *Test* image?
-
-
-```{tip} Moving between images
-You can change change the view to a different image using the "Current view" dropdown menu.
-```
 
 - Try to {term}`segment<Segmentation>` the images by providing training examples for four classes: 
 
@@ -56,7 +53,7 @@ You can change change the view to a different image using the "Current view" dro
   - ...and “*Other stuff*”
 
 ```{tip}
-You can change the  contrast of your reference image by right clicking 'raw input' in the layer list on the lower-left of the screen and choosing 'Adjust Thresholds'
+Here are some [tips and tricks](https://imagej.net/plugins/labkit/guidelines) to help guide your annotation.
 ```
 
 - Can you unambiguously define/draw labels for each of the classes?  
@@ -88,15 +85,6 @@ You can change the  contrast of your reference image by right clicking 'raw inpu
   - What happens if you only annotate the brightest cell bodies you can
     find? Why?
 
-- To export your pixel predictions, got to the **Prediction Export** tab, then **Choose Export Image Settings** and change the format of the output file to `.tif`.
-
-```{tip}
-Ilastik lets you use some palceholders to help automate the construction of the output path:
-- **{nickname}**: the raw input file basename. E.g.: if your input file is called `myImage.png`, {nickname} will be `myImage`
-- **{dataset_dir}**: the directory containing the original raw dataset corresponding these export results. E.g.: if your input file is located in `home/someFolder/myImage.png`, {dataset_dir} will be `home/someFolder`
-- **{result_type}**: type of result you're trying to export (you set this in the main Prediction Export tab). E.g.: 'Probabilities', 'Simple segmentation', 'Uncertainty', etc.
-```
-
 - Now run your final classifier on the 'Test' data (go back to 'Input Data' and add it if you haven't done it before) and export the resulting predictions by clicking on `Export` next to the name of the Test image .
 
 ```{admonition} **Class Challenge! - Laziest 'Good Enough' Classification** (Optional)  
@@ -108,7 +96,7 @@ If you want to submit your classification model for the competition, save your p
 ```
 ---
 
-## **Object Classification: Cell classification** 
+## **Object Classification in ilastik** 
 
 ### Learning Objectives
 
@@ -117,6 +105,11 @@ If you want to submit your classification model for the competition, save your p
 - Feature-based cell classification
 
 **Lab Data** in [this folder](https://drive.google.com/drive/folders/1y0M6TnRLssm3FlDnOVP0dna7jO3ZFwJ-) (under Cell_Classifier)
+
+
+```{margin} Want to learn more about working with ilastik?
+Check out the [documentation and tutorials list](https://www.ilastik.org/documentation/), or check them out on [the image.sc forum!](https://forum.image.sc/tag/ilastik)
+```
 
 ### Segment Nuclei for Feature Extraction
 
@@ -158,21 +151,24 @@ If you want to submit your classification model for the competition, save your p
 Did you know that there are ilastik image reading and model running plugins for both [Fiji](https://www.ilastik.org/documentation/fiji_export/plugin) and [CellProfiler](https://plugins.cellprofiler.org/supported_plugins.html)? They can be helpful for complex workflows.
 ```
 
-Once you've trained an ilastik classifier, you can also export the images in ilastik's  [batch processor](https://www.ilastik.org/documentation/basics/batch) for your records and/or to interface with downstream programs. See [this tutorial](https://tutorials.cellprofiler.org/#pixel-based-classification) for an example of an ilastik-to-CellProfiler workflow.
+- Once you've trained an ilastik classifier, you can export your pixel predictions. 
+  - First go to the **Prediction Export** tab, and then **Choose Export Image Settings**. 
+  - If you want to save the predictions for a stack of images (e.g. a time lapse) and yuo want to easily visualize them, you'll need to save them as a 'sequence' (e.g. 'tiff sequence'). 
+  - Otherwise, you can export it as 'compressed hdf5', wich is the native format for ilastik (although it's a bit more annoying for opening in other software).
 
-**NOTE:** if you want to save the predictions for a stack of images (e.g. a time lapse), you'll need to save them as a 'sequence' (e.g. 'tiff sequence'). You can set this in the Export settings tab.
+```{tip}
+Ilastik lets you use some palceholders to help automate the construction of the output path:
+- **{nickname}**: the raw input file basename. E.g.: if your input file is called `myImage.png`, {nickname} will be `myImage`
+- **{dataset_dir}**: the directory containing the original raw dataset corresponding these export results. E.g.: if your input file is located in `home/someFolder/myImage.png`, {dataset_dir} will be `home/someFolder`
+- **{result_type}**: type of result you're trying to export (you set this in the main Prediction Export tab). E.g.: 'Probabilities', 'Simple segmentation', 'Uncertainty', etc.
+```
+
+- You can also export the images in ilastik's [batch processor](https://www.ilastik.org/documentation/basics/batch) for your records and/or to interface with downstream programs. See [this tutorial](https://tutorials.cellprofiler.org/#pixel-based-classification) for an example of an ilastik-to-CellProfiler workflow.
+
 
 ---
 
-##  **Bonus Exercises - Play with Labkit (pixel classification in Fiji)**
-
-```{margin} Want to learn more about Labkit?
-Check out the [documentation](https://imagej.net/plugins/labkit/), or check them out on [the image.sc forum!](https://forum.image.sc/tag/Labkit)
-```
-
-- You find Labkit on an update site called “Labkit”. Ask us if you have
-  trouble installing it. Try it with the same training data and see how it performs!
-  (We will also be using this software in lab 6!)
+##  **Bonus Exercises - Use labkit on a DIC image **
 
 - Take the [cho_cells_BBC030 image](https://drive.google.com/drive/folders/1z_gQ1bIAJgYEe11QD4zY7q7i1Zr3v5ZW) we used in the first lab. Try to train a classifier to segment just the round cells. Then, try to train a classifier that also segments the large flat cell. Can you get it to segment both in the same class? Why or why not? Try adding a third class for this cell and see if that helps.
 
