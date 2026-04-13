@@ -424,12 +424,15 @@
 <section id="learning-objectives">
 <h3>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Train a pixel classifier to segment images</p></li>
+<li><p>Train a pixel classifier to <a class="reference internal" href="glossary.html#term-Segmentation"><span class="xref std std-term">segment</span></a> images</p></li>
 <li><p>Learn to use ilastik <span id="id1"><sup><a class="reference internal" href="bibliography.html#id8" title="Stuart Berg, Dominik Kutra, Thorben Kroeger, Christoph N Straehle, Bernhard X Kausler, Carsten Haubold, Martin Schiegg, Janez Ales, Thorsten Beier, Markus Rudy, Kemal Eren, Jaime I Cervantes, Buote Xu, Fynn Beuttenmueller, Adrian Wolny, Chong Zhang, Ullrich Koethe, Fred A Hamprecht, and Anna Kreshuk. Ilastik: interactive machine learning for (bio)image analysis. Nat. Methods, 16(12):1226–1232, December 2019.">16</a></sup></span></p></li>
 <li><p>Experiment with how features and data affect performance</p></li>
 </ul>
 <p><strong>Lab Data</strong> in <a class="reference external" href="https://drive.google.com/drive/folders/1y0M6TnRLssm3FlDnOVP0dna7jO3ZFwJ-">this folder</a> (Lab4)</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
 <p>Remember to <strong>unzip</strong> the data folder after downloading.</p>
+</div>
 </section>
 <hr class="docutils" />
 <section id="training-a-random-forest-pixel-classifier-in-ilastik">
@@ -439,19 +442,23 @@
 <p>Check out the <a class="reference external" href="https://www.ilastik.org/documentation/">documentation and tutorials list</a>, or check them out on <a class="reference external" href="https://forum.image.sc/tag/ilastik">the image.sc forum!</a></p>
 </aside>
 <ul class="simple">
-<li><p>Today we will be following along with the excellent <a class="reference external" href="https://bit.ly/3x11EZf">ilastik pixel classifier tutorial</a>.<br />
-Let us know if you hit a snag!</p></li>
-<li><p>You can use the data in Pixel_Classifier/ (link to
-Lab Data can be found on top of this page!). Load both the ‘Train’ and the ‘Test’ files. Note that you’ll need to
-change the axes of the ‘Train’ file to “tyx” because these images are not a z-stack (right click on your image and go to Edit Properties).</p></li>
+<li><p>Today we will be following along with the excellent <a class="reference external" href="https://bit.ly/3x11EZf">ilastik pixel classifier tutorial</a>. Read the guide and use the data provided to test the tool. There are some extra tips down below in this lab book so read ahead. Let us know if you hit a snag!</p></li>
+<li><p>You can use the data in the <a class="reference external" href="https://drive.google.com/drive/folders/12djKga6K6WezSpaxHYEjkq3obZzZ-JNX">Pixel_Classifier/</a> folder in the lab data. Load both the ‘Train’ images (8 in total) and the ‘Test’ image.</p></li>
 </ul>
 <div class="important admonition">
 <p class="admonition-title">Question</p>
-<p>There is a train and a test stack. Why is that?</p>
+<p>There are both <em>train</em> and a <em>test</em> images. Why is that?</p>
 </div>
 <ul class="simple">
-<li><p>Try to segment the images by providing training examples for four
-classes:</p>
+<li><p>Start training the pixel classifier using <em>ONLY</em> the <strong>Train</strong> images. Why don’t we use the <em>Test</em> image?</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Moving between images
+You can change change the view to a different image using the “Current view” dropdown menu.</p>
+</div>
+<ul class="simple">
+<li><p>Try to <a class="reference internal" href="glossary.html#term-Segmentation"><span class="xref std std-term">segment</span></a> the images by providing training examples for four classes:</p>
 <ul>
 <li><p>Cell bodies: <a class="reference internal" href="_images/image1.png"><img alt="_images/image1.png" src="_images/image1.png" style="height: 100px;" /></a></p></li>
 <li><p>Synapses: <a class="reference internal" href="_images/image2.png"><img alt="_images/image2.png" src="_images/image2.png" style="height: 100px;" /></a></p></li>
@@ -492,12 +499,12 @@ and very few examples of the others? Why is that?</p></li>
 find? Why?</p></li>
 </ul>
 </li>
-<li><p>To export your pixel predictions, got to the ‘Prediction Export’ tab, then ‘Choose Export Image Settings’ and change the format of the output file to <code class="docutils literal notranslate"><span class="pre">.tif</span></code>.</p></li>
+<li><p>To export your pixel predictions, got to the <strong>Prediction Export</strong> tab, then <strong>Choose Export Image Settings</strong> and change the format of the output file to <code class="docutils literal notranslate"><span class="pre">.tif</span></code>.</p></li>
 <li><p>Now run your final classifier on the ‘Test’ data (go back to ‘Input Data’ and add it if you haven’t done it before) and export the resulting predictions by clicking on <code class="docutils literal notranslate"><span class="pre">Export</span></code> next to the name of the Test image .</p></li>
 </ul>
 <div class="important admonition">
-<p class="admonition-title"><strong>Class Challenge</strong> (Optional)</p>
-<p>Let’s make this (even more) interesting! Try to come up with a ‘good enough’ classifier with as few total annotations as possible. What strategy/reasoning did you use to get there? Compare your results with your labmates and see who manages to win the coveted <strong>“Least pixels for good classification” Crown</strong> :crown: this year!</p>
+<p class="admonition-title"><strong>Class Challenge! - Laziest ‘Good Enough’ Classification</strong> (Optional)</p>
+<p>Let’s make this (even more) interesting! Try to come up with a <em>‘good enough’</em> classifier with <em>as few total annotations as possible</em>. What strategy/reasoning did you use to get there? Compare your results with your labmates and see who manages to win the coveted <strong>“Laziest ‘Good Enough’ Classification” Crown</strong> :crown: this year!</p>
 <p>If you want to submit your classification model for the competition, save your project as <code class="docutils literal notranslate"><span class="pre">YOUR_NAME_2026.ilp</span></code> and upload it together with an example of your classification to this <a class="reference external" href="https://drive.google.com/drive/folders/1ERFTRXPUwtSnGxRkaNB_3efcC6_YmhQJ?usp=sharing">Google Drive folder</a>.</p>
 </div>
 </section>
@@ -519,7 +526,7 @@ find? Why?</p></li>
 <ul class="simple">
 <li><p>Start a new project in ilastik using the workflow “Pixel
 Classification + Object Classification”</p></li>
-<li><p>Use the file in Cell_Classifier/. The first step will
+<li><p>Use the file in the <strong>Cell_Classifier/</strong> folder. The first step will
 be to train a pixel classifier to segment the nuclei, just like you
 did in the previous exercise.</p></li>
 <li><p>Why do we need to segment the cells before we classify them? Are there
