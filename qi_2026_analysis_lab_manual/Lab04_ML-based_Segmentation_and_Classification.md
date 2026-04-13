@@ -10,13 +10,15 @@
 
 ### Learning Objectives
 
-- Train a pixel classifier to segment images
+- Train a pixel classifier to {term}`segment<Segmentation>` images
 - Learn to use ilastik {cite}`Berg2019-no`
 - Experiment with how features and data affect performance
 
 **Lab Data** in [this folder](https://drive.google.com/drive/folders/1y0M6TnRLssm3FlDnOVP0dna7jO3ZFwJ-) (Lab4)
 
+```{important}
 Remember to **unzip** the data folder after downloading.
+```
 
 ---
 
@@ -26,21 +28,24 @@ Remember to **unzip** the data folder after downloading.
 Check out the [documentation and tutorials list](https://www.ilastik.org/documentation/), or check them out on [the image.sc forum!](https://forum.image.sc/tag/ilastik)
 ```
 
-- Today we will be following along with the excellent [ilastik pixel classifier tutorial](https://bit.ly/3x11EZf).  
-  Let us know if you hit a snag!
+- Today we will be following along with the excellent [ilastik pixel classifier tutorial](https://bit.ly/3x11EZf). Read the guide and use the data provided to test the tool. There are some extra tips down below in this lab book so read ahead. Let us know if you hit a snag!
 
-- You can use the data in Pixel_Classifier/ (link to
-  Lab Data can be found on top of this page!). Load both the 'Train' and the 'Test' files. Note that you’ll need to
-  change the axes of the 'Train' file to “tyx” because these images are not a z-stack (right click on your image and go to Edit Properties).
+- You can use the data in the [Pixel_Classifier/](https://drive.google.com/drive/folders/12djKga6K6WezSpaxHYEjkq3obZzZ-JNX) folder in the lab data. Load both the 'Train' images (8 in total) and the 'Test' image.
 
 ```{admonition} Question
 :class: important
 
-There is a train and a test stack. Why is that?
- ```
+There are both *train* and a *test* images. Why is that?
+```
 
-- Try to segment the images by providing training examples for four
-  classes: 
+- Start training the pixel classifier using *ONLY* the **Train** images. Why don't we use the *Test* image?
+
+
+```{tip} Moving between images
+You can change change the view to a different image using the "Current view" dropdown menu.
+```
+
+- Try to {term}`segment<Segmentation>` the images by providing training examples for four classes: 
 
   - Cell bodies: <img src="images/ml_seg_class/image1.png" height="100px" />
 
@@ -83,14 +88,14 @@ You can change the  contrast of your reference image by right clicking 'raw inpu
   - What happens if you only annotate the brightest cell bodies you can
     find? Why?
 
-- To export your pixel predictions, got to the 'Prediction Export' tab, then 'Choose Export Image Settings' and change the format of the output file to `.tif`.
+- To export your pixel predictions, got to the **Prediction Export** tab, then **Choose Export Image Settings** and change the format of the output file to `.tif`.
 
 - Now run your final classifier on the 'Test' data (go back to 'Input Data' and add it if you haven't done it before) and export the resulting predictions by clicking on `Export` next to the name of the Test image .
 
-```{admonition} **Class Challenge** (Optional)  
+```{admonition} **Class Challenge! - Laziest 'Good Enough' Classification** (Optional)  
 :class: important
 
-Let's make this (even more) interesting! Try to come up with a 'good enough' classifier with as few total annotations as possible. What strategy/reasoning did you use to get there? Compare your results with your labmates and see who manages to win the coveted **"Least pixels for good classification" Crown** :crown: this year!
+Let's make this (even more) interesting! Try to come up with a _'good enough'_ classifier with *as few total annotations as possible*. What strategy/reasoning did you use to get there? Compare your results with your labmates and see who manages to win the coveted **"Laziest 'Good Enough' Classification" Crown** :crown: this year!
 
 If you want to submit your classification model for the competition, save your project as `YOUR_NAME_2026.ilp` and upload it together with an example of your classification to this [Google Drive folder](https://drive.google.com/drive/folders/1ERFTRXPUwtSnGxRkaNB_3efcC6_YmhQJ?usp=sharing). 
 ```
@@ -111,7 +116,7 @@ If you want to submit your classification model for the competition, save your p
 - Start a new project in ilastik using the workflow “Pixel
   Classification + Object Classification”
 
-- Use the file in Cell_Classifier/. The first step will
+- Use the file in the **Cell_Classifier/** folder. The first step will
   be to train a pixel classifier to segment the nuclei, just like you
   did in the previous exercise.
 
