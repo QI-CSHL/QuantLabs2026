@@ -486,7 +486,7 @@ ask!</p></li>
 features we might need for this segmentation task? What are the
 minimal set that might do? Try that out. If your segmentation needs
 improvement, what features might you need to add?</p></li>
-<li><p>When you think you’re done with training, try the model on the test
+<li><p>When you think you’re done with training, try the model on the <strong>Test</strong>
 image. How does it perform? What does this tell you about your data,
 the model, and how you trained it?</p></li>
 <li><p>Start a new pixel classification project with the same data so you can
@@ -500,12 +500,23 @@ find? Why?</p></li>
 </ul>
 </li>
 <li><p>To export your pixel predictions, got to the <strong>Prediction Export</strong> tab, then <strong>Choose Export Image Settings</strong> and change the format of the output file to <code class="docutils literal notranslate"><span class="pre">.tif</span></code>.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Ilastik lets you use some palceholders to help automate the construction of the output path:</p>
+<ul class="simple">
+<li><p><strong>{nickname}</strong>: the raw input file basename. E.g.: if your input file is called <code class="docutils literal notranslate"><span class="pre">myImage.png</span></code>, {nickname} will be <code class="docutils literal notranslate"><span class="pre">myImage</span></code></p></li>
+<li><p><strong>{dataset_dir}</strong>: the directory containing the original raw dataset corresponding these export results. E.g.: if your input file is located in <code class="docutils literal notranslate"><span class="pre">home/someFolder/myImage.png</span></code>, {dataset_dir} will be <code class="docutils literal notranslate"><span class="pre">home/someFolder</span></code></p></li>
+<li><p><strong>{result_type}</strong>: type of result you’re trying to export (you set this in the main Prediction Export tab). E.g.: ‘Probabilities’, ‘Simple segmentation’, ‘Uncertainty’, etc.</p></li>
+</ul>
+</div>
+<ul class="simple">
 <li><p>Now run your final classifier on the ‘Test’ data (go back to ‘Input Data’ and add it if you haven’t done it before) and export the resulting predictions by clicking on <code class="docutils literal notranslate"><span class="pre">Export</span></code> next to the name of the Test image .</p></li>
 </ul>
 <div class="important admonition">
 <p class="admonition-title"><strong>Class Challenge! - Laziest ‘Good Enough’ Classification</strong> (Optional)</p>
 <p>Let’s make this (even more) interesting! Try to come up with a <em>‘good enough’</em> classifier with <em>as few total annotations as possible</em>. What strategy/reasoning did you use to get there? Compare your results with your labmates and see who manages to win the coveted <strong>“Laziest ‘Good Enough’ Classification” Crown</strong> :crown: this year!</p>
-<p>If you want to submit your classification model for the competition, save your project as <code class="docutils literal notranslate"><span class="pre">YOUR_NAME_2026.ilp</span></code> and upload it together with an example of your classification to this <a class="reference external" href="https://drive.google.com/drive/folders/1ERFTRXPUwtSnGxRkaNB_3efcC6_YmhQJ?usp=sharing">Google Drive folder</a>.</p>
+<p>If you want to submit your classification model for the competition, save your project as <code class="docutils literal notranslate"><span class="pre">YOUR_NAME_2026.ilp</span></code> and upload it together with the output of your Test image to this <a class="reference external" href="https://drive.google.com/drive/folders/1ERFTRXPUwtSnGxRkaNB_3efcC6_YmhQJ?usp=sharing">Google Drive folder</a>.</p>
 </div>
 </section>
 </section>

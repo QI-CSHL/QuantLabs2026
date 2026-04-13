@@ -74,7 +74,7 @@ You can change the  contrast of your reference image by right clicking 'raw inpu
   minimal set that might do? Try that out. If your segmentation needs
   improvement, what features might you need to add?
 
-- When you think you’re done with training, try the model on the test
+- When you think you’re done with training, try the model on the **Test**
   image. How does it perform? What does this tell you about your data,
   the model, and how you trained it?
 
@@ -90,6 +90,13 @@ You can change the  contrast of your reference image by right clicking 'raw inpu
 
 - To export your pixel predictions, got to the **Prediction Export** tab, then **Choose Export Image Settings** and change the format of the output file to `.tif`.
 
+```{tip}
+Ilastik lets you use some palceholders to help automate the construction of the output path:
+- **{nickname}**: the raw input file basename. E.g.: if your input file is called `myImage.png`, {nickname} will be `myImage`
+- **{dataset_dir}**: the directory containing the original raw dataset corresponding these export results. E.g.: if your input file is located in `home/someFolder/myImage.png`, {dataset_dir} will be `home/someFolder`
+- **{result_type}**: type of result you're trying to export (you set this in the main Prediction Export tab). E.g.: 'Probabilities', 'Simple segmentation', 'Uncertainty', etc.
+```
+
 - Now run your final classifier on the 'Test' data (go back to 'Input Data' and add it if you haven't done it before) and export the resulting predictions by clicking on `Export` next to the name of the Test image .
 
 ```{admonition} **Class Challenge! - Laziest 'Good Enough' Classification** (Optional)  
@@ -97,7 +104,7 @@ You can change the  contrast of your reference image by right clicking 'raw inpu
 
 Let's make this (even more) interesting! Try to come up with a _'good enough'_ classifier with *as few total annotations as possible*. What strategy/reasoning did you use to get there? Compare your results with your labmates and see who manages to win the coveted **"Laziest 'Good Enough' Classification" Crown** :crown: this year!
 
-If you want to submit your classification model for the competition, save your project as `YOUR_NAME_2026.ilp` and upload it together with an example of your classification to this [Google Drive folder](https://drive.google.com/drive/folders/1ERFTRXPUwtSnGxRkaNB_3efcC6_YmhQJ?usp=sharing). 
+If you want to submit your classification model for the competition, save your project as `YOUR_NAME_2026.ilp` and upload it together with the output of your Test image to this [Google Drive folder](https://drive.google.com/drive/folders/1ERFTRXPUwtSnGxRkaNB_3efcC6_YmhQJ?usp=sharing). 
 ```
 ---
 
