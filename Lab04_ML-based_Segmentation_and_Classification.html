@@ -395,7 +395,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-a-random-forest-pixel-classifier-in-ilastik">Training a Random Forest Pixel Classifier in ilastik</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-classification"><strong>Cell Classification</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-classification-cell-classification"><strong>Object Classification: Cell classification</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Learning Objectives</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segment-nuclei-for-feature-extraction">Segment Nuclei for Feature Extraction</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classifying-mitotic-and-interphase-cells">Classifying Mitotic and Interphase Cells</a></li>
@@ -522,8 +522,8 @@ find? Why?</p></li>
 </section>
 </section>
 <hr class="docutils" />
-<section id="cell-classification">
-<h2><strong>Cell Classification</strong><a class="headerlink" href="#cell-classification" title="Link to this heading">#</a></h2>
+<section id="object-classification-cell-classification">
+<h2><strong>Object Classification: Cell classification</strong><a class="headerlink" href="#object-classification-cell-classification" title="Link to this heading">#</a></h2>
 <section id="id2">
 <h3>Learning Objectives<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -568,8 +568,9 @@ performance on new data?</p></li>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Did you know that there are ilastik image reading and model running plugins for both <a class="reference external" href="https://www.ilastik.org/documentation/fiji_export/plugin">Fiji</a> and <a class="reference external" href="https://plugins.cellprofiler.org/supported_plugins.html">CellProfiler</a>? They can be helpful for complex workflows.</p>
-<p>Once you’ve trained an ilastik classifier, you can also export the images in ilastik’s  <a class="reference external" href="https://www.ilastik.org/documentation/basics/batch">batch processor</a> for your records and/or to interface with downstream programs. See <a class="reference external" href="https://tutorials.cellprofiler.org/#pixel-based-classification">this tutorial</a> for an example of an ilastik-to-CellProfiler workflow.</p>
 </div>
+<p>Once you’ve trained an ilastik classifier, you can also export the images in ilastik’s  <a class="reference external" href="https://www.ilastik.org/documentation/basics/batch">batch processor</a> for your records and/or to interface with downstream programs. See <a class="reference external" href="https://tutorials.cellprofiler.org/#pixel-based-classification">this tutorial</a> for an example of an ilastik-to-CellProfiler workflow.</p>
+<p><strong>NOTE:</strong> if you want to save the predictions for a stack of images (e.g. a time lapse), you’ll need to save them as a ‘sequence’ (e.g. ‘tiff sequence’). You can set this in the Export settings tab.</p>
 </section>
 </section>
 <hr class="docutils" />
@@ -678,7 +679,7 @@ unsolvable by any pixel classification approach?</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-a-random-forest-pixel-classifier-in-ilastik">Training a Random Forest Pixel Classifier in ilastik</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-classification"><strong>Cell Classification</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-classification-cell-classification"><strong>Object Classification: Cell classification</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Learning Objectives</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segment-nuclei-for-feature-extraction">Segment Nuclei for Feature Extraction</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classifying-mitotic-and-interphase-cells">Classifying Mitotic and Interphase Cells</a></li>
