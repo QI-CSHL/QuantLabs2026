@@ -117,16 +117,19 @@ Check out the [documentation](https://imagej.net/plugins/bdv/), or check them ou
   `Drosophila_zstack-20x-medium.tif`.
   
 - We are going to segment the nuclei of this 3D volume via *3D marker-controlled watershed*. As
-  with the seeded watershed approach in 2D, we'll need 3 "images": **marker**, **watershed surface**, and **mask**.
-  We will get all three images from the same channel: channel 2.
-
+with the seeded watershed approach in 2D, we'll need 3 "images": **marker**, **watershed surface**, and **mask**.
+We will get all three images from the same channel: channel 2.
+  
+  ````{tip} 
   <details>
   <summary>
-  ``` {tip} 
-  Here's a preview of the analysis workflow to guide you
+  Here's a visual summary of the analysis workflow to guide you
+
+  ```{figure} ./images/3D/3d_watershed_workflow.png
+  :width: 700
+  :align: center
   ```
   </summary>
-  <img src="images/3D/3d_watershed_workflow.png" />  
   </details> 
 
 - Split the three channels by going to `Image > Color > Split Channels`.
