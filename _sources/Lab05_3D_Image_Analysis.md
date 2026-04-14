@@ -122,7 +122,9 @@ Check out the [documentation](https://imagej.net/plugins/bdv/), or check them ou
 
   <details>
   <summary>
-  - Here's a preview of the analysis workflow to guide you
+  ``` {tip} 
+  Here's a preview of the analysis workflow to guide you
+  ```
   </summary>
   <img src="images/3D/3d_watershed_workflow.png" />  
   </details> 
