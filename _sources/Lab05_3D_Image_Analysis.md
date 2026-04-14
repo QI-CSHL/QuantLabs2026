@@ -15,8 +15,9 @@
 
 **Lab Data** in [this folder](https://tinyurl.com/QIAnalysisLabData) (3D_Image_Analysis)
 
+```{important}
 Remember to **unzip** the data folder after downloading.
-
+```
 ---
 
 ## **Visualizing 3D data in Fiji**
@@ -41,19 +42,33 @@ Remember to **unzip** the data folder after downloading.
   particular, change the values of VoxelDimension.X/Y/Z at the top right
   to see what happens. -->
 
+- **BigVolumeBrowser** is a relatively new 3D volume visualization and rendering tool. 
+
+```{margin} Want to learn more about working with BigVolumeBrowser?
+Check out the [documentation](https://github.com/UU-cellbiology/bigvolumebrowser/wiki), or check them out on [the image.sc forum!](https://forum.image.sc/t/bigvolumebrowser-a-new-3d-multi-volume-mesh-point-cloud-smlm-data-viewer/117764)
+```
+
+  - If it's not installed in your Fiji, go to `Help > Update > Manage update sites`, search for `BigVolumeBrowser` and activate the checkbox. Click `Apply and close` and then `Apply changes`. You'll need to restart Fiji.
+  - You can open it by going to `Plugins > BigVolumeViewer 0.1.0`
+  - You wil be prompted to set the 3D rendering parameters. You can learn more about them [here](https://github.com/UU-cellbiology/bigvolumebrowser/wiki/3D-rendering-parameters), but for this exercise, the deafult settings are enough.
+  - Play around a bit, rotate the volume, change a few viewing options... enjoy!
+    - Click on the **Fiji** logo, under the "Add volumes" menu on the right to load the active image from Fiji.
+    - You can control visibility of the layers in the `Sources` menu and their rendering in the `Sources render` menu on the right.
+    - The `View` menu contains tools to change the view of the volume.
+
 - **BigDataViewer.** BDV is a “re-slicing” viewer that is included with
-  Fiji and you can view your stack in it by going to
+  Fiji.
+```{margin} Want to learn more about working with BigDataViewer?
+Check out the [documentation](https://imagej.net/plugins/bdv/), or check them out on [the image.sc forum!](https://forum.image.sc/tag/BigDataViewer)
+```
+  - Uou can view your stack in BigDataViewer by going to
   `Plugins > BigDataViewer > open current image`. What might be the pros
-  and cons of viewing images like this compared to a 3D view like in napari?
-  If you want to know more about it, you can find the full documentation for this tool [here](https://imagej.net/plugins/bdv/).
+  and cons of viewing images like this compared to a 3D view like in BigVolumeViewer?
+  - If you want to know more about it, you can find the full documentation for this tool [here](https://imagej.net/plugins/bdv/).
 
   - Do you see anything suspicious about the intensity values in this
     image when you rotate it in BDV? 
     If so, can you think of some possible explanations for this?
-
-```{margin} Want to learn more about working with BigDataViewer?
-Check out the [documentation](https://imagej.net/plugins/bdv/), or check them out on [the image.sc forum!](https://forum.image.sc/tag/BigDataViewer)
-```
 
 ## **Registration for 3D Volume Reconstruction**
 
@@ -81,17 +96,11 @@ Check out the [documentation](https://imagej.net/plugins/bdv/), or check them ou
   Fiji. 
   StackReg was designed to work on single channel images, so you will first need to split your your image (Image\>Color\>Split Chanels)
   
-  ```{note}
-  If you ever have to register multi-channel images, there is a plugin 
-  called “HyperStackReg”. You can [find it here](https://github.com/ved-sharma/HyperStackReg) 
-  and the installation instructions are on that page as well.
-  ``` 
   
   Now, go to `Plugins > StackReg`. 
   What kind of transform do you think is best to align all these
   slices? Select it and then click OK. Be patient - it will take some
   time to finish. 
-  
 
 
 - Now visualize the registered stack and compare it to the original. 
@@ -100,72 +109,95 @@ Check out the [documentation](https://imagej.net/plugins/bdv/), or check them ou
 
 ## **3D Object Segmentation, Shape and Intensity Measurements**
 
+```{hint}
+  We'll use two plugin suites for this exercise: [MorphoLibJ](https://imagej.net/plugins/morpholibj) and [FeatureJ](https://imagescience.org/meijering/software/featurej/), if they are not installed already in your Fiji, install them by activating the `IJPB-plugins` and `ImageScience` plugin sites in `Help > Update > Manage update sites`. You will have to restart Fiji.
+```
+
 - Close all secondary Fiji windows and reload
   `Drosophila_zstack-20x-medium.tif`.
+  
+- We are going to segment the nuclei of this 3D volume via *3D marker-controlled watershed*. As
+  with the seeded watershed approach in 2D, we'll need 3 "images": **marker**, **watershed surface**, and **mask**.
+  We will get all three images from the same channel: channel 2.
+
+  <details>
+  <summary>
+  - Here's a preview of the analysis workflow to guide you
+  </summary>
+  <img src="images/3D/3d_watershed_workflow.png" />  
+  </details> 
 
 - Split the three channels by going to `Image > Color > Split Channels`.
-  Close all but the second channel, which corresponds to nuclei. We are
-  going to segment these nuclei via 3D marker-controlled watershed. As
-  in 2D, we'll need 3 "images": marker, watershed surface, and mask.
-  Typically we use nuclei as markers to segment cells, but here we will
-  get all three images from the same source. Change the image type to
-  32-bit (`Image > Type > 32-bit`). Create 3 copies of the stack (via
-  `Image > Duplicate`), naming them "surface", "mask", and "marker".
+  Close all but the second channel, which corresponds to nuclei. 
+  
+- Change the image type to 32-bit (`Image > Type > 32-bit`). 
+
+<!-- - Remove the scale from the image by going to `Analyze > Set scale...`, click on `Click to remove scale` and then `OK`. This step prevents confusion when using tools that take pixel units vs others that use the scale of the image.-->
+
+- Create 3 copies of the stack (via
+  `Image > Duplicate`), naming them **"surface"**, **"mask"**, and **"marker"**.
   (Make sure the "*duplicate stack*" option is checked.)
 
 - **Watershed surface**. Select the "surface" image. We can use the
   inverted nuclei channel as watershed surface (remember the watershed
-  algorithm floods a surface from dark to bright areas). To make the
+  algorithm floods a surface from dark to bright areas). 
+  - To make the
   segmentation smoother, however, we need to blur the image a bit. This
-  is done via `Process > Filters > Gaussian Blur 3D`. Notice that now
-  there are 3 sigmas to set, one for each dimension, and that they are
-  in 'voxel' units, not microns. Should the 3 sigmas be the same? To
-  answer this, go to `Image > Properties` and check the voxel size in
-  x,y, and z. Now go to `Process > Filters > Gaussian Blur 3D`. Choose
-  an appropriate sigma, and apply the filter. Visualize the result in
-  3D. Try other sigmas (appropriately scaled) if necessary. Now invert
-  the image: `Edit > Invert`. This is the watershed surface. To clean up
-  your workspace, save it (`File > Save as > Tiff`) and close it.
+  is done via `Process > Filters > Gaussian Blur 3D`. 
+    - Notice that now there are 3 sigmas to set, one for each dimension, and that they are
+    in 'voxel' units, not microns. Should the 3 sigmas be the same? 
+    - To answer this, go to `Image > Properties` and check the voxel size in
+    x,y, and z. 
+    - Now go to `Process > Filters > Gaussian Blur 3D`. Choose
+    an appropriate sigma, and apply the filter. Visualize the result in
+    3D. Try other sigmas (appropriately scaled) if necessary. 
+  - Now invert
+  the image: `Edit > Invert`. This is the **watershed surface**. 
+  - To clean up
+  your workspace, save this image (`File > Save as > Tiff`) and close it.
 
 - **Mask**. This will restrict the area into which the watershed regions
   will grow. It can be obtained by thresholding a blurred version of the
   nuclei image, where the sigmas are a bit larger than the ones used
-  above. Select the "mask" image. Apply a 3D gaussian filter (`Process >
-  Filters > Gaussian Blur 3D`), with sigma a bit larger (say 50%) than
-  the one used above. Threshold the result (`Image > Adjust >
+  above. 
+  - Select the "mask" image. 
+  - Apply a 3D gaussian filter (`Process >
+  Filters > Gaussian Blur 3D`), with sigma a bit larger (say 50% larger) than
+  the one used above. 
+  - Threshold the result (`Image > Adjust >
   Threshold`). Choose a threshold such that the resulting mask contains
   all the nuclei, then click Apply. If prompted, click Convert to Mask.
-  To clean up your workspace, save the result (`File > Save as > Tiff`)
+  - To clean up your workspace, save the result (`File > Save as > Tiff`)
   and close it.
-
-  ```{hint}
-  [MorphoLibJ](https://imagej.net/plugins/morpholibj) might not be installed 
-  in your Fiji.
-  You can, and will have to, install it by activating the `IJPB-plugins` plugin site.
-  ```
 
 
 - **Marker**. To find markers, we will treat the nuclei as "point
-sources", and detect them by finding local maxima in the Laplacian of
-Gaussian image. Select the "marker" image. We now compute the proper
-sigma to locate the nuclei. We want to detect nuclei, so what should
-we measure to determine this sigma? Now go to `Plugins > FeatureJ > FeatureJ Laplacian`, 
-adjust the smoothing scale (don’t forget about the
-voxel calibration!), and click OK. Candidates for markers are the
-local minima in the resulting filtered image. To find them, go to
-`Plugins > MorphoLibJ > Minima and Maxima > Regional Min & Max 3D`.
-Select Regional Minima with Connectivity 26 and click Ok. What do you
-think? Too many point sources in the background? We can filter them
-using our previously computed mask. Load "mask" by dragging it into
-Fiji. Now go to `Process > Image Calculator`. And multiply the mask by
-the image with point sources. Save the result as "marker".
+sources", and detect them by finding local maxima in a Laplacian of
+Gaussian image. 
+  - Select the "marker" image. 
+  - Go to `Plugins > FeatureJ > FeatureJ Laplacian`, 
+  adjust the smoothing scale (don’t forget about the
+  voxel calibration!), and click OK. We want to detect nuclei, so what should we measure to determine this sigma?
+  - Candidates for markers are the
+  local minima in the resulting filtered image. To find them, go to
+  `Plugins > MorphoLibJ > Minima and Maxima > Regional Min & Max 3D`.
+  Select Regional Minima with Connectivity 26 and click OK. 
+  - What do you
+  think? Too many point sources in the background? We can filter them
+  using our previously computed mask. 
+  - Load the "**mask**" image by dragging it into
+  Fiji. Now go to `Process > Image Calculator`. And multiply the **mask** by
+  the image with point sources. Save the result as "**marker**".
 
-- **Watershed**. Now close all secondary windows and load the "surface",
-  "mask", and "marker" images. Go to `Plugins > MorphoLibJ > Segmentation > Marker-Controlled Watershed`. 
-  Set Input, Marker, and Mask appropriately. Check all checkboxes. 
-  Click Ok.
+- **Watershed**. Now we will use all previously calculated images to perform the 3D instance segmentation.
+  - Close all secondary windows and load the "**surface**",
+  "**mask**", and "**marker**" images. 
+  - Go to `Plugins > MorphoLibJ > Segmentation > Marker-Controlled Watershed`. 
+  - Set Input, Marker, and Mask appropriately. Check all checkboxes and click OK.
 
-  Tou can add cool colors to your segmentation by chooosing a LUT in Image\>Lookup Tables. Try 'Glasbey on Dark' ;\)
+```{tip}
+  You can add cool colors to your segmentation by chooosing a LUT in Image\>Lookup Tables. Try 'Glasbey on Dark'
+```
 
   - *Bonus:* Can you overlay the original image and watershed segmentation to
     visualize them simultaneously in 3D?
@@ -179,12 +211,12 @@ the image with point sources. Save the result as "marker".
   <img src="images/3D/seg_results_by_a_pro_aka_Damian.png" />
 
 - **Shape Measurements**. Select the watershed image. Go to 
-  `Plugins > MorphoLibJ > Analyse > Analyze Regions 3D`. Select desired 
-  shape measurements and click Ok.
+  `Plugins > MorphoLibJ > Analyse > Analyze Regions 3D`. Select the desired 
+  shape measurements and click OK.
 
 - **Intensity Measurements**. Go to `Plugins > MorphoLibJ > Analyze > Intensity Measurements 2D/3D`. 
-  Which image should you set as Input? Which as Labels? Check the 
-  desired measurements and click Ok.
+  Which image should you set as "*Input*"? Which as "*Labels*"? Check the 
+  desired measurements and click OK.
 
 ## **3D Crop**
 
@@ -247,6 +279,10 @@ Check out the [documentation and tutorials list](https://www.ilastik.org/documen
 - Open `drosophilus_floriansus.tif`. If you want to keep things simple you
   can select a few crops in a small area containing a few dozen nuclei.
   Export the image to .tiff using `File > Save as > .tiff`.
+
+```{tip} 
+You can navigate the slides using Ctrl + Up/Down arrows 
+```
 
 - Create a new pixel classification project in ilastik and load in the
   .tiff stack. Train a model that highlights the nuclei. What classes

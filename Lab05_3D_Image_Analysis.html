@@ -432,7 +432,10 @@
 <li><p>Some ways to segment in 3D</p></li>
 </ul>
 <p><strong>Lab Data</strong> in <a class="reference external" href="https://tinyurl.com/QIAnalysisLabData">this folder</a> (3D_Image_Analysis)</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
 <p>Remember to <strong>unzip</strong> the data folder after downloading.</p>
+</div>
 </section>
 <hr class="docutils" />
 <section id="visualizing-3d-data-in-fiji">
@@ -456,22 +459,39 @@ that be?</p></li>
   particular, change the values of VoxelDimension.X/Y/Z at the top right
   to see what happens. -->
 <ul class="simple">
-<li><p><strong>BigDataViewer.</strong> BDV is a “re-slicing” viewer that is included with
-Fiji and you can view your stack in it by going to
-<code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">BigDataViewer</span> <span class="pre">&gt;</span> <span class="pre">open</span> <span class="pre">current</span> <span class="pre">image</span></code>. What might be the pros
-and cons of viewing images like this compared to a 3D view like in napari?
-If you want to know more about it, you can find the full documentation for this tool <a class="reference external" href="https://imagej.net/plugins/bdv/">here</a>.</p>
+<li><p><strong>BigVolumeBrowser</strong> is a relatively new 3D volume visualization and rendering tool.</p></li>
+</ul>
+<aside class="margin sidebar">
+<p class="sidebar-title">Want to learn more about working with BigVolumeBrowser?</p>
+<p>Check out the <a class="reference external" href="https://github.com/UU-cellbiology/bigvolumebrowser/wiki">documentation</a>, or check them out on <a class="reference external" href="https://forum.image.sc/t/bigvolumebrowser-a-new-3d-multi-volume-mesh-point-cloud-smlm-data-viewer/117764">the image.sc forum!</a></p>
+</aside>
+<ul class="simple">
+<li><p>If it’s not installed in your Fiji, go to <code class="docutils literal notranslate"><span class="pre">Help</span> <span class="pre">&gt;</span> <span class="pre">Update</span> <span class="pre">&gt;</span> <span class="pre">Manage</span> <span class="pre">update</span> <span class="pre">sites</span></code>, search for <code class="docutils literal notranslate"><span class="pre">BigVolumeBrowser</span></code> and activate the checkbox. Click <code class="docutils literal notranslate"><span class="pre">Apply</span> <span class="pre">and</span> <span class="pre">close</span></code> and then <code class="docutils literal notranslate"><span class="pre">Apply</span> <span class="pre">changes</span></code>. You’ll need to restart Fiji.</p></li>
+<li><p>You can open it by going to <code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">BigVolumeViewer</span> <span class="pre">0.1.0</span></code></p></li>
+<li><p>You wil be prompted to set the 3D rendering parameters. You can learn more about them <a class="reference external" href="https://github.com/UU-cellbiology/bigvolumebrowser/wiki/3D-rendering-parameters">here</a>, but for this exercise, the deafult settings are enough.</p></li>
+<li><p>Play around a bit, rotate the volume, change a few viewing options… enjoy!</p>
 <ul>
-<li><p>Do you see anything suspicious about the intensity values in this
-image when you rotate it in BDV?
-If so, can you think of some possible explanations for this?</p></li>
+<li><p>Click on the <strong>Fiji</strong> logo, under the “Add volumes” menu on the right to load the active image from Fiji.</p></li>
+<li><p>You can control visibility of the layers in the <code class="docutils literal notranslate"><span class="pre">Sources</span></code> menu and their rendering in the <code class="docutils literal notranslate"><span class="pre">Sources</span> <span class="pre">render</span></code> menu on the right.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">View</span></code> menu contains tools to change the view of the volume.</p></li>
 </ul>
 </li>
+<li><p><strong>BigDataViewer.</strong> BDV is a “re-slicing” viewer that is included with
+Fiji.</p></li>
 </ul>
 <aside class="margin sidebar">
 <p class="sidebar-title">Want to learn more about working with BigDataViewer?</p>
 <p>Check out the <a class="reference external" href="https://imagej.net/plugins/bdv/">documentation</a>, or check them out on <a class="reference external" href="https://forum.image.sc/tag/BigDataViewer">the image.sc forum!</a></p>
 </aside>
+<ul class="simple">
+<li><p>Uou can view your stack in BigDataViewer by going to
+<code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">BigDataViewer</span> <span class="pre">&gt;</span> <span class="pre">open</span> <span class="pre">current</span> <span class="pre">image</span></code>. What might be the pros
+and cons of viewing images like this compared to a 3D view like in BigVolumeViewer?</p></li>
+<li><p>If you want to know more about it, you can find the full documentation for this tool <a class="reference external" href="https://imagej.net/plugins/bdv/">here</a>.</p></li>
+<li><p>Do you see anything suspicious about the intensity values in this
+image when you rotate it in BDV?
+If so, can you think of some possible explanations for this?</p></li>
+</ul>
 </section>
 <section id="registration-for-3d-volume-reconstruction">
 <h2><strong>Registration for 3D Volume Reconstruction</strong><a class="headerlink" href="#registration-for-3d-volume-reconstruction" title="Link to this heading">#</a></h2>
@@ -496,12 +516,6 @@ scroll to a slice you think would serve as a good reference. If <strong>StackReg
 add ‘BIG-EPFL’ to the list of update sites, then update and restart
 Fiji.
 StackReg was designed to work on single channel images, so you will first need to split your your image (Image&gt;Color&gt;Split Chanels)</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you ever have to register multi-channel images, there is a plugin
-called “HyperStackReg”. You can <a class="reference external" href="https://github.com/ved-sharma/HyperStackReg">find it here</a>
-and the installation instructions are on that page as well.</p>
-</div>
 <p>Now, go to <code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">StackReg</span></code>.
 What kind of transform do you think is best to align all these
 slices? Select it and then click OK. Be patient - it will take some
@@ -514,65 +528,102 @@ registration?</p></li>
 </section>
 <section id="d-object-segmentation-shape-and-intensity-measurements">
 <h2><strong>3D Object Segmentation, Shape and Intensity Measurements</strong><a class="headerlink" href="#d-object-segmentation-shape-and-intensity-measurements" title="Link to this heading">#</a></h2>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>We’ll use two plugin suites for this exercise: <a class="reference external" href="https://imagej.net/plugins/morpholibj">MorphoLibJ</a> and <a class="reference external" href="https://imagescience.org/meijering/software/featurej/">FeatureJ</a>, if they are not installed already in your Fiji, install them by activating the <code class="docutils literal notranslate"><span class="pre">IJPB-plugins</span></code> and <code class="docutils literal notranslate"><span class="pre">ImageScience</span></code> plugin sites in <code class="docutils literal notranslate"><span class="pre">Help</span> <span class="pre">&gt;</span> <span class="pre">Update</span> <span class="pre">&gt;</span> <span class="pre">Manage</span> <span class="pre">update</span> <span class="pre">sites</span></code>. You will have to restart Fiji.</p>
+</div>
 <ul>
 <li><p>Close all secondary Fiji windows and reload
 <code class="docutils literal notranslate"><span class="pre">Drosophila_zstack-20x-medium.tif</span></code>.</p></li>
+<li><p>We are going to segment the nuclei of this 3D volume via <em>3D marker-controlled watershed</em>. As
+with the seeded watershed approach in 2D, we’ll need 3 “images”: <strong>marker</strong>, <strong>watershed surface</strong>, and <strong>mask</strong>.
+We will get all three images from the same channel: channel 2.</p>
+<details>
+<summary>
+- Here's a preview of the analysis workflow to guide you
+</summary>
+<img src="images/3D/3d_watershed_workflow.png" />  
+</details> 
+</li>
 <li><p>Split the three channels by going to <code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">&gt;</span> <span class="pre">Color</span> <span class="pre">&gt;</span> <span class="pre">Split</span> <span class="pre">Channels</span></code>.
-Close all but the second channel, which corresponds to nuclei. We are
-going to segment these nuclei via 3D marker-controlled watershed. As
-in 2D, we’ll need 3 “images”: marker, watershed surface, and mask.
-Typically we use nuclei as markers to segment cells, but here we will
-get all three images from the same source. Change the image type to
-32-bit (<code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">&gt;</span> <span class="pre">Type</span> <span class="pre">&gt;</span> <span class="pre">32-bit</span></code>). Create 3 copies of the stack (via
-<code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">&gt;</span> <span class="pre">Duplicate</span></code>), naming them “surface”, “mask”, and “marker”.
+Close all but the second channel, which corresponds to nuclei.</p></li>
+<li><p>Change the image type to 32-bit (<code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">&gt;</span> <span class="pre">Type</span> <span class="pre">&gt;</span> <span class="pre">32-bit</span></code>).</p></li>
+</ul>
+<!-- - Remove the scale from the image by going to `Analyze > Set scale...`, click on `Click to remove scale` and then `OK`. This step prevents confusion when using tools that take pixel units vs others that use the scale of the image.-->
+<ul class="simple">
+<li><p>Create 3 copies of the stack (via
+<code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">&gt;</span> <span class="pre">Duplicate</span></code>), naming them <strong>“surface”</strong>, <strong>“mask”</strong>, and <strong>“marker”</strong>.
 (Make sure the “<em>duplicate stack</em>” option is checked.)</p></li>
 <li><p><strong>Watershed surface</strong>. Select the “surface” image. We can use the
 inverted nuclei channel as watershed surface (remember the watershed
-algorithm floods a surface from dark to bright areas). To make the
+algorithm floods a surface from dark to bright areas).</p>
+<ul>
+<li><p>To make the
 segmentation smoother, however, we need to blur the image a bit. This
-is done via <code class="docutils literal notranslate"><span class="pre">Process</span> <span class="pre">&gt;</span> <span class="pre">Filters</span> <span class="pre">&gt;</span> <span class="pre">Gaussian</span> <span class="pre">Blur</span> <span class="pre">3D</span></code>. Notice that now
-there are 3 sigmas to set, one for each dimension, and that they are
-in ‘voxel’ units, not microns. Should the 3 sigmas be the same? To
-answer this, go to <code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">&gt;</span> <span class="pre">Properties</span></code> and check the voxel size in
-x,y, and z. Now go to <code class="docutils literal notranslate"><span class="pre">Process</span> <span class="pre">&gt;</span> <span class="pre">Filters</span> <span class="pre">&gt;</span> <span class="pre">Gaussian</span> <span class="pre">Blur</span> <span class="pre">3D</span></code>. Choose
+is done via <code class="docutils literal notranslate"><span class="pre">Process</span> <span class="pre">&gt;</span> <span class="pre">Filters</span> <span class="pre">&gt;</span> <span class="pre">Gaussian</span> <span class="pre">Blur</span> <span class="pre">3D</span></code>.</p>
+<ul>
+<li><p>Notice that now there are 3 sigmas to set, one for each dimension, and that they are
+in ‘voxel’ units, not microns. Should the 3 sigmas be the same?</p></li>
+<li><p>To answer this, go to <code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">&gt;</span> <span class="pre">Properties</span></code> and check the voxel size in
+x,y, and z.</p></li>
+<li><p>Now go to <code class="docutils literal notranslate"><span class="pre">Process</span> <span class="pre">&gt;</span> <span class="pre">Filters</span> <span class="pre">&gt;</span> <span class="pre">Gaussian</span> <span class="pre">Blur</span> <span class="pre">3D</span></code>. Choose
 an appropriate sigma, and apply the filter. Visualize the result in
-3D. Try other sigmas (appropriately scaled) if necessary. Now invert
-the image: <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">&gt;</span> <span class="pre">Invert</span></code>. This is the watershed surface. To clean up
-your workspace, save it (<code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Save</span> <span class="pre">as</span> <span class="pre">&gt;</span> <span class="pre">Tiff</span></code>) and close it.</p></li>
+3D. Try other sigmas (appropriately scaled) if necessary.</p></li>
+</ul>
+</li>
+<li><p>Now invert
+the image: <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">&gt;</span> <span class="pre">Invert</span></code>. This is the <strong>watershed surface</strong>.</p></li>
+<li><p>To clean up
+your workspace, save this image (<code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Save</span> <span class="pre">as</span> <span class="pre">&gt;</span> <span class="pre">Tiff</span></code>) and close it.</p></li>
+</ul>
+</li>
 <li><p><strong>Mask</strong>. This will restrict the area into which the watershed regions
 will grow. It can be obtained by thresholding a blurred version of the
 nuclei image, where the sigmas are a bit larger than the ones used
-above. Select the “mask” image. Apply a 3D gaussian filter (<code class="docutils literal notranslate"><span class="pre">Process</span> <span class="pre">&gt;</span> <span class="pre">Filters</span> <span class="pre">&gt;</span> <span class="pre">Gaussian</span> <span class="pre">Blur</span> <span class="pre">3D</span></code>), with sigma a bit larger (say 50%) than
-the one used above. Threshold the result (<code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">&gt;</span> <span class="pre">Adjust</span> <span class="pre">&gt;</span> <span class="pre">Threshold</span></code>). Choose a threshold such that the resulting mask contains
-all the nuclei, then click Apply. If prompted, click Convert to Mask.
-To clean up your workspace, save the result (<code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Save</span> <span class="pre">as</span> <span class="pre">&gt;</span> <span class="pre">Tiff</span></code>)
-and close it.</p>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p><a class="reference external" href="https://imagej.net/plugins/morpholibj">MorphoLibJ</a> might not be installed
-in your Fiji.
-You can, and will have to, install it by activating the <code class="docutils literal notranslate"><span class="pre">IJPB-plugins</span></code> plugin site.</p>
-</div>
+above.</p>
+<ul>
+<li><p>Select the “mask” image.</p></li>
+<li><p>Apply a 3D gaussian filter (<code class="docutils literal notranslate"><span class="pre">Process</span> <span class="pre">&gt;</span> <span class="pre">Filters</span> <span class="pre">&gt;</span> <span class="pre">Gaussian</span> <span class="pre">Blur</span> <span class="pre">3D</span></code>), with sigma a bit larger (say 50% larger) than
+the one used above.</p></li>
+<li><p>Threshold the result (<code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">&gt;</span> <span class="pre">Adjust</span> <span class="pre">&gt;</span> <span class="pre">Threshold</span></code>). Choose a threshold such that the resulting mask contains
+all the nuclei, then click Apply. If prompted, click Convert to Mask.</p></li>
+<li><p>To clean up your workspace, save the result (<code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Save</span> <span class="pre">as</span> <span class="pre">&gt;</span> <span class="pre">Tiff</span></code>)
+and close it.</p></li>
+</ul>
 </li>
 <li><p><strong>Marker</strong>. To find markers, we will treat the nuclei as “point
-sources”, and detect them by finding local maxima in the Laplacian of
-Gaussian image. Select the “marker” image. We now compute the proper
-sigma to locate the nuclei. We want to detect nuclei, so what should
-we measure to determine this sigma? Now go to <code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">FeatureJ</span> <span class="pre">&gt;</span> <span class="pre">FeatureJ</span> <span class="pre">Laplacian</span></code>,
+sources”, and detect them by finding local maxima in a Laplacian of
+Gaussian image.</p>
+<ul>
+<li><p>Select the “marker” image.</p></li>
+<li><p>Go to <code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">FeatureJ</span> <span class="pre">&gt;</span> <span class="pre">FeatureJ</span> <span class="pre">Laplacian</span></code>,
 adjust the smoothing scale (don’t forget about the
-voxel calibration!), and click OK. Candidates for markers are the
+voxel calibration!), and click OK. We want to detect nuclei, so what should we measure to determine this sigma?</p></li>
+<li><p>Candidates for markers are the
 local minima in the resulting filtered image. To find them, go to
 <code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">MorphoLibJ</span> <span class="pre">&gt;</span> <span class="pre">Minima</span> <span class="pre">and</span> <span class="pre">Maxima</span> <span class="pre">&gt;</span> <span class="pre">Regional</span> <span class="pre">Min</span> <span class="pre">&amp;</span> <span class="pre">Max</span> <span class="pre">3D</span></code>.
-Select Regional Minima with Connectivity 26 and click Ok. What do you
+Select Regional Minima with Connectivity 26 and click OK.</p></li>
+<li><p>What do you
 think? Too many point sources in the background? We can filter them
-using our previously computed mask. Load “mask” by dragging it into
-Fiji. Now go to <code class="docutils literal notranslate"><span class="pre">Process</span> <span class="pre">&gt;</span> <span class="pre">Image</span> <span class="pre">Calculator</span></code>. And multiply the mask by
-the image with point sources. Save the result as “marker”.</p></li>
-<li><p><strong>Watershed</strong>. Now close all secondary windows and load the “surface”,
-“mask”, and “marker” images. Go to <code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">MorphoLibJ</span> <span class="pre">&gt;</span> <span class="pre">Segmentation</span> <span class="pre">&gt;</span> <span class="pre">Marker-Controlled</span> <span class="pre">Watershed</span></code>.
-Set Input, Marker, and Mask appropriately. Check all checkboxes.
-Click Ok.</p>
-<p>Tou can add cool colors to your segmentation by chooosing a LUT in Image&gt;Lookup Tables. Try ‘Glasbey on Dark’ ;)</p>
+using our previously computed mask.</p></li>
+<li><p>Load the “<strong>mask</strong>” image by dragging it into
+Fiji. Now go to <code class="docutils literal notranslate"><span class="pre">Process</span> <span class="pre">&gt;</span> <span class="pre">Image</span> <span class="pre">Calculator</span></code>. And multiply the <strong>mask</strong> by
+the image with point sources. Save the result as “<strong>marker</strong>”.</p></li>
+</ul>
+</li>
+<li><p><strong>Watershed</strong>. Now we will use all previously calculated images to perform the 3D instance segmentation.</p>
+<ul>
+<li><p>Close all secondary windows and load the “<strong>surface</strong>”,
+“<strong>mask</strong>”, and “<strong>marker</strong>” images.</p></li>
+<li><p>Go to <code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">MorphoLibJ</span> <span class="pre">&gt;</span> <span class="pre">Segmentation</span> <span class="pre">&gt;</span> <span class="pre">Marker-Controlled</span> <span class="pre">Watershed</span></code>.</p></li>
+<li><p>Set Input, Marker, and Mask appropriately. Check all checkboxes and click OK.</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can add cool colors to your segmentation by chooosing a LUT in Image&gt;Lookup Tables. Try ‘Glasbey on Dark’</p>
+</div>
 <ul class="simple">
 <li><p><em>Bonus:</em> Can you overlay the original image and watershed segmentation to
 visualize them simultaneously in 3D?</p></li>
@@ -584,13 +635,13 @@ not turn out very convincing. How well did this work for you?
 Below a screenshot of one result we got… is your result comparable?</p>
 </div>
 <img alt="_images/seg_results_by_a_pro_aka_Damian.png" src="_images/seg_results_by_a_pro_aka_Damian.png" />
-</li>
+<ul class="simple">
 <li><p><strong>Shape Measurements</strong>. Select the watershed image. Go to
-<code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">MorphoLibJ</span> <span class="pre">&gt;</span> <span class="pre">Analyse</span> <span class="pre">&gt;</span> <span class="pre">Analyze</span> <span class="pre">Regions</span> <span class="pre">3D</span></code>. Select desired
-shape measurements and click Ok.</p></li>
+<code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">MorphoLibJ</span> <span class="pre">&gt;</span> <span class="pre">Analyse</span> <span class="pre">&gt;</span> <span class="pre">Analyze</span> <span class="pre">Regions</span> <span class="pre">3D</span></code>. Select the desired
+shape measurements and click OK.</p></li>
 <li><p><strong>Intensity Measurements</strong>. Go to <code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">MorphoLibJ</span> <span class="pre">&gt;</span> <span class="pre">Analyze</span> <span class="pre">&gt;</span> <span class="pre">Intensity</span> <span class="pre">Measurements</span> <span class="pre">2D/3D</span></code>.
-Which image should you set as Input? Which as Labels? Check the
-desired measurements and click Ok.</p></li>
+Which image should you set as “<em>Input</em>”? Which as “<em>Labels</em>”? Check the
+desired measurements and click OK.</p></li>
 </ul>
 </section>
 <section id="d-crop">
@@ -652,6 +703,12 @@ save the result.</p></li>
 <li><p>Open <code class="docutils literal notranslate"><span class="pre">drosophilus_floriansus.tif</span></code>. If you want to keep things simple you
 can select a few crops in a small area containing a few dozen nuclei.
 Export the image to .tiff using <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Save</span> <span class="pre">as</span> <span class="pre">&gt;</span> <span class="pre">.tiff</span></code>.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can navigate the slides using Ctrl + Up/Down arrows</p>
+</div>
+<ul class="simple">
 <li><p>Create a new pixel classification project in ilastik and load in the
 .tiff stack. Train a model that highlights the nuclei. What classes
 should you label? What output of the model should you use as watershed
