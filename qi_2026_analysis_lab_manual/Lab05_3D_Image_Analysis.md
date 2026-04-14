@@ -8,7 +8,7 @@
 
 ## Learning Objectives
 
-- Visualizing 3D data in Fiji and napari
+- Visualizing 3D data in Fiji
 - Basic segmentation on 3D images
 - Image registration for 3D reconstruction
 - Some ways to segment in 3D
@@ -19,41 +19,11 @@ Remember to **unzip** the data folder after downloading.
 
 ---
 
-## **Visualizing 3D data in napari**
-
-- If not already done (on lab computers we have prepared it all), please 
-  install napari by following [these instructions](https://napari.org/stable/tutorials/fundamentals/installation.html).
-
-```{margin} Want to learn more about working with napari?
-Check out the [documentation](https://napari.org/stable/usage.html) and [tutorials](https://napari.org/stable/tutorials/index.html#tutorials), or check them out on [the image.sc forum!](https://forum.image.sc/tag/napari)
-```
-
-- Sadly, there are many ways to start napari ([see here](https://napari.org/stable/tutorials/fundamentals/getting_started.html)). On our lab machines this means to:
-  - Open an Conda Miniforge prompt (you can find it in the Windows Start menu).
-  - Type `conda activate napari` to activate a conda environment we have prepared for you.
-  - Type `napari` and hit enter!
-
-- Out of the box, napari doesn't like to open images in usefuls ways.
-  But behold, there is a solution.
-  You can install a plugin that allows you to open many file-types the right way. 
-  (Feel free to go on without installing this plugin and you will see what we are taling about).
-  To install the plugin go to `Plugins > Install/Unistall Plugins`, then filter for 
-  `aicsimageio`. Then click on "install" and restart napari.
-
-- In napari, load the file `Drosophila_zstack-20x-medium.tif`, a 3-channel, 3D volume. 
-  When it asks you which image loader to use, select the one we just installed.
-
-- You can now switch to the 3D viewer by clicking on the 2D/3D toggle button (second from the left).
-  <img src="images/3D/napari-viewer-buttons.png" style="width:0.7in" />
-
-- Play around a bit, rotate the volume, change a few viewing options... enjoy!
-  <img src="images/3D/napari-viewer-with-arrows.png" />
-
 ## **Visualizing 3D data in Fiji**
 
 - Open Fiji
 
-- Load `Drosophila_zstack-20x-medium.tif`. As before, this is
+- Load `Drosophila_zstack-20x-medium.tif`, this is
   a 3-channel, 3D volume. The default visualization shows one z-plane
   and one channel at a time. There are a few other ways to visualize 3D
   data, some of which are listed below. Try them out, and see what are
