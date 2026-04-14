@@ -123,13 +123,13 @@ We will get all three images from the same channel: channel 2.
 ````{hint} 
 <details>
 <summary>
-**Here's a visual summary of the analysis workflow to guide you:**
+Here's a visual summary of the analysis workflow to guide you:
+</summary>
 
 ```{figure} ./images/3D/3d_watershed_workflow.png
 :width: 700
 :align: center
 ```
-</summary>
 </details> 
 ````
 
