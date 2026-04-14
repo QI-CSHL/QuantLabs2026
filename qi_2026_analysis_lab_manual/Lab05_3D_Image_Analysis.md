@@ -81,11 +81,6 @@ Check out the [documentation](https://imagej.net/plugins/bdv/), or check them ou
   Fiji. 
   StackReg was designed to work on single channel images, so you will first need to split your your image (Image\>Color\>Split Chanels)
   
-  ```{note}
-  If you ever have to register multi-channel images, there is a plugin 
-  called “HyperStackReg”. You can [find it here](https://github.com/ved-sharma/HyperStackReg) 
-  and the installation instructions are on that page as well.
-  ``` 
   
   Now, go to `Plugins > StackReg`. 
   What kind of transform do you think is best to align all these
