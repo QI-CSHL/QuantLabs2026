@@ -392,7 +392,6 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-3d-data-in-napari"><strong>Visualizing 3D data in napari</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-3d-data-in-fiji"><strong>Visualizing 3D data in Fiji</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#registration-for-3d-volume-reconstruction"><strong>Registration for 3D Volume Reconstruction</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-object-segmentation-shape-and-intensity-measurements"><strong>3D Object Segmentation, Shape and Intensity Measurements</strong></a></li>
@@ -427,7 +426,7 @@
 <section id="learning-objectives">
 <h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Visualizing 3D data in Fiji and napari</p></li>
+<li><p>Visualizing 3D data in Fiji</p></li>
 <li><p>Basic segmentation on 3D images</p></li>
 <li><p>Image registration for 3D reconstruction</p></li>
 <li><p>Some ways to segment in 3D</p></li>
@@ -436,43 +435,11 @@
 <p>Remember to <strong>unzip</strong> the data folder after downloading.</p>
 </section>
 <hr class="docutils" />
-<section id="visualizing-3d-data-in-napari">
-<h2><strong>Visualizing 3D data in napari</strong><a class="headerlink" href="#visualizing-3d-data-in-napari" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>If not already done (on lab computers we have prepared it all), please
-install napari by following <a class="reference external" href="https://napari.org/stable/tutorials/fundamentals/installation.html">these instructions</a>.</p></li>
-</ul>
-<aside class="margin sidebar">
-<p class="sidebar-title">Want to learn more about working with napari?</p>
-<p>Check out the <a class="reference external" href="https://napari.org/stable/usage.html">documentation</a> and <a class="reference external" href="https://napari.org/stable/tutorials/index.html#tutorials">tutorials</a>, or check them out on <a class="reference external" href="https://forum.image.sc/tag/napari">the image.sc forum!</a></p>
-</aside>
-<ul class="simple">
-<li><p>Sadly, there are many ways to start napari (<a class="reference external" href="https://napari.org/stable/tutorials/fundamentals/getting_started.html">see here</a>). On our lab machines this means to:</p>
-<ul>
-<li><p>Open an Conda Miniforge prompt (you can find it in the Windows Start menu).</p></li>
-<li><p>Type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">napari</span></code> to activate a conda environment we have prepared for you.</p></li>
-<li><p>Type <code class="docutils literal notranslate"><span class="pre">napari</span></code> and hit enter!</p></li>
-</ul>
-</li>
-<li><p>Out of the box, napari doesn’t like to open images in usefuls ways.
-But behold, there is a solution.
-You can install a plugin that allows you to open many file-types the right way.
-(Feel free to go on without installing this plugin and you will see what we are taling about).
-To install the plugin go to <code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">Install/Unistall</span> <span class="pre">Plugins</span></code>, then filter for
-<code class="docutils literal notranslate"><span class="pre">aicsimageio</span></code>. Then click on “install” and restart napari.</p></li>
-<li><p>In napari, load the file <code class="docutils literal notranslate"><span class="pre">Drosophila_zstack-20x-medium.tif</span></code>, a 3-channel, 3D volume.
-When it asks you which image loader to use, select the one we just installed.</p></li>
-<li><p>You can now switch to the 3D viewer by clicking on the 2D/3D toggle button (second from the left).
-<img alt="_images/napari-viewer-buttons.png" src="_images/napari-viewer-buttons.png" /></p></li>
-<li><p>Play around a bit, rotate the volume, change a few viewing options… enjoy!
-<img alt="_images/napari-viewer-with-arrows.png" src="_images/napari-viewer-with-arrows.png" /></p></li>
-</ul>
-</section>
 <section id="visualizing-3d-data-in-fiji">
 <h2><strong>Visualizing 3D data in Fiji</strong><a class="headerlink" href="#visualizing-3d-data-in-fiji" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Open Fiji</p></li>
-<li><p>Load <code class="docutils literal notranslate"><span class="pre">Drosophila_zstack-20x-medium.tif</span></code>. As before, this is
+<li><p>Load <code class="docutils literal notranslate"><span class="pre">Drosophila_zstack-20x-medium.tif</span></code>, this is
 a 3-channel, 3D volume. The default visualization shows one z-plane
 and one channel at a time. There are a few other ways to visualize 3D
 data, some of which are listed below. Try them out, and see what are
@@ -824,7 +791,6 @@ and if you run into trouble just ask us!</p></li>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-3d-data-in-napari"><strong>Visualizing 3D data in napari</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-3d-data-in-fiji"><strong>Visualizing 3D data in Fiji</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#registration-for-3d-volume-reconstruction"><strong>Registration for 3D Volume Reconstruction</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-object-segmentation-shape-and-intensity-measurements"><strong>3D Object Segmentation, Shape and Intensity Measurements</strong></a></li>
