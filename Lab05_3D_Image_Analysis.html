@@ -532,17 +532,18 @@ registration?</p></li>
 <p class="admonition-title">Hint</p>
 <p>We’ll use two plugin suites for this exercise: <a class="reference external" href="https://imagej.net/plugins/morpholibj">MorphoLibJ</a> and <a class="reference external" href="https://imagescience.org/meijering/software/featurej/">FeatureJ</a>, if they are not installed already in your Fiji, install them by activating the <code class="docutils literal notranslate"><span class="pre">IJPB-plugins</span></code> and <code class="docutils literal notranslate"><span class="pre">ImageScience</span></code> plugin sites in <code class="docutils literal notranslate"><span class="pre">Help</span> <span class="pre">&gt;</span> <span class="pre">Update</span> <span class="pre">&gt;</span> <span class="pre">Manage</span> <span class="pre">update</span> <span class="pre">sites</span></code>. You will have to restart Fiji.</p>
 </div>
-<ul>
+<ul class="simple">
 <li><p>Close all secondary Fiji windows and reload
 <code class="docutils literal notranslate"><span class="pre">Drosophila_zstack-20x-medium.tif</span></code>.</p></li>
 <li><p>We are going to segment the nuclei of this 3D volume via <em>3D marker-controlled watershed</em>. As
 with the seeded watershed approach in 2D, we’ll need 3 “images”: <strong>marker</strong>, <strong>watershed surface</strong>, and <strong>mask</strong>.
-We will get all three images from the same channel: channel 2.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
+We will get all three images from the same channel: channel 2.</p></li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
 <details>
 <summary>
-Here's a visual summary of the analysis workflow to guide you
+**Here's a visual summary of the analysis workflow to guide you:**
 <figure class="align-center">
 <a class="reference internal image-reference" href="_images/3d_watershed_workflow.png"><img alt="_images/3d_watershed_workflow.png" src="_images/3d_watershed_workflow.png" style="width: 700px;" />
 </a>
@@ -550,7 +551,7 @@ Here's a visual summary of the analysis workflow to guide you
 </summary>
 </details> 
 </div>
-</li>
+<ul class="simple">
 <li><p>Split the three channels by going to <code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">&gt;</span> <span class="pre">Color</span> <span class="pre">&gt;</span> <span class="pre">Split</span> <span class="pre">Channels</span></code>.
 Close all but the second channel, which corresponds to nuclei.</p></li>
 <li><p>Change the image type to 32-bit (<code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">&gt;</span> <span class="pre">Type</span> <span class="pre">&gt;</span> <span class="pre">32-bit</span></code>).</p></li>

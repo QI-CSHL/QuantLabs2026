@@ -120,17 +120,18 @@ Check out the [documentation](https://imagej.net/plugins/bdv/), or check them ou
 with the seeded watershed approach in 2D, we'll need 3 "images": **marker**, **watershed surface**, and **mask**.
 We will get all three images from the same channel: channel 2.
   
-  ````{tip} 
-  <details>
-  <summary>
-  Here's a visual summary of the analysis workflow to guide you
+````{hint} 
+<details>
+<summary>
+**Here's a visual summary of the analysis workflow to guide you:**
 
-  ```{figure} ./images/3D/3d_watershed_workflow.png
-  :width: 700
-  :align: center
-  ```
-  </summary>
-  </details> 
+```{figure} ./images/3D/3d_watershed_workflow.png
+:width: 700
+:align: center
+```
+</summary>
+</details> 
+````
 
 - Split the three channels by going to `Image > Color > Split Channels`.
   Close all but the second channel, which corresponds to nuclei. 
