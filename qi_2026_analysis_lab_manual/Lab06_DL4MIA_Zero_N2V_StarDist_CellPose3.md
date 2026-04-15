@@ -435,8 +435,19 @@ Once the environment is ready, activate the environment by typing `conda activat
 
 nnInteractive can be found in the `plugins` menu under `nnInteractive (nnInteractive)`. Launch it by selecting this option. You should eventually see the plugin on the right side of the screen.
 
+<img src="images/dl/nnInteractive.png" height="180px" />
+
+
 Load some data that we would like to segment (any data will do). If you have multiple objects that you want to segment seperately, you will want to chekc the `instance aggregation` checkbox, as seen below.
 
-Now select one of the prompt types (I would start with `points`) and start clicking on objects. Once an object is segmented, you can commit it to the labels layer uisng the `next object` button. Try different prompts or segmenting different objects. Which types work better? What type of segmentation are we doing here (instance or semantic?).
+<img src="images/dl/nnInteractive_instance_aggregation.png" height="60px" />
+
+
+Now select one of the prompt types (I would start with `points`, see image). Try selecting the type of prompt, and start clicking on objects. Once an object is segmented, you can commit it to the labels layer uisng the `next object` button. Try different prompts or segmenting different objects. Which types work better? What type of segmentation are we doing here (instance or semantic?).
+
+
+<img src="images/dl/nnInteractive_highlight.png" height="180px" />
+
+
 
 When you're done, export your segmentation. How does this compare to other approaches (if you have the same data segmented already)? What are the pros and cons of this style of segmentation?
