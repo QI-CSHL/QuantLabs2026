@@ -381,3 +381,8 @@ Check out the [documentation](https://cellpose.readthedocs.io/en/latest/), or ch
 - Think of something you want to segment/detect and measure in the 3D
   data you’ve acquired in the lab and go for it! Come up with a plan,
   and if you run into trouble just ask us!
+
+
+**Bonus _Bonus_ exercise**
+
+- Do you feel like trying 3D segmentation an quantitation in CellProfiler? We have a [tutorial](https://tutorials.cellprofiler.org/#3d-segmentation-of-cell-monolayer) for that (and for many other things!). Give it a try! Do some of the processing steps ring a bell?
