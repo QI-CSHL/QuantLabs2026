@@ -13,8 +13,6 @@
 - Learn how to make your own `conda` environment and install packages from `pip`
 - Denoising with CAREamics in python
 - Bonus: Try in-browser classification with Piximi
-- Bonus: Use Noise2Void in Fiji
-- Bonus: Segmentation with StarDist in “Zero”
 
 **Lab Data** in [this folder](https://tinyurl.com/QIAnalysisLabData) (DL4MIA)
 
