@@ -56,7 +56,9 @@ Check out the [documentation](https://napari.org/stable/usage.html) and [tutoria
   data, some of which are listed below. Try them out, and see what are
   their advantages and disadvantages.
 
-- **Orthogonal Views**. Go to `Image > Stacks > Orthogonal Views`. What
+### **Orthogonal Views**. 
+
+Go to `Image > Stacks > Orthogonal Views`. What
   are we seeing here? Can you understand what each window shows you? In
   which view is easiest to see the separation between nuclei? Why might
   that be?
@@ -68,7 +70,9 @@ Check out the [documentation](https://napari.org/stable/usage.html) and [tutoria
   particular, change the values of VoxelDimension.X/Y/Z at the top right
   to see what happens. -->
 
-- **BigDataViewer.** BDV is a “re-slicing” viewer that is included with
+### **BigDataViewer.** 
+
+BDV is a “re-slicing” viewer that is included with
   Fiji.
 ```{margin} Want to learn more about working with BigDataViewer?
 Check out the [documentation](https://imagej.net/plugins/bdv/), or check them out on [the image.sc forum!](https://forum.image.sc/tag/BigDataViewer)
@@ -82,7 +86,10 @@ Check out the [documentation](https://imagej.net/plugins/bdv/), or check them ou
     image when you rotate it in BDV? 
     If so, can you think of some possible explanations for this?
 
-- **BigVolumeBrowser** is a modern and powerful 3D volume visualization and rendering tool that takes advantage of GPU aceleration.
+
+### **BigVolumeBrowser** 
+
+BVB is a modern and powerful 3D volume visualization and rendering tool that takes advantage of GPU aceleration.
 
 ```{margin} Want to learn more about working with BigVolumeBrowser?
 Check out the [documentation](https://github.com/UU-cellbiology/bigvolumebrowser/wiki), or check them out on [the image.sc forum!](https://forum.image.sc/t/bigvolumebrowser-a-new-3d-multi-volume-mesh-point-cloud-smlm-data-viewer/117764)
