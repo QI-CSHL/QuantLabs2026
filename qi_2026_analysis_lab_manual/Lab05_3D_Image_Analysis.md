@@ -8,7 +8,7 @@
 
 ## Learning Objectives
 
-- Visualizing 3D data in Fiji
+- Visualizing 3D data using different tools in Napari and Fiji
 - Basic segmentation on 3D images
 - Image registration for 3D reconstruction
 - Some ways to segment in 3D
@@ -19,12 +19,38 @@
 Remember to **unzip** the data folder after downloading.
 ```
 ---
+## **Visualizing 3D data in napari**
+
+- If not already done (on lab computers we have prepared it all), please 
+  install napari by following [these instructions](https://napari.org/stable/tutorials/fundamentals/installation.html).
+
+```{margin} Want to learn more about working with napari?
+Check out the [documentation](https://napari.org/stable/usage.html) and [tutorials](https://napari.org/stable/tutorials/index.html#tutorials), or check them out on [the image.sc forum!](https://forum.image.sc/tag/napari)
+```
+
+- There are many ways to start napari ([see here](https://napari.org/stable/tutorials/fundamentals/getting_started.html)). On our lab machines, we made this easy using a tool called [uvx](https://pydevtools.com/handbook/reference/uvx/). Just double click on the `napari.bat` file on the Desktop, uvx will spun a temporary virtual environment on the fly and launch napari.
+
+- Out of the box, napari doesn't like to open images in usefuls ways.
+  But behold, there is a solution!
+  You can install a plugin that allows you to open many file-types the right way. 
+  (Feel free to go on without installing this plugin and you will see what we are talking about).
+  To install the plugin go to `Plugins > Install/Unistall Plugins`, then filter for 
+  `Bioio Reader`. Then click on "install" and restart napari.
+
+- In napari, load the file `Drosophila_zstack-20x-medium.tif`, a 3-channel, 3D volume. 
+  When it asks you which image loader to use, select the one we just installed.
+
+- You can now switch to the 3D viewer by clicking on the 2D/3D toggle button (second from the left).
+  <img src="images/3D/napari-viewer-buttons.png" style="width:0.7in" />
+
+- Play around a bit, rotate the volume, change a few viewing options... enjoy!
+  <img src="images/3D/napari-viewer-with-arrows.png" />
 
 ## **Visualizing 3D data in Fiji**
 
 - Open Fiji
 
-- Load `Drosophila_zstack-20x-medium.tif`, this is
+- Load `Drosophila_zstack-20x-medium.tif`, as before this is
   a 3-channel, 3D volume. The default visualization shows one z-plane
   and one channel at a time. There are a few other ways to visualize 3D
   data, some of which are listed below. Try them out, and see what are
@@ -42,7 +68,21 @@ Remember to **unzip** the data folder after downloading.
   particular, change the values of VoxelDimension.X/Y/Z at the top right
   to see what happens. -->
 
-- **BigVolumeBrowser** is a relatively new 3D volume visualization and rendering tool. 
+- **BigDataViewer.** BDV is a “re-slicing” viewer that is included with
+  Fiji.
+```{margin} Want to learn more about working with BigDataViewer?
+Check out the [documentation](https://imagej.net/plugins/bdv/), or check them out on [the image.sc forum!](https://forum.image.sc/tag/BigDataViewer)
+```
+  - You can view your stack in BigDataViewer by going to
+  `Plugins > BigDataViewer > open current image`. What might be the pros
+  and cons of viewing images like this compared to a 3D view like in BigVolumeViewer?
+  - If you want to know more about it, you can find the full documentation for this tool [here](https://imagej.net/plugins/bdv/).
+
+  - Do you see anything suspicious about the intensity values in this
+    image when you rotate it in BDV? 
+    If so, can you think of some possible explanations for this?
+
+- **BigVolumeBrowser** is a modern and powerful 3D volume visualization and rendering tool that takes advantage of GPU aceleration.
 
 ```{margin} Want to learn more about working with BigVolumeBrowser?
 Check out the [documentation](https://github.com/UU-cellbiology/bigvolumebrowser/wiki), or check them out on [the image.sc forum!](https://forum.image.sc/t/bigvolumebrowser-a-new-3d-multi-volume-mesh-point-cloud-smlm-data-viewer/117764)
@@ -51,24 +91,11 @@ Check out the [documentation](https://github.com/UU-cellbiology/bigvolumebrowser
   - If it's not installed in your Fiji, go to `Help > Update > Manage update sites`, search for `BigVolumeBrowser` and activate the checkbox. Click `Apply and close` and then `Apply changes`. You'll need to restart Fiji.
   - You can open it by going to `Plugins > BigVolumeViewer 0.1.0`
   - You wil be prompted to set the 3D rendering parameters. You can learn more about them [here](https://github.com/UU-cellbiology/bigvolumebrowser/wiki/3D-rendering-parameters), but for this exercise, the deafult settings are enough.
-  - Play around a bit, rotate the volume, change a few viewing options... enjoy!
+  - Play around a bit, change the rendering style of the channels... maybe create an animation?
     - Click on the **Fiji** logo, under the "Add volumes" menu on the right to load the active image from Fiji.
     - You can control visibility of the layers in the `Sources` menu and their rendering in the `Sources render` menu on the right.
     - The `View` menu contains tools to change the view of the volume.
 
-- **BigDataViewer.** BDV is a “re-slicing” viewer that is included with
-  Fiji.
-```{margin} Want to learn more about working with BigDataViewer?
-Check out the [documentation](https://imagej.net/plugins/bdv/), or check them out on [the image.sc forum!](https://forum.image.sc/tag/BigDataViewer)
-```
-  - Uou can view your stack in BigDataViewer by going to
-  `Plugins > BigDataViewer > open current image`. What might be the pros
-  and cons of viewing images like this compared to a 3D view like in BigVolumeViewer?
-  - If you want to know more about it, you can find the full documentation for this tool [here](https://imagej.net/plugins/bdv/).
-
-  - Do you see anything suspicious about the intensity values in this
-    image when you rotate it in BDV? 
-    If so, can you think of some possible explanations for this?
 
 ## **Registration for 3D Volume Reconstruction**
 
