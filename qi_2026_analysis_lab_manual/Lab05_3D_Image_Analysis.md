@@ -75,7 +75,7 @@ Check out the [documentation](https://imagej.net/plugins/bdv/), or check them ou
 ```
   - You can view your stack in BigDataViewer by going to
   `Plugins > BigDataViewer > open current image`. What might be the pros
-  and cons of viewing images like this compared to a 3D view like in BigVolumeViewer?
+  and cons of viewing images like this compared to a 3D view (like in BigVolumeBrowser in the next exercise)?
   - If you want to know more about it, you can find the full documentation for this tool [here](https://imagej.net/plugins/bdv/).
 
   - Do you see anything suspicious about the intensity values in this
@@ -89,7 +89,7 @@ Check out the [documentation](https://github.com/UU-cellbiology/bigvolumebrowser
 ```
 
   - If it's not installed in your Fiji, go to `Help > Update > Manage update sites`, search for `BigVolumeBrowser` and activate the checkbox. Click `Apply and close` and then `Apply changes`. You'll need to restart Fiji.
-  - You can open it by going to `Plugins > BigVolumeViewer 0.1.0`
+  - You can open it by going to `Plugins > BigVolumeBrowser 0.1.0`
   - You wil be prompted to set the 3D rendering parameters. You can learn more about them [here](https://github.com/UU-cellbiology/bigvolumebrowser/wiki/3D-rendering-parameters), but for this exercise, the deafult settings are enough.
   - Play around a bit, change the rendering style of the channels... maybe create an animation?
     - Click on the **Fiji** logo, under the "Add volumes" menu on the right to load the active image from Fiji.
