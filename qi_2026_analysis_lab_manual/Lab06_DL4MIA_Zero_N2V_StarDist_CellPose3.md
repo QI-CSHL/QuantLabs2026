@@ -264,7 +264,7 @@ Activate the environment by typing:
 
 > `conda activate careamics` 
 
-As we saw yesterday and earier today, the prompt should change from `(base)` to `(careamics)`. We are now 'inside' this environment. Anything we will install will be restricted to this environment (and, thus not accesible to software outside of that environment).
+The prompt should change from `(base)` to `(careamics)`. We are now 'inside' this environment. Anything we will install will be restricted to this environment (and, thus not accesible to software outside of that environment).
 
 Now, we need to install some packages that will allow us to use the GPU for the computations we will conduct. Remember that in deep learning, it is advantageous to run computation on the GPU as they contain specialized hardware to do very fast matrix multiplications -- exacty the kind of thing that deep learning needs a lot of! 
 
