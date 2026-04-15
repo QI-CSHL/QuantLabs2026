@@ -415,8 +415,6 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-a-3-class-classification-model-on-u2os-cells">Train a 3-class classification model on U2OS cells</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-use-fijis-noise2void-plugin"><strong>Bonus Exercise: Use Fiji’s Noise2Void Plugin</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-image-segmentation-with-stardist-in-zero"><strong>Bonus Exercise: Image Segmentation with StarDist (in “Zero”)</strong></a></li>
 </ul>
             </nav>
         </div>
@@ -504,17 +502,7 @@ anything that makes no sense to you and ask us</p>
 </aside>
 <p>Here, at QI, we have taken this annoying step for you already. Hence,
 you will find Cellpose pre-installed on the lab computers. To start it,
-go to the Windows search next to the start menu, and type <code class="docutils literal notranslate"><span class="pre">miniforge</span></code>.
-Pick and start the option <code class="docutils literal notranslate"><span class="pre">miniforge</span> <span class="pre">prompt</span></code>.</p>
-<p>Once this is opened, type in those two lines:</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Only copy the stuff after “<strong>&gt;</strong>”</p>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="o">&gt;</span> <span class="n">conda</span> <span class="n">activate</span> <span class="n">cellpose</span>  
-<span class="p">(</span><span class="n">cellpose</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">cellpose</span>
-</pre></div>
-</div>
+click the <code class="docutils literal notranslate"><span class="pre">cellpose.bat</span></code> file on the desktop.</p>
 <p>You should now see something like
 this:<img alt="_images/cellpose_gui.png" src="_images/cellpose_gui.png" /></p>
 <p>Open the file <code class="docutils literal notranslate"><span class="pre">001_img.tif</span></code> by dragging it onto the open window.
@@ -605,12 +593,6 @@ console (where you started Cellpose from). What is going on here? Remember
 back the lecture when we discussed training steps and epochs.
 <img alt="_images/cellpose_training_output.png" src="_images/cellpose_training_output.png" /></p>
 <p>Once done, Cellpose will automatically open the next image in the folder and use the freshly finetuned model to segment it.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In Cellpose 3 there seems to be a bug where the new model is not being used to segment
-the newly loaded image. If you notice the segmentation isn’t very good, manually
-select your newly trained model under the “other models” dropdown and run it.</p>
-</div>
 <p>You can now repeat this process as often as needed. Cellpose will in each iteration
 finetune the same original model, but will do so with an ever increasing
 number of user labeled masks (the ones you have created). Eventually you
@@ -860,61 +842,6 @@ How high can you get the evaluation metrics? How many rounds and how many correc
 </ul>
 </section>
 </section>
-<section id="bonus-exercise-use-fijis-noise2void-plugin">
-<h2><strong>Bonus Exercise: Use Fiji’s Noise2Void Plugin</strong><a class="headerlink" href="#bonus-exercise-use-fijis-noise2void-plugin" title="Link to this heading">#</a></h2>
-<p>In this exercise you will use a Noise2Void plugin in Fiji. You will have
-to install it first.</p>
-<aside class="margin sidebar">
-<p class="sidebar-title">Want to learn more about working with Noise2Void?</p>
-<p>Check out the <a class="reference external" href="https://csbdeep.bioimagecomputing.com/tools/n2v/">documentation</a>, or check them out on <a class="reference external" href="https://forum.image.sc/tag/Noise2Void">the image.sc forum!</a></p>
-</aside>
-<ol class="arabic">
-<li><p>Open Fiji.</p></li>
-<li><p>Go to Help - Update… - Manage update sites, then check the CSBDeep
-update site and say Close - Apply changes.</p></li>
-<li><p>Restart Fiji.</p></li>
-<li><p>Download the DL4MIA/noisy/drosophila_noisy_2d.tif 2d+t image from the
-<a class="reference external" href="https://tinyurl.com/QIAnalysisLabData">Lab Data Share</a> and open it in Fiji.</p></li>
-<li><p>Start the “N2V train + predict” plugin.</p></li>
-<li><p>Figure it out… 😉</p>
-<p>a.  <em><strong>Please ask question at ANY time</strong>!</em></p>
-</li>
-<li><p>If all works out ok, you will see something like…<br />
-<img alt="_images/image7.png" src="_images/image7.png" /></p></li>
-<li><p>The training will likely be VERY slow, but to sweeten up the wait,
-we show you a nice preview.</p></li>
-<li><p>Together with the result you also get the trained model for later
-reuse.<img alt="_images/image12.png" src="_images/image12.png" /></p></li>
-<li><p>Try to use the trained model to denoise the same stack or any other image of your choosing.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Be sure to set the axes correctly. On the same stack, this will require you to add a third dimension which contains multiple time points. What should we use as the third axis and why is it ‘B’ when you use the same stack you used for training?</p>
-</div>
-</li>
-</ol>
-</section>
-<section id="bonus-exercise-image-segmentation-with-stardist-in-zero">
-<h2><strong>Bonus Exercise: Image Segmentation with StarDist (in “Zero”)</strong><a class="headerlink" href="#bonus-exercise-image-segmentation-with-stardist-in-zero" title="Link to this heading">#</a></h2>
-<p>As you heard in the lecture, <a class="reference external" href="https://github.com/HenriquesLab/ZeroCostDL4Mic/wiki">ZeroCostDL4Mic Collab
-notebooks</a> is a collection of jupyter notebooks for various image analysis tools using deep learning that run in Google Colab, taking advantage of its ‘free’ (albeit limited) GPU resources.</p>
-<p>Let’s try some instance segmentation notebooks!</p>
-<p>We suggest the
-<code class="docutils literal notranslate"><span class="pre">StarDist</span></code> notebook, but if you feel adventurous, choose something else
-you find most interesting in the context of your own research.</p>
-<img alt="_images/image15.png" src="_images/image15.png" />
-<p>Go through the notebook you chose. And again:</p>
-<p><strong>Ask questions, discuss, help each other</strong>!</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Reduce the number of <em>epochs</em> to some small number to save yourself long waiting times!</p>
-</div>
-<p>Later today, when you are done with the exercises, you might want to re-run your favorite notebook with the suggested number of epochs.
-Colab will work while you have fun on your free evening… 🙂</p>
-<div class="admonition-super-excited-about-deep-learning-now-and-want-to-know-where-to-find-the-latest-models admonition">
-<p class="admonition-title">Super excited about deep learning now and want to know where to find the latest models?</p>
-<p>The <a class="reference external" href="https://bioimage.io/">Bioimage Model Zoo</a> <span id="id6"><sup><a class="reference internal" href="bibliography.html#id26" title="Wei Ouyang, Fynn Beuttenmueller, Estibaliz Gómez-de-Mariscal, Constantin Pape, Tom Burke, Carlos Garcia-López-de-Haro, Craig Russell, Lucía Moya-Sans, Cristina de-la-Torre-Gutiérrez, Deborah Schmidt, Dominik Kutra, Maksim Novikov, Martin Weigert, Uwe Schmidt, Peter Bankhead, Guillaume Jacquemet, Daniel Sage, Ricardo Henriques, Arrate Muñoz-Barrutia, Emma Lundberg, Florian Jug, and Anna Kreshuk. BioImage model zoo: a Community-Driven resource for accessible deep learning in BioImage analysis. bioRxiv, pages 2022.06.07.495102, June 2022.">12</a></sup></span> contains a number of deep learning models, applications, and example data sets you can use on your own data or to train your own network.</p>
-</div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1005,8 +932,6 @@ Colab will work while you have fun on your free evening… 🙂</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-a-3-class-classification-model-on-u2os-cells">Train a 3-class classification model on U2OS cells</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-use-fijis-noise2void-plugin"><strong>Bonus Exercise: Use Fiji’s Noise2Void Plugin</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-image-segmentation-with-stardist-in-zero"><strong>Bonus Exercise: Image Segmentation with StarDist (in “Zero”)</strong></a></li>
 </ul>
   </nav></div>
 

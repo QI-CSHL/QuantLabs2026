@@ -82,18 +82,7 @@ Check out the [documentation](https://cellpose.readthedocs.io/en/latest/), or ch
 
 Here, at QI, we have taken this annoying step for you already. Hence,
 you will find Cellpose pre-installed on the lab computers. To start it,
-go to the Windows search next to the start menu, and type `miniforge`.
-Pick and start the option `miniforge prompt`.
-
-Once this is opened, type in those two lines:
-```{warning}
-Only copy the stuff after “**\>**”
-```
-
-```  
-           > conda activate cellpose  
-(cellpose) > cellpose
-```
+click the `cellpose.bat` file on the desktop.
 
 You should now see something like
 this:<img src="images/dl/cellpose_gui.png" style="width:6in" />
@@ -206,12 +195,6 @@ back the lecture when we discussed training steps and epochs.
 <img src="images/dl/cellpose_training_output.png" style="width:6in" />
 
 Once done, Cellpose will automatically open the next image in the folder and use the freshly finetuned model to segment it. 
-
-```{note}
-In Cellpose 3 there seems to be a bug where the new model is not being used to segment
-the newly loaded image. If you notice the segmentation isn't very good, manually 
-select your newly trained model under the "other models" dropdown and run it.
-```
 
 You can now repeat this process as often as needed. Cellpose will in each iteration
 finetune the same original model, but will do so with an ever increasing
@@ -459,71 +442,3 @@ Piximi's current defaults are to load two-channel images as red and green, and t
 
 - Use human-in-the-loop classification (same procedure as in the previous exercise) to train a high-performing 3 class classifier.
 How high can you get the evaluation metrics? How many rounds and how many corrected classifications does it take you to get there?
-
-## **Bonus Exercise: Use Fiji’s Noise2Void Plugin**
-
-In this exercise you will use a Noise2Void plugin in Fiji. You will have
-to install it first.
-
-```{margin} Want to learn more about working with Noise2Void?
-Check out the [documentation](https://csbdeep.bioimagecomputing.com/tools/n2v/), or check them out on [the image.sc forum!](https://forum.image.sc/tag/Noise2Void)
-```
-
-1.  Open Fiji.
-
-2.  Go to Help - Update… - Manage update sites, then check the CSBDeep
-    update site and say Close - Apply changes.
-
-3.  Restart Fiji.
-
-4.  Download the DL4MIA/noisy/drosophila_noisy_2d.tif 2d+t image from the
-[Lab Data Share](https://tinyurl.com/QIAnalysisLabData) and open it in Fiji.
-
-5.  Start the “N2V train + predict” plugin.
-
-6.  Figure it out… 😉
-
-    a.  ***Please ask question at ANY time**!*
-
-7.  If all works out ok, you will see something like…  
-    <img src="images/dl/image7.png" style="width:4.75346in;height:2.47396in" />
-
-8.  The training will likely be VERY slow, but to sweeten up the wait,
-    we show you a nice preview.
-
-9.  Together with the result you also get the trained model for later
-    reuse.<img src="images/dl/image12.png" style="width:3.14792in;height:2.22703in" />
-
-10. Try to use the trained model to denoise the same stack or any other image of your choosing.
-
-    ```{tip} 
-    Be sure to set the axes correctly. On the same stack, this will require you to add a third dimension which contains multiple time points. What should we use as the third axis and why is it 'B' when you use the same stack you used for training?
-    ```
-    
-## **Bonus Exercise: Image Segmentation with StarDist (in “Zero”)**
-
-As you heard in the lecture, [ZeroCostDL4Mic Collab
-notebooks](https://github.com/HenriquesLab/ZeroCostDL4Mic/wiki) is a collection of jupyter notebooks for various image analysis tools using deep learning that run in Google Colab, taking advantage of its 'free' (albeit limited) GPU resources.
-
-Let's try some instance segmentation notebooks! 
-
-We suggest the
-`StarDist` notebook, but if you feel adventurous, choose something else
-you find most interesting in the context of your own research.
-
-<img src="images/dl/image15.png" style="width:5.04825in;height:4.40104in" />
-
-Go through the notebook you chose. And again:
-
-**Ask questions, discuss, help each other**!
-
-```{tip} 
-Reduce the number of *epochs* to some small number to save yourself long waiting times!
-```
-
-Later today, when you are done with the exercises, you might want to re-run your favorite notebook with the suggested number of epochs.
-Colab will work while you have fun on your free evening… 🙂
-
-```{admonition} Super excited about deep learning now and want to know where to find the latest models?
-The [Bioimage Model Zoo](https://bioimage.io/) {cite}`Ouyang2022-fm` contains a number of deep learning models, applications, and example data sets you can use on your own data or to train your own network. 
-```
