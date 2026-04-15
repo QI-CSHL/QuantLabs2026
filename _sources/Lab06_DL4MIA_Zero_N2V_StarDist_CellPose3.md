@@ -208,27 +208,6 @@ model to the test data we have segmented at the start of the exercise
 finetuning! Why is this important again?). Is the result better than
 with the initial model you started with?
 
-### Using the image restoration functions
-
-The version of Cellpose that we are using (Cellpose 3) also has some ability to restore images by denoising and deblurring.
-This is used to aid the segmentation of noisy data. Let's  test it!
-
-From the folder you downloaded earlier, open the "noisy" folder and open "convollaria.tif"
-in Cellpose.
-
-Try using the Cyto3 model to segment this image (you can leave the diameter at 30 pixels).
-
-Not a very satisfying result is it?
-
-This is partially because the data is very noisy. Let's try to add some denoising befre we segment.
-
-Under `Image restoration` box in the lower part of the menu to the left, press the `Denoise` button. What do you notice about the image?
-
-Try using the same parameters and mode to segment this image. Did it improve?
-
-Try some other restoration modes. Try using some custom filters and see if you can improve the 
-segmentation. What might be useful for denoising this image?
-
 
 ````{tip}
 Want to use Cellpose when you get home, but having trouble with the `conda` installation? You have (at least) a couple of potential options!

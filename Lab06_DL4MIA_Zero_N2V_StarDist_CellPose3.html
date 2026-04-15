@@ -398,7 +398,6 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-remind-yourself-about-what-weve-heard-in-the-lecture"><strong>Exercise 1: Remind yourself about what we’ve heard in the lecture</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-play-with-cellpose"><strong>Exercise 2: Play with Cellpose</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#human-in-the-loop-retraining">Human-in-the-loop retraining</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-image-restoration-functions">Using the image restoration functions</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-denoising-with-careamics"><strong>Exercise 3: Denoising with CAREamics</strong></a></li>
@@ -603,20 +602,6 @@ model to the test data we have segmented at the start of the exercise
 (importantly: your model has not previously seen this image during
 finetuning! Why is this important again?). Is the result better than
 with the initial model you started with?</p>
-</section>
-<section id="using-the-image-restoration-functions">
-<h3>Using the image restoration functions<a class="headerlink" href="#using-the-image-restoration-functions" title="Link to this heading">#</a></h3>
-<p>The version of Cellpose that we are using (Cellpose 3) also has some ability to restore images by denoising and deblurring.
-This is used to aid the segmentation of noisy data. Let’s  test it!</p>
-<p>From the folder you downloaded earlier, open the “noisy” folder and open “convollaria.tif”
-in Cellpose.</p>
-<p>Try using the Cyto3 model to segment this image (you can leave the diameter at 30 pixels).</p>
-<p>Not a very satisfying result is it?</p>
-<p>This is partially because the data is very noisy. Let’s try to add some denoising befre we segment.</p>
-<p>Under <code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">restoration</span></code> box in the lower part of the menu to the left, press the <code class="docutils literal notranslate"><span class="pre">Denoise</span></code> button. What do you notice about the image?</p>
-<p>Try using the same parameters and mode to segment this image. Did it improve?</p>
-<p>Try some other restoration modes. Try using some custom filters and see if you can improve the
-segmentation. What might be useful for denoising this image?</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Want to use Cellpose when you get home, but having trouble with the <code class="docutils literal notranslate"><span class="pre">conda</span></code> installation? You have (at least) a couple of potential options!</p>
@@ -915,7 +900,6 @@ How high can you get the evaluation metrics? How many rounds and how many correc
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-remind-yourself-about-what-weve-heard-in-the-lecture"><strong>Exercise 1: Remind yourself about what we’ve heard in the lecture</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-play-with-cellpose"><strong>Exercise 2: Play with Cellpose</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#human-in-the-loop-retraining">Human-in-the-loop retraining</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-image-restoration-functions">Using the image restoration functions</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-denoising-with-careamics"><strong>Exercise 3: Denoising with CAREamics</strong></a></li>
