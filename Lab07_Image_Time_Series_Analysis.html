@@ -402,14 +402,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-tracking"><strong>Part 2: Tracking</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Learning Objectives</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-data-we-need">Get the data we need</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-automated-tracking-in-mastodon">(Semi-)automated Tracking in Mastodon</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-start-a-mastodon-project-from-a-single-tiff-file">Step 1: Start a Mastodon project from a single tiff File</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-manually-track-some-cells">Step 2: Manually track some cells</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-semi-automatic-tracking-to-speed-things-up">Step 3: Semi-automatic tracking to speed things up</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-automatic-tracking-using-the-trackmate-plugin">Step 4: Automatic tracking using the TrackMate plugin</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-trackmate">Tracking in Trackmate</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-ilastik">Tracking in ilastik</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-with-btrack-in-napari">Tracking with btrack in napari</a></li>
 </ul>
@@ -532,8 +525,7 @@ of the molecule of interest, followed by slower stronger association.</p></li>
 <section id="id1">
 <h3>Learning Objectives<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>(Semi-)automated Tracking with Mastodon in Fiji</p></li>
-<li><p>Using Trackmate<span id="id2"><sup><a class="reference internal" href="bibliography.html#id7" title="Jean-Yves Tinevez, Nick Perry, Johannes Schindelin, Genevieve M Hoopes, Gregory D Reynolds, Emmanuel Laplantine, Sebastian Y Bednarek, Spencer L Shorte, and Kevin W Eliceiri. TrackMate: an open and extensible platform for single-particle tracking. Methods, 115:80–90, February 2017.">12</a></sup></span> from within Mastodon</p></li>
+<li><p>Using Trackmate<span id="id2"><sup><a class="reference internal" href="bibliography.html#id7" title="Jean-Yves Tinevez, Nick Perry, Johannes Schindelin, Genevieve M Hoopes, Gregory D Reynolds, Emmanuel Laplantine, Sebastian Y Bednarek, Spencer L Shorte, and Kevin W Eliceiri. TrackMate: an open and extensible platform for single-particle tracking. Methods, 115:80–90, February 2017.">12</a></sup></span></p></li>
 <li><p>Tracking with ilastik<span id="id3"><sup><a class="reference internal" href="bibliography.html#id8" title="Stuart Berg, Dominik Kutra, Thorben Kroeger, Christoph N Straehle, Bernhard X Kausler, Carsten Haubold, Martin Schiegg, Janez Ales, Thorsten Beier, Markus Rudy, Kemal Eren, Jaime I Cervantes, Buote Xu, Fynn Beuttenmueller, Adrian Wolny, Chong Zhang, Ullrich Koethe, Fred A Hamprecht, and Anna Kreshuk. Ilastik: interactive machine learning for (bio)image analysis. Nat. Methods, 16(12):1226–1232, December 2019.">7</a></sup></span></p></li>
 </ul>
 </section>
@@ -561,144 +553,9 @@ rather complex and we will certainly not be able to see all their
 features.</p>
 </div>
 </section>
-<section id="get-the-data-we-need">
-<h3>Get the data we need<a class="headerlink" href="#get-the-data-we-need" title="Link to this heading">#</a></h3>
-<p>Please start to download the <code class="docutils literal notranslate"><span class="pre">Time_Series/Tracking</span></code> folder from the <a class="reference external" href="https://tinyurl.com/QIAnalysisLabData">Data Lab Share</a>. It might take some time so better start early :)</p>
-</section>
-<section id="semi-automated-tracking-in-mastodon">
-<h3>(Semi-)automated Tracking in Mastodon<a class="headerlink" href="#semi-automated-tracking-in-mastodon" title="Link to this heading">#</a></h3>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>Collect screenshots or remember what you learned here.
-Be prepared to show the coolest thing you found out tomorrow morning
-(you absolutely will be volunteered to share your findings ;)).</p>
-</div>
-<aside class="margin sidebar">
-<p class="sidebar-title">Want to learn more about working with Mastodon?</p>
-<p>Check out the <a class="reference external" href="https://mastodon.readthedocs.io/en/latest/index.html">documentation</a>, or check them out on <a class="reference external" href="https://forum.image.sc/tag/Mastodon">the image.sc forum!</a></p>
-</aside>
-<section id="step-1-start-a-mastodon-project-from-a-single-tiff-file">
-<h4>Step 1: Start a Mastodon project from a single tiff File<a class="headerlink" href="#step-1-start-a-mastodon-project-from-a-single-tiff-file" title="Link to this heading">#</a></h4>
-<ol class="arabic simple">
-<li><p>In Fiji go to: <code class="docutils literal notranslate"><span class="pre">Help</span> <span class="pre">&gt;</span> <span class="pre">Update</span> <span class="pre">&gt;</span> <span class="pre">Manage</span> <span class="pre">update</span> <span class="pre">sites</span></code></p>
-<ul class="simple">
-<li><p>Check boxes next to “Mastodon”.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Close</span> <span class="pre">&gt;</span> <span class="pre">Apply</span> <span class="pre">changes</span></code> and restart Fiji</p></li>
-</ul>
-</li>
-<li><p>Open <code class="docutils literal notranslate"><span class="pre">drosophilus_floriansus.tif</span></code> in Fiji.</p></li>
-<li><p>In Fiji, start Mastodon by <code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">Trtacking</span> <span class="pre">&gt;</span> <span class="pre">Mastodon</span> <span class="pre">&gt;</span> <span class="pre">Mastodon</span> <span class="pre">launcher</span></code></p></li>
-<li><p>In Mastodon, start a new project by clicking “new Mastodon project”.</p>
-<ul class="simple">
-<li><p>Click on “use an image open in ImageJ” and select the Drosophila image
-you just opened in Fiji.</p></li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<div><img alt="_images/image21.png" src="_images/image21.png" />
-</div></blockquote>
-<ul class="simple">
-<li><p>Click on “create” to create the new Mastodon project. A new window
-will open.</p></li>
-</ul>
-<blockquote>
-<div><img alt="_images/image12.png" src="_images/image12.png" />
-</div></blockquote>
-<ul class="simple">
-<li><p>In this new window, you can now open BDVs (BigDataViewers ;)) and TrackSchemes by clicking
-the respective buttons.</p></li>
-</ul>
-<ol class="arabic simple" start="5">
-<li><p>Please try to navigate the data and play with a few BDV shortcuts.
-Navigating 3D space can be confusing and a few shortcuts are really,
-really valuable. Here a quick reminder to what we’ve seen before:</p>
-<ul class="simple">
-<li><p>If you left click and drag, you can reslice in arbitrary
-directions.<br />
-Note the overview sketch on the top left… very helpful!</p></li>
-<li><p>Right click and drag is moving the volume around.</p></li>
-<li><p>Shift + X/Y/Z is rotating between the three exes parallel
-directions. Also here these rotations happen around the current
-mouse location.</p></li>
-<li><p>The mouse wheel is shifting the visible image plane in and out.</p></li>
-<li><p>Shift + ctrl + mouse wheel (on windows) is zooming in and out.</p></li>
-<li><p>Spend some additional time to internalize <a class="reference external" href="https://imagej.net/BigDataViewer#Basic_Navigation">some more shortcuts</a></p></li>
-</ul>
-</li>
-</ol>
-</section>
-<section id="step-2-manually-track-some-cells">
-<h4>Step 2: Manually track some cells<a class="headerlink" href="#step-2-manually-track-some-cells" title="Link to this heading">#</a></h4>
-<ol class="arabic simple">
-<li><p>Check the <strong>Mastodon cheat sheet</strong> (<code class="docutils literal notranslate"><span class="pre">Time_Series/Tracking/Mastodon_cheatsheet.pdf</span></code>)</p></li>
-<li><p>Figure out how to:</p></li>
-</ol>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Many of these tools work only if you are hovering you mouse pointer on the selection of interest.</p>
-</div>
-<ol class="arabic simple">
-<li><p>Manually add and link cell detections (<strong>a</strong>):</p>
-<ul class="simple">
-<li><p>Hover your mouse on a cell and press <strong>a</strong> to add a new detection</p></li>
-<li><p>Hover your mouse on an existing detection and press &amp; hold <strong>a</strong> to go to the next frame. Move your mouse to the new location of the cell and release <strong>a</strong> to add a new detection. The new detection wil be linked to the previous one.</p></li>
-<li><p>Repeat the process to create a track</p></li>
-<li><p>If you relese <strong>a</strong> on a previously existing detection, it will link it to your track.</p></li>
-</ul>
-</li>
-<li><p>Change the detection size to better fit the data (<strong>q/e</strong>).</p></li>
-<li><p>Move individual detections around (<strong>hold space + drag</strong>)</p></li>
-<li><p>Look at the detections you created using the TrackSceme view</p></li>
-</ol>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>See the three lock symbols on the top of some of Mastodon’s screens?
-All views that have the same ‘lock’ activated will be linked!
-Try ‘linking’ the BDV and Trackscheme or adding a new BDV window to visualize your sample across the Z axis and ‘locking’ it too. Do you find it useful?</p>
-</aside>
-<ol class="arabic simple" start="5">
-<li><p>Delete detections/links (<strong>d</strong>)</p></li>
-<li><p>Figure out what the ‘context’ in a TrackSceme controls (you will
-need to have tracked some lineages for this).</p></li>
-<li><p>Did you spot the undo function yet? (<strong>Ctrl + z</strong>)</p></li>
-<li><p>Ask yourself how long it would take to manually track every
-single nucleus in this really quite small dataset. Once this
-sunk in, pity everyone who has to do that for their project.</p></li>
-</ol>
-</section>
-<section id="step-3-semi-automatic-tracking-to-speed-things-up">
-<h4>Step 3: Semi-automatic tracking to speed things up<a class="headerlink" href="#step-3-semi-automatic-tracking-to-speed-things-up" title="Link to this heading">#</a></h4>
-<ol class="arabic simple">
-<li><p>Check the <strong>instructions</strong> file (<code class="docutils literal notranslate"><span class="pre">Time_Series/Tracking/Mastodon_Manual_SemiAutoTracking.pdf</span></code>) for the steps to set up and try the Semi-automatic tracking.</p></li>
-</ol>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>These instructions are slightly outdated, screenshots will likely look a bit different than the Mastodon you are using today…</p>
-</div>
-<ol class="arabic simple" start="2">
-<li><p>Now speed up your tracking work and try to find an efficient way to
-navigate Mastodon. (Remember, tomorrow we will volunteer people to
-show and compare found ways to track fast and efficiently…)</p></li>
-</ol>
-</section>
-<section id="step-4-automatic-tracking-using-the-trackmate-plugin">
-<h4>Step 4: Automatic tracking using the TrackMate plugin<a class="headerlink" href="#step-4-automatic-tracking-using-the-trackmate-plugin" title="Link to this heading">#</a></h4>
-<aside class="margin sidebar">
-<p class="sidebar-title">Want to learn more about working with TrackMate?</p>
-<p>Check out the <a class="reference external" href="https://imagej.net/plugins/trackmate/">documentation</a> and <a class="reference external" href="https://imagej.net/plugins/trackmate/#documentation-and-tutorials">https://imagej.net/plugins/trackmate/#documentation-and-tutorials</a>, or check them out on <a class="reference external" href="https://forum.image.sc/tag/TrackMate">the image.sc forum!</a></p>
-</aside>
-<ol class="arabic simple">
-<li><p>Use (in Mastodon, <strong>not</strong> Fiji): <code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">Tracking</span> <span class="pre">&gt;</span> <span class="pre">Detection…</span></code>
-and detect cells in some part of the volume (use the ROI-box to select a
-part of the volume in the BDV).</p></li>
-<li><p>Choose a <code class="docutils literal notranslate"><span class="pre">Detector</span></code> (there might be a familiar name in there!) and play around with the <code class="docutils literal notranslate"><span class="pre">Estimated</span> <span class="pre">diameter</span></code> of the objects and the <code class="docutils literal notranslate"><span class="pre">Quality</span> <span class="pre">threshold</span></code> to automatically detect your cells. Hit <code class="docutils literal notranslate"><span class="pre">Preview</span></code> to visualize the result.</p></li>
-<li><p>Then use: <code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">Tracking</span> <span class="pre">&gt;</span> <span class="pre">Linking…</span></code> and link those detections
-to each other. This will not lead to perfect results. Don’t worry
-about that!</p></li>
-<li><p>Play with options, check if you can improve results somehow. Check with your labmates what they have tried, what worked for them!</p></li>
-</ol>
-</section>
+<section id="tracking-in-trackmate">
+<h3>Tracking in Trackmate<a class="headerlink" href="#tracking-in-trackmate" title="Link to this heading">#</a></h3>
+<p>TRACKMATE STUFF GOES HERE</p>
 </section>
 <section id="tracking-in-ilastik">
 <h3>Tracking in ilastik<a class="headerlink" href="#tracking-in-ilastik" title="Link to this heading">#</a></h3>
@@ -892,14 +749,7 @@ If you want to learn more about it, maybe <a class="reference external" href="ht
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-tracking"><strong>Part 2: Tracking</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Learning Objectives</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-data-we-need">Get the data we need</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-automated-tracking-in-mastodon">(Semi-)automated Tracking in Mastodon</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-start-a-mastodon-project-from-a-single-tiff-file">Step 1: Start a Mastodon project from a single tiff File</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-manually-track-some-cells">Step 2: Manually track some cells</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-semi-automatic-tracking-to-speed-things-up">Step 3: Semi-automatic tracking to speed things up</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-automatic-tracking-using-the-trackmate-plugin">Step 4: Automatic tracking using the TrackMate plugin</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-trackmate">Tracking in Trackmate</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-ilastik">Tracking in ilastik</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-with-btrack-in-napari">Tracking with btrack in napari</a></li>
 </ul>

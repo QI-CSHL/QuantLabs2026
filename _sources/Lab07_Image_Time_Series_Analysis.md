@@ -125,8 +125,7 @@ Now we will run the FRAP plugin. You can find this under the plugin menu, under 
 
 ### Learning Objectives
 
-- (Semi-)automated Tracking with Mastodon in Fiji
-- Using Trackmate{cite}`Tinevez2017-fb` from within Mastodon
+- Using Trackmate{cite}`Tinevez2017-fb` 
 - Tracking with ilastik{cite}`Berg2019-no`
 
 ---
@@ -157,140 +156,9 @@ rather complex and we will certainly not be able to see all their
 features.
 ```
 
-### Get the data we need
+### Tracking in Trackmate
 
-Please start to download the `Time_Series/Tracking` folder from the [Data Lab Share](https://tinyurl.com/QIAnalysisLabData). It might take some time so better start early :\)
-
-### (Semi-)automated Tracking in Mastodon
-
-
-```{important}
-Collect screenshots or remember what you learned here.
-Be prepared to show the coolest thing you found out tomorrow morning
-(you absolutely will be volunteered to share your findings ;)).
-```
-
-```{margin} Want to learn more about working with Mastodon?
-Check out the [documentation](https://mastodon.readthedocs.io/en/latest/index.html), or check them out on [the image.sc forum!](https://forum.image.sc/tag/Mastodon)
-```
-
-#### Step 1: Start a Mastodon project from a single tiff File
-
-1.  In Fiji go to: `Help > Update > Manage update sites`
-
-    - Check boxes next to “Mastodon”.
-
-    - `Close > Apply changes` and restart Fiji
-
-2.  Open `drosophilus_floriansus.tif` in Fiji.
-
-3.  In Fiji, start Mastodon by `Plugins > Trtacking > Mastodon > Mastodon launcher`
-
-4.  In Mastodon, start a new project by clicking “new Mastodon project”.
-
-    - Click on “use an image open in ImageJ” and select the Drosophila image
-      you just opened in Fiji.
-
-> <img src="images/time_series/image2.png" style="width:3.91146in;height:2.20594in" />
-
-- Click on “create” to create the new Mastodon project. A new window
-  will open.
-
-> <img src="images/time_series/image1.png" style="width:2.49479in;height:2.49479in" />
-
-- In this new window, you can now open BDVs (BigDataViewers ;\)) and TrackSchemes by clicking
-  the respective buttons.
-
-5.  Please try to navigate the data and play with a few BDV shortcuts.
-    Navigating 3D space can be confusing and a few shortcuts are really,
-    really valuable. Here a quick reminder to what we’ve seen before:
-
-    - If you left click and drag, you can reslice in arbitrary
-      directions.  
-      Note the overview sketch on the top left… very helpful!
-
-    - Right click and drag is moving the volume around.
-
-    - Shift + X/Y/Z is rotating between the three exes parallel
-      directions. Also here these rotations happen around the current
-      mouse location.
-
-    - The mouse wheel is shifting the visible image plane in and out.
-
-    - Shift + ctrl + mouse wheel (on windows) is zooming in and out.
-
-    - Spend some additional time to internalize [some more shortcuts](https://imagej.net/BigDataViewer#Basic_Navigation)
-
-#### Step 2: Manually track some cells
-
-1.  Check the **Mastodon cheat sheet** (`Time_Series/Tracking/Mastodon_cheatsheet.pdf`)
-
-2.  Figure out how to:
-
-```{tip}
-Many of these tools work only if you are hovering you mouse pointer on the selection of interest.
-```
-
-  1.  Manually add and link cell detections (**a**):
-      - Hover your mouse on a cell and press **a** to add a new detection
-      - Hover your mouse on an existing detection and press & hold **a** to go to the next frame. Move your mouse to the new location of the cell and release **a** to add a new detection. The new detection wil be linked to the previous one.
-      - Repeat the process to create a track
-      - If you relese **a** on a previously existing detection, it will link it to your track.
-
-  2.  Change the detection size to better fit the data (**q/e**).
-
-  3.  Move individual detections around (**hold space + drag**)
-
-  4.  Look at the detections you created using the TrackSceme view
-
-
-```{margin}
-See the three lock symbols on the top of some of Mastodon's screens?
-All views that have the same 'lock' activated will be linked!
-Try 'linking' the BDV and Trackscheme or adding a new BDV window to visualize your sample across the Z axis and 'locking' it too. Do you find it useful?
-```
-
-  5.  Delete detections/links (**d**)
-
-  6.  Figure out what the ‘context’ in a TrackSceme controls (you will
-      need to have tracked some lineages for this).
-
-  7.  Did you spot the undo function yet? (**Ctrl + z**)
-
-  8. Ask yourself how long it would take to manually track every
-      single nucleus in this really quite small dataset. Once this
-      sunk in, pity everyone who has to do that for their project.
-
-#### Step 3: Semi-automatic tracking to speed things up
-
-1.  Check the **instructions** file (`Time_Series/Tracking/Mastodon_Manual_SemiAutoTracking.pdf`) for the steps to set up and try the Semi-automatic tracking. 
-
-```{warning}
-These instructions are slightly outdated, screenshots will likely look a bit different than the Mastodon you are using today… 
-```
-
-2.  Now speed up your tracking work and try to find an efficient way to
-    navigate Mastodon. (Remember, tomorrow we will volunteer people to
-    show and compare found ways to track fast and efficiently…)
-
-#### Step 4: Automatic tracking using the TrackMate plugin
-
-
-```{margin} Want to learn more about working with TrackMate?
-Check out the [documentation](https://imagej.net/plugins/trackmate/) and https://imagej.net/plugins/trackmate/#documentation-and-tutorials, or check them out on [the image.sc forum!](https://forum.image.sc/tag/TrackMate)
-```
-
-1.  Use (in Mastodon, **not** Fiji): `Plugins > Tracking > Detection…`
-    and detect cells in some part of the volume (use the ROI-box to select a
-    part of the volume in the BDV).
-
-2.  Choose a `Detector` (there might be a familiar name in there!) and play around with the `Estimated diameter` of the objects and the `Quality threshold` to automatically detect your cells. Hit `Preview` to visualize the result.
-
-3.  Then use: `Plugins > Tracking > Linking…` and link those detections
-    to each other. This will not lead to perfect results. Don’t worry
-    about that!
-
-3.  Play with options, check if you can improve results somehow. Check with your labmates what they have tried, what worked for them!
+TRACKMATE STUFF GOES HERE
 
 ### Tracking in ilastik
 
