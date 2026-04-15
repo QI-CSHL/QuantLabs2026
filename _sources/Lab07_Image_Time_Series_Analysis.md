@@ -2,7 +2,7 @@
 
 *Lab authors: Hunter Elliott, Damian Dalle Nogare and Florian Jug* . 
 
-<small>This file last updated 2025-04-10.</small>
+<small>This file last updated 2026-04-16.</small>
 
 <!-- Maybe add some UlTrac and/or TracX -->
 
@@ -140,10 +140,9 @@ boring/annoying. Hence, we will be exploring semi-automatic tracking
 regimes and also see how automated results can then be loaded for manual
 curation.
 
-More specifically, we will get to know ***Mastodon*** and learn more
-about ***ilastik***. Mastodon is a Fiji plugin designed to deal with
-truly huge time-lapses, which makes it an exquisitely valuable choice
-for many tracking projects.
+More specifically, we will get to know ***Trackmate*** and learn more
+about ***ilastik***. Trackmate is a very popular Fiji plugin designed 
+to deal with all kinds of tracking data, and is well and frequently maintained.
 
 We know ilastik already from other exercises, but today we will explore
 some of ilastik’s tracking features. The automated tracking in ilastik is
