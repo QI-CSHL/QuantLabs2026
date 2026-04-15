@@ -13,7 +13,7 @@
 - Image registration for 3D reconstruction
 - Some ways to segment in 3D
 
-**Lab Data** in [this folder](https://tinyurl.com/QIAnalysisLabData) (3D_Image_Analysis)
+**Lab Data** in [this folder](https://drive.google.com/drive/folders/1Q6EEgsCmc503BP449Oq4Q9-Hg3d5dUb4) (3D_Image_Analysis)
 
 ```{important}
 Remember to **unzip** the data folder after downloading.
