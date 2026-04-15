@@ -14,7 +14,7 @@
 - Denoising with CAREamics in python
 - Bonus: Try in-browser classification with Piximi
 
-**Lab Data** in [this folder](https://tinyurl.com/QIAnalysisLabData) (DL4MIA)
+**Lab Data** in [this folder](https://drive.google.com/drive/folders/14OWZZk2FkvKbqHotQDcfjJ2tG3LSQzej?usp=sharing) (DL4MIA)
 
 Remember to **unzip** the data folder after downloading.
 
@@ -243,7 +243,7 @@ In this case we cannot install package A and C in the same environment, because 
 
 However, we will not (hopefully!) run into dependency hell today. Let's start by creating an environment. 
 
-Open a new terminal by opening `miniforge prompt`. If you're using an existing terminal, make sure you deactivate any current environments that are open by typing `conda deactivate`.
+Open a new terminal by opening `anaconda prompt`. If you're using an existing terminal, make sure you deactivate any current environments that are open by typing `conda deactivate`.
 
 Make a new environment by typing:
 
