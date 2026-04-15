@@ -346,7 +346,7 @@ You can navigate the slides using Ctrl + Up/Down arrows
   overlay it with the raw data as a composite image. Then visualize it
   with your favorite 3D visualization tool from earlier in the lab.
 
-## 3D instance segmentation
+## **3D instance segmentation**
 
 ### CellPose
 
