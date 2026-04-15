@@ -419,3 +419,24 @@ Piximi's current defaults are to load two-channel images as red and green, and t
 
 - Use human-in-the-loop classification (same procedure as in the previous exercise) to train a high-performing 3 class classifier.
 How high can you get the evaluation metrics? How many rounds and how many corrected classifications does it take you to get there?
+
+
+## **Bonus Exercise**
+
+Install the promptable segmentation tool nnInteractive. Promptable segmentation is a type of segentation where we give the computer a "prompt" about what we want to segment. This might be a mouse click, or a bounding box, and then the computer will segment whatever it thinks best represents your prompt. This is useful, for example, for generating human-validated ground truth for future neural network training.
+
+We will use an environment `yaml` file to install this. A `yaml` file contains all the instructions for conda to install a python environment. In the lab data folder, you will find a file called `nnInteracive.yaml`. Download that, and place it somewhere on the computer. Right click on the file and select `open in terminal`.
+
+To install the environment, type into this terminal
+
+`conda env create -f nnInteractive.yaml`
+
+Once the environment is ready, activate the environment by typing `conda activate nnInteractive`. Then launch napari by typing `napari`. You should see the napari window launch.
+
+nnInteractive can be found in the `plugins` menu under `nnInteractive (nnInteractive)`. Launch it by selecting this option. You should eventually see the plugin on the right side of the screen.
+
+Load some data that we would like to segment (any data will do). If you have multiple objects that you want to segment seperately, you will want to chekc the `instance aggregation` checkbox, as seen below.
+
+Now select one of the prompt types (I would start with `points`) and start clicking on objects. Once an object is segmented, you can commit it to the labels layer uisng the `next object` button. Try different prompts or segmenting different objects. Which types work better? What type of segmentation are we doing here (instance or semantic?).
+
+When you're done, export your segmentation. How does this compare to other approaches (if you have the same data segmented already)? What are the pros and cons of this style of segmentation?

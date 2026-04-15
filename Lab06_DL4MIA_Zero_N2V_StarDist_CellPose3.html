@@ -414,6 +414,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-a-3-class-classification-model-on-u2os-cells">Train a 3-class classification model on U2OS cells</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise"><strong>Bonus Exercise</strong></a></li>
 </ul>
             </nav>
         </div>
@@ -825,6 +826,18 @@ How high can you get the evaluation metrics? How many rounds and how many correc
 </ul>
 </section>
 </section>
+<section id="bonus-exercise">
+<h2><strong>Bonus Exercise</strong><a class="headerlink" href="#bonus-exercise" title="Link to this heading">#</a></h2>
+<p>Install the promptable segmentation tool nnInteractive. Promptable segmentation is a type of segentation where we give the computer a “prompt” about what we want to segment. This might be a mouse click, or a bounding box, and then the computer will segment whatever it thinks best represents your prompt. This is useful, for example, for generating human-validated ground truth for future neural network training.</p>
+<p>We will use an environment <code class="docutils literal notranslate"><span class="pre">yaml</span></code> file to install this. A <code class="docutils literal notranslate"><span class="pre">yaml</span></code> file contains all the instructions for conda to install a python environment. In the lab data folder, you will find a file called <code class="docutils literal notranslate"><span class="pre">nnInteracive.yaml</span></code>. Download that, and place it somewhere on the computer. Right click on the file and select <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">in</span> <span class="pre">terminal</span></code>.</p>
+<p>To install the environment, type into this terminal</p>
+<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span> <span class="pre">-f</span> <span class="pre">nnInteractive.yaml</span></code></p>
+<p>Once the environment is ready, activate the environment by typing <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">nnInteractive</span></code>. Then launch napari by typing <code class="docutils literal notranslate"><span class="pre">napari</span></code>. You should see the napari window launch.</p>
+<p>nnInteractive can be found in the <code class="docutils literal notranslate"><span class="pre">plugins</span></code> menu under <code class="docutils literal notranslate"><span class="pre">nnInteractive</span> <span class="pre">(nnInteractive)</span></code>. Launch it by selecting this option. You should eventually see the plugin on the right side of the screen.</p>
+<p>Load some data that we would like to segment (any data will do). If you have multiple objects that you want to segment seperately, you will want to chekc the <code class="docutils literal notranslate"><span class="pre">instance</span> <span class="pre">aggregation</span></code> checkbox, as seen below.</p>
+<p>Now select one of the prompt types (I would start with <code class="docutils literal notranslate"><span class="pre">points</span></code>) and start clicking on objects. Once an object is segmented, you can commit it to the labels layer uisng the <code class="docutils literal notranslate"><span class="pre">next</span> <span class="pre">object</span></code> button. Try different prompts or segmenting different objects. Which types work better? What type of segmentation are we doing here (instance or semantic?).</p>
+<p>When you’re done, export your segmentation. How does this compare to other approaches (if you have the same data segmented already)? What are the pros and cons of this style of segmentation?</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -914,6 +927,7 @@ How high can you get the evaluation metrics? How many rounds and how many correc
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-a-3-class-classification-model-on-u2os-cells">Train a 3-class classification model on U2OS cells</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise"><strong>Bonus Exercise</strong></a></li>
 </ul>
   </nav></div>
 
