@@ -66,6 +66,10 @@ Here are some [tips and tricks](https://imagej.net/plugins/labkit/guidelines) to
   forest pixel classifier” doing behind the scenes? If it’s not clear,
   ask!
 
+```{margin}
+If you still struggle with this concept, eere's a [useful (and sparkly!) video](https://www.youtube.com/watch?v=0cLZVKUJGNw&list=PLCucasmZ3XNn-tvZDSUBoOtMLoFxopdiy&index=13) on the concept of training a random forest classifier!
+```
+
 - Using what you learned about filtering, what can you say about the
   features we might need for this segmentation task? What are the
   minimal set that might do? Try that out. If your segmentation needs
