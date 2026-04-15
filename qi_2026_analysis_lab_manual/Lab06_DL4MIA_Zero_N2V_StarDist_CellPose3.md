@@ -2,7 +2,7 @@
 
 *Lab authors: Damian Dalle Nogare, Florian Jug, and Beth Cimini* . 
 
-<small>This file last updated 2025-04-03.</small>
+<small>This file last updated 2026-04-15.</small>
 
 ---
 
@@ -346,7 +346,7 @@ Piximi includes 4 major functionalities. Three major ones you're used to thinkin
 In order to train deep learning models for object detection and segmentation, it also includes a 4th major component - an **Annotation** tool. 
 
 ```{margin}
-We hope to provide *trainable* segmentation options by the end of 2025. You can keep visiting [piximi.app](https://piximi.app/) to see what's available!
+Since Piximi is a web tool, new versions can go live all the time - for example, we plan to roll out tracking later in 2026. You can keep visiting [piximi.app](https://piximi.app/) to see what's available!
 ```
 
 ### Train a 10-class classification model using MNIST
@@ -354,7 +354,7 @@ We hope to provide *trainable* segmentation options by the end of 2025. You can 
 Piximi is designed for biologists but can be used on non-biological images as well. Here, we'll use 1,000 handwritten digits from the classic [MNIST dataset](https://en.wikipedia.org/wiki/MNIST_database) {cite}`726791` , which consists of cropped images of digits from old census data and high school students.
 
 #### Train a classifier
-- Tell Piximi you want to open an example project
+- Tell Piximi you want to open an example project - TODO - change screenshot
 
 <img src="images/dl/piximi_open.png" height="180px" />
 
@@ -412,11 +412,11 @@ If and when (when), you find some errors in the predictions, you can fix them by
 
 Depending on why you're using machine learning, you might choose to fix all the wrong images at this stage, or only some:
 
-- Is your goal to just get the classifications right and then use them for something else, and most of them have already been correctly classified? 
+**_Is your goal to just get the classifications right and then use them for something else, and most of them have already been correctly classified?_** 
   - In that case, there's no harm in just fixing the few mistakes and then moving on to other downstream quantification steps (coming soon!). 
   - If this is your goal but there are a lot of mistakes, you might not choose to fix all of them at this stage, but just fix a subset and then try to train again so you can get to a point where the errors are at a small enough level that you CAN do final data cleaning by hand
 
-- Is your goal to create a robust, reusable classifier to use on other sets or in other contexts? 
+**_Is your goal to create a robust, reusable classifier to use on other sets or in other contexts?_**
   - In that case, you might want to fix only a subset of the mistakes before retraining, so you can get a sense of if your model performance is improving.
   - If retraining, once you've done your chosen recategorizations, clear predictions (<img src="images/dl/piximi_clear_predictions.png" height="40px" />) and then hit fit again.
 
@@ -437,12 +437,12 @@ You can therefore save your Piximi project file for later, as well as save your 
 ### Train a 3-class classification model on U2OS cells
 
 ```{note}
-Sometimes this data set takes a long time to load, sometimes it doesn't! We're not sure why. Feel free to skip it if it's taking a long time and being annoying.
+Sometimes this data set takes a long time to load, sometimes it doesn't! We're not sure why. Feel free to skip it (or move onto the next bonus and then come back to this one, leaving the browser window open in the meantime) if it's taking a long time and being annoying.
 ```
 
 This data set is in some ways more challenging, but also shows a more biologically relevant classification scenario, alongside the ability to do more human-in-the-loop retraining since, unlike MNIST, the majority of the data is NOT already categorized for you.
 
-- Refresh Piximi, and then load the U2OS-cells cytoplasm crops example dataset (Open \> Project \> Example Project \> Human U2OS-cells cytoplasm crops)
+- Optionally refresh Piximi, and then load the U2OS-cells cytoplasm crops example dataset (Open \> Project \> Example Project \> Human U2OS-cells cytoplasm crops)
 
 <img src="images/dl/piximi_bbbc013.png" height="180px" />
 
