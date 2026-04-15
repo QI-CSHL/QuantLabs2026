@@ -172,7 +172,7 @@ Here's a visual summary of the analysis workflow to guide you:
   
 - Change the image type to 32-bit (`Image > Type > 32-bit`). 
 
-<!-- - Remove the scale from the image by going to `Analyze > Set scale...`, click on `Click to remove scale` and then `OK`. This step prevents confusion when using tools that take pixel units vs others that use the scale of the image.-->
+- Remove the scale from the image by going to `Analyze > Set scale...`, click on `Click to remove scale` and then `OK`. This step prevents confusion when using tools that take pixel units vs others that use the scale of the image.
 
 - Create 3 copies of the stack (via
   `Image > Duplicate`), naming them **"surface"**, **"mask"**, and **"marker"**.
