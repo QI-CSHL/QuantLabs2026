@@ -429,7 +429,7 @@
   <section class="tex2jax_ignore mathjax_ignore" id="deep-learning-for-microscopy-image-analysis">
 <h1>Deep Learning for Microscopy Image Analysis<a class="headerlink" href="#deep-learning-for-microscopy-image-analysis" title="Link to this heading">#</a></h1>
 <p><em>Lab authors: Damian Dalle Nogare, Florian Jug, and Beth Cimini</em> .</p>
-<p><small>This file last updated 2025-04-03.</small></p>
+<p><small>This file last updated 2026-04-15.</small></p>
 <hr class="docutils" />
 <section id="learning-objectives">
 <h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
@@ -729,7 +729,7 @@ Well we are asking a particular piece of software called a package manager (in t
 <p>In order to train deep learning models for object detection and segmentation, it also includes a 4th major component - an <strong>Annotation</strong> tool.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>We hope to provide <em>trainable</em> segmentation options by the end of 2025. You can keep visiting <a class="reference external" href="https://piximi.app/">piximi.app</a> to see what’s available!</p>
+<p>Since Piximi is a web tool, new versions can go live all the time - for example, we plan to roll out tracking later in 2026. You can keep visiting <a class="reference external" href="https://piximi.app/">piximi.app</a> to see what’s available!</p>
 </aside>
 <section id="train-a-10-class-classification-model-using-mnist">
 <h3>Train a 10-class classification model using MNIST<a class="headerlink" href="#train-a-10-class-classification-model-using-mnist" title="Link to this heading">#</a></h3>
@@ -737,7 +737,7 @@ Well we are asking a particular piece of software called a package manager (in t
 <section id="train-a-classifier">
 <h4>Train a classifier<a class="headerlink" href="#train-a-classifier" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p>Tell Piximi you want to open an example project</p></li>
+<li><p>Tell Piximi you want to open an example project - TODO - change screenshot</p></li>
 </ul>
 <a class="reference internal image-reference" href="_images/piximi_open.png"><img alt="_images/piximi_open.png" src="_images/piximi_open.png" style="height: 180px;" />
 </a>
@@ -805,14 +805,12 @@ on the right to inspect only one or certain categories at a time.</p>
 <a class="reference internal image-reference" href="_images/piximi_recategorize_errors.png"><img alt="_images/piximi_recategorize_errors.png" src="_images/piximi_recategorize_errors.png" style="height: 180px;" />
 </a>
 <p>Depending on why you’re using machine learning, you might choose to fix all the wrong images at this stage, or only some:</p>
-<ul>
-<li><p>Is your goal to just get the classifications right and then use them for something else, and most of them have already been correctly classified?</p>
+<p><strong><em>Is your goal to just get the classifications right and then use them for something else, and most of them have already been correctly classified?</em></strong></p>
 <ul class="simple">
 <li><p>In that case, there’s no harm in just fixing the few mistakes and then moving on to other downstream quantification steps (coming soon!).</p></li>
 <li><p>If this is your goal but there are a lot of mistakes, you might not choose to fix all of them at this stage, but just fix a subset and then try to train again so you can get to a point where the errors are at a small enough level that you CAN do final data cleaning by hand</p></li>
 </ul>
-</li>
-<li><p>Is your goal to create a robust, reusable classifier to use on other sets or in other contexts?</p>
+<p><strong><em>Is your goal to create a robust, reusable classifier to use on other sets or in other contexts?</em></strong></p>
 <ul class="simple">
 <li><p>In that case, you might want to fix only a subset of the mistakes before retraining, so you can get a sense of if your model performance is improving.</p></li>
 <li><p>If retraining, once you’ve done your chosen recategorizations, clear predictions (<a class="reference internal" href="_images/piximi_clear_predictions.png"><img alt="_images/piximi_clear_predictions.png" src="_images/piximi_clear_predictions.png" style="height: 40px;" /></a>) and then hit fit again.</p></li>
@@ -821,8 +819,6 @@ on the right to inspect only one or certain categories at a time.</p>
 <p class="admonition-title">Important</p>
 <p>If this is indeed your goal, you need to have some unseen <strong>test</strong> data somewhere else that you are not tuning on here! Once you’ve run any version of your model, at any stage, on unseen data, that data is now “seen data”, and can’t be used as a test set anymore. How you plan your data splits (and how much, and which, data you keep locked away as test set(s)) is critical to any kind of machine learning research</p>
 </div>
-</li>
-</ul>
 </section>
 <section id="save-things-for-later">
 <h4>Save things for later<a class="headerlink" href="#save-things-for-later" title="Link to this heading">#</a></h4>
@@ -838,11 +834,11 @@ on the right to inspect only one or certain categories at a time.</p>
 <h3>Train a 3-class classification model on U2OS cells<a class="headerlink" href="#train-a-3-class-classification-model-on-u2os-cells" title="Link to this heading">#</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Sometimes this data set takes a long time to load, sometimes it doesn’t! We’re not sure why. Feel free to skip it if it’s taking a long time and being annoying.</p>
+<p>Sometimes this data set takes a long time to load, sometimes it doesn’t! We’re not sure why. Feel free to skip it (or move onto the next bonus and then come back to this one, leaving the browser window open in the meantime) if it’s taking a long time and being annoying.</p>
 </div>
 <p>This data set is in some ways more challenging, but also shows a more biologically relevant classification scenario, alongside the ability to do more human-in-the-loop retraining since, unlike MNIST, the majority of the data is NOT already categorized for you.</p>
 <ul class="simple">
-<li><p>Refresh Piximi, and then load the U2OS-cells cytoplasm crops example dataset (Open &gt; Project &gt; Example Project &gt; Human U2OS-cells cytoplasm crops)</p></li>
+<li><p>Optionally refresh Piximi, and then load the U2OS-cells cytoplasm crops example dataset (Open &gt; Project &gt; Example Project &gt; Human U2OS-cells cytoplasm crops)</p></li>
 </ul>
 <a class="reference internal image-reference" href="_images/piximi_bbbc013.png"><img alt="_images/piximi_bbbc013.png" src="_images/piximi_bbbc013.png" style="height: 180px;" />
 </a>
