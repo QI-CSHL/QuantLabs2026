@@ -638,7 +638,7 @@ segmentation. What might be useful for denoising this image?</p>
 <p>Want to use Cellpose when you get home, but having trouble with the <code class="docutils literal notranslate"><span class="pre">conda</span></code> installation? You have (at least) a couple of potential options!</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>As of April of 2024, both of these are still using Cellpose 2, which does have human-in-the-loop retraining but not denoising or image restoration</p>
+<p>As of April of 2026, BAND is still using Cellpose 3, which is very good for most problems but struggles on certain cases (such as highly variable object sizes) more than Cellpose 4.</p>
 </div>
 <ul class="simple">
 <li><p>EMBL has the Bioimage ANalysis Desktop (BAND) program, which allows you to check out virtual machines in the cloud. You simply visit a website, tell them the resources you need, and get a machine with <a class="reference external" href="https://bandv1.denbi.uni-tuebingen.de/#/eosc-landingpage">&gt;20 helpful image analysis tools pre-installed</a>.</p>
@@ -647,10 +647,10 @@ segmentation. What might be useful for denoising this image?</p>
 <li><p><strong>Downsides</strong>: They have limited capacity and sometimes machines aren’t available due to EMBL courses. You have to upload your data to their servers, and download your results from them.</p></li>
 </ul>
 </li>
-<li><p>Cellpose can be used with CellProfiler, both in Python if you have both programs <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code> installed, but <a class="reference external" href="https://plugins.cellprofiler.org/using_plugins.html?installing-plugins-with-dependencies-using-cellprofiler-from-source#using-docker-to-bypass-installation-requirements">CellProfiler also offers a way to use a pre-built version using Docker</a> <span id="id3"><sup><a class="reference internal" href="bibliography.html#id24" title="Erin Weisbart, Callum Tromans-Coia, Barbara Diaz-Rohrer, David R Stirling, Fernanda Garcia-Fossa, Rebecca A Senft, Mark C Hiner, Marcelo B de Jesus, Kevin W Eliceiri, and Beth A Cimini. CellProfiler plugins - an easy image analysis platform integration for containers and python tools. J. Microsc., September 2023.">18</a></sup></span></p>
+<li><p>Cellpose can be used with CellProfiler, both in Python if you have both programs <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code> installed, but <a class="reference external" href="https://plugins.cellprofiler.org/using_plugins.html?installing-plugins-with-dependencies-using-cellprofiler-from-source#using-docker-to-bypass-installation-requirements">CellProfiler also offers a way to use a pre-built version using Docker or Podman</a> <span id="id3"><sup><a class="reference internal" href="bibliography.html#id24" title="Erin Weisbart, Callum Tromans-Coia, Barbara Diaz-Rohrer, David R Stirling, Fernanda Garcia-Fossa, Rebecca A Senft, Mark C Hiner, Marcelo B de Jesus, Kevin W Eliceiri, and Beth A Cimini. CellProfiler plugins - an easy image analysis platform integration for containers and python tools. J. Microsc., September 2023.">18</a></sup></span></p>
 <ul>
-<li><p><strong>Upsides</strong>: You can use Cellpose models without ever touching your terminal, and while keeping your data local - you only need to install CellProfiler and Docker <code class="docutils literal notranslate"><span class="pre">.app</span></code> or <code class="docutils literal notranslate"><span class="pre">.exe</span></code> files from their respective websites, download <a class="reference external" href="https://github.com/CellProfiler/CellProfiler-plugins/blob/master/active_plugins/runcellpose.py">the plugin</a>, and then point CellProfiler at the location of the downloaded file.</p></li>
-<li><p><strong>Downsides</strong>: this only lets you run pre-trained Cellpose models, not train your own. Running Cellpose in CellProfiler via Docker is also MUCH slower than running it when installed via Python (though it will mostly be compute time, rather than human time, once you’re in analysis mode and running all your images unsupervised). You’re limited to the hardware you have locally.</p></li>
+<li><p><strong>Upsides</strong>: You can use Cellpose models without ever touching your terminal, and while keeping your data local - you only need to install CellProfiler and Docker (or Podman) <code class="docutils literal notranslate"><span class="pre">.app</span></code> or <code class="docutils literal notranslate"><span class="pre">.exe</span></code> files from their respective websites, download <a class="reference external" href="https://github.com/CellProfiler/CellProfiler-plugins/blob/master/active_plugins/runcellpose.py">the plugin</a>, and then point CellProfiler at the location of the downloaded file.</p></li>
+<li><p><strong>Downsides</strong>: this only lets you run pre-trained Cellpose models, not train your own. Running Cellpose in CellProfiler via container is also MUCH slower than running it when installed via Python (though it will mostly be compute time, rather than human time, once you’re in analysis mode and running all your images unsupervised). You’re limited to the hardware you have locally.</p></li>
 </ul>
 </li>
 </ul>
@@ -737,11 +737,8 @@ Well we are asking a particular piece of software called a package manager (in t
 <section id="train-a-classifier">
 <h4>Train a classifier<a class="headerlink" href="#train-a-classifier" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p>Tell Piximi you want to open an example project - TODO - change screenshot</p></li>
-</ul>
-<a class="reference internal image-reference" href="_images/piximi_open.png"><img alt="_images/piximi_open.png" src="_images/piximi_open.png" style="height: 180px;" />
-</a>
-<ul class="simple">
+<li><p>Go to piximi.app</p></li>
+<li><p>Tell Piximi you want to open an example project</p></li>
 <li><p>Select MNIST
 <a class="reference internal" href="_images/piximi_mnist.png"><img alt="_images/piximi_mnist.png" src="_images/piximi_mnist.png" style="height: 180px;" /></a></p></li>
 <li><p>Scroll through the images - you’ll see that most are categorized as a particular digit, but about 60 have been intentionally left un-categorized for testing purposes.</p>
