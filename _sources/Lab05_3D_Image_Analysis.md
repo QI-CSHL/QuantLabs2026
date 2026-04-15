@@ -110,7 +110,7 @@ Check out the [documentation](https://github.com/UU-cellbiology/bigvolumebrowser
   You’ve seen a single tissue section from this brain before, but now
   we’re going to try to visualize the entire brain.
 
-- Visualize this stack in in some way. This should look like most of a
+- Visualize this stack in in any of the 3D viewers you tried so far. This should look like most of a
   mouse brain but likely appears “squished”. Why? Look at the voxel
   dimensions - the actual voxel size in this image is (x,y,z) =
   (10.5,10.5,40) microns - adjust the voxel size (find out how if you 
