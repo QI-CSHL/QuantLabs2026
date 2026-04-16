@@ -148,6 +148,10 @@ previous part of this exercise and apply it to this image.
 Because we want to re-train our own model, we need to provide it with `ground truth data`. In this case, this means showing it what kind of segmentation we would like to see, given the current image.
 So, we need to manually curate the automatic segmentation provided by the model.
 
+```{tip} Having a hard time finding errors?
+CellposeSAM is honestly VERY good, you might have to predict on more than one image to start finding errors in the segmentation prediction for you to correct.
+```
+
 You can see now how starting from an already kind-of-good model will make the manual correction easier and faster.
 
 You can correct the segmentation errors by
@@ -205,6 +209,11 @@ model to the test data we have segmented at the start of the exercise
 (importantly: your model has not previously seen this image during
 finetuning! Why is this important again?). Is the result better than
 with the initial model you started with?
+
+3) [ **OPTIONAL** ] Do you want to challenge Cellpose even further? Try predicting on the images from the `even_harder` folder. 
+- Run prediction on some of the `train` images and manually correct at least one. 
+- Retrain the model the same way you did before and run it again. Is it performing better? Isn't retraining great?
+- After you're happy, try your fancy new fine-tuned model on the `test` image
 
 
 ````{tip}
