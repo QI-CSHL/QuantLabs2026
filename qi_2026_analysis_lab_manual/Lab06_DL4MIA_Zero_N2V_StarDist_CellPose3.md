@@ -546,7 +546,7 @@ The run time with Docker is substantially slower (about a minute more per image,
 2. Drag `bonus_3_cellpose.cppipe` into the pipeline panel.
 3. Drag the `images_Illum-corrected` subfolder from the main exercise into the Images module
 4. Put CellProfiler into **TestMode** <img src="images/dl/StartTestMode.png" width="120"/> 
-5. You will need to `Select Cellpose version` and `Select Cellpose Docker image`. (e.g. you must select Cellpose version **3** for the Docker `runcellpose_with_pretrained:3.1.1.2` to be an option.)
+5. You will need to `Select Cellpose version` and `Select Cellpose Docker image`. (e.g. you must select Cellpose version **3** for the Docker `runcellpose_with_pretrained:.4.0.6` to be an option.)
 6. Open the eye icons <img src="images/dl/EyeOpen.png" width="50"/> next to RunCellpose and OverlayOutlines, and then hit <img src="images/dl/Run.png" width="120"/>
   - You may wish to put a pause next to SaveImages, or uncheck it, to keep it from saving images, but that's up to you
 
