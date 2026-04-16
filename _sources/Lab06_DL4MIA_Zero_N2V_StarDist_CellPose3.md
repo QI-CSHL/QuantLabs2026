@@ -235,7 +235,7 @@ As of April of 2026, BAND is still using Cellpose 3, which is very good for most
 ## Installing CAREamics
 
 
-If you are familiar with `conda` and `pip`, the installation instructions can be found [here](https://careamics.github.io/0.1/installation/). If you are comfortable with what is there, go ahead and follow the instructions. 
+If you are familiar with `conda` and `pip`, the installation instructions can be found [here](https://careamics.github.io/0.1/content/installation/install_with_mamba/). If you are comfortable with what is there, go ahead and follow the instructions. 
 
 Otherwise we will go through each step here. Keep in mind that the CAREamics instructions use `mamba`, whereas we will use `conda`. If that doesn't make sense to you, then read on to the next section!
 
