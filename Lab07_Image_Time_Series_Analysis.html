@@ -630,11 +630,10 @@ Let us install it and then use it.</p>
 </aside>
 <p><strong>Installation of btrack and napari from scratch</strong></p>
 <ul class="simple">
-<li><p>Open a new Miniforge Prompt and install all we need by executing…</p>
+<li><p>Open a new Anaconda Prompt and install all we need by executing…</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-y</span> <span class="pre">-n</span> <span class="pre">btrack</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">python=3.11</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">btrack</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">pip</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">btrack[napari]</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">napari</span> <span class="pre">pyqt</span></code></p></li>
 </ul>
@@ -647,7 +646,7 @@ data that is segmented. Since we learned about segmentation before, here we will
 simply use one of the btrack example datasets.
 You can find a file called <code class="docutils literal notranslate"><span class="pre">segmented_nuclei.tif</span></code> it in the folder <code class="docutils literal notranslate"><span class="pre">btrack_masks</span></code> in the <a class="reference external" href="https://drive.google.com/drive/folders/1dPzFtQEBdpuK9sAZJ6lp6JFBXAJqDag4">Lab Data share</a>.</p></li>
 <li><p>Start btrack by starting napari (execute <code class="docutils literal notranslate"><span class="pre">napari</span></code> from within the <em>btrack</em> conda
-environment we installed above).</p></li>
+environment we installed above). (It may take a coupel of minutes on the first launch!)</p></li>
 <li><p>Start btrack via <code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">Track</span> <span class="pre">(btrack)</span></code>.</p></li>
 <li><p>Drag and drop the masks file into napari.</p>
 <div class="admonition warning">
