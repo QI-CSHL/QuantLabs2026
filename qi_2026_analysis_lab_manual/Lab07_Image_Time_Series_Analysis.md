@@ -235,10 +235,9 @@ Check out the [documentation](https://btrack.readthedocs.io/en/latest/user_guide
 ```
 
 **Installation of btrack and napari from scratch**
-- Open a new Miniforge Prompt and install all we need by executing...
+- Open a new Anaconda Prompt and install all we need by executing...
   - `conda create -y -n btrack -c conda-forge python=3.11`
   - `conda activate btrack`
-  - `conda install -y pip`
   - `pip install btrack[napari]`
   - `conda install -y -c conda-forge napari pyqt`
 
@@ -248,7 +247,7 @@ Check out the [documentation](https://btrack.readthedocs.io/en/latest/user_guide
   simply use one of the btrack example datasets. 
   You can find a file called `segmented_nuclei.tif` it in the folder `btrack_masks` in the [Lab Data share](https://drive.google.com/drive/folders/1dPzFtQEBdpuK9sAZJ6lp6JFBXAJqDag4).
 - Start btrack by starting napari (execute `napari` from within the *btrack* conda 
-  environment we installed above).
+  environment we installed above). (It may take a coupel of minutes on the first launch!)
 - Start btrack via `Plugins > Track (btrack)`.
 - Drag and drop the masks file into napari.
 
