@@ -149,7 +149,7 @@ Because we want to re-train our own model, we need to provide it with `ground tr
 So, we need to manually curate the automatic segmentation provided by the model.
 
 ```{tip} Having a hard time finding errors?
-CellposeSAM is honestly VERY good, you might have to predict on more than one image to start finding errors in the segmentation prediction for you to correct.
+CellposeSAM is honestly ridiculously good... you might have to predict on more than one image to start finding errors in the segmentation prediction for you to correct.
 ```
 
 You can see now how starting from an already kind-of-good model will make the manual correction easier and faster.
@@ -237,7 +237,9 @@ As of April of 2026, BAND is still using Cellpose 3, which is very good for most
 ## Installing CAREamics
 
 
-If you are familiar with `conda` and `pip`, the installation instructions can be found [here](https://careamics.github.io/0.1/installation/). If you are comfortable with what is there, go ahead and follow the instructions. Otherwise we will go through each step here. Keep in mind that the CAREamics instructions use `mamba`, whereas we will use `conda`. If that doesn't make sense to you, then read on to the next section!
+If you are familiar with `conda` and `pip`, the installation instructions can be found [here](https://careamics.github.io/0.1/installation/). If you are comfortable with what is there, go ahead and follow the instructions. 
+
+Otherwise we will go through each step here. Keep in mind that the CAREamics instructions use `mamba`, whereas we will use `conda`. If that doesn't make sense to you, then read on to the next section!
 
 In QI, as an alternative to conda/mamba, we have been using a new python package manager, called `UV`. UV can create ephemeral python environments very rapidly using the `uvx` command. The icons to launch cellpose and napari in previous exercises have used this behind the scenes. When we clicked on those icons, UV installed all of the required packages and launched the program (either napari or cellpose). Rather than provide you with an icon here, we are going to make our environment manually!
 
@@ -388,11 +390,11 @@ Piximi's current defaults are to load two-channel images as red and green, and t
 How high can you get the evaluation metrics? How many rounds and how many corrected classifications does it take you to get there?
 
 
-## **Bonus Exercise**
+## **Bonus Exercise: Promptable segmentation with nnInteractive**
 
-Install the promptable segmentation tool nnInteractive. Promptable segmentation is a type of segentation where we give the computer a "prompt" about what we want to segment. This might be a mouse click, or a bounding box, and then the computer will segment whatever it thinks best represents your prompt. This is useful, for example, for generating human-validated ground truth for future neural network training.
+Install the promptable segmentation tool nnInteractive. Promptable segmentation is a type of segmentation where we give the computer a "prompt" about what we want to segment. This might be a mouse click, or a bounding box, and then the computer will segment whatever it thinks best represents your prompt. This is useful, for example, for generating human-validated ground truth for future neural network training.
 
-We will use an environment `yaml` file to install this. A `yaml` file contains all the instructions for conda to install a python environment. In the lab data folder, you will find a file called `nnInteracive.yaml`. Download that, and place it somewhere on the computer (we suggest in the `Documents` folder.).
+We will use an environment `yaml` file to install this. A `yaml` file contains all the instructions for conda to install a python environment. In the lab data folder, you will find a file called `nnInteracive.yaml`. Download that, and place it somewhere on the computer (we suggest in the `Documents` folder).
 
 Open the `Anaconda Prompt` by searching for it from the Windows search bar. by default this will open in the folder `C:\Users\Admin`. You can navigate to the folder you put the nnInteractive.yaml file by typing `cd <folder_location>`. For example if you saved it in the `Documents` folder, you would type `cd Documents` to go to the path `C:\Users\Admin\Documents`. You can type `cd ..` to go back up on level in the hierarchy.
 
@@ -407,7 +409,7 @@ We now have to install PyTorch, a commonly used deep-learning library. Unfortuna
 
 `pip3 install --upgrade torch torchvision --index-url https://download.pytorch.org/whl/cu130`
 
-If you copy the command from the pytorch website, be sure to add the --upgrade flag to make sure you upgrade ot the newest version!
+If you copy the command from the pytorch website, be sure to add the `--upgrade` flag to make sure you upgrade ot the newest version!
 
 After this installs, you can launch napari by typing `napari`. You should see the napari window launch.
 
@@ -432,9 +434,7 @@ Now select one of the prompt types (I would start with `points`, see image). Try
 
 When you're done, export your segmentation. How does this compare to other approaches (if you have the same data segmented already)? What are the pros and cons of this style of segmentation?
 
-## **Bonus exercise**
-
-### Interfacing CellProfiler with Cellpose via plugins and containers
+## **Bonus exercise: Interfacing CellProfiler with Cellpose via plugins and containers**
 
 #### Learning Objectives
 

@@ -413,16 +413,13 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-a-3-class-classification-model-on-u2os-cells">Train a 3-class classification model on U2OS cells</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise"><strong>Bonus Exercise</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><strong>Bonus exercise</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interfacing-cellprofiler-with-cellpose-via-plugins-and-containers">Interfacing CellProfiler with Cellpose via plugins and containers</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Learning Objectives</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-steps-to-do-first"><strong>Setup steps to do first</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-cellpose-from-a-container"><strong>Running Cellpose from a container</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#start-docker-desktop">Start Docker Desktop</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-pipeline-and-evaluate-segmentation">Load the pipeline and evaluate segmentation</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-promptable-segmentation-with-nninteractive"><strong>Bonus Exercise: Promptable segmentation with nnInteractive</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-interfacing-cellprofiler-with-cellpose-via-plugins-and-containers"><strong>Bonus exercise: Interfacing CellProfiler with Cellpose via plugins and containers</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Learning Objectives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-steps-to-do-first"><strong>Setup steps to do first</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-cellpose-from-a-container"><strong>Running Cellpose from a container</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#start-docker-desktop">Start Docker Desktop</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-pipeline-and-evaluate-segmentation">Load the pipeline and evaluate segmentation</a></li>
 </ul>
 </li>
 </ul>
@@ -571,7 +568,7 @@ So, we need to manually curate the automatic segmentation provided by the model.
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Having a hard time finding errors?
-CellposeSAM is honestly VERY good, you might have to predict on more than one image to start finding errors in the segmentation prediction for you to correct.</p>
+CellposeSAM is honestly ridiculously good… you might have to predict on more than one image to start finding errors in the segmentation prediction for you to correct.</p>
 </div>
 <p>You can see now how starting from an already kind-of-good model will make the manual correction easier and faster.</p>
 <p>You can correct the segmentation errors by
@@ -655,7 +652,8 @@ with the initial model you started with?</p>
 </section>
 <section id="installing-careamics">
 <h2>Installing CAREamics<a class="headerlink" href="#installing-careamics" title="Link to this heading">#</a></h2>
-<p>If you are familiar with <code class="docutils literal notranslate"><span class="pre">conda</span></code> and <code class="docutils literal notranslate"><span class="pre">pip</span></code>, the installation instructions can be found <a class="reference external" href="https://careamics.github.io/0.1/installation/">here</a>. If you are comfortable with what is there, go ahead and follow the instructions. Otherwise we will go through each step here. Keep in mind that the CAREamics instructions use <code class="docutils literal notranslate"><span class="pre">mamba</span></code>, whereas we will use <code class="docutils literal notranslate"><span class="pre">conda</span></code>. If that doesn’t make sense to you, then read on to the next section!</p>
+<p>If you are familiar with <code class="docutils literal notranslate"><span class="pre">conda</span></code> and <code class="docutils literal notranslate"><span class="pre">pip</span></code>, the installation instructions can be found <a class="reference external" href="https://careamics.github.io/0.1/installation/">here</a>. If you are comfortable with what is there, go ahead and follow the instructions.</p>
+<p>Otherwise we will go through each step here. Keep in mind that the CAREamics instructions use <code class="docutils literal notranslate"><span class="pre">mamba</span></code>, whereas we will use <code class="docutils literal notranslate"><span class="pre">conda</span></code>. If that doesn’t make sense to you, then read on to the next section!</p>
 <p>In QI, as an alternative to conda/mamba, we have been using a new python package manager, called <code class="docutils literal notranslate"><span class="pre">UV</span></code>. UV can create ephemeral python environments very rapidly using the <code class="docutils literal notranslate"><span class="pre">uvx</span></code> command. The icons to launch cellpose and napari in previous exercises have used this behind the scenes. When we clicked on those icons, UV installed all of the required packages and launched the program (either napari or cellpose). Rather than provide you with an icon here, we are going to make our environment manually!</p>
 <p>In the data folder, there is a file called <code class="docutils literal notranslate"><span class="pre">careamics.ipynb</span></code>. Place this is a reasonable place on the computer (say <code class="docutils literal notranslate"><span class="pre">C:\Users\Admin\Documents\Careamics</span></code> or a similar place. Then right-click on that folder and select <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">in</span> <span class="pre">terminal</span></code>.</p>
 <p>In the terminal that opens, type</p>
@@ -812,17 +810,17 @@ How high can you get the evaluation metrics? How many rounds and how many correc
 </ul>
 </section>
 </section>
-<section id="bonus-exercise">
-<h2><strong>Bonus Exercise</strong><a class="headerlink" href="#bonus-exercise" title="Link to this heading">#</a></h2>
-<p>Install the promptable segmentation tool nnInteractive. Promptable segmentation is a type of segentation where we give the computer a “prompt” about what we want to segment. This might be a mouse click, or a bounding box, and then the computer will segment whatever it thinks best represents your prompt. This is useful, for example, for generating human-validated ground truth for future neural network training.</p>
-<p>We will use an environment <code class="docutils literal notranslate"><span class="pre">yaml</span></code> file to install this. A <code class="docutils literal notranslate"><span class="pre">yaml</span></code> file contains all the instructions for conda to install a python environment. In the lab data folder, you will find a file called <code class="docutils literal notranslate"><span class="pre">nnInteracive.yaml</span></code>. Download that, and place it somewhere on the computer (we suggest in the <code class="docutils literal notranslate"><span class="pre">Documents</span></code> folder.).</p>
+<section id="bonus-exercise-promptable-segmentation-with-nninteractive">
+<h2><strong>Bonus Exercise: Promptable segmentation with nnInteractive</strong><a class="headerlink" href="#bonus-exercise-promptable-segmentation-with-nninteractive" title="Link to this heading">#</a></h2>
+<p>Install the promptable segmentation tool nnInteractive. Promptable segmentation is a type of segmentation where we give the computer a “prompt” about what we want to segment. This might be a mouse click, or a bounding box, and then the computer will segment whatever it thinks best represents your prompt. This is useful, for example, for generating human-validated ground truth for future neural network training.</p>
+<p>We will use an environment <code class="docutils literal notranslate"><span class="pre">yaml</span></code> file to install this. A <code class="docutils literal notranslate"><span class="pre">yaml</span></code> file contains all the instructions for conda to install a python environment. In the lab data folder, you will find a file called <code class="docutils literal notranslate"><span class="pre">nnInteracive.yaml</span></code>. Download that, and place it somewhere on the computer (we suggest in the <code class="docutils literal notranslate"><span class="pre">Documents</span></code> folder).</p>
 <p>Open the <code class="docutils literal notranslate"><span class="pre">Anaconda</span> <span class="pre">Prompt</span></code> by searching for it from the Windows search bar. by default this will open in the folder <code class="docutils literal notranslate"><span class="pre">C:\Users\Admin</span></code>. You can navigate to the folder you put the nnInteractive.yaml file by typing <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">&lt;folder_location&gt;</span></code>. For example if you saved it in the <code class="docutils literal notranslate"><span class="pre">Documents</span></code> folder, you would type <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">Documents</span></code> to go to the path <code class="docutils literal notranslate"><span class="pre">C:\Users\Admin\Documents</span></code>. You can type <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code> to go back up on level in the hierarchy.</p>
 <p>Once you’ve gotten to the place where your yaml file is (you can get this by typing <code class="docutils literal notranslate"><span class="pre">dir</span></code> and seeing if the file is in the list), to install the environment, type into this terminal:</p>
 <p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span> <span class="pre">-f</span> <span class="pre">nnInteractive.yaml</span></code></p>
 <p>Once the environment is ready, activate the environment by typing <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">nnInteractive</span></code>.</p>
 <p>We now have to install PyTorch, a commonly used deep-learning library. Unfortunately this can’t be done using the yaml file. You can go to <code class="docutils literal notranslate"><span class="pre">www.pytorch.org</span></code> and scroll down to the <code class="docutils literal notranslate"><span class="pre">Install</span> <span class="pre">Pytorch</span></code> section and select your OS, and computer platform (these computers use <code class="docutils literal notranslate"><span class="pre">CUDA</span> <span class="pre">13.0</span></code>) and copy the line, or you can copy into your terminal the following:</p>
 <p><code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">torch</span> <span class="pre">torchvision</span> <span class="pre">--index-url</span> <span class="pre">https://download.pytorch.org/whl/cu130</span></code></p>
-<p>If you copy the command from the pytorch website, be sure to add the –upgrade flag to make sure you upgrade ot the newest version!</p>
+<p>If you copy the command from the pytorch website, be sure to add the <code class="docutils literal notranslate"><span class="pre">--upgrade</span></code> flag to make sure you upgrade ot the newest version!</p>
 <p>After this installs, you can launch napari by typing <code class="docutils literal notranslate"><span class="pre">napari</span></code>. You should see the napari window launch.</p>
 <p>nnInteractive can be found in the <code class="docutils literal notranslate"><span class="pre">plugins</span></code> menu under <code class="docutils literal notranslate"><span class="pre">nnInteractive</span> <span class="pre">(nnInteractive)</span></code>. Launch it by selecting this option. You should eventually see the plugin on the right side of the screen.</p>
 <a class="reference internal image-reference" href="_images/nnInteractive.png"><img alt="_images/nnInteractive.png" src="_images/nnInteractive.png" style="height: 180px;" />
@@ -836,20 +834,18 @@ How high can you get the evaluation metrics? How many rounds and how many correc
 </a>
 <p>When you’re done, export your segmentation. How does this compare to other approaches (if you have the same data segmented already)? What are the pros and cons of this style of segmentation?</p>
 </section>
+<section id="bonus-exercise-interfacing-cellprofiler-with-cellpose-via-plugins-and-containers">
+<h2><strong>Bonus exercise: Interfacing CellProfiler with Cellpose via plugins and containers</strong><a class="headerlink" href="#bonus-exercise-interfacing-cellprofiler-with-cellpose-via-plugins-and-containers" title="Link to this heading">#</a></h2>
 <section id="id6">
-<h2><strong>Bonus exercise</strong><a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
-<section id="interfacing-cellprofiler-with-cellpose-via-plugins-and-containers">
-<h3>Interfacing CellProfiler with Cellpose via plugins and containers<a class="headerlink" href="#interfacing-cellprofiler-with-cellpose-via-plugins-and-containers" title="Link to this heading">#</a></h3>
-<section id="id7">
-<h4>Learning Objectives<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<h3>Learning Objectives<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Learn how to download CellProfiler plugins from GitHub and set CellProfiler to use them</p></li>
 <li><p>Learn more about how to use software containers (such as Docker) to help CellProfiler access other tools</p></li>
 </ul>
-</section>
 <hr class="docutils" />
+</section>
 <section id="setup-steps-to-do-first">
-<h4><strong>Setup steps to do first</strong><a class="headerlink" href="#setup-steps-to-do-first" title="Link to this heading">#</a></h4>
+<h3><strong>Setup steps to do first</strong><a class="headerlink" href="#setup-steps-to-do-first" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p><strong>[WE HAVE ALREADY DONE THIS FIRST STEP FOR YOU, as these are large files (5-10 GB) and bandwidth is often limited in a workshop setting.]</strong> Download at one of the RunCellpose containers from Dockerhub.</p></li>
 </ol>
@@ -861,11 +857,11 @@ In Docker Desktop or Podman Desktop you can search for containers in the top sea
 Make sure you select a tag (version) that is supported by the plugin you are using and then select "Pull".
 We recommend `cellprofiler/runcellpose_with_pretrained:4.0.6` for Cellpose.
 <p>If they are not appearing in search, you can instead pull them from the terminal with the command <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">CONTAINER</span></code> or <code class="docutils literal notranslate"><span class="pre">podman</span> <span class="pre">pull</span> <span class="pre">CONTAINER</span></code>, replacing <code class="docutils literal notranslate"><span class="pre">CONTAINER</span></code> with the container name and tag, e.g. <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">cellprofiler/runcellpose_with_pretrained:4.0.6</span></code></p>
-<figure class="align-center" id="id8">
+<figure class="align-center" id="id7">
 <a class="reference internal image-reference" href="_images/DockerSearch.png"><img alt="_images/DockerSearch.png" src="_images/DockerSearch.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Search in Docker Desktop for your desired container</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Search in Docker Desktop for your desired container</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The download will also happen automatically the first time you call a given Docker from CellProfiler (i.e. run a CellProfiler pipeline that uses the Docker).</p>
@@ -896,11 +892,11 @@ We recommend `cellprofiler/runcellpose_with_pretrained:4.0.6` for Cellpose.
 In your terminal type <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/CellProfiler/CellProfiler-plugins.git</span></code>.</p>
 <p><strong>OR</strong></p>
 <p>2c.Alternatively, download just the <a class="reference external" href="https://github.com/CellProfiler/CellProfiler-plugins/blob/master/active_plugins/runcellpose.py">RunCellpose plugin</a> by selecting the “Download raw file” button.</p>
-<figure class="align-center" id="id9">
+<figure class="align-center" id="id8">
 <a class="reference internal image-reference" href="_images/GitHubDownloadButton.png"><img alt="_images/GitHubDownloadButton.png" src="_images/GitHubDownloadButton.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">GitHub’s “Download Raw Files” button</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">GitHub’s “Download Raw Files” button</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition tip">
@@ -918,11 +914,11 @@ In your terminal type <code class="docutils literal notranslate"><span class="pr
 <p>Computer scientists will often use software <strong>containers</strong> to ship tools or data that are hard to install - <a class="reference external" href="https://journals.sagepub.com/doi/10.1177/25152459211017853">here</a> is a good introduction and overview for non-computer scientists. You can think of containers as “a pre-configured operating system in a box”. Because they come to you pre-configured, installation of any software happens once-and-only-once (by the creator of the container, not by you), and it should stay working for long after ie the latest Mac upgrade breaks a certain older software installation. Groups like <a class="reference external" href="https://biocontainers.pro/">biocontainers</a> have already containerized many of the tools you know and love. There are a number of types of software containers, but one of the most common is called a <strong>Docker</strong> container; many containers made by Docker, which are therefore sometimes referred to as Docker containers, can nevertheless be run in other container programs, like Singularity and Podman.</p>
 <p>Most life scientists aren’t aware of or don’t use containers, especially because typical usage involves accessing them via your terminal. But Docker doesn’t have to mean terminal! There are <a class="reference external" href="https://github.com/COBA-NIH/docker_gradio_demo">containers that spit out interactive websites for you to use</a>, and CellProfiler has plugins that are specifically set up to call other tools that live (and are executed) inside containers.</p>
 <p>To do this, CellProfiler needs to have the infrastructure for Docker containers up and running, which you can give it by installing a free program like <a class="reference external" href="https://www.docker.com/products/docker-desktop/"><strong>Docker Desktop</strong></a> or <a class="reference external" href="https://podman-desktop.io/downloads"><strong>Podman Desktop</strong></a>. <strong>[WE HAVE ALREADY DONE THIS FOR YOU IN THE LAB COMPUTERS!]</strong> You don’t need to make an account to use it, but you probably will need to reboot your computer after installation is complete. Then, whenever you want to use a container-calling plugin in CellProfiler, you simply must make sure that one of these programs is open and running, CellProfiler will take care of everything else!</p>
-<figure class="align-center" id="id10">
+<figure class="align-center" id="id9">
 <a class="reference internal image-reference" href="_images/DockerDesktop.png"><img alt="_images/DockerDesktop.png" src="_images/DockerDesktop.png" style="width: 700px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">The Docker Desktop interface for Mac. Containers can be searched for in the top search bar!</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">The Docker Desktop interface for Mac. Containers can be searched for in the top search bar!</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
@@ -932,7 +928,7 @@ In your terminal type <code class="docutils literal notranslate"><span class="pr
 </div>
 </section>
 <section id="running-cellpose-from-a-container">
-<h4><strong>Running Cellpose from a container</strong><a class="headerlink" href="#running-cellpose-from-a-container" title="Link to this heading">#</a></h4>
+<h3><strong>Running Cellpose from a container</strong><a class="headerlink" href="#running-cellpose-from-a-container" title="Link to this heading">#</a></h3>
 <p>RunCellpose is by far Cellprofiler’s most popular plugin, simply because <strong>a)</strong> Cellpose is awesome! and <strong>b)</strong> installing Python packages when you aren’t very computationally comfortable isn’t.</p>
 <p>You can use the plugin in either of two modes - using a local <code class="docutils literal notranslate"><span class="pre">pixi</span></code>, <code class="docutils literal notranslate"><span class="pre">conda</span></code> or <code class="docutils literal notranslate"><span class="pre">python</span></code> installation that contains both CellProfiler and Cellpose, <strong>OR</strong> using Docker.</p>
 <aside class="margin sidebar">
@@ -940,13 +936,13 @@ In your terminal type <code class="docutils literal notranslate"><span class="pr
 <p>The run time with Docker is substantially slower (about a minute more per image, in our testing), but if installation would take you a long time and be frustrating, in this sense you can “trade” your personal hands-on frustration time for time where CellProfiler is running on your computer (but you aren’t there). For many people, this is a good trade!</p>
 </aside>
 <section id="start-docker-desktop">
-<h5>Start Docker Desktop<a class="headerlink" href="#start-docker-desktop" title="Link to this heading">#</a></h5>
+<h4>Start Docker Desktop<a class="headerlink" href="#start-docker-desktop" title="Link to this heading">#</a></h4>
 <ol class="arabic simple">
 <li><p>Start Docker Desktop. You don’t need to do anything else here, just leave it running on the background.</p></li>
 </ol>
 </section>
 <section id="load-the-pipeline-and-evaluate-segmentation">
-<h5>Load the pipeline and evaluate segmentation<a class="headerlink" href="#load-the-pipeline-and-evaluate-segmentation" title="Link to this heading">#</a></h5>
+<h4>Load the pipeline and evaluate segmentation<a class="headerlink" href="#load-the-pipeline-and-evaluate-segmentation" title="Link to this heading">#</a></h4>
 <ol class="arabic simple">
 <li><p>Open Cellprofiler</p></li>
 <li><p>Drag <code class="docutils literal notranslate"><span class="pre">bonus_3_cellpose.cppipe</span></code> into the pipeline panel.</p></li>
@@ -962,11 +958,11 @@ In your terminal type <code class="docutils literal notranslate"><span class="pr
 <p class="admonition-title">Note</p>
 <p>If you didn’t already pull the container in the Docker Desktop section above, the very first time you hit the RunCellpose module, it will need to download a ~13GB file, which may be slow depending on your connection. You only need to do this step once however!</p>
 </div>
-<figure class="align-center" id="id11">
+<figure class="align-center" id="id10">
 <a class="reference internal image-reference" href="_images/RunCellpose.png"><img alt="_images/RunCellpose.png" src="_images/RunCellpose.png" style="width: 700px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">The output of the RunCellpose module</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">The output of the RunCellpose module</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple" start="4">
@@ -981,7 +977,6 @@ In your terminal type <code class="docutils literal notranslate"><span class="pr
 <li><p>Watch this <a class="reference external" href="https://www.youtube.com/watch?v=fgF_YueM1b8">video</a> to learn how to write a module</p></li>
 </ul>
 </aside>
-</section>
 </section>
 </section>
 </section>
@@ -1074,16 +1069,13 @@ In your terminal type <code class="docutils literal notranslate"><span class="pr
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-a-3-class-classification-model-on-u2os-cells">Train a 3-class classification model on U2OS cells</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise"><strong>Bonus Exercise</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><strong>Bonus exercise</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interfacing-cellprofiler-with-cellpose-via-plugins-and-containers">Interfacing CellProfiler with Cellpose via plugins and containers</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Learning Objectives</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-steps-to-do-first"><strong>Setup steps to do first</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-cellpose-from-a-container"><strong>Running Cellpose from a container</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#start-docker-desktop">Start Docker Desktop</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-pipeline-and-evaluate-segmentation">Load the pipeline and evaluate segmentation</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-promptable-segmentation-with-nninteractive"><strong>Bonus Exercise: Promptable segmentation with nnInteractive</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-interfacing-cellprofiler-with-cellpose-via-plugins-and-containers"><strong>Bonus exercise: Interfacing CellProfiler with Cellpose via plugins and containers</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Learning Objectives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-steps-to-do-first"><strong>Setup steps to do first</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-cellpose-from-a-container"><strong>Running Cellpose from a container</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#start-docker-desktop">Start Docker Desktop</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-pipeline-and-evaluate-segmentation">Load the pipeline and evaluate segmentation</a></li>
 </ul>
 </li>
 </ul>
