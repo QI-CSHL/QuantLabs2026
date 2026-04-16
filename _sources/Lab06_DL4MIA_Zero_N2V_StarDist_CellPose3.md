@@ -451,3 +451,144 @@ Now select one of the prompt types (I would start with `points`, see image). Try
 
 
 When you're done, export your segmentation. How does this compare to other approaches (if you have the same data segmented already)? What are the pros and cons of this style of segmentation?
+
+## **Bonus exercise**
+
+### Interfacing CellProfiler with Cellpose via plugins and containers
+
+#### Learning Objectives
+
+- Learn how to download CellProfiler plugins from GitHub and set CellProfiler to use them
+- Learn more about how to use software containers (such as Docker) to help CellProfiler access other tools
+
+---
+
+#### **Setup steps to do first**
+
+1. **[WE HAVE ALREADY DONE THIS FIRST STEP FOR YOU, as these are large files (5-10 GB) and bandwidth is often limited in a workshop setting.]** Download at one of the RunCellpose containers from Dockerhub.
+
+````{hint} How did we download the Docker container?
+<details>
+In Docker Desktop or Podman Desktop you can search for containers in the top search bar (see below).
+Make sure you select a tag (version) that is supported by the plugin you are using and then select "Pull".
+We recommend `cellprofiler/runcellpose_with_pretrained:4.0.6` for Cellpose.
+
+If they are not appearing in search, you can instead pull them from the terminal with the command `docker pull CONTAINER` or `podman pull CONTAINER`, replacing `CONTAINER` with the container name and tag, e.g. `docker pull cellprofiler/runcellpose_with_pretrained:4.0.6`
+
+```{figure} images/dl/DockerSearch.png
+:width: 400
+:align: center
+
+Search in Docker Desktop for your desired container
+```
+The download will also happen automatically the first time you call a given Docker from CellProfiler (i.e. run a CellProfiler pipeline that uses the Docker).
+
+</details>
+````
+
+2. CellProfiler has a number of plugins that act like modules within a pipeline, but they don't come bundled with the main installation. 
+
+```{margin}
+Read more about them in [CellProfiler plugins documentation](plugins.cellprofiler.org) to learn more.
+```
+
+>Plugins advance the capabilities of CellProfiler but are not officially supported in the same way as modules. A module may be in CellProfiler-plugins instead of CellProfiler itself because:
+>- it is under active development
+>- it has a niche audience
+>- it is not documented to CellProfiler’s standards
+>- it only works with certain versions of CellProfiler
+>- it requires extra libraries or other dependencies we are unable or unwilling to require for CellProfiler
+>- it has been contributed by a community member
+
+To download the plugins that we'll use today, either:
+
+2a. Visit the [CellProfiler plugins repository](https://github.com/CellProfiler/CellProfiler-plugins) and then download and unzip all the plugins by hitting the green `Clone` button and then `Download Zip`
+
+**OR** 
+
+2b. Clone (i.e. download whole) the Cellprofiler-plugins repository.
+In your terminal type `git clone https://github.com/CellProfiler/CellProfiler-plugins.git`. 
+
+**OR** 
+
+2c.Alternatively, download just the [RunCellpose plugin](https://github.com/CellProfiler/CellProfiler-plugins/blob/master/active_plugins/runcellpose.py) by selecting the "Download raw file" button.
+
+```{figure} images/dl/GitHubDownloadButton.png
+:width: 400
+:align: center
+
+GitHub's "Download Raw Files" button
+```
+
+```{tip}
+We strongly recommend making a dedicated folder to store your CellProfiler plugins, as loading can be slow if there are a lot of other miscellaneous files around (such if they sit in the Downloads folder, for example).
+```
+
+3. In CellProfiler's `File -> Preferences` menu (`CellProfiler -> Preferences` in Mac), set the `CellProfiler plugins directory` to the folder containing the plugins (make sure you use the `active_plugins` subfolder).
+
+4. Close and reopen CellProfiler to load the plugins.
+
+````{tip} **Software containers and Docker Desktop**
+
+Sometimes, like in this exercise, we want to access software that we either don't want to install locally because it's painful if you're not pretty comfortable in Python (Cellpose) or that we CAN install locally but may not play nicely with other tools' multiprocessing setup (ilastik). 
+
+Computer scientists will often use software **containers** to ship tools or data that are hard to install - [here](https://journals.sagepub.com/doi/10.1177/25152459211017853) is a good introduction and overview for non-computer scientists. You can think of containers as "a pre-configured operating system in a box". Because they come to you pre-configured, installation of any software happens once-and-only-once (by the creator of the container, not by you), and it should stay working for long after ie the latest Mac upgrade breaks a certain older software installation. Groups like [biocontainers](https://biocontainers.pro/) have already containerized many of the tools you know and love. There are a number of types of software containers, but one of the most common is called a **Docker** container; many containers made by Docker, which are therefore sometimes referred to as Docker containers, can nevertheless be run in other container programs, like Singularity and Podman. 
+
+Most life scientists aren't aware of or don't use containers, especially because typical usage involves accessing them via your terminal. But Docker doesn't have to mean terminal! There are [containers that spit out interactive websites for you to use](https://github.com/COBA-NIH/docker_gradio_demo), and CellProfiler has plugins that are specifically set up to call other tools that live (and are executed) inside containers. 
+
+To do this, CellProfiler needs to have the infrastructure for Docker containers up and running, which you can give it by installing a free program like [**Docker Desktop**](https://www.docker.com/products/docker-desktop/) or [**Podman Desktop**](https://podman-desktop.io/downloads). **[WE HAVE ALREADY DONE THIS FOR YOU IN THE LAB COMPUTERS!]** You don't need to make an account to use it, but you probably will need to reboot your computer after installation is complete. Then, whenever you want to use a container-calling plugin in CellProfiler, you simply must make sure that one of these programs is open and running, CellProfiler will take care of everything else!
+
+```{figure} images/dl/DockerDesktop.png
+:width: 700
+:align: center
+
+The Docker Desktop interface for Mac. Containers can be searched for in the top search bar!
+```
+
+```{warning}
+Anytime you're installing a program that can run other programs, you must of course be careful. Containers give you access to a huge variety of tools that might otherwise be hard to install (or install together), but **exercise caution in only running containers you recognize or trust**!
+```
+````
+
+#### **Running Cellpose from a container**
+
+RunCellpose is by far Cellprofiler's most popular plugin, simply because **a)** Cellpose is awesome! and **b)** installing Python packages when you aren't very computationally comfortable isn't. 
+
+You can use the plugin in either of two modes - using a local `pixi`, `conda` or `python` installation that contains both CellProfiler and Cellpose, **OR** using Docker. 
+
+```{margin}
+The run time with Docker is substantially slower (about a minute more per image, in our testing), but if installation would take you a long time and be frustrating, in this sense you can "trade" your personal hands-on frustration time for time where CellProfiler is running on your computer (but you aren't there). For many people, this is a good trade!
+```
+
+##### Start Docker Desktop
+1. Start Docker Desktop. You don't need to do anything else here, just leave it running on the background.
+
+##### Load the pipeline and evaluate segmentation
+1. Open Cellprofiler
+2. Drag `bonus_3_cellpose.cppipe` into the pipeline panel.
+3. Drag the `images_Illum-corrected` subfolder from the main exercise into the Images module
+4. Put CellProfiler into **TestMode** <img src="images/dl/StartTestMode.png" width="120"/> 
+5. You will need to `Select Cellpose version` and `Select Cellpose Docker image`. (e.g. you must select Cellpose version **3** for the Docker `runcellpose_with_pretrained:3.1.1.2` to be an option.)
+6. Open the eye icons <img src="images/dl/EyeOpen.png" width="50"/> next to RunCellpose and OverlayOutlines, and then hit <img src="images/dl/Run.png" width="120"/>
+  - You may wish to put a pause next to SaveImages, or uncheck it, to keep it from saving images, but that's up to you
+
+```{note}
+If you didn't already pull the container in the Docker Desktop section above, the very first time you hit the RunCellpose module, it will need to download a ~13GB file, which may be slow depending on your connection. You only need to do this step once however!
+```
+
+```{figure} images/dl/RunCellpose.png
+:width: 700
+:align: center
+
+The output of the RunCellpose module
+```
+
+4. This pipeline also performs classical instance segmentation using `IdentifyPrimaryObjects` (it has already been set for these images, but you're welcome to tune it further if you want!). Using `OverlayOutlines` and/or the `WorkspaceViewer` (lower left of the screen), evaluate segmentation on a few images. Where is CellProfiler doing better, and where is Cellpose doing better?
+5. Use the <img src="images/dl/Info.png" width="35"> button to learn more about the different parameters you can pass to Cellpose (we don't offer all of them, but many!) - how does tweaking these affect your output? How about changing the model you're using, and/or the image you're segmenting?
+
+6. You can also try to train a custom Cellpose model and use it in Cellprofiler, just change the `Detection mode` to `custom` and select the location of your model file.
+
+```{margin} Want to know more about CellProfliler plugins and modules?
+- Read the [CellProfiler-plugins paper](https://pubmed.ncbi.nlm.nih.gov/37690102/)
+- Watch this [video](https://www.youtube.com/watch?v=fgF_YueM1b8) to learn how to write a module
+```
