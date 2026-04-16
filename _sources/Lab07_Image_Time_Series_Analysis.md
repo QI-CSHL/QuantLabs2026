@@ -159,7 +159,42 @@ features.
 
 ### Tracking in Trackmate
 
-TRACKMATE STUFF GOES HERE
+We will start with a simple test dataset. Open the “Tracks for Trackmate (807k)” image from
+
+**File > Open Samples > Tracks for Trackmate (807k)**
+
+This is 128x128 stack of 50 frames. Scroll through the image stack using the dimension slider. What do you see?
+
+We will first walk through trackmate step-by-step using this simple example.
+
+Open Trackmate using 
+
+**Plugins > Tracking > Trackmate**
+
+You should see a window like this
+
+<img src="images/time_series/tm1.png" height="180px" />
+
+
+Make sure the Target Image is set to “FakeTracks”.
+
+Click “Next”
+
+In this next screen, we have to tell trackmate which detector to use to find the objects in the image. We will use some of these more advanced options later, but for these simple spots, we can use the Difference of Gaussian (DoG) model. This is particularly well suited to detect small, roundish things.
+
+<img src="images/time_series/tm_detect.png" height="180px" />
+
+Next we need to estimate our spot size. Zoom into the image and measure one of the bright spots we would like to track (HINT: use the line tool).
+
+Next, we need to filter based on the quality of the detection. You will notice on the bottom right of the image a few spots that do not move, and are probably artifacts (or at least things that we do not wish to track in this case)
+
+TASK: Find a quality setting that includes the moving spots, but not the weaker, stationary spots. (HINT: You can use the “Preview” button to preview your current settings on the frame). Apply the preview to a few different frames to make sure you’ve detected the moving spots accuratley. Detected objects will be circled with individual ROIs.
+
+Click the “Next” button to perform the detection.
+
+You will see a screen with some summary statistics for the detection.
+
+
 
 ### Tracking in ilastik
 
