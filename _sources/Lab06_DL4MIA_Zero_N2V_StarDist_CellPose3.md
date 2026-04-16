@@ -268,9 +268,17 @@ The prompt should change from `(base)` to `(careamics)`. We are now 'inside' thi
 
 Now, we need to install some packages that will allow us to use the GPU for the computations we will conduct. Remember that in deep learning, it is advantageous to run computation on the GPU as they contain specialized hardware to do very fast matrix multiplications -- exacty the kind of thing that deep learning needs a lot of! 
 
+
+Now we are ready to install CAREamics! We can do this by typing:
+
+> `pip install "careamics[examples]"`
+
+This will use `pip`, a package installer, to install the CAREamics library.
+
+
 CAREamics is a deep learning package built around [PyTorch](https://pytorch.org), an open-source deep learning framework made by Meta and openly shared with all of us (thank you Meta!). Installation instructions can be found [here](https://pytorch.org/get-started/locally/) -- be careful here to match the particular version to our computer specifications (specifically, the version of our GPU drivers). Spoiler: we need to install pytorch using the following command:
 
-> `pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124`
+> `pip3 install --upgrade torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu130`
 
 We can confirm that this step worked and we can see the GPU, by typing the following command:
 
@@ -278,11 +286,7 @@ We can confirm that this step worked and we can see the GPU, by typing the follo
 
 After running this, you should see an output that lists the type of GPU we have (in this case an Nvidia Geforce 1080 Ti).
 
-Finally, we are ready to install CAREamics! We can do this by typing:
 
-> `pip install "careamics[examples]"`
-
-This will use `pip`, a package installer, to install the CAREamics library.
 
 ## Using CAREamics in a Jupyter Notebook
 

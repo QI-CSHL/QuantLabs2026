@@ -671,20 +671,20 @@ Well we are asking a particular piece of software called a package manager (in t
 </div></blockquote>
 <p>The prompt should change from <code class="docutils literal notranslate"><span class="pre">(base)</span></code> to <code class="docutils literal notranslate"><span class="pre">(careamics)</span></code>. We are now ‘inside’ this environment. Anything we will install will be restricted to this environment (and, thus not accesible to software outside of that environment).</p>
 <p>Now, we need to install some packages that will allow us to use the GPU for the computations we will conduct. Remember that in deep learning, it is advantageous to run computation on the GPU as they contain specialized hardware to do very fast matrix multiplications – exacty the kind of thing that deep learning needs a lot of!</p>
+<p>Now we are ready to install CAREamics! We can do this by typing:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;careamics[examples]&quot;</span></code></p>
+</div></blockquote>
+<p>This will use <code class="docutils literal notranslate"><span class="pre">pip</span></code>, a package installer, to install the CAREamics library.</p>
 <p>CAREamics is a deep learning package built around <a class="reference external" href="https://pytorch.org">PyTorch</a>, an open-source deep learning framework made by Meta and openly shared with all of us (thank you Meta!). Installation instructions can be found <a class="reference external" href="https://pytorch.org/get-started/locally/">here</a> – be careful here to match the particular version to our computer specifications (specifically, the version of our GPU drivers). Spoiler: we need to install pytorch using the following command:</p>
 <blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">torch</span> <span class="pre">torchvision</span> <span class="pre">torchaudio</span> <span class="pre">--index-url</span> <span class="pre">https://download.pytorch.org/whl/cu124</span></code></p>
+<div><p><code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">torch</span> <span class="pre">torchvision</span> <span class="pre">torchaudio</span> <span class="pre">--index-url</span> <span class="pre">https://download.pytorch.org/whl/cu130</span></code></p>
 </div></blockquote>
 <p>We can confirm that this step worked and we can see the GPU, by typing the following command:</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-c</span> <span class="pre">&quot;import</span> <span class="pre">torch;</span> <span class="pre">print([torch.cuda.get_device_properties(i)</span> <span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(torch.cuda.device_count())])&quot;</span></code></p>
 </div></blockquote>
 <p>After running this, you should see an output that lists the type of GPU we have (in this case an Nvidia Geforce 1080 Ti).</p>
-<p>Finally, we are ready to install CAREamics! We can do this by typing:</p>
-<blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;careamics[examples]&quot;</span></code></p>
-</div></blockquote>
-<p>This will use <code class="docutils literal notranslate"><span class="pre">pip</span></code>, a package installer, to install the CAREamics library.</p>
 </section>
 <section id="using-careamics-in-a-jupyter-notebook">
 <h2>Using CAREamics in a Jupyter Notebook<a class="headerlink" href="#using-careamics-in-a-jupyter-notebook" title="Link to this heading">#</a></h2>
