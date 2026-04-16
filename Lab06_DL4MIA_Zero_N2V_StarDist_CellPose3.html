@@ -568,6 +568,11 @@ models (ideally starting from one that does a pretty good job already).</p>
 previous part of this exercise and apply it to this image.
 Because we want to re-train our own model, we need to provide it with <code class="docutils literal notranslate"><span class="pre">ground</span> <span class="pre">truth</span> <span class="pre">data</span></code>. In this case, this means showing it what kind of segmentation we would like to see, given the current image.
 So, we need to manually curate the automatic segmentation provided by the model.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Having a hard time finding errors?
+CellposeSAM is honestly VERY good, you might have to predict on more than one image to start finding errors in the segmentation prediction for you to correct.</p>
+</div>
 <p>You can see now how starting from an already kind-of-good model will make the manual correction easier and faster.</p>
 <p>You can correct the segmentation errors by
 removing, adding or redrawing some of the segmentation masks. The corrected image can then
@@ -613,6 +618,14 @@ model to the test data we have segmented at the start of the exercise
 (importantly: your model has not previously seen this image during
 finetuning! Why is this important again?). Is the result better than
 with the initial model you started with?</p>
+<ol class="arabic simple" start="3">
+<li><p>[ <strong>OPTIONAL</strong> ] Do you want to challenge Cellpose even further? Try predicting on the images from the <code class="docutils literal notranslate"><span class="pre">even_harder</span></code> folder.</p></li>
+</ol>
+<ul class="simple">
+<li><p>Run prediction on some of the <code class="docutils literal notranslate"><span class="pre">train</span></code> images and manually correct at least one.</p></li>
+<li><p>Retrain the model the same way you did before and run it again. Is it performing better? Isn’t retraining great?</p></li>
+<li><p>After you’re happy, try your fancy new fine-tuned model on the <code class="docutils literal notranslate"><span class="pre">test</span></code> image</p></li>
+</ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Want to use Cellpose when you get home, but having trouble with the <code class="docutils literal notranslate"><span class="pre">conda</span></code> installation? You have (at least) a couple of potential options!</p>
