@@ -2,7 +2,7 @@
 
 *Lab authors: Damian Dalle Nogare, Florian Jug, and Beth Cimini* . 
 
-<small>This file last updated 2026-04-15.</small>
+<small>This file last updated 2026-04-16.</small>
 
 ---
 
@@ -94,8 +94,6 @@ so via the `cell diameter`) field.
 How might we estimate this? Keep in
 mind that this diameter must be reported in pixels.
 
-You can now segment this image by selecting one of the pre-trained
-models from within the `dataset-specific models` box. Try segmenting this image using the `cyto2` model. How good are the results?
 
 ```{tip}
 You can toggle the visibility of segmentation masks on and off
@@ -104,9 +102,9 @@ outlines with the keyboard shortcut ‘**z**’. Alternatively you can do so
 in the `Drawing` box on the menu to the left.
 ```
 
-How well did Cellpose segment your image? Where (if anywhere) did it
-fail? Try some of the different dataset-specific models. Do any of these
-work better? Worse? Why might that be?
+```{tip}
+Cellpose used to have some pre-trained models recommended for specific image types and object types in versions 1-3, but they can't be easily accessed in Cellpose 4. You can try them in the bonus exercises though!
+```
 
 Let’s now try some more challenging data. From
 the `DL4MIA` folder in the [lab data share](https://tinyurl.com/QIAnalysisLabData), download the entire folder
