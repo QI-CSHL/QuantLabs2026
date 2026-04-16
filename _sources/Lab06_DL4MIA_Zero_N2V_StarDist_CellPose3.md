@@ -230,7 +230,7 @@ As of April of 2026, BAND is still using Cellpose 3, which is very good for most
 
 If you are familiar with `conda` and `pip`, the installation instructions can be found [here](https://careamics.github.io/0.1/installation/). If you are comfortable with what is there, go ahead and follow the instructions. Otherwise we will go through each step here. Keep in mind that the CAREamics instructions use `mamba`, whereas we will use `conda`. If that doesn't make sense to you, then read on to the next section!
 
-In QI, as an alternative to conda/mamba, we have been using a new python package manager, called `UV`. UV can create ephemeral python environments very rapidly using the `uvx` command. The icons to launch cellpose and napari in previous exercises have used this behind the scenes. 
+In QI, as an alternative to conda/mamba, we have been using a new python package manager, called `UV`. UV can create ephemeral python environments very rapidly using the `uvx` command. The icons to launch cellpose and napari in previous exercises have used this behind the scenes. When we clicked on those icons, UV installed all of the required packages and launched the program (either napari or cellpose). Rather than provide you with an icon here, we are going to make our environment manually!
 
 In the data folder, there is a file called `careamics.ipynb`. Place this is a reasonable place on the computer (say `C:\Users\Admin\Documents\Careamics` or a similar place. Then right-click on that folder and select `open in terminal`.
 
@@ -238,7 +238,7 @@ In the terminal that opens, type
 
 `uvx juv run --with careamics[examples]==0.1.0 careamics.ipynb`
 
-This should install an environment that contains careamics, and then launch the Jupyter Notebook.
+This should install an environment that contains careamics, and then launch the Jupyter Notebook! How easy is that!
 
 
 ## Using CAREamics in a Jupyter Notebook
