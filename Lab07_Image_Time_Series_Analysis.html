@@ -405,6 +405,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-with-btrack-in-napari">Tracking with btrack in napari</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-photobleaching-in-a-harder-image">Bonus - photobleaching in a harder image</a></li>
 </ul>
             </nav>
         </div>
@@ -486,7 +487,7 @@ from the University of Wisconsin. If not already installed on your copy of Fiji,
 update site (as before, access this in the <code class="docutils literal notranslate"><span class="pre">Help-&gt;</span> <span class="pre">Update</span> <span class="pre">-&gt;</span> <span class="pre">Manage</span> <span class="pre">Update</span> <span class="pre">Sites</span></code> menus. It has a good short set
 of instructions <a class="reference external" href="https://imagej.net/plugins/frap-tools">here</a>, but we will tell you here what you need to do!</p>
 <ul class="simple">
-<li><p>Load the data: <code class="docutils literal notranslate"><span class="pre">FRAP/33108</span> <span class="pre">SU295</span> <span class="pre">try1.tif</span></code> (Or use your own if you
+<li><p>Load the data: <code class="docutils literal notranslate"><span class="pre">FRAP/widefield_actin_FRAP.dv</span></code> (Or use your own if you
 prefer)</p></li>
 <li><p>Create an ROI over the square bleached region. Add it to the ROI
 Manager (press ‘t’).</p></li>
@@ -514,6 +515,7 @@ correct units. Leave all other settings the same, except unchecking the “Close
 exponential models a two step process, e.g., fast but weak association
 of the molecule of interest, followed by slower stronger association.</p></li>
 <li><p>What is the % mobile?</p></li>
+<li><p>If you’re doing well on time, try again with the file <code class="docutils literal notranslate"><span class="pre">33108</span> <span class="pre">SU295</span> <span class="pre">try1.tif</span></code> image!</p></li>
 </ul>
 </section>
 </section>
@@ -568,9 +570,9 @@ and follow the instructions.</p>
 <li><p>2D+t tracking example for ilastik</p></li>
 <li><p>3D+t tracking example for ilastik</p></li>
 </ol>
-<p>The 2D example will be way faster to work with, but please choose any of
+<p>The 2D example will be way faster to work with, but please choose either of
 the two. After the download is completed, unzip the file and open the project file
-“<em><strong>conservationTracking.ilp</strong></em>” in ilastik (Project &gt; Open project).</p>
+“<em><strong>conservationTracking.ilp</strong></em>” in ilastik (Project &gt; Open project). The previous steps are done, so you can just hit track!</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Please collect some screenshots or remember what you liked most. Be
@@ -667,6 +669,10 @@ these tracks?</p></li>
 </div>
 </section>
 </section>
+<section id="bonus-photobleaching-in-a-harder-image">
+<h2>Bonus - photobleaching in a harder image<a class="headerlink" href="#bonus-photobleaching-in-a-harder-image" title="Link to this heading">#</a></h2>
+<p>Try the photobleaching exercise, but with the provided <code class="docutils literal notranslate"><span class="pre">H2B_incomplete_recovery_challenge.tif</span></code> data - what preprocessing step(s) do you think you might need to do to the data to get an accurate measurement?</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -731,6 +737,7 @@ these tracks?</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-with-btrack-in-napari">Tracking with btrack in napari</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-photobleaching-in-a-harder-image">Bonus - photobleaching in a harder image</a></li>
 </ul>
   </nav></div>
 

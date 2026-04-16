@@ -80,7 +80,7 @@ from the University of Wisconsin. If not already installed on your copy of Fiji,
 update site (as before, access this in the `Help-> Update -> Manage Update Sites` menus. It has a good short set
 of instructions [here](https://imagej.net/plugins/frap-tools), but we will tell you here what you need to do!
 
-- Load the data: `FRAP/33108 SU295 try1.tif` (Or use your own if you
+- Load the data: `FRAP/widefield_actin_FRAP.dv` (Or use your own if you
   prefer)
 
 - Create an ROI over the square bleached region. Add it to the ROI
@@ -119,6 +119,8 @@ Now we will run the FRAP plugin. You can find this under the Analyze menu, under
   of the molecule of interest, followed by slower stronger association.
 
 - What is the % mobile?
+
+- If you're doing well on time, try again with the file `33108 SU295 try1.tif` image!
 
 
 ## **Part 2: Tracking**
@@ -177,9 +179,9 @@ If so, you can find the same examples in the [Lab Data Share](https://drive.goog
 
 2.  3D+t tracking example for ilastik
 
-The 2D example will be way faster to work with, but please choose any of
+The 2D example will be way faster to work with, but please choose either of
 the two. After the download is completed, unzip the file and open the project file
-“***conservationTracking.ilp***” in ilastik (Project \> Open project).
+“***conservationTracking.ilp***” in ilastik (Project \> Open project). The previous steps are done, so you can just hit track!
 
 ```{tip}
 Please collect some screenshots or remember what you liked most. Be
@@ -265,3 +267,7 @@ Check out the [documentation](https://btrack.readthedocs.io/en/latest/user_guide
 ```{tip}
 [This blog post](https://focalplane.biologists.com/2023/06/01/tracking-in-napari/) is a good place to start for learning about the basics of tracking in napari. More new napari tracking plugins are being released all the time - [21 as of this course in 2026](https://napari-hub.org/), including cool ones like [trackastra](https://napari-hub.org/plugins/napari-trackastra.html) and [ultrack](https://napari-hub.org/plugins/ultrack.html)
 ```
+
+## Bonus - photobleaching in a harder image
+
+Try the photobleaching exercise, but with the provided `H2B_incomplete_recovery_challenge.tif` data - what preprocessing step(s) do you think you might need to do to the data to get an accurate measurement?
