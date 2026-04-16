@@ -86,7 +86,7 @@ You should now see something like
 this:<img src="images/dl/cellpose_gui.png" style="width:6in" />
 
 Open the file `001_img.tif` by dragging it onto the open window.
-You can find this file in the `DL4MIA/easy` folder in the [Lab Data share](https://tinyurl.com/QIAnalysisLabData).
+You can find this file in the `DL4MIA/easy` folder in the [Lab Data share](https://drive.google.com/drive/folders/14OWZZk2FkvKbqHotQDcfjJ2tG3LSQzej?usp=sharing).
 
 Like we did in the 3D lab yesterday, we need to tell cellpose (roughly) how large our objects are (you can do
 so via the `cell diameter`) field. 
@@ -107,7 +107,7 @@ Cellpose used to have some pre-trained models recommended for specific image typ
 ```
 
 Let’s now try some more challenging data. From
-the `DL4MIA` folder in the [lab data share](https://tinyurl.com/QIAnalysisLabData), download the entire folder
+the `DL4MIA` folder in the [lab data share](https://drive.google.com/drive/folders/14OWZZk2FkvKbqHotQDcfjJ2tG3LSQzej?usp=sharing), download the entire folder
 named `hard`, and place it somewhere convenient (like the Desktop).
 
 From within this folder, open the `test` folder and drag the file
@@ -259,7 +259,7 @@ Keep in mind that deep learning training is slow, and it might take some time (~
 
 ## **Bonus Exercise: Classifying images in the browser with Piximi**
 
-[Piximi](piximi.app) {cite}`Moser2024-vt` is a web app currently in development for training and running deep learning models in your web browser. Under most circumstances (with Cellpose as the major exception), all compute happens locally - you load your images into your web browser, but they are NOT sent to the internet, they stay locally on your machine. While this has some disadvantages (namely, that you're limited to the resources on your own machine), this means you get the benefit of web applications (namely, no need to install anything) but don't have to worry about upload times or where in the cloud your data is stored.
+[Piximi](https://piximi.app) {cite}`Moser2024-vt` is a web app currently in development for training and running deep learning models in your web browser. Under most circumstances (with Cellpose as the major exception), all compute happens locally - you load your images into your web browser, but they are NOT sent to the internet, they stay locally on your machine. While this has some disadvantages (namely, that you're limited to the resources on your own machine), this means you get the benefit of web applications (namely, no need to install anything) but don't have to worry about upload times or where in the cloud your data is stored.
 
 ```{margin} Want to learn more about working with Piximi?
 Check out the [documentation](https://documentation.piximi.app/intro.html), or check them out on [the image.sc forum!](https://forum.image.sc/tag/Piximi)
