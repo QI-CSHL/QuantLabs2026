@@ -389,14 +389,24 @@ To install the environment, type into this terminal
 
 `conda env create -f nnInteractive.yaml`
 
-Once the environment is ready, activate the environment by typing `conda activate nnInteractive`. Then launch napari by typing `napari`. You should see the napari window launch.
+Once the environment is ready, activate the environment by typing `conda activate nnInteractive`. 
+
+We now have to install PyTorch, a commonly used deep-learning library. Unfortunately this can't be done using the yaml file. You can go to `www.pytorch.org` and scroll down to the `Install Pytorch` section and select your OS, and computer platform (these computers use `CUDA 13.0`) and copy the line, or you can copy into your terminal the following:
+
+`pip3 install --upgrade torch torchvision --index-url https://download.pytorch.org/whl/cu130`
+
+If you copy the command from the pytorch website, be sure to add the --upgrade flag to make sure you upgrade ot the newest version!
+
+After this installs, you can launch napari by typing `napari`. You should see the napari window launch.
 
 nnInteractive can be found in the `plugins` menu under `nnInteractive (nnInteractive)`. Launch it by selecting this option. You should eventually see the plugin on the right side of the screen.
 
 <img src="images/dl/nnInteractive.png" height="180px" />
 
 
-Load some data that we would like to segment (any data will do). If you have multiple objects that you want to segment seperately, you will want to chekc the `instance aggregation` checkbox, as seen below.
+Load some data that we would like to segment (any data will do). Once you've loaded it, select the `initialize` button to load the network.
+
+If you have multiple objects that you want to segment seperately, you will want to check the `instance aggregation` checkbox, as seen below.
 
 <img src="images/dl/nnInteractive_instance_aggregation.png" height="60px" />
 
