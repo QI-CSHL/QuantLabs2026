@@ -383,9 +383,12 @@ How high can you get the evaluation metrics? How many rounds and how many correc
 
 Install the promptable segmentation tool nnInteractive. Promptable segmentation is a type of segentation where we give the computer a "prompt" about what we want to segment. This might be a mouse click, or a bounding box, and then the computer will segment whatever it thinks best represents your prompt. This is useful, for example, for generating human-validated ground truth for future neural network training.
 
-We will use an environment `yaml` file to install this. A `yaml` file contains all the instructions for conda to install a python environment. In the lab data folder, you will find a file called `nnInteracive.yaml`. Download that, and place it somewhere on the computer. Right click on the file and select `open in terminal`.
+We will use an environment `yaml` file to install this. A `yaml` file contains all the instructions for conda to install a python environment. In the lab data folder, you will find a file called `nnInteracive.yaml`. Download that, and place it somewhere on the computer (we suggest in the `Documents` folder.).
 
-To install the environment, type into this terminal
+Open the `Anaconda Prompt` by searching for it from the Windows search bar. by default this will open in the folder `C:\Users\Admin`. You can navigate to the folder you put the nnInteractive.yaml file by typing `cd <folder_location>`. For example if you saved it in the `Documents` folder, you would type `cd Documents` to go to the path `C:\Users\Admin\Documents`. You can type `cd ..` to go back up on level in the hierarchy.
+
+
+Once you've gotten to the place where your yaml file is (you can get this by typing `dir` and seeing if the file is in the list), to install the environment, type into this terminal:
 
 `conda env create -f nnInteractive.yaml`
 
