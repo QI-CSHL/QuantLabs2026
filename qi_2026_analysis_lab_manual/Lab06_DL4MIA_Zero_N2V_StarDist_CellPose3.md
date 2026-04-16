@@ -404,7 +404,7 @@ nnInteractive can be found in the `plugins` menu under `nnInteractive (nnInterac
 <img src="images/dl/nnInteractive.png" height="180px" />
 
 
-Load some data that we would like to segment (any data will do). Once you've loaded it, select the `initialize` button to load the network.
+Load some data that we would like to segment. For this exercise any data will do, try going back to images from earlier in the course that we difficult to segment (one example might be the `drosophila_floriansis.tif` image, or your own data, assuming it's not too large). Once you've loaded it, select the `initialize` button to load the network.
 
 If you have multiple objects that you want to segment seperately, you will want to check the `instance aggregation` checkbox, as seen below.
 
