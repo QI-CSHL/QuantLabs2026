@@ -1,6 +1,6 @@
 # Image Time Series Analysis
 
-*Lab authors: Hunter Elliott, Damian Dalle Nogare and Florian Jug* . 
+*Lab authors: Hunter Elliott, Damian Dalle Nogare, Florian Jug, and Beth Cimini* . 
 
 <small>This file last updated 2026-04-16.</small>
 
@@ -15,7 +15,7 @@
 - Apply and scrutinize photobleach correction
 - Double-normalized FRAP analysis
 
-**Lab Data** in [this folder](https://tinyurl.com/QIAnalysisLabData) (Time_Series)
+**Lab Data** in [this folder]([https://tinyurl.com/QIAnalysisLabData](https://drive.google.com/drive/folders/1dPzFtQEBdpuK9sAZJ6lp6JFBXAJqDag4)) (Time_Series)
 
 Remember to **unzip** the data folder after downloading.
 
@@ -75,7 +75,10 @@ You can easily compare two plot in Fiji by plotting them together on the same wi
 
 ### FRAP
 
-In this lab we will be using a FRAP plugin for Fiji. Unfortunately it does not work on the most current version of Fji (*Welcome to the world of research software, you should be used to this by now!*). Inside the data folder for this lab, we have included a compatible version of Fiji with the plugin already installed in the folder `Time_Series/Fiji_for_FRAP`. 
+In this lab we will be using a [FRAP plugin for Fiji](https://worms.biology.wisc.edu/research/microscopy/#frap)
+from the University of Wisconsin. If not already installed on your copy of Fiji, add it via the `FRAP-Tools` 
+update site (as before, access this in the `Help-> Update -> Manage Update Sites` menus. It has a good short set
+of instructions [here](https://imagej.net/plugins/frap-tools), but we will tell you here what you need to do!
 
 - Load the data: `FRAP/33108 SU295 try1.tif` (Or use your own if you
   prefer)
@@ -91,28 +94,25 @@ In this lab we will be using a FRAP plugin for Fiji. Unfortunately it does not w
 - Could we use a photobleaching correction like in the previous
   exercise? Why or why not?
 
-Now we will run the FRAP plugin. You can find this under the plugin menu, under `FRAP profiler v2`. This is going to apply a similar analysis that you did above: photobleach correction, and then exponential fitting, but it will do it using a double-normalization approach. 
+Now we will run the FRAP plugin. You can find this under the Analyze menu, under `Analyze->FRAP->FRAP Analysis`. This is going to apply a similar analysis that you did above: photobleach correction, and then exponential fitting, but it will do it using a double-normalization approach. 
 
 - First, perform a *uniform* background subtraction on your images by
   measuring the mean intensity in a region of the background and then
   going to `Process > Math > Subtract`. Why do we want to do a uniform
   subtraction rather than e.g. a rolling ball?
 
-- You will need to have two ROIs in the ROI Manager. One for the square
-  bleached region, and a second ROI for the whole cell (including the
-  frapped region). If you can’t include the whole cell, just include a
-  large region of the same cell which includes the frapped region. When
-  might this non-whole-cell ROI be OK? When might it be problematic?
+- You will need to have three ROIs in the ROI Manager. One for the square
+  bleached region (which you should already have!), a second ROI for a non-bleached region that has signal,
+  and an ROI that sits in the background. Make sure to add them **_in that order_**
 
-- Launch the FRAP Profiler plugin (`Plugins > FRAP Profiler v2`).
+- Launch the FRAP Profiler plugin (`Analyze->FRAP->FRAP Analysis`).
 
 - Enter the correct time interval, so that your recovery rate is in the
-  correct units.
+  correct units. Leave all other settings the same, except unchecking the "Close all window" button.
 
-- Run first with a single exponential. Compare the fitted curve to the
-  raw data in the figure that is created (in the procFRAP and normFRAP
-  windows). (Ideally we would compare this quantitatively but the plugin
-  doesn’t support this :( )
+- Run first with a single exponential. Look at the windows created- how well fit was your result? Do you understand what each one is showing?
+
+- Re-name the created results folder, indicating it's a single fit (the important thing is just to rename it so not overwritten in the next step!)
 
 - Re-run the plugin with double exponential. Is the fit better? A double
   exponential models a two step process, e.g., fast but weak association
@@ -171,7 +171,7 @@ Check out the [documentation and tutorials list](https://www.ilastik.org/documen
 
 You can download plenty of [example datasets](https://ilastik.github.io/download.html) from the ilastik website, although it can be a bit slow. 
 
-If so, you can find the same examples in the [Lab Data Share](https://tinyurl.com/QIAnalysisLabData) under `Time_Series/Tracking/ilastik_tracking_projects` (note that each one is a folder containing several files):
+If so, you can find the same examples in the [Lab Data Share](https://drive.google.com/drive/folders/1dPzFtQEBdpuK9sAZJ6lp6JFBXAJqDag4) under `Time_Series/Tracking/ilastik_tracking_projects` (note that each one is a folder containing several files):
 
 1.  2D+t tracking example for ilastik
 
@@ -228,7 +228,6 @@ You can learn more about the export setting for Ilastik from their [documentatio
 In napari, there is a quite capable plugin for object tracking called `btrack`.
 Let us install it and then use it.
 
-
 ```{margin} Want to learn more about working with btrack?
 Check out the [documentation](https://btrack.readthedocs.io/en/latest/user_guide/index.html)!
 ```
@@ -245,7 +244,7 @@ Check out the [documentation](https://btrack.readthedocs.io/en/latest/user_guide
 - Next, we need a dataset to track. Actually, we need not only a dataset, we need
   data that is segmented. Since we learned about segmentation before, here we will
   simply use one of the btrack example datasets. 
-  You can find a file called `segmented_nuclei.tif` it in the folder `btrack_masks` in the [Lab Data share](https://tinyurl.com/QIAnalysisLabData).
+  You can find a file called `segmented_nuclei.tif` it in the folder `btrack_masks` in the [Lab Data share](https://drive.google.com/drive/folders/1dPzFtQEBdpuK9sAZJ6lp6JFBXAJqDag4).
 - Start btrack by starting napari (execute `napari` from within the *btrack* conda 
   environment we installed above).
 - Start btrack via `Plugins > Track (btrack)`.
@@ -264,6 +263,5 @@ Check out the [documentation](https://btrack.readthedocs.io/en/latest/user_guide
   these tracks?
 
 ```{tip}
-Tracking in napari is a thing. Kind of. 
-If you want to learn more about it, maybe [this](https://focalplane.biologists.com/2023/06/01/tracking-in-napari/) is a good place to start.
+[This blog post](https://focalplane.biologists.com/2023/06/01/tracking-in-napari/) is a good place to start for learning about the basics of tracking in napari. More new napari tracking plugins are being released all the time - [21 as of this course in 2026](https://napari-hub.org/), including cool ones like [trackastra](https://napari-hub.org/plugins/napari-trackastra.html) and [ultrack](https://napari-hub.org/plugins/ultrack.html)
 ```
