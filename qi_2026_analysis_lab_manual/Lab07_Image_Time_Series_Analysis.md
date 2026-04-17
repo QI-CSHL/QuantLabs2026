@@ -266,19 +266,19 @@ You can open a series of images using **File > Import > Image Sequence** command
 ```
 
 The dataset should look like this:
-<img src="images/time_series/tm_dataset.png" height="180px" />
+<img src="images/time_series/tm_dataset.png" width="400px" />
 
 The first thing we want to do is to make sure that Fiji understands we are looking at a time series (XYT) rather than a Z-stack (XYZ).  
 
 If you go to `Image -> Hyperstacks -> Re-order Hyperstacks` you will see a screen that looks like this:
 
-<img src="images/time_series/tm_re-order_1.png" height="180px" />
+<img src="images/time_series/tm_re-order_1.png" width="400px" />
 
 You can see that Fiji thinks we have 92 slices and 1 frame, instead of 1 slice and 92 frames. Let's fix that!
 
 Remap the `Slices (z)` to `Frames(t)` and vice versa, changing `Frames (t)` to `Slices (z)` as below. 
 
-<img src="images/time_series/tm_re-order_2.png" height="180px" />
+<img src="images/time_series/tm_re-order_2.png" width="400px" />
 
 #### **TASK**: Run through the same protocol using trackmate as we did above. 
 Can you find a good quality threshold using the `DoG detector`? What about the `LoG detector`?  Try some ohter detectors, such as the `Thresholding Detector`. Do any work well?
