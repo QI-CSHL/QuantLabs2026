@@ -311,7 +311,13 @@ Now we have a label image that we can use to track.
  Well for one, it's important to know that the segmentation is independent of the tracking, and that you can import a label image from any segmentation approach (ie thresholding/watershed, cellpose, stardist). The second reason is that the StarDist trackmate plugin currently appears to not work in this version of Fiji with this hardware... Welcome to deep learning! (And especially deep learning in Fiji!)
  ```
 
-Continue through the tracking steps as above. Try to get as good a tracking solution as you can.
+Continue through the tracking steps as above. Which detection method works well for this kind of input?
+
+Try to get as good a tracking solution as you can.
+
+```{tip}
+If you can't `Preview` in the detection step, just go back and return to the detection step (and remember to remove any ROIs!)
+```
 
 You might notice that there are many small spots that are not nuclei, let's do something about that... 
 
