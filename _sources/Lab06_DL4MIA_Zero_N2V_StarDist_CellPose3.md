@@ -16,7 +16,9 @@
 
 **Lab Data** in [this folder](https://drive.google.com/drive/folders/14OWZZk2FkvKbqHotQDcfjJ2tG3LSQzej?usp=sharing) (DL4MIA)
 
+```{important}
 Remember to **unzip** the data folder after downloading.
+```
 
 ## **Overview**
 
