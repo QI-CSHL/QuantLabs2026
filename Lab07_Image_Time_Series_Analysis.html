@@ -663,7 +663,12 @@ Can you find a good quality threshold using the <code class="docutils literal no
 <p>There is a ‘Trackmate - StarDist’ plugin. Why don’t we just use that?
 Well for one, it’s important to know that the segmentation is independent of the tracking, and that you can import a label image from any segmentation approach (ie thresholding/watershed, cellpose, stardist). The second reason is that the StarDist trackmate plugin currently appears to not work in this version of Fiji with this hardware… Welcome to deep learning! (And especially deep learning in Fiji!)</p>
 </div>
-<p>Continue through the tracking steps as above. Try to get as good a tracking solution as you can.</p>
+<p>Continue through the tracking steps as above. Which detection method works well for this kind of input?</p>
+<p>Try to get as good a tracking solution as you can.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you can’t <code class="docutils literal notranslate"><span class="pre">Preview</span></code> in the detection step, just go back and return to the detection step (and remember to remove any ROIs!)</p>
+</div>
 <p>You might notice that there are many small spots that are not nuclei, let’s do something about that…</p>
 <ul class="simple">
 <li><p><strong>TASK</strong>: find a way of filtering these small spots.</p></li>
