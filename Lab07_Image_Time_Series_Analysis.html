@@ -402,6 +402,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Learning Objectives</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-trackmate">Tracking in Trackmate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-trackmate-a-more-complicated-example">Tracking in Trackmate: A more complicated example</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-ilastik">Tracking in ilastik</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-with-btrack-in-napari">Tracking with btrack in napari</a></li>
 </ul>
@@ -573,6 +574,59 @@ features.</p>
 <p>TASK: Find a quality setting that includes the moving spots, but not the weaker, stationary spots. (HINT: You can use the “Preview” button to preview your current settings on the frame). Apply the preview to a few different frames to make sure you’ve detected the moving spots accuratley. Detected objects will be circled with individual ROIs.</p>
 <p>Click the “Next” button to perform the detection.</p>
 <p>You will see a screen with some summary statistics for the detection.</p>
+<a class="reference internal image-reference" href="images/time_series/tm_summary.png"><img alt="images/time_series/tm_summary.png" src="images/time_series/tm_summary.png" style="height: 180px;" />
+</a>
+<p>Using a radius of 4 pixels and a quality threshold of 20, we found 84 spots across all frames. How many did you find with your settings?</p>
+<p>Now that we have detected our spots, we need to track them. In the next screen, you can filter further the detected spots based on quality (to see if there are any outliers still).</p>
+<a class="reference internal image-reference" href="images/time_series/tm_filtering.png"><img alt="images/time_series/tm_filtering.png" src="images/time_series/tm_filtering.png" style="height: 180px;" />
+</a>
+<p>Our spots follow a nice normal distribution, so we will go ahead and include them all by dragging the shaded window over the entire histogram, and then press “next”.</p>
+<p>Once we do this, all of the spots in the stack should have been detected. Scroll back and forth through the stack - how well did your detection parameters do?</p>
+<p>This screen also allows us to set additional filters on the spots based on various parameters (such as intensity, noise, size). For example, you could exclude all particles smaller than a certain size in this step. This is really only useful if we are using a more complex detection strategy, which we will see later, and so we will ignore this screen for now.</p>
+<p>Press “Next” to start the actual tracking step.</p>
+<a class="reference internal image-reference" href="images/time_series/tm_trackers.png"><img alt="images/time_series/tm_trackers.png" src="images/time_series/tm_trackers.png" style="height: 180px;" />
+</a>
+<p>In this screen we can select which algorithm we would like to use to perform the tracking.</p>
+<p>Select each tracker and read the description. Which tracker do you think would work well for this dataset?</p>
+<p>Here we are using the LAP (Linear Assignment Problem) tracker, which performs well under most conditions.</p>
+<a class="reference internal image-reference" href="images/time_series/tm_LAP.png"><img alt="images/time_series/tm_LAP.png" src="images/time_series/tm_LAP.png" style="height: 180px;" />
+</a>
+<p>One important parameter is the Maximum distance that we expect a particle to move between frames. Go back to the image and try to estimate this value.</p>
+<p>HINT: try to find the fastest moving particle in the image stack.</p>
+<p>HINT: Do not use this exact value as the maxumum distance (to account for measurement errors and the fact that you might not have selected the fastest moving particle), but some value higher than that distance.</p>
+<p>Click next to initiate the tracking. Once done, you should see the particle tracks displayed as an overlay on the image, along with some statistics</p>
+<a class="reference internal image-reference" href="images/time_series/tm_result.png"><img alt="images/time_series/tm_result.png" src="images/time_series/tm_result.png" style="height: 180px;" />
+</a>
+<p>Trackmate was able to track all of the moving particles in this image</p>
+<p>Scroll back and forth along the image dimension slider to follow the points.</p>
+<p>Importantly, Trackmate was also able to handle difficult cases, such as the magenta and blue objects splitting, the yellow and magenta objects fusing, and the brown object appearing out of nowhere and disappearing. Pretty cool!</p>
+<p>Go back (by pressing the back button) and try some of the other trackers. Which ones work best? One of these approaches catastrophically fails on this dataset. Read the description and try to understand why.</p>
+<p>The simple DoG detector works well for this kind of dataset. However, it will fail on objects with more complex morphologies, like cells.</p>
+</section>
+<section id="tracking-in-trackmate-a-more-complicated-example">
+<h3>Tracking in Trackmate: A more complicated example<a class="headerlink" href="#tracking-in-trackmate-a-more-complicated-example" title="Link to this heading">#</a></h3>
+<p>Let’s try to track a more difficult dataset, using some of the more advanced detection schemes.</p>
+<p>Let’s download some more complicated example data from the <a class="reference external" href="http://celltrackingchallenge.net/">cell tracking challenge</a>:</p>
+<p><a class="reference external" href="http://data.celltrackingchallenge.net/training-datasets/Fluo-N2DL-HeLa.zip">http://data.celltrackingchallenge.net/training-datasets/Fluo-N2DL-HeLa.zip</a></p>
+<p>Open this zip file and extract the folder</p>
+<p>/Fluo-N2DH-HeLa/01/</p>
+<p>This is a sequence of tif images, each on representing one (2D) timepoint in the movie.</p>
+<p>HINT: you can open a series of images using <strong>File &gt; Import &gt; Image Sequence</strong> command and selecting the folder containing all the images.</p>
+<p>The dataset should look like this:
+<a class="reference internal" href="images/time_series/tm_dataset.png"><img alt="images/time_series/tm_dataset.png" src="images/time_series/tm_dataset.png" style="height: 180px;" /></a></p>
+<p>TASK: Run through the same protocol using trackmate as we did above. Can you find a good quality threshold using the DoG detector? What about the LoG detector?</p>
+<p>Let’s try a different detector. Use the ‘Stardist detector. Stardist is a specialized segmentation algorithm for detecting nuclei that should work well on this dataset. We need to install this detector in Fiji. Go to</p>
+<p><strong>Help &gt; Update</strong></p>
+<p>In the ‘Manage Update Sites’ tab and check the ‘TrackMate - StarDist’ update site. Close this window and update (and restart) Fiji.</p>
+<a class="reference internal image-reference" href="images/time_series/tm_update_site.png"><img alt="images/time_series/tm_update_site.png" src="images/time_series/tm_update_site.png" style="height: 180px;" />
+</a>
+<p>You will also need install the plugins “stardist” “tensorflow”, and “csbdeep” for this to work.</p>
+<a class="reference internal image-reference" href="images/time_series/tm_update.png"><img alt="images/time_series/tm_update.png" src="images/time_series/tm_update.png" style="height: 180px;" />
+</a>
+<p>It may take some time to perform the detection.</p>
+<p>There are many small spots that are not nuclei.</p>
+<p>TASK: find a way of filtering these small spots. HINT: use the ‘filter’ panel. What would be good to filter on?</p>
+<p>Continue through the tracking steps as above. Try to get as good a tracking solution as you can.</p>
 </section>
 <section id="tracking-in-ilastik">
 <h3>Tracking in ilastik<a class="headerlink" href="#tracking-in-ilastik" title="Link to this heading">#</a></h3>
@@ -751,6 +805,7 @@ these tracks?</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Learning Objectives</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-trackmate">Tracking in Trackmate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-trackmate-a-more-complicated-example">Tracking in Trackmate: A more complicated example</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-ilastik">Tracking in ilastik</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-with-btrack-in-napari">Tracking with btrack in napari</a></li>
 </ul>

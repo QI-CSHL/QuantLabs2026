@@ -194,7 +194,96 @@ Click the “Next” button to perform the detection.
 
 You will see a screen with some summary statistics for the detection.
 
+<img src="images/time_series/tm_summary.png" height="180px" />
 
+
+Using a radius of 4 pixels and a quality threshold of 20, we found 84 spots across all frames. How many did you find with your settings?
+
+Now that we have detected our spots, we need to track them. In the next screen, you can filter further the detected spots based on quality (to see if there are any outliers still).
+
+<img src="images/time_series/tm_filtering.png" height="180px" />
+
+Our spots follow a nice normal distribution, so we will go ahead and include them all by dragging the shaded window over the entire histogram, and then press “next”.
+
+Once we do this, all of the spots in the stack should have been detected. Scroll back and forth through the stack - how well did your detection parameters do?
+
+This screen also allows us to set additional filters on the spots based on various parameters (such as intensity, noise, size). For example, you could exclude all particles smaller than a certain size in this step. This is really only useful if we are using a more complex detection strategy, which we will see later, and so we will ignore this screen for now. 
+
+Press “Next” to start the actual tracking step.
+
+<img src="images/time_series/tm_trackers.png" height="180px" />
+
+In this screen we can select which algorithm we would like to use to perform the tracking.
+
+Select each tracker and read the description. Which tracker do you think would work well for this dataset?
+
+Here we are using the LAP (Linear Assignment Problem) tracker, which performs well under most conditions.
+
+
+<img src="images/time_series/tm_LAP.png" height="180px" />
+
+One important parameter is the Maximum distance that we expect a particle to move between frames. Go back to the image and try to estimate this value. 
+
+HINT: try to find the fastest moving particle in the image stack.
+
+HINT: Do not use this exact value as the maxumum distance (to account for measurement errors and the fact that you might not have selected the fastest moving particle), but some value higher than that distance.
+
+Click next to initiate the tracking. Once done, you should see the particle tracks displayed as an overlay on the image, along with some statistics 
+
+<img src="images/time_series/tm_result.png" height="180px" />
+
+Trackmate was able to track all of the moving particles in this image
+
+Scroll back and forth along the image dimension slider to follow the points.
+
+Importantly, Trackmate was also able to handle difficult cases, such as the magenta and blue objects splitting, the yellow and magenta objects fusing, and the brown object appearing out of nowhere and disappearing. Pretty cool!
+
+Go back (by pressing the back button) and try some of the other trackers. Which ones work best? One of these approaches catastrophically fails on this dataset. Read the description and try to understand why.
+
+The simple DoG detector works well for this kind of dataset. However, it will fail on objects with more complex morphologies, like cells.
+
+
+### Tracking in Trackmate: A more complicated example
+
+Let’s try to track a more difficult dataset, using some of the more advanced detection schemes.
+
+Let’s download some more complicated example data from the [cell tracking challenge](http://celltrackingchallenge.net/):
+
+ http://data.celltrackingchallenge.net/training-datasets/Fluo-N2DL-HeLa.zip
+
+Open this zip file and extract the folder 
+
+/Fluo-N2DH-HeLa/01/
+
+This is a sequence of tif images, each on representing one (2D) timepoint in the movie.
+
+HINT: you can open a series of images using **File > Import > Image Sequence** command and selecting the folder containing all the images.
+
+The dataset should look like this:
+<img src="images/time_series/tm_dataset.png" height="180px" />
+
+
+TASK: Run through the same protocol using trackmate as we did above. Can you find a good quality threshold using the DoG detector? What about the LoG detector?
+
+Let’s try a different detector. Use the ‘Stardist detector. Stardist is a specialized segmentation algorithm for detecting nuclei that should work well on this dataset. We need to install this detector in Fiji. Go to
+
+**Help > Update**
+
+In the ‘Manage Update Sites’ tab and check the ‘TrackMate - StarDist’ update site. Close this window and update (and restart) Fiji.
+
+<img src="images/time_series/tm_update_site.png" height="180px" />
+
+You will also need install the plugins “stardist” “tensorflow”, and “csbdeep” for this to work.
+
+<img src="images/time_series/tm_update.png" height="180px" />
+
+It may take some time to perform the detection.
+
+There are many small spots that are not nuclei. 
+
+TASK: find a way of filtering these small spots. HINT: use the ‘filter’ panel. What would be good to filter on? 
+
+Continue through the tracking steps as above. Try to get as good a tracking solution as you can.
 
 ### Tracking in ilastik
 
