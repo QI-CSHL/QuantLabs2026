@@ -176,7 +176,7 @@ Open **Trackmate** using
 
 You should see a window like this
 
-<img src="images/time_series/tm1.png" height="180px" />
+<img src="images/time_series/tm1.png" width="400px" />
 
 
 Make sure the Target Image is set to “FakeTracks”.
@@ -262,36 +262,61 @@ From the lab data folder, download the `HeLa_cells` folder.
 This is a sequence of tif images, each on representing one (2D) timepoint in the movie.
 
 ```{hint} 
-You can open a series of images using **File > Import > Image Sequence** command and selecting the folder containing all the images.
+You can open a series of images using **File > Import > Image Sequence** command and selecting the folder containing all the images, or you can just drag an entire folder of images into Fiji.
 ```
 
 The dataset should look like this:
 <img src="images/time_series/tm_dataset.png" height="180px" />
 
+The first thing we want to do is to make sure that Fiji understands we are looking at a time series (XYT) rather than a Z-stack (XYZ).  
+
+If you go to `Image -> Hyperstacks -> Re-order Hyperstacks` you will see a screen that looks like this:
+
+<img src="images/time_series/tm_re-order_1.png" height="180px" />
+
+You can see that Fiji thinks we have 92 slices and 1 frame, instead of 1 slice and 92 frames. Let's fix that!
+
+Remap the `Slices (z)` to `Frames(t)` and vice versa, changing `Frames (t)` to `Slices (z)` as below. 
+
+<img src="images/time_series/tm_re-order_2.png" height="180px" />
 
 #### **TASK**: Run through the same protocol using trackmate as we did above. 
-Can you find a good quality threshold using the DoG detector? What about the LoG detector?
+Can you find a good quality threshold using the `DoG detector`? What about the `LoG detector`?  Try some ohter detectors, such as the `Thresholding Detector`. Do any work well?
 
-Let’s try a different detector. Use the ‘Stardist detector. Stardist is a specialized segmentation algorithm for detecting nuclei that should work well on this dataset. We need to install this detector in Fiji. Go to
+
+
+Let’s try a different approach. We'll first use StarDist to segment the image before we import it into TrackMate. Stardist is a specialized segmentation algorithm for detecting nuclei that should work well on this dataset. We need to install stardist in Fiji.
 
 **Help > Update**
 
-In the ‘Manage Update Sites’ tab and check the ‘TrackMate - StarDist’ update site. Close this window and update (and restart) Fiji.
+In the ‘Manage Update Sites’ tab and check the ‘StarDist’ update site. Close this window and update (and restart) Fiji.
 
-<img src="images/time_series/tm_update_site.png" height="180px" />
-
-You will also need install the plugins “stardist” “tensorflow”, and “csbdeep” for this to work.
+You will also need install the plugins “tensorflow”, and “csbdeep” for this to work.
 
 <img src="images/time_series/tm_update.png" height="180px" />
 
+Run StarDist on your data `Plugins -> StarDist -> StarDist2D`
+
+Make sure you epxort a `Label Image` as the `Output Type` (you do not need the `ROI Manager` output)
+
 It may take some time to perform the detection.
+
+Now we have a label image that we can use to track. 
+
+ ```{note} 
+ There is a `Trackmate - StarDist` plugin. Why don't we just use that? Well for one, it's important to know that the segmentation is independent of the tracking, and that you can import a label image from any segmentation approach (ie thresholding/watershed, cellpose, stardist). The second reason is that the StarDist trackmate plugin currently appears to not work in this version of Fiji with this hardware. Welcome to deep learning! (And especially deep learning in Fiji!)
+ ```
+
+
+
+Continue through the tracking steps as above. Try to get as good a tracking solution as you can.
 
 There are many small spots that are not nuclei. 
 
 #### **TASK**: find a way of filtering these small spots. HINT: use the ‘filter’ panel. 
 What would be good to filter on? 
 
-Continue through the tracking steps as above. Try to get as good a tracking solution as you can.
+When you're done export a label image. How does your tracking look?
 
 ### Tracking in ilastik
 
