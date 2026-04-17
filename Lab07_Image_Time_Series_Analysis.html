@@ -402,8 +402,15 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-tracking"><strong>Part 2: Tracking</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Learning Objectives</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-trackmate">Tracking in Trackmate</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-trackmate-a-more-complicated-example">Tracking in Trackmate: A more complicated example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-trackmate">Tracking in Trackmate</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-find-a-quality-setting-that-includes-the-moving-spots-but-not-the-weaker-stationary-spots"><strong>TASK</strong>: Find a quality setting that includes the moving spots, but not the weaker, stationary spots.</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-trackmate-a-more-complicated-example">Tracking in Trackmate: A more complicated example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-run-through-the-same-protocol-using-trackmate-as-we-did-above"><strong>TASK</strong>: Run through the same protocol using trackmate as we did above.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-find-a-way-of-filtering-these-small-spots-hint-use-the-filter-panel"><strong>TASK</strong>: find a way of filtering these small spots. HINT: use the ‘filter’ panel.</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-ilastik">Tracking in ilastik</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-with-btrack-in-napari">Tracking with btrack in napari</a></li>
 </ul>
@@ -434,8 +441,12 @@
 <li><p>Apply and scrutinize photobleach correction</p></li>
 <li><p>Double-normalized FRAP analysis</p></li>
 </ul>
-<p><strong>Lab Data</strong> in <a class="reference internal" href="#%5Bhttps://tinyurl.com/QIAnalysisLabData%5D(https://drive.google.com/drive/folders/1dPzFtQEBdpuK9sAZJ6lp6JFBXAJqDag4)"><span class="xref myst">this folder</span></a> (Time_Series)</p>
-<p>Remember to <strong>unzip</strong> the data folder after downloading.</p>
+<p><strong>Lab Data</strong> in <a class="reference external" href="https://drive.google.com/drive/folders/1dPzFtQEBdpuK9sAZJ6lp6JFBXAJqDag4">this folder</a> (Lab7)</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This time the lab folder is a bit on the chunkier side, if you want to download all of it, it will take a few minutes and split it into two .zip files, which you will have into extract in the same folder.</p>
+<p>Otherwise, just download just the folder data that you need for each exercise each time :)</p>
+</div>
 </section>
 <hr class="docutils" />
 <section id="bleach-correction">
@@ -557,65 +568,77 @@ features.</p>
 <section id="tracking-in-trackmate">
 <h3>Tracking in Trackmate<a class="headerlink" href="#tracking-in-trackmate" title="Link to this heading">#</a></h3>
 <p>We will start with a simple test dataset. Open the “Tracks for Trackmate (807k)” image from</p>
-<p><strong>File &gt; Open Samples &gt; Tracks for Trackmate (807k)</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Open</span> <span class="pre">Samples</span> <span class="pre">&gt;</span> <span class="pre">Tracks</span> <span class="pre">for</span> <span class="pre">Trackmate</span> <span class="pre">(807k)</span></code></p>
 <p>This is 128x128 stack of 50 frames. Scroll through the image stack using the dimension slider. What do you see?</p>
 <p>We will first walk through trackmate step-by-step using this simple example.</p>
-<p>Open Trackmate using</p>
-<p><strong>Plugins &gt; Tracking &gt; Trackmate</strong></p>
+<p>Open <strong>Trackmate</strong> using</p>
+<p><code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">Tracking</span> <span class="pre">&gt;</span> <span class="pre">Trackmate</span></code></p>
 <p>You should see a window like this</p>
 <a class="reference internal image-reference" href="_images/tm1.png"><img alt="_images/tm1.png" src="_images/tm1.png" style="height: 180px;" />
 </a>
 <p>Make sure the Target Image is set to “FakeTracks”.</p>
-<p>Click “Next”</p>
+<p>Click <code class="docutils literal notranslate"><span class="pre">-&gt;</span> <span class="pre">Next</span></code>.</p>
 <p>In this next screen, we have to tell trackmate which detector to use to find the objects in the image. We will use some of these more advanced options later, but for these simple spots, we can use the Difference of Gaussian (DoG) model. This is particularly well suited to detect small, roundish things.</p>
-<a class="reference internal image-reference" href="_images/tm_detect.png"><img alt="_images/tm_detect.png" src="_images/tm_detect.png" style="height: 180px;" />
+<a class="reference internal image-reference" href="_images/tm_detect.png"><img alt="_images/tm_detect.png" src="_images/tm_detect.png" style="width: 400px;" />
 </a>
 <p>Next we need to estimate our spot size. Zoom into the image and measure one of the bright spots we would like to track (HINT: use the line tool).</p>
 <p>Next, we need to filter based on the quality of the detection. You will notice on the bottom right of the image a few spots that do not move, and are probably artifacts (or at least things that we do not wish to track in this case)</p>
-<p>TASK: Find a quality setting that includes the moving spots, but not the weaker, stationary spots. (HINT: You can use the “Preview” button to preview your current settings on the frame). Apply the preview to a few different frames to make sure you’ve detected the moving spots accuratley. Detected objects will be circled with individual ROIs.</p>
-<p>Click the “Next” button to perform the detection.</p>
+<section id="task-find-a-quality-setting-that-includes-the-moving-spots-but-not-the-weaker-stationary-spots">
+<h4><strong>TASK</strong>: Find a quality setting that includes the moving spots, but not the weaker, stationary spots.<a class="headerlink" href="#task-find-a-quality-setting-that-includes-the-moving-spots-but-not-the-weaker-stationary-spots" title="Link to this heading">#</a></h4>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You can use the (<a class="reference internal" href="_images/tm_preview.png"><img alt="_images/tm_preview.png" src="_images/tm_preview.png" style="height: 20px;" /></a>) button to preview your current settings on the frame). Apply the preview to a few different frames to make sure you’ve detected the moving spots accuratley. Detected objects will be circled with individual ROIs.</p>
+</div>
+<p>Click the <code class="docutils literal notranslate"><span class="pre">-&gt;</span> <span class="pre">Next</span></code> button to perform the detection.</p>
 <p>You will see a screen with some summary statistics for the detection.</p>
-<a class="reference internal image-reference" href="_images/tm_summary.png"><img alt="_images/tm_summary.png" src="_images/tm_summary.png" style="height: 180px;" />
+<a class="reference internal image-reference" href="_images/tm_summary.png"><img alt="_images/tm_summary.png" src="_images/tm_summary.png" style="width: 400px;" />
 </a>
-<p>Using a radius of 4 pixels and a quality threshold of 20, we found 84 spots across all frames. How many did you find with your settings?</p>
+<p>Using a radius of 4 pixels and a quality threshold of 20, we found 84 (total) spots across all frames. How many did you find with your settings?</p>
 <p>Now that we have detected our spots, we need to track them. In the next screen, you can filter further the detected spots based on quality (to see if there are any outliers still).</p>
-<a class="reference internal image-reference" href="_images/tm_filtering.png"><img alt="_images/tm_filtering.png" src="_images/tm_filtering.png" style="height: 180px;" />
+<a class="reference internal image-reference" href="_images/tm_filtering.png"><img alt="_images/tm_filtering.png" src="_images/tm_filtering.png" style="width: 400px;" />
 </a>
-<p>Our spots follow a nice normal distribution, so we will go ahead and include them all by dragging the shaded window over the entire histogram, and then press “next”.</p>
+<p>Our spots’ <em>quality</em> follows a nice normal distribution, so we will go ahead and include them all by dragging the shaded window over the entire histogram, and then press “next”.</p>
 <p>Once we do this, all of the spots in the stack should have been detected. Scroll back and forth through the stack - how well did your detection parameters do?</p>
 <p>This screen also allows us to set additional filters on the spots based on various parameters (such as intensity, noise, size). For example, you could exclude all particles smaller than a certain size in this step. This is really only useful if we are using a more complex detection strategy, which we will see later, and so we will ignore this screen for now.</p>
-<p>Press “Next” to start the actual tracking step.</p>
-<a class="reference internal image-reference" href="_images/tm_trackers.png"><img alt="_images/tm_trackers.png" src="_images/tm_trackers.png" style="height: 180px;" />
+<p>Press <code class="docutils literal notranslate"><span class="pre">-&gt;</span> <span class="pre">Next</span></code> to start the actual tracking step.</p>
+<a class="reference internal image-reference" href="_images/tm_trackers.png"><img alt="_images/tm_trackers.png" src="_images/tm_trackers.png" style="width: 400px;" />
 </a>
-<p>In this screen we can select which algorithm we would like to use to perform the tracking.</p>
+<p>In this screen we can select which algorithm we would like to use to perform the tracking. Some of them should sound familiar from the lecture…</p>
 <p>Select each tracker and read the description. Which tracker do you think would work well for this dataset?</p>
-<p>Here we are using the LAP (Linear Assignment Problem) tracker, which performs well under most conditions.</p>
-<a class="reference internal image-reference" href="_images/tm_LAP.png"><img alt="_images/tm_LAP.png" src="_images/tm_LAP.png" style="height: 180px;" />
+<p>Here we are using the <strong>LAP</strong> (Linear Assignment Problem) tracker, which performs well under most conditions.</p>
+<a class="reference internal image-reference" href="_images/tm_LAP.png"><img alt="_images/tm_LAP.png" src="_images/tm_LAP.png" style="width: 400px;" />
 </a>
-<p>One important parameter is the Maximum distance that we expect a particle to move between frames. Go back to the image and try to estimate this value.</p>
-<p>HINT: try to find the fastest moving particle in the image stack.</p>
-<p>HINT: Do not use this exact value as the maxumum distance (to account for measurement errors and the fact that you might not have selected the fastest moving particle), but some value higher than that distance.</p>
-<p>Click next to initiate the tracking. Once done, you should see the particle tracks displayed as an overlay on the image, along with some statistics</p>
-<a class="reference internal image-reference" href="_images/tm_result.png"><img alt="_images/tm_result.png" src="_images/tm_result.png" style="height: 180px;" />
+<p>One important parameter is the <strong>Maximum distance</strong> that we expect a particle to move between frames. Go back to the image and try to estimate this value.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Try to find the fastest moving particle in the image stack.</p>
+<p>Do not use this exact value as the maximum distance (to account for measurement errors and the fact that you might not have selected the fastest moving particle), but some value higher than that distance.</p>
+</div>
+<p>Click <code class="docutils literal notranslate"><span class="pre">-&gt;</span> <span class="pre">Next</span></code> to initiate the tracking. Once done, you should see the particle tracks displayed as an overlay on the image, along with some statistics</p>
+<a class="reference internal image-reference" href="_images/tm_result.png"><img alt="_images/tm_result.png" src="_images/tm_result.png" style="width: 400px;" />
 </a>
-<p>Trackmate was able to track all of the moving particles in this image</p>
+<p>Trackmate was able to track all of the moving particles in this image.</p>
 <p>Scroll back and forth along the image dimension slider to follow the points.</p>
 <p>Importantly, Trackmate was also able to handle difficult cases, such as the magenta and blue objects splitting, the yellow and magenta objects fusing, and the brown object appearing out of nowhere and disappearing. Pretty cool!</p>
 <p>Go back (by pressing the back button) and try some of the other trackers. Which ones work best? One of these approaches catastrophically fails on this dataset. Read the description and try to understand why.</p>
-<p>The simple DoG detector works well for this kind of dataset. However, it will fail on objects with more complex morphologies, like cells.</p>
+<p>The simple <strong>DoG detector</strong> works well for this kind of dataset. However, it will fail on objects with more complex morphologies, like cells.</p>
+</section>
 </section>
 <section id="tracking-in-trackmate-a-more-complicated-example">
 <h3>Tracking in Trackmate: A more complicated example<a class="headerlink" href="#tracking-in-trackmate-a-more-complicated-example" title="Link to this heading">#</a></h3>
 <p>Let’s try to track a more difficult dataset, using some of the more advanced detection schemes.</p>
-<p>Let’s download some more complicated example data from the <a class="reference external" href="http://celltrackingchallenge.net/">cell tracking challenge</a>:</p>
-<p><a class="reference external" href="http://data.celltrackingchallenge.net/training-datasets/Fluo-N2DL-HeLa.zip">http://data.celltrackingchallenge.net/training-datasets/Fluo-N2DL-HeLa.zip</a></p>
-<p>Open this zip file and extract the folder</p>
-<p>/Fluo-N2DH-HeLa/01/</p>
+<p>Let’s use some more complicated example data from the <a class="reference external" href="http://celltrackingchallenge.net/">cell tracking challenge</a>:</p>
+<p>From the lab data folder, download the <code class="docutils literal notranslate"><span class="pre">HeLa_cells</span></code> folder.</p>
 <p>This is a sequence of tif images, each on representing one (2D) timepoint in the movie.</p>
-<p>HINT: you can open a series of images using <strong>File &gt; Import &gt; Image Sequence</strong> command and selecting the folder containing all the images.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You can open a series of images using <strong>File &gt; Import &gt; Image Sequence</strong> command and selecting the folder containing all the images.</p>
+</div>
 <p>The dataset should look like this:
 <a class="reference internal" href="_images/tm_dataset.png"><img alt="_images/tm_dataset.png" src="_images/tm_dataset.png" style="height: 180px;" /></a></p>
-<p>TASK: Run through the same protocol using trackmate as we did above. Can you find a good quality threshold using the DoG detector? What about the LoG detector?</p>
+<section id="task-run-through-the-same-protocol-using-trackmate-as-we-did-above">
+<h4><strong>TASK</strong>: Run through the same protocol using trackmate as we did above.<a class="headerlink" href="#task-run-through-the-same-protocol-using-trackmate-as-we-did-above" title="Link to this heading">#</a></h4>
+<p>Can you find a good quality threshold using the DoG detector? What about the LoG detector?</p>
 <p>Let’s try a different detector. Use the ‘Stardist detector. Stardist is a specialized segmentation algorithm for detecting nuclei that should work well on this dataset. We need to install this detector in Fiji. Go to</p>
 <p><strong>Help &gt; Update</strong></p>
 <p>In the ‘Manage Update Sites’ tab and check the ‘TrackMate - StarDist’ update site. Close this window and update (and restart) Fiji.</p>
@@ -626,8 +649,12 @@ features.</p>
 </a>
 <p>It may take some time to perform the detection.</p>
 <p>There are many small spots that are not nuclei.</p>
-<p>TASK: find a way of filtering these small spots. HINT: use the ‘filter’ panel. What would be good to filter on?</p>
+</section>
+<section id="task-find-a-way-of-filtering-these-small-spots-hint-use-the-filter-panel">
+<h4><strong>TASK</strong>: find a way of filtering these small spots. HINT: use the ‘filter’ panel.<a class="headerlink" href="#task-find-a-way-of-filtering-these-small-spots-hint-use-the-filter-panel" title="Link to this heading">#</a></h4>
+<p>What would be good to filter on?</p>
 <p>Continue through the tracking steps as above. Try to get as good a tracking solution as you can.</p>
+</section>
 </section>
 <section id="tracking-in-ilastik">
 <h3>Tracking in ilastik<a class="headerlink" href="#tracking-in-ilastik" title="Link to this heading">#</a></h3>
@@ -823,8 +850,15 @@ these tracks?</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-tracking"><strong>Part 2: Tracking</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Learning Objectives</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-trackmate">Tracking in Trackmate</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-trackmate-a-more-complicated-example">Tracking in Trackmate: A more complicated example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-trackmate">Tracking in Trackmate</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-find-a-quality-setting-that-includes-the-moving-spots-but-not-the-weaker-stationary-spots"><strong>TASK</strong>: Find a quality setting that includes the moving spots, but not the weaker, stationary spots.</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-trackmate-a-more-complicated-example">Tracking in Trackmate: A more complicated example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-run-through-the-same-protocol-using-trackmate-as-we-did-above"><strong>TASK</strong>: Run through the same protocol using trackmate as we did above.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-find-a-way-of-filtering-these-small-spots-hint-use-the-filter-panel"><strong>TASK</strong>: find a way of filtering these small spots. HINT: use the ‘filter’ panel.</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-ilastik">Tracking in ilastik</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-with-btrack-in-napari">Tracking with btrack in napari</a></li>
 </ul>
