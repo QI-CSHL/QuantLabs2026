@@ -191,7 +191,7 @@ Next we need to estimate our spot size. Zoom into the image and measure one of t
 
 Next, we need to filter based on the quality of the detection. You will notice on the bottom right of the image a few spots that do not move, and are probably artifacts (or at least things that we do not wish to track in this case)
 
-##### **TASK**: Find a quality setting that includes the moving spots, but not the weaker, stationary spots. 
+- **TASK**: Find a quality setting that includes the moving spots, but not the weaker, stationary spots. 
 
 ```{hint}
 You can use the (<img src="images/time_series/tm_preview.png" height="20px" />) button to preview your current settings on the frame). Apply the preview to a few different frames to make sure you’ve detected the moving spots accuratley. Detected objects will be circled with individual ROIs.
@@ -284,7 +284,7 @@ Remap the `Slices (z)` to `Frames(t)` and vice versa, changing `Frames (t)` to `
 
 <img src="images/time_series/tm_re-order_2.png" width="200px" />
 
-##### **TASK**: Run through the same protocol using trackmate as we did above. 
+- **TASK**: Run through the same protocol using trackmate as we did above. 
 Can you find a good quality threshold using the `DoG detector`? What about the `LoG detector`?  Try some ohter detectors, such as the `Thresholding Detector`. Do any work well?
 
 
@@ -301,24 +301,25 @@ Apply the changes, close the window and update (and restart) Fiji.
 
 Run StarDist on your data `Plugins -> StarDist -> StarDist2D`
 
-Make sure you epxort a `Label Image` as the `Output Type` (you do not need the `ROI Manager` output)
+Make sure you export a `Label Image` as the `Output Type` (you do not need the `ROI Manager` output)
 
-It may take some time to perform the detection.
+It may take some time to perform the detection...
 
 Now we have a label image that we can use to track. 
 
- ```{note} 
- There is a `Trackmate - StarDist` plugin. Why don't we just use that? Well for one, it's important to know that the segmentation is independent of the tracking, and that you can import a label image from any segmentation approach (ie thresholding/watershed, cellpose, stardist). The second reason is that the StarDist trackmate plugin currently appears to not work in this version of Fiji with this hardware. Welcome to deep learning! (And especially deep learning in Fiji!)
+ ```{note} There is a 'Trackmate - StarDist' plugin. Why don't we just use that? 
+ Well for one, it's important to know that the segmentation is independent of the tracking, and that you can import a label image from any segmentation approach (ie thresholding/watershed, cellpose, stardist). The second reason is that the StarDist trackmate plugin currently appears to not work in this version of Fiji with this hardware... Welcome to deep learning! (And especially deep learning in Fiji!)
  ```
-
-
 
 Continue through the tracking steps as above. Try to get as good a tracking solution as you can.
 
-There are many small spots that are not nuclei. 
+You might notice that there are many small spots that are not nuclei, let's do something about that... 
 
-##### **TASK**: find a way of filtering these small spots. HINT: use the ‘filter’ panel. 
+- **TASK**: find a way of filtering these small spots. 
+
+```{hint} Use the ‘filter’ panel. 
 What would be good to filter on? 
+```
 
 When you're done export a label image. How does your tracking look?
 
