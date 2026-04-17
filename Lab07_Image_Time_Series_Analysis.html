@@ -635,14 +635,14 @@ features.</p>
 <p>You can open a series of images using <strong>File &gt; Import &gt; Image Sequence</strong> command and selecting the folder containing all the images, or you can just drag an entire folder of images into Fiji.</p>
 </div>
 <p>The dataset should look like this:
-<a class="reference internal" href="_images/tm_dataset.png"><img alt="_images/tm_dataset.png" src="_images/tm_dataset.png" style="height: 180px;" /></a></p>
+<a class="reference internal" href="_images/tm_dataset.png"><img alt="_images/tm_dataset.png" src="_images/tm_dataset.png" style="width: 400px;" /></a></p>
 <p>The first thing we want to do is to make sure that Fiji understands we are looking at a time series (XYT) rather than a Z-stack (XYZ).</p>
 <p>If you go to <code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">-&gt;</span> <span class="pre">Hyperstacks</span> <span class="pre">-&gt;</span> <span class="pre">Re-order</span> <span class="pre">Hyperstacks</span></code> you will see a screen that looks like this:</p>
-<a class="reference internal image-reference" href="_images/tm_re-order_1.png"><img alt="_images/tm_re-order_1.png" src="_images/tm_re-order_1.png" style="height: 180px;" />
+<a class="reference internal image-reference" href="_images/tm_re-order_1.png"><img alt="_images/tm_re-order_1.png" src="_images/tm_re-order_1.png" style="width: 400px;" />
 </a>
 <p>You can see that Fiji thinks we have 92 slices and 1 frame, instead of 1 slice and 92 frames. Let’s fix that!</p>
 <p>Remap the <code class="docutils literal notranslate"><span class="pre">Slices</span> <span class="pre">(z)</span></code> to <code class="docutils literal notranslate"><span class="pre">Frames(t)</span></code> and vice versa, changing <code class="docutils literal notranslate"><span class="pre">Frames</span> <span class="pre">(t)</span></code> to <code class="docutils literal notranslate"><span class="pre">Slices</span> <span class="pre">(z)</span></code> as below.</p>
-<a class="reference internal image-reference" href="_images/tm_re-order_2.png"><img alt="_images/tm_re-order_2.png" src="_images/tm_re-order_2.png" style="height: 180px;" />
+<a class="reference internal image-reference" href="_images/tm_re-order_2.png"><img alt="_images/tm_re-order_2.png" src="_images/tm_re-order_2.png" style="width: 400px;" />
 </a>
 <section id="task-run-through-the-same-protocol-using-trackmate-as-we-did-above">
 <h4><strong>TASK</strong>: Run through the same protocol using trackmate as we did above.<a class="headerlink" href="#task-run-through-the-same-protocol-using-trackmate-as-we-did-above" title="Link to this heading">#</a></h4>
