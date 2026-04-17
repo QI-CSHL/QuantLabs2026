@@ -191,7 +191,7 @@ Next we need to estimate our spot size. Zoom into the image and measure one of t
 
 Next, we need to filter based on the quality of the detection. You will notice on the bottom right of the image a few spots that do not move, and are probably artifacts (or at least things that we do not wish to track in this case)
 
-#### **TASK**: Find a quality setting that includes the moving spots, but not the weaker, stationary spots. 
+##### **TASK**: Find a quality setting that includes the moving spots, but not the weaker, stationary spots. 
 
 ```{hint}
 You can use the (<img src="images/time_series/tm_preview.png" height="20px" />) button to preview your current settings on the frame). Apply the preview to a few different frames to make sure you’ve detected the moving spots accuratley. Detected objects will be circled with individual ROIs.
@@ -204,6 +204,10 @@ You will see a screen with some summary statistics for the detection.
 <img src="images/time_series/tm_summary.png" width="400px" />
 
 Using a radius of 4 pixels and a quality threshold of 20, we found 84 (total) spots across all frames. How many did you find with your settings?
+
+```{warning}
+If you have an ROI selected in your active image (a line selection is an ROI!), Trackmate will only find spots within that ROI. If the selection is small, it will not find anything! If you can't detect particles, be sure to remove any ROI from the image ;)
+```
 
 Now that we have detected our spots, we need to track them. In the next screen, you can filter further the detected spots based on quality (to see if there are any outliers still).
 
@@ -272,28 +276,28 @@ The first thing we want to do is to make sure that Fiji understands we are looki
 
 If you go to `Image -> Hyperstacks -> Re-order Hyperstacks` you will see a screen that looks like this:
 
-<img src="images/time_series/tm_re-order_1.png" width="400px" />
+<img src="images/time_series/tm_re-order_1.png" width="200px" />
 
 You can see that Fiji thinks we have 92 slices and 1 frame, instead of 1 slice and 92 frames. Let's fix that!
 
 Remap the `Slices (z)` to `Frames(t)` and vice versa, changing `Frames (t)` to `Slices (z)` as below. 
 
-<img src="images/time_series/tm_re-order_2.png" width="400px" />
+<img src="images/time_series/tm_re-order_2.png" width="200px" />
 
-#### **TASK**: Run through the same protocol using trackmate as we did above. 
+##### **TASK**: Run through the same protocol using trackmate as we did above. 
 Can you find a good quality threshold using the `DoG detector`? What about the `LoG detector`?  Try some ohter detectors, such as the `Thresholding Detector`. Do any work well?
 
 
 
-Let’s try a different approach. We'll first use StarDist to segment the image before we import it into TrackMate. Stardist is a specialized segmentation algorithm for detecting nuclei that should work well on this dataset. We need to install stardist in Fiji.
+Let’s try a different approach. We'll first use **StarDist** to segment the image before we import it into TrackMate. Stardist is a specialized segmentation algorithm for detecting nuclei that should work well on this dataset. We need to install stardist in Fiji.
 
-**Help > Update**
+Go to `Help > Update`. In the `Manage Update Sites` tab and check the `StarDist` update site. 
 
-In the ‘Manage Update Sites’ tab and check the ‘StarDist’ update site. Close this window and update (and restart) Fiji.
+You will also need install the plugins `tensorflow`, and `csbdeep` for this to work.
 
-You will also need install the plugins “tensorflow”, and “csbdeep” for this to work.
+<img src="images/time_series/tm_update.png" height="120px" />
 
-<img src="images/time_series/tm_update.png" height="180px" />
+Apply the changes, close the window and update (and restart) Fiji.
 
 Run StarDist on your data `Plugins -> StarDist -> StarDist2D`
 
@@ -313,14 +317,14 @@ Continue through the tracking steps as above. Try to get as good a tracking solu
 
 There are many small spots that are not nuclei. 
 
-#### **TASK**: find a way of filtering these small spots. HINT: use the ‘filter’ panel. 
+##### **TASK**: find a way of filtering these small spots. HINT: use the ‘filter’ panel. 
 What would be good to filter on? 
 
 When you're done export a label image. How does your tracking look?
 
 ### Tracking in ilastik
 
-Please go to
+As before, Ilastik has wonderful documentation to guide you through its tools. Please go to
 [the tracking documentation for ilastik](https://ilastik.github.io/documentation/tracking/tracking)
 and follow the instructions.
 
@@ -330,15 +334,15 @@ Check out the [documentation and tutorials list](https://www.ilastik.org/documen
 
 You can download plenty of [example datasets](https://ilastik.github.io/download.html) from the ilastik website, although it can be a bit slow. 
 
-If so, you can find the same examples in the [Lab Data Share](https://drive.google.com/drive/folders/1dPzFtQEBdpuK9sAZJ6lp6JFBXAJqDag4) under `Time_Series/Tracking/ilastik_tracking_projects` (note that each one is a folder containing several files):
+If so, you can find the same examples in the [Lab Data Share](https://drive.google.com/drive/folders/1dPzFtQEBdpuK9sAZJ6lp6JFBXAJqDag4) under `Lab7/Tracking/ilastik_tracking_projects` (note that each one is a folder containing several files):
 
-1.  2D+t tracking example for ilastik
+1.  **2D+t tracking example for ilastik**
 
-2.  3D+t tracking example for ilastik
+2.  **3D+t tracking example for ilastik**
 
 The 2D example will be way faster to work with, but please choose either of
 the two. After the download is completed, unzip the file and open the project file
-“***conservationTracking.ilp***” in ilastik (Project \> Open project). The previous steps are done, so you can just hit track!
+“***conservationTracking.ilp***” in ilastik (`Project > Open project`). The previous steps are done, so you can just hit track!
 
 ```{tip}
 Please collect some screenshots or remember what you liked most. Be
@@ -391,21 +395,61 @@ Let us install it and then use it.
 Check out the [documentation](https://btrack.readthedocs.io/en/latest/user_guide/index.html)!
 ```
 
-**Installation of btrack and napari from scratch**
-- Open a new Anaconda Prompt and install all we need by executing...
+#### **Installation of btrack and napari from scratch**
+
+In previous exercises, we've given you a pre-made environment with the appropriate software packages (_i.e._ Cellpose) already installed. When you go to use a new tool once you leave QI, however, you won't have this option. So, let's install napari and btrack from scratch!
+
+The first step in installing a python-based software package is to make what is called an `environment`. You can think of a `package` as a particular software tool (_i.e._, btrack is a python `package`). An `environment` is a particular (separate) place on your computer where we can install `packages` and have them be isolated from the other environments we might also need for other purposes. We do this because different python packages require different 'dependencies' (_i.e._ other pieces of software that the package requires in order to run). So a certain package might 'depend' on a specific version of another package, for example:
+
+>Package `A` --> requires Package `B`, version 1.0
+>
+>Package `C` --> requires Package `B`, version 2.0
+
+In this case we cannot install package `A` and `C` in the same environment, because they will interfere with each other by each requiring a different vesion of package `B`. Unfortunatley, solving issues like this (commonly referred to as `dependency hell`) is an unavoidable part of working with bleeding-edge python software packages.
+
+However, we will not (hopefully!) run into dependency hell today. Let's start by creating an environment. 
+
+Open a new terminal by opening `anaconda prompt` (search for it in the Windows finder). If you're using an existing terminal, make sure you deactivate any current environments that are open by typing `conda deactivate`.
+
+Make a new environment by typing:
   - `conda create -y -n btrack -c conda-forge python=3.11`
+
+```{note}
+**What are we doing here?** 
+Well we are asking a particular piece of software called a package manager (in this case, `conda`, although there are many others, such as `mamba`) to `create` a new enviroment with the name 'btrack' (specified by the part `-n btrack`) and telling it to pre-install python version 3.11 into that environment. 
+```
+
+You will be prompted to approve of all the software packages that need to be installed:
+
+>`Proceed ([y]/n)?`
+
+Enter `y` (yes) to proceed.
+
+```{warning}
+Before being able to create your environment, you might be prompted to accept the 'Terms of service' for the the different channels from which you need to download packages. If so, follow the instructions in the terminal. Copy and paste the lines for accepting the Terms of Service for each channel and hit enter. After that, repeat the environment creation step.
+```
+
+Activate the environment by typing:   
   - `conda activate btrack`
+
+The prompt should change from `(base)` to `(btrack)`. We are now 'inside' this environment. Anything we will install will be restricted to this environment (and, thus not accesible to software outside of that environment).
+
+Now we are ready to install both **btrack** and **napari**! We can do this by typing:
   - `pip install btrack[napari]`
   - `conda install -y -c conda-forge napari pyqt`
 
+Now we can execute **napari** from within the *btrack* conda environment we installed above (it may take a coupel of minutes on the first launch!). Type:
+  - `napari`
+
+... and we're ready to go!
+
+---
 **Using btrack to track objects we segmented**
 - Next, we need a dataset to track. Actually, we need not only a dataset, we need
   data that is segmented. Since we learned about segmentation before, here we will
   simply use one of the btrack example datasets. 
   You can find a file called `segmented_nuclei.tif` it in the folder `btrack_masks` in the [Lab Data share](https://drive.google.com/drive/folders/1dPzFtQEBdpuK9sAZJ6lp6JFBXAJqDag4).
-- Start btrack by starting napari (execute `napari` from within the *btrack* conda 
-  environment we installed above). (It may take a coupel of minutes on the first launch!)
-- Start btrack via `Plugins > Track (btrack)`.
+- Start btrack via `Plugins > Track (btrack)` .
 - Drag and drop the masks file into napari.
 
   ```{warning}
