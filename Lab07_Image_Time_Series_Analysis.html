@@ -402,15 +402,8 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-tracking"><strong>Part 2: Tracking</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Learning Objectives</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-trackmate">Tracking in Trackmate</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-find-a-quality-setting-that-includes-the-moving-spots-but-not-the-weaker-stationary-spots"><strong>TASK</strong>: Find a quality setting that includes the moving spots, but not the weaker, stationary spots.</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-trackmate-a-more-complicated-example">Tracking in Trackmate: A more complicated example</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-run-through-the-same-protocol-using-trackmate-as-we-did-above"><strong>TASK</strong>: Run through the same protocol using trackmate as we did above.</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-find-a-way-of-filtering-these-small-spots-hint-use-the-filter-panel"><strong>TASK</strong>: find a way of filtering these small spots. HINT: use the ‘filter’ panel.</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-trackmate">Tracking in Trackmate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-trackmate-a-more-complicated-example">Tracking in Trackmate: A more complicated example</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-ilastik">Tracking in ilastik</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-with-btrack-in-napari">Tracking with btrack in napari</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-of-btrack-and-napari-from-scratch"><strong>Installation of btrack and napari from scratch</strong></a></li>
@@ -586,8 +579,9 @@ features.</p>
 </a>
 <p>Next we need to estimate our spot size. Zoom into the image and measure one of the bright spots we would like to track (HINT: use the line tool).</p>
 <p>Next, we need to filter based on the quality of the detection. You will notice on the bottom right of the image a few spots that do not move, and are probably artifacts (or at least things that we do not wish to track in this case)</p>
-<section id="task-find-a-quality-setting-that-includes-the-moving-spots-but-not-the-weaker-stationary-spots">
-<h4><strong>TASK</strong>: Find a quality setting that includes the moving spots, but not the weaker, stationary spots.<a class="headerlink" href="#task-find-a-quality-setting-that-includes-the-moving-spots-but-not-the-weaker-stationary-spots" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>TASK</strong>: Find a quality setting that includes the moving spots, but not the weaker, stationary spots.</p></li>
+</ul>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>You can use the (<a class="reference internal" href="_images/tm_preview.png"><img alt="_images/tm_preview.png" src="_images/tm_preview.png" style="height: 20px;" /></a>) button to preview your current settings on the frame). Apply the preview to a few different frames to make sure you’ve detected the moving spots accuratley. Detected objects will be circled with individual ROIs.</p>
@@ -630,7 +624,6 @@ features.</p>
 <p>Go back (by pressing the back button) and try some of the other trackers. Which ones work best? One of these approaches catastrophically fails on this dataset. Read the description and try to understand why.</p>
 <p>The simple <strong>DoG detector</strong> works well for this kind of dataset. However, it will fail on objects with more complex morphologies, like cells.</p>
 </section>
-</section>
 <section id="tracking-in-trackmate-a-more-complicated-example">
 <h3>Tracking in Trackmate: A more complicated example<a class="headerlink" href="#tracking-in-trackmate-a-more-complicated-example" title="Link to this heading">#</a></h3>
 <p>Let’s try to track a more difficult dataset, using some of the more advanced detection schemes.</p>
@@ -651,9 +644,10 @@ features.</p>
 <p>Remap the <code class="docutils literal notranslate"><span class="pre">Slices</span> <span class="pre">(z)</span></code> to <code class="docutils literal notranslate"><span class="pre">Frames(t)</span></code> and vice versa, changing <code class="docutils literal notranslate"><span class="pre">Frames</span> <span class="pre">(t)</span></code> to <code class="docutils literal notranslate"><span class="pre">Slices</span> <span class="pre">(z)</span></code> as below.</p>
 <a class="reference internal image-reference" href="_images/tm_re-order_2.png"><img alt="_images/tm_re-order_2.png" src="_images/tm_re-order_2.png" style="width: 200px;" />
 </a>
-<section id="task-run-through-the-same-protocol-using-trackmate-as-we-did-above">
-<h4><strong>TASK</strong>: Run through the same protocol using trackmate as we did above.<a class="headerlink" href="#task-run-through-the-same-protocol-using-trackmate-as-we-did-above" title="Link to this heading">#</a></h4>
-<p>Can you find a good quality threshold using the <code class="docutils literal notranslate"><span class="pre">DoG</span> <span class="pre">detector</span></code>? What about the <code class="docutils literal notranslate"><span class="pre">LoG</span> <span class="pre">detector</span></code>?  Try some ohter detectors, such as the <code class="docutils literal notranslate"><span class="pre">Thresholding</span> <span class="pre">Detector</span></code>. Do any work well?</p>
+<ul class="simple">
+<li><p><strong>TASK</strong>: Run through the same protocol using trackmate as we did above.
+Can you find a good quality threshold using the <code class="docutils literal notranslate"><span class="pre">DoG</span> <span class="pre">detector</span></code>? What about the <code class="docutils literal notranslate"><span class="pre">LoG</span> <span class="pre">detector</span></code>?  Try some ohter detectors, such as the <code class="docutils literal notranslate"><span class="pre">Thresholding</span> <span class="pre">Detector</span></code>. Do any work well?</p></li>
+</ul>
 <p>Let’s try a different approach. We’ll first use <strong>StarDist</strong> to segment the image before we import it into TrackMate. Stardist is a specialized segmentation algorithm for detecting nuclei that should work well on this dataset. We need to install stardist in Fiji.</p>
 <p>Go to <code class="docutils literal notranslate"><span class="pre">Help</span> <span class="pre">&gt;</span> <span class="pre">Update</span></code>. In the <code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">Update</span> <span class="pre">Sites</span></code> tab and check the <code class="docutils literal notranslate"><span class="pre">StarDist</span></code> update site.</p>
 <p>You will also need install the plugins <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code>, and <code class="docutils literal notranslate"><span class="pre">csbdeep</span></code> for this to work.</p>
@@ -661,21 +655,25 @@ features.</p>
 </a>
 <p>Apply the changes, close the window and update (and restart) Fiji.</p>
 <p>Run StarDist on your data <code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">-&gt;</span> <span class="pre">StarDist</span> <span class="pre">-&gt;</span> <span class="pre">StarDist2D</span></code></p>
-<p>Make sure you epxort a <code class="docutils literal notranslate"><span class="pre">Label</span> <span class="pre">Image</span></code> as the <code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">Type</span></code> (you do not need the <code class="docutils literal notranslate"><span class="pre">ROI</span> <span class="pre">Manager</span></code> output)</p>
-<p>It may take some time to perform the detection.</p>
+<p>Make sure you export a <code class="docutils literal notranslate"><span class="pre">Label</span> <span class="pre">Image</span></code> as the <code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">Type</span></code> (you do not need the <code class="docutils literal notranslate"><span class="pre">ROI</span> <span class="pre">Manager</span></code> output)</p>
+<p>It may take some time to perform the detection…</p>
 <p>Now we have a label image that we can use to track.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>There is a <code class="docutils literal notranslate"><span class="pre">Trackmate</span> <span class="pre">-</span> <span class="pre">StarDist</span></code> plugin. Why don’t we just use that? Well for one, it’s important to know that the segmentation is independent of the tracking, and that you can import a label image from any segmentation approach (ie thresholding/watershed, cellpose, stardist). The second reason is that the StarDist trackmate plugin currently appears to not work in this version of Fiji with this hardware. Welcome to deep learning! (And especially deep learning in Fiji!)</p>
+<p>There is a ‘Trackmate - StarDist’ plugin. Why don’t we just use that?
+Well for one, it’s important to know that the segmentation is independent of the tracking, and that you can import a label image from any segmentation approach (ie thresholding/watershed, cellpose, stardist). The second reason is that the StarDist trackmate plugin currently appears to not work in this version of Fiji with this hardware… Welcome to deep learning! (And especially deep learning in Fiji!)</p>
 </div>
 <p>Continue through the tracking steps as above. Try to get as good a tracking solution as you can.</p>
-<p>There are many small spots that are not nuclei.</p>
-</section>
-<section id="task-find-a-way-of-filtering-these-small-spots-hint-use-the-filter-panel">
-<h4><strong>TASK</strong>: find a way of filtering these small spots. HINT: use the ‘filter’ panel.<a class="headerlink" href="#task-find-a-way-of-filtering-these-small-spots-hint-use-the-filter-panel" title="Link to this heading">#</a></h4>
-<p>What would be good to filter on?</p>
+<p>You might notice that there are many small spots that are not nuclei, let’s do something about that…</p>
+<ul class="simple">
+<li><p><strong>TASK</strong>: find a way of filtering these small spots.</p></li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Use the ‘filter’ panel.
+What would be good to filter on?</p>
+</div>
 <p>When you’re done export a label image. How does your tracking look?</p>
-</section>
 </section>
 <section id="tracking-in-ilastik">
 <h3>Tracking in ilastik<a class="headerlink" href="#tracking-in-ilastik" title="Link to this heading">#</a></h3>
@@ -904,15 +902,8 @@ these tracks?</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-tracking"><strong>Part 2: Tracking</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Learning Objectives</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-trackmate">Tracking in Trackmate</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-find-a-quality-setting-that-includes-the-moving-spots-but-not-the-weaker-stationary-spots"><strong>TASK</strong>: Find a quality setting that includes the moving spots, but not the weaker, stationary spots.</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-trackmate-a-more-complicated-example">Tracking in Trackmate: A more complicated example</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-run-through-the-same-protocol-using-trackmate-as-we-did-above"><strong>TASK</strong>: Run through the same protocol using trackmate as we did above.</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-find-a-way-of-filtering-these-small-spots-hint-use-the-filter-panel"><strong>TASK</strong>: find a way of filtering these small spots. HINT: use the ‘filter’ panel.</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-trackmate">Tracking in Trackmate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-trackmate-a-more-complicated-example">Tracking in Trackmate: A more complicated example</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-in-ilastik">Tracking in ilastik</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-with-btrack-in-napari">Tracking with btrack in napari</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-of-btrack-and-napari-from-scratch"><strong>Installation of btrack and napari from scratch</strong></a></li>
