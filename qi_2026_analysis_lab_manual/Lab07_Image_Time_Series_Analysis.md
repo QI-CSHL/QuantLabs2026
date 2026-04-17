@@ -15,10 +15,13 @@
 - Apply and scrutinize photobleach correction
 - Double-normalized FRAP analysis
 
-**Lab Data** in [this folder]([https://tinyurl.com/QIAnalysisLabData](https://drive.google.com/drive/folders/1dPzFtQEBdpuK9sAZJ6lp6JFBXAJqDag4)) (Time_Series)
+**Lab Data** in [this folder](https://drive.google.com/drive/folders/1dPzFtQEBdpuK9sAZJ6lp6JFBXAJqDag4) (Lab7)
 
-Remember to **unzip** the data folder after downloading.
+```{important}
+This time the lab folder is a bit on the chunkier side, if you want to download all of it, it will take a few minutes and split it into two .zip files, which you will have into extract in the same folder.
 
+Otherwise, just download just the folder data that you need for each exercise each time :)
+```
 ---
 
 ### Bleach Correction
@@ -161,15 +164,15 @@ features.
 
 We will start with a simple test dataset. Open the “Tracks for Trackmate (807k)” image from
 
-**File > Open Samples > Tracks for Trackmate (807k)**
+`File > Open Samples > Tracks for Trackmate (807k)`
 
 This is 128x128 stack of 50 frames. Scroll through the image stack using the dimension slider. What do you see?
 
 We will first walk through trackmate step-by-step using this simple example.
 
-Open Trackmate using 
+Open **Trackmate** using 
 
-**Plugins > Tracking > Trackmate**
+`Plugins > Tracking > Trackmate`
 
 You should see a window like this
 
@@ -178,61 +181,66 @@ You should see a window like this
 
 Make sure the Target Image is set to “FakeTracks”.
 
-Click “Next”
+Click `-> Next`.
 
 In this next screen, we have to tell trackmate which detector to use to find the objects in the image. We will use some of these more advanced options later, but for these simple spots, we can use the Difference of Gaussian (DoG) model. This is particularly well suited to detect small, roundish things.
 
-<img src="images/time_series/tm_detect.png" height="180px" />
+<img src="images/time_series/tm_detect.png" width="400px" />
 
 Next we need to estimate our spot size. Zoom into the image and measure one of the bright spots we would like to track (HINT: use the line tool).
 
 Next, we need to filter based on the quality of the detection. You will notice on the bottom right of the image a few spots that do not move, and are probably artifacts (or at least things that we do not wish to track in this case)
 
-TASK: Find a quality setting that includes the moving spots, but not the weaker, stationary spots. (HINT: You can use the “Preview” button to preview your current settings on the frame). Apply the preview to a few different frames to make sure you’ve detected the moving spots accuratley. Detected objects will be circled with individual ROIs.
+#### **TASK**: Find a quality setting that includes the moving spots, but not the weaker, stationary spots. 
 
-Click the “Next” button to perform the detection.
+```{hint}
+You can use the (<img src="images/time_series/tm_preview.png" height="20px" />) button to preview your current settings on the frame). Apply the preview to a few different frames to make sure you’ve detected the moving spots accuratley. Detected objects will be circled with individual ROIs.
+```
+
+Click the `-> Next` button to perform the detection.
 
 You will see a screen with some summary statistics for the detection.
 
-<img src="images/time_series/tm_summary.png" height="180px" />
+<img src="images/time_series/tm_summary.png" width="400px" />
 
-
-Using a radius of 4 pixels and a quality threshold of 20, we found 84 spots across all frames. How many did you find with your settings?
+Using a radius of 4 pixels and a quality threshold of 20, we found 84 (total) spots across all frames. How many did you find with your settings?
 
 Now that we have detected our spots, we need to track them. In the next screen, you can filter further the detected spots based on quality (to see if there are any outliers still).
 
-<img src="images/time_series/tm_filtering.png" height="180px" />
+<img src="images/time_series/tm_filtering.png" width="400px" />
 
-Our spots follow a nice normal distribution, so we will go ahead and include them all by dragging the shaded window over the entire histogram, and then press “next”.
+Our spots' *quality* follows a nice normal distribution, so we will go ahead and include them all by dragging the shaded window over the entire histogram, and then press “next”.
 
 Once we do this, all of the spots in the stack should have been detected. Scroll back and forth through the stack - how well did your detection parameters do?
 
 This screen also allows us to set additional filters on the spots based on various parameters (such as intensity, noise, size). For example, you could exclude all particles smaller than a certain size in this step. This is really only useful if we are using a more complex detection strategy, which we will see later, and so we will ignore this screen for now. 
 
-Press “Next” to start the actual tracking step.
+Press `-> Next` to start the actual tracking step.
 
-<img src="images/time_series/tm_trackers.png" height="180px" />
+<img src="images/time_series/tm_trackers.png" width="400px" />
 
-In this screen we can select which algorithm we would like to use to perform the tracking.
+In this screen we can select which algorithm we would like to use to perform the tracking. Some of them should sound familiar from the lecture...
 
 Select each tracker and read the description. Which tracker do you think would work well for this dataset?
 
-Here we are using the LAP (Linear Assignment Problem) tracker, which performs well under most conditions.
+Here we are using the **LAP** (Linear Assignment Problem) tracker, which performs well under most conditions.
 
 
-<img src="images/time_series/tm_LAP.png" height="180px" />
+<img src="images/time_series/tm_LAP.png" width="400px" />
 
-One important parameter is the Maximum distance that we expect a particle to move between frames. Go back to the image and try to estimate this value. 
+One important parameter is the **Maximum distance** that we expect a particle to move between frames. Go back to the image and try to estimate this value. 
 
-HINT: try to find the fastest moving particle in the image stack.
+```{hint}
+Try to find the fastest moving particle in the image stack.
 
-HINT: Do not use this exact value as the maxumum distance (to account for measurement errors and the fact that you might not have selected the fastest moving particle), but some value higher than that distance.
+Do not use this exact value as the maximum distance (to account for measurement errors and the fact that you might not have selected the fastest moving particle), but some value higher than that distance.
+```
 
-Click next to initiate the tracking. Once done, you should see the particle tracks displayed as an overlay on the image, along with some statistics 
+Click `-> Next` to initiate the tracking. Once done, you should see the particle tracks displayed as an overlay on the image, along with some statistics 
 
-<img src="images/time_series/tm_result.png" height="180px" />
+<img src="images/time_series/tm_result.png" width="400px" />
 
-Trackmate was able to track all of the moving particles in this image
+Trackmate was able to track all of the moving particles in this image.
 
 Scroll back and forth along the image dimension slider to follow the points.
 
@@ -240,30 +248,29 @@ Importantly, Trackmate was also able to handle difficult cases, such as the mage
 
 Go back (by pressing the back button) and try some of the other trackers. Which ones work best? One of these approaches catastrophically fails on this dataset. Read the description and try to understand why.
 
-The simple DoG detector works well for this kind of dataset. However, it will fail on objects with more complex morphologies, like cells.
+The simple **DoG detector** works well for this kind of dataset. However, it will fail on objects with more complex morphologies, like cells.
 
 
 ### Tracking in Trackmate: A more complicated example
 
 Let’s try to track a more difficult dataset, using some of the more advanced detection schemes.
 
-Let’s download some more complicated example data from the [cell tracking challenge](http://celltrackingchallenge.net/):
+Let’s use some more complicated example data from the [cell tracking challenge](http://celltrackingchallenge.net/):
 
- http://data.celltrackingchallenge.net/training-datasets/Fluo-N2DL-HeLa.zip
-
-Open this zip file and extract the folder 
-
-/Fluo-N2DH-HeLa/01/
+From the lab data folder, download the `HeLa_cells` folder.
 
 This is a sequence of tif images, each on representing one (2D) timepoint in the movie.
 
-HINT: you can open a series of images using **File > Import > Image Sequence** command and selecting the folder containing all the images.
+```{hint} 
+You can open a series of images using **File > Import > Image Sequence** command and selecting the folder containing all the images.
+```
 
 The dataset should look like this:
 <img src="images/time_series/tm_dataset.png" height="180px" />
 
 
-TASK: Run through the same protocol using trackmate as we did above. Can you find a good quality threshold using the DoG detector? What about the LoG detector?
+#### **TASK**: Run through the same protocol using trackmate as we did above. 
+Can you find a good quality threshold using the DoG detector? What about the LoG detector?
 
 Let’s try a different detector. Use the ‘Stardist detector. Stardist is a specialized segmentation algorithm for detecting nuclei that should work well on this dataset. We need to install this detector in Fiji. Go to
 
@@ -281,7 +288,8 @@ It may take some time to perform the detection.
 
 There are many small spots that are not nuclei. 
 
-TASK: find a way of filtering these small spots. HINT: use the ‘filter’ panel. What would be good to filter on? 
+#### **TASK**: find a way of filtering these small spots. HINT: use the ‘filter’ panel. 
+What would be good to filter on? 
 
 Continue through the tracking steps as above. Try to get as good a tracking solution as you can.
 
