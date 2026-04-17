@@ -574,7 +574,7 @@ features.</p>
 <p>Open <strong>Trackmate</strong> using</p>
 <p><code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">&gt;</span> <span class="pre">Tracking</span> <span class="pre">&gt;</span> <span class="pre">Trackmate</span></code></p>
 <p>You should see a window like this</p>
-<a class="reference internal image-reference" href="_images/tm1.png"><img alt="_images/tm1.png" src="_images/tm1.png" style="height: 180px;" />
+<a class="reference internal image-reference" href="_images/tm1.png"><img alt="_images/tm1.png" src="_images/tm1.png" style="width: 400px;" />
 </a>
 <p>Make sure the Target Image is set to “FakeTracks”.</p>
 <p>Click <code class="docutils literal notranslate"><span class="pre">-&gt;</span> <span class="pre">Next</span></code>.</p>
@@ -632,28 +632,42 @@ features.</p>
 <p>This is a sequence of tif images, each on representing one (2D) timepoint in the movie.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>You can open a series of images using <strong>File &gt; Import &gt; Image Sequence</strong> command and selecting the folder containing all the images.</p>
+<p>You can open a series of images using <strong>File &gt; Import &gt; Image Sequence</strong> command and selecting the folder containing all the images, or you can just drag an entire folder of images into Fiji.</p>
 </div>
 <p>The dataset should look like this:
 <a class="reference internal" href="_images/tm_dataset.png"><img alt="_images/tm_dataset.png" src="_images/tm_dataset.png" style="height: 180px;" /></a></p>
+<p>The first thing we want to do is to make sure that Fiji understands we are looking at a time series (XYT) rather than a Z-stack (XYZ).</p>
+<p>If you go to <code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">-&gt;</span> <span class="pre">Hyperstacks</span> <span class="pre">-&gt;</span> <span class="pre">Re-order</span> <span class="pre">Hyperstacks</span></code> you will see a screen that looks like this:</p>
+<a class="reference internal image-reference" href="_images/tm_re-order_1.png"><img alt="_images/tm_re-order_1.png" src="_images/tm_re-order_1.png" style="height: 180px;" />
+</a>
+<p>You can see that Fiji thinks we have 92 slices and 1 frame, instead of 1 slice and 92 frames. Let’s fix that!</p>
+<p>Remap the <code class="docutils literal notranslate"><span class="pre">Slices</span> <span class="pre">(z)</span></code> to <code class="docutils literal notranslate"><span class="pre">Frames(t)</span></code> and vice versa, changing <code class="docutils literal notranslate"><span class="pre">Frames</span> <span class="pre">(t)</span></code> to <code class="docutils literal notranslate"><span class="pre">Slices</span> <span class="pre">(z)</span></code> as below.</p>
+<a class="reference internal image-reference" href="_images/tm_re-order_2.png"><img alt="_images/tm_re-order_2.png" src="_images/tm_re-order_2.png" style="height: 180px;" />
+</a>
 <section id="task-run-through-the-same-protocol-using-trackmate-as-we-did-above">
 <h4><strong>TASK</strong>: Run through the same protocol using trackmate as we did above.<a class="headerlink" href="#task-run-through-the-same-protocol-using-trackmate-as-we-did-above" title="Link to this heading">#</a></h4>
-<p>Can you find a good quality threshold using the DoG detector? What about the LoG detector?</p>
-<p>Let’s try a different detector. Use the ‘Stardist detector. Stardist is a specialized segmentation algorithm for detecting nuclei that should work well on this dataset. We need to install this detector in Fiji. Go to</p>
+<p>Can you find a good quality threshold using the <code class="docutils literal notranslate"><span class="pre">DoG</span> <span class="pre">detector</span></code>? What about the <code class="docutils literal notranslate"><span class="pre">LoG</span> <span class="pre">detector</span></code>?  Try some ohter detectors, such as the <code class="docutils literal notranslate"><span class="pre">Thresholding</span> <span class="pre">Detector</span></code>. Do any work well?</p>
+<p>Let’s try a different approach. We’ll first use StarDist to segment the image before we import it into TrackMate. Stardist is a specialized segmentation algorithm for detecting nuclei that should work well on this dataset. We need to install stardist in Fiji.</p>
 <p><strong>Help &gt; Update</strong></p>
-<p>In the ‘Manage Update Sites’ tab and check the ‘TrackMate - StarDist’ update site. Close this window and update (and restart) Fiji.</p>
-<a class="reference internal image-reference" href="_images/tm_update_site.png"><img alt="_images/tm_update_site.png" src="_images/tm_update_site.png" style="height: 180px;" />
-</a>
-<p>You will also need install the plugins “stardist” “tensorflow”, and “csbdeep” for this to work.</p>
+<p>In the ‘Manage Update Sites’ tab and check the ‘StarDist’ update site. Close this window and update (and restart) Fiji.</p>
+<p>You will also need install the plugins “tensorflow”, and “csbdeep” for this to work.</p>
 <a class="reference internal image-reference" href="_images/tm_update.png"><img alt="_images/tm_update.png" src="_images/tm_update.png" style="height: 180px;" />
 </a>
+<p>Run StarDist on your data <code class="docutils literal notranslate"><span class="pre">Plugins</span> <span class="pre">-&gt;</span> <span class="pre">StarDist</span> <span class="pre">-&gt;</span> <span class="pre">StarDist2D</span></code></p>
+<p>Make sure you epxort a <code class="docutils literal notranslate"><span class="pre">Label</span> <span class="pre">Image</span></code> as the <code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">Type</span></code> (you do not need the <code class="docutils literal notranslate"><span class="pre">ROI</span> <span class="pre">Manager</span></code> output)</p>
 <p>It may take some time to perform the detection.</p>
+<p>Now we have a label image that we can use to track.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is a <code class="docutils literal notranslate"><span class="pre">Trackmate</span> <span class="pre">-</span> <span class="pre">StarDist</span></code> plugin. Why don’t we just use that? Well for one, it’s important to know that the segmentation is independent of the tracking, and that you can import a label image from any segmentation approach (ie thresholding/watershed, cellpose, stardist). The second reason is that the StarDist trackmate plugin currently appears to not work in this version of Fiji with this hardware. Welcome to deep learning! (And especially deep learning in Fiji!)</p>
+</div>
+<p>Continue through the tracking steps as above. Try to get as good a tracking solution as you can.</p>
 <p>There are many small spots that are not nuclei.</p>
 </section>
 <section id="task-find-a-way-of-filtering-these-small-spots-hint-use-the-filter-panel">
 <h4><strong>TASK</strong>: find a way of filtering these small spots. HINT: use the ‘filter’ panel.<a class="headerlink" href="#task-find-a-way-of-filtering-these-small-spots-hint-use-the-filter-panel" title="Link to this heading">#</a></h4>
 <p>What would be good to filter on?</p>
-<p>Continue through the tracking steps as above. Try to get as good a tracking solution as you can.</p>
+<p>When you’re done export a label image. How does your tracking look?</p>
 </section>
 </section>
 <section id="tracking-in-ilastik">
